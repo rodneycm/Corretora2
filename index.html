@@ -1,64 +1,273 @@
-<section class="sobre" id="sobre">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    <div class="sobre-container">
+<head>
 
-        <div class="sobre-img">
-            <img src="assets/stephanie.jpg" alt="Stephanie Campos">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stephanie Campos | Consultora Imobiliária</title>
+
+    <meta name="description"
+        content="Consultoria imobiliária em Teresópolis RJ. Compra, venda, locação e avaliação de imóveis com Stephanie Campos.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo-area">
+            <img src="assets/logo.png" alt="Stephanie Campos">
         </div>
 
-        <div class="sobre-texto">
+        <nav>
 
-            <span class="sobre-tag">
-                SOBRE STEPHANIE CAMPOS
+            <a href="#sobre">Sobre</a>
+
+            <a href="#imoveis">Imóveis</a>
+
+            <a href="#contato">Contato</a>
+
+            <a class="whatsapp-btn"
+                href="https://wa.me/5521989321485"
+                target="_blank">
+
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+
+            </a>
+
+        </nav>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Stephanie Campos</h1>
+
+            <p>
+                Especialista em imóveis em Teresópolis,
+                com atendimento humanizado e foco em resultados.
+            </p>
+
+            <span class="creci">
+                CNAI - Cadastro Nacional de Avaliadores de Imóveis
             </span>
 
-            <h2>
-                Atendimento imobiliário com confiança,
-                experiência e olhar humano.
-            </h2>
+        </div>
 
-            <p>
-                Stephanie Campos atua no mercado de vendas desde 2008 e,
-                há mais de 4 anos, dedica sua experiência ao mercado imobiliário
-                em Teresópolis e região.
-            </p>
+    </section>
 
-            <p>
-                Mãe de dois filhos, esposa e responsável pela administração
-                do próprio lar, Stephanie entende que cada imóvel representa
-                muito mais do que uma negociação:
-                representa segurança, sonhos e qualidade de vida.
-            </p>
+    <section class="filtros" id="imoveis">
 
-            <p>
-                Além da atuação como consultora imobiliária,
-                realizou sua formação para obtenção do CNAI
-                (Cadastro Nacional de Avaliadores de Imóveis),
-                estando habilitada para avaliações imobiliárias
-                com responsabilidade e credibilidade.
-            </p>
+        <h2>Buscar Imóveis</h2>
 
-            <div class="sobre-destaques">
+        <div class="filtro-grid">
 
-                <div class="destaque">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Especialista em imóveis em Teresópolis</span>
-                </div>
+            <select id="tipo">
 
-                <div class="destaque">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span>Experiência em vendas desde 2008</span>
-                </div>
+                <option value="">Tipo</option>
 
-                <div class="destaque">
-                    <i class="fa-solid fa-certificate"></i>
-                    <span>Avaliadora com CNAI</span>
+                <option>Apartamento</option>
+
+                <option>Casa</option>
+
+                <option>Terreno</option>
+
+                <option>Cobertura</option>
+
+            </select>
+
+            <input type="text"
+                id="bairro"
+                placeholder="Bairro">
+
+            <input type="number"
+                id="precoMin"
+                placeholder="Preço mínimo">
+
+            <input type="number"
+                id="precoMax"
+                placeholder="Preço máximo">
+
+            <select id="finalidade">
+
+                <option value="">Venda ou Aluguel</option>
+
+                <option>Venda</option>
+
+                <option>Aluguel</option>
+
+            </select>
+
+            <button onclick="filtrarImoveis()">
+                Buscar
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="cards" id="lista-imoveis">
+    </section>
+
+    <section class="sobre" id="sobre">
+
+        <div class="sobre-container">
+
+            <div class="sobre-img">
+
+                <img src="assets/stephanie.jpg"
+                    alt="Stephanie Campos">
+
+            </div>
+
+            <div class="sobre-texto">
+
+                <span class="sobre-tag">
+                    SOBRE STEPHANIE CAMPOS
+                </span>
+
+                <h2>
+                    Atendimento imobiliário com confiança,
+                    experiência e olhar humano.
+                </h2>
+
+                <p>
+                    Stephanie Campos atua no mercado de vendas desde 2008
+                    e há mais de 4 anos dedica sua experiência ao mercado
+                    imobiliário em Teresópolis e região.
+                </p>
+
+                <p>
+                    Mãe de dois filhos, esposa e responsável pela administração
+                    do próprio lar, Stephanie entende que cada imóvel representa
+                    muito mais do que uma negociação:
+                    representa segurança, sonhos e qualidade de vida.
+                </p>
+
+                <p>
+                    Além da atuação como consultora imobiliária,
+                    realizou sua formação para obtenção do CNAI,
+                    estando habilitada para avaliações imobiliárias
+                    com responsabilidade e credibilidade.
+                </p>
+
+                <div class="sobre-destaques">
+
+                    <div class="destaque">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span>
+                            Especialista em imóveis em Teresópolis
+                        </span>
+
+                    </div>
+
+                    <div class="destaque">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <span>
+                            Experiência em vendas desde 2008
+                        </span>
+
+                    </div>
+
+                    <div class="destaque">
+
+                        <i class="fa-solid fa-certificate"></i>
+
+                        <span>
+                            Avaliadora com CNAI
+                        </span>
+
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <footer id="contato">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <img src="assets/logo.png"
+                    class="footer-logo">
+
+                <p class="footer-desc">
+
+                    Atendimento especializado em compra,
+                    venda, locação e avaliação de imóveis
+                    em Teresópolis e região.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Contato</h3>
+
+                <p>
+                    <i class="fab fa-whatsapp"></i>
+                    (21) 98932-1485
+                </p>
+
+                <p>
+                    Teresópolis - RJ
+                </p>
+
+                <p>
+                    Atendimento online e presencial
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Especialidades</h3>
+
+                <p>Compra e venda</p>
+
+                <p>Locação</p>
+
+                <p>Avaliação imobiliária</p>
+
+                <p>Consultoria imobiliária</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 Stephanie Campos — Todos os direitos reservados.
+
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
