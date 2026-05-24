@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<section class="filtros">
+
+    <h2>Painel Administrativo</h2>
+
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="login()">
+        Entrar
+    </button>
+
+    <div id="painel" style="display:none; margin-top:30px;">
+
+        <input type="text" id="titulo" placeholder="Título">
+        <input type="text" id="bairroAdmin" placeholder="Bairro">
+        <input type="text" id="tipoAdmin" placeholder="Tipo">
+        <input type="text" id="finalidadeAdmin" placeholder="Venda ou aluguel">
+        <input type="number" id="precoAdmin" placeholder="Preço">
+        <input type="text" id="imagemAdmin" placeholder="URL da imagem">
+        <textarea id="descricaoAdmin" placeholder="Descrição"></textarea>
+
+        <button onclick="adicionarImovel()">
+            Adicionar imóvel
+        </button>
+
+    </div>
+
+</section>
+
+<script src="admin.js"></script>
+
+</body>
+</html>

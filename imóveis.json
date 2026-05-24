@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "Casa moderna em Agriões",
+    "bairro": "Agriões",
+    "tipo": "Casa",
+    "finalidade": "Venda",
+    "preco": 850000,
+    "imagem": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1974&auto=format&fit=crop",
+    "descricao": "Casa moderna com 3 quartos e área gourmet."
+  },
+  {
+    "titulo": "Apartamento no Alto",
+    "bairro": "Alto",
+    "tipo": "Apartamento",
+    "finalidade": "Aluguel",
+    "preco": 2500,
+    "imagem": "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop",
+    "descricao": "Apartamento próximo ao centro de Teresópolis."
+  }
+]
