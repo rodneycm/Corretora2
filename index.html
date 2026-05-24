@@ -1,148 +1,64 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephanie Campos | Consultora Imobiliária</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
-<body>
-
-<header class="header">
-
-    <div class="logo-area">
-        <img src="assets/logo.png" alt="Stephanie Campos">
-    </div>
-
-    <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#imoveis">Imóveis</a>
-        <a href="#contato">Contato</a>
-
-        <a class="whatsapp-btn"
-           href="https://wa.me/5521989321485"
-           target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            WhatsApp
-        </a>
-
-        <a href="admin.html" class="admin-link">•</a>
-    </nav>
-
-</header>
-
-<section class="hero">
-    <div class="hero-content">
-        <h1>Stephanie Campos</h1>
-        <p>
-            Consultora & Avaliadora Imobiliária
-        </p>
-
-        <span class="creci">
-            CNAI - Cadastro Nacional de Avaliadores de Imóveis
-        </span>
-    </div>
-</section>
-
-<section class="filtros" id="imoveis">
-
-    <h2>Buscar Imóveis</h2>
-
-    <div class="filtro-grid">
-
-        <select id="tipo">
-            <option value="">Tipo</option>
-            <option>Apartamento</option>
-            <option>Casa</option>
-            <option>Terreno</option>
-            <option>Cobertura</option>
-        </select>
-
-        <input type="text" id="bairro" placeholder="Bairro">
-
-        <input type="number" id="precoMin" placeholder="Preço mínimo">
-
-        <input type="number" id="precoMax" placeholder="Preço máximo">
-
-        <select id="finalidade">
-            <option value="">Venda ou Aluguel</option>
-            <option>Venda</option>
-            <option>Aluguel</option>
-        </select>
-
-        <button onclick="filtrarImoveis()">
-            Buscar
-        </button>
-
-    </div>
-
-</section>
-
-<section class="cards" id="lista-imoveis">
-</section>
-
 <section class="sobre" id="sobre">
 
-    <h2>Sobre Stephanie Campos</h2>
+    <div class="sobre-container">
 
-    <p>
-        Especialista em consultoria e avaliação imobiliária na cidade de Teresópolis.
-        Atendimento personalizado para compra, venda, locação e avaliação de imóveis.
-    </p>
-
-</section>
-
-<footer id="contato">
-
-    <div class="footer-grid">
-
-        <div>
-            <h3>Stephanie Campos</h3>
-            <p>
-                Consultora & Avaliadora Imobiliária
-            </p>
-            <p>
-                Teresópolis - RJ
-            </p>
+        <div class="sobre-img">
+            <img src="assets/stephanie.jpg" alt="Stephanie Campos">
         </div>
 
-        <div>
-            <h3>Contato</h3>
+        <div class="sobre-texto">
+
+            <span class="sobre-tag">
+                SOBRE STEPHANIE CAMPOS
+            </span>
+
+            <h2>
+                Atendimento imobiliário com confiança,
+                experiência e olhar humano.
+            </h2>
 
             <p>
-                WhatsApp: (21) 98932-1485
+                Stephanie Campos atua no mercado de vendas desde 2008 e,
+                há mais de 4 anos, dedica sua experiência ao mercado imobiliário
+                em Teresópolis e região.
             </p>
 
             <p>
-                Atendimento online e presencial.
+                Mãe de dois filhos, esposa e responsável pela administração
+                do próprio lar, Stephanie entende que cada imóvel representa
+                muito mais do que uma negociação:
+                representa segurança, sonhos e qualidade de vida.
             </p>
-        </div>
 
-        <div>
-            <h3>Links Úteis</h3>
-
-            <a href="#sobre">Sobre</a>
-            <a href="#imoveis">Imóveis</a>
-            <a href="#contato">Contato</a>
-        </div>
-
-        <div>
-            <h3>Desenvolvedor</h3>
             <p>
-                Desenvolvido por Rodney
+                Além da atuação como consultora imobiliária,
+                realizou sua formação para obtenção do CNAI
+                (Cadastro Nacional de Avaliadores de Imóveis),
+                estando habilitada para avaliações imobiliárias
+                com responsabilidade e credibilidade.
             </p>
+
+            <div class="sobre-destaques">
+
+                <div class="destaque">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Especialista em imóveis em Teresópolis</span>
+                </div>
+
+                <div class="destaque">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Experiência em vendas desde 2008</span>
+                </div>
+
+                <div class="destaque">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Avaliadora com CNAI</span>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+</section>
