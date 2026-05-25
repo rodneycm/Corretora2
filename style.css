@@ -629,3 +629,64 @@ footer{
     }
 
 }
+
+/* LIGHTBOX PREMIUM */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.92);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    padding:40px;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90vh;
+    border-radius:18px;
+}
+
+.lightbox-close{
+    position:absolute;
+    top:30px;
+    right:40px;
+    color:white;
+    font-size:42px;
+    cursor:pointer;
+}
+
+.lightbox-prev,
+.lightbox-next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    color:white;
+    font-size:50px;
+    cursor:pointer;
+    user-select:none;
+    padding:20px;
+}
+
+.lightbox-prev{
+    left:20px;
+}
+
+.lightbox-next{
+    right:20px;
+}
+
+.galeria-imovel img{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.galeria-imovel img:hover{
+    transform:scale(1.02);
+}
