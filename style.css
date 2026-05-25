@@ -162,19 +162,19 @@ nav a {
     font-weight: bold;
 }
 
-.sobre-home {
+.sobre-Inicio {
     padding: 100px 10%;
     background: #f1f5f9;
 }
 
-.sobre-home-content {
+.sobre-Inicio-content {
     display: grid;
     grid-template-columns: 1fr 420px;
     gap: 60px;
     align-items: center;
 }
 
-.sobre-home-content img {
+.sobre-Inicio-content img {
     width: 100%;
     border-radius: 20px;
 }
@@ -186,12 +186,12 @@ nav a {
     font-weight: bold;
 }
 
-.sobre-home h2 {
+.sobre-Inicio h2 {
     font-size: 42px;
     margin: 20px 0;
 }
 
-.sobre-home p {
+.sobre-Inicio p {
     line-height: 1.8;
     color: #475569;
 }
@@ -266,7 +266,7 @@ footer {
         font-size: 20px;
     }
 
-    .sobre-home-content{
+    .sobre-Inicio-content{
         grid-template-columns: 1fr;
     }
 
