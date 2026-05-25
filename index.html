@@ -33,11 +33,15 @@
 
         <nav>
 
-            <a href="#sobre">Sobre</a>
+            <a href="index.html">Home</a>
 
-            <a href="#imoveis">Imóveis</a>
+            <a href="comprar.html">Comprar</a>
 
-            <a href="#contato">Contato</a>
+            <a href="aluguel.html">Alugar</a>
+
+            <a href="quem-somos.html">Quem Somos</a>
+
+            <a href="contato.html">Contato</a>
 
             <a class="whatsapp-btn"
                 href="https://wa.me/5521989321485"
@@ -71,49 +75,39 @@
 
     </section>
 
-    <section class="filtros" id="imoveis">
+    <section class="filtros">
 
         <h2>Buscar Imóveis</h2>
 
         <div class="filtro-grid">
 
-            <select id="tipo">
-
-                <option value="">Tipo</option>
-
-                <option>Apartamento</option>
-
+            <select>
+                <option>Tipo</option>
                 <option>Casa</option>
-
+                <option>Apartamento</option>
                 <option>Terreno</option>
-
-                <option>Cobertura</option>
-
             </select>
 
             <input type="text"
-                id="bairro"
                 placeholder="Bairro">
 
             <input type="number"
-                id="precoMin"
                 placeholder="Preço mínimo">
 
             <input type="number"
-                id="precoMax"
                 placeholder="Preço máximo">
 
-            <select id="finalidade">
+            <select>
 
-                <option value="">Compra e Aluguel</option>
+                <option>Compra ou Aluguel</option>
 
-                <option>Compra</option>
+                <option>Venda</option>
 
                 <option>Aluguel</option>
 
             </select>
 
-            <button onclick="filtrarImoveis()">
+            <button>
                 Buscar
             </button>
 
@@ -121,84 +115,55 @@
 
     </section>
 
-    <section class="cards" id="lista-imoveis">
-    </section>
+    <section class="cards">
 
-    <section class="sobre" id="sobre">
+        <div class="card">
 
-        <div class="sobre-container">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1974&auto=format&fit=crop">
 
-            <div class="sobre-img">
+            <div class="card-content">
 
-                <img src="assets/stephanie.jpg"
-                    alt="Stephanie Campos">
+                <h3>Casa moderna em Agriões</h3>
+
+                <p><strong>Bairro:</strong> Agriões</p>
+
+                <p><strong>Tipo:</strong> Casa</p>
+
+                <p><strong>Preço:</strong> R$ 850.000</p>
+
+                <a class="card-btn"
+                    href="https://wa.me/5521989321485"
+                    target="_blank">
+
+                    Tenho Interesse
+
+                </a>
 
             </div>
 
-            <div class="sobre-texto">
+        </div>
 
-                <span class="sobre-tag">
-                    SOBRE STEPHANIE CAMPOS
-                </span>
+        <div class="card">
 
-                <h2>
-                    Atendimento imobiliário com confiança,
-                    experiência e olhar humano.
-                </h2>
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop">
 
-                <p>
-                    Stephanie Campos atua no mercado de vendas desde 2008
-                    e há mais de 4 anos dedica sua experiência ao mercado
-                    imobiliário em Teresópolis e região.
-                </p>
+            <div class="card-content">
 
-                <p>
-                    Mãe de dois filhos, esposa e responsável pela administração
-                    do próprio lar, Stephanie entende que cada imóvel representa
-                    muito mais do que uma negociação:
-                    representa segurança, sonhos e qualidade de vida.
-                </p>
+                <h3>Apartamento no Alto</h3>
 
-                <p>
-                    Além da atuação como consultora imobiliária,
-                    realizou sua formação para obtenção do CNAI,
-                    estando habilitada para avaliações imobiliárias
-                    com responsabilidade e credibilidade.
-                </p>
+                <p><strong>Bairro:</strong> Alto</p>
 
-                <div class="sobre-destaques">
+                <p><strong>Tipo:</strong> Apartamento</p>
 
-                    <div class="destaque">
+                <p><strong>Preço:</strong> R$ 2.500</p>
 
-                        <i class="fa-solid fa-house"></i>
+                <a class="card-btn"
+                    href="https://wa.me/5521989321485"
+                    target="_blank">
 
-                        <span>
-                            Especialista em imóveis em Teresópolis
-                        </span>
+                    Tenho Interesse
 
-                    </div>
-
-                    <div class="destaque">
-
-                        <i class="fa-solid fa-chart-line"></i>
-
-                        <span>
-                            Experiência em vendas desde 2008
-                        </span>
-
-                    </div>
-
-                    <div class="destaque">
-
-                        <i class="fa-solid fa-certificate"></i>
-
-                        <span>
-                            Avaliadora com CNAI
-                        </span>
-
-                    </div>
-
-                </div>
+                </a>
 
             </div>
 
@@ -206,7 +171,41 @@
 
     </section>
 
-    <footer id="contato">
+    <section class="sobre-home">
+
+        <div class="sobre-home-content">
+
+            <div>
+
+                <span class="sobre-mini">
+                    SOBRE
+                </span>
+
+                <h2>
+                    Atendimento imobiliário humanizado,
+                    com experiência e confiança.
+                </h2>
+
+                <p>
+                    Stephanie Campos atua no mercado de vendas desde 2008
+                    e há mais de 4 anos no mercado imobiliário em Teresópolis.
+                </p>
+
+                <a href="quem-somos.html" class="saiba-mais-btn">
+
+                    Saiba Mais
+
+                </a>
+
+            </div>
+
+            <img src="assets/stephanie.jpg">
+
+        </div>
+
+    </section>
+
+    <footer>
 
         <div class="footer-grid">
 
@@ -218,8 +217,7 @@
                 <p class="footer-desc">
 
                     Atendimento especializado em compra,
-                    venda, locação e avaliação de imóveis
-                    em Teresópolis e região.
+                    venda, locação e avaliação de imóveis.
 
                 </p>
 
@@ -236,47 +234,33 @@
                         target="_blank">
 
                         <i class="fab fa-whatsapp"></i>
-                        WhatsApp: (21) 98932-1485
+                        WhatsApp
 
                     </a>
 
                 </p>
 
-                <p>
-                    Teresópolis - RJ
-                </p>
-
-                <p>
-                    Atendimento online e presencial
-                </p>
+                <p>Teresópolis - RJ</p>
 
             </div>
 
             <div>
 
-                <h3>Especialidades</h3>
+                <h3>Navegação</h3>
 
-                <p>Compra e venda</p>
+                <a href="index.html">Home</a>
 
-                <p>Locação</p>
+                <a href="comprar.html">Comprar</a>
 
-                <p>Avaliação imobiliária</p>
+                <a href="aluguel.html">Alugar</a>
 
-                <p>Consultoria imobiliária</p>
+                <a href="quem-somos.html">Quem Somos</a>
 
             </div>
 
         </div>
 
-        <div class="footer-bottom">
-
-            © 2026 Stephanie Campos — Todos os direitos reservados.
-
-        </div>
-
     </footer>
-
-    <script src="script.js"></script>
 
 </body>
 
