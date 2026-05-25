@@ -292,3 +292,42 @@ footer {
     margin: auto;
     line-height: 1.7;
 }
+.diferenciais{
+    padding: 90px 10%;
+    background: white;
+    text-align: center;
+}
+
+.diferenciais h2{
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+
+.diferenciais-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+}
+
+.diferencial-box{
+    background: #f8fafc;
+    padding: 40px 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.diferencial-box i{
+    font-size: 40px;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.diferencial-box h3{
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.diferencial-box p{
+    color: #475569;
+    line-height: 1.7;
+}
