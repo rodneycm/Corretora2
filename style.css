@@ -1038,3 +1038,304 @@ RESPONSIVO
         justify-content:center;
     }
 }
+
+/* =========================================================
+   COMPRAR HERO PREMIUM
+========================================================= */
+
+.comprar-hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:180px 20px 120px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(rgba(15,23,42,0.72),
+    rgba(15,23,42,0.82)),
+
+    url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.comprar-hero-overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(255,255,255,0.06),
+    transparent 60%);
+}
+
+.comprar-hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+    max-width:950px;
+
+    margin:auto;
+}
+
+.comprar-hero-content h1{
+
+    font-family:'Playfair Display', serif;
+
+    font-size:clamp(48px, 7vw, 82px);
+
+    line-height:1.05;
+
+    color:white;
+
+    margin-bottom:30px;
+
+    letter-spacing:-2px;
+}
+
+.comprar-hero-content p{
+
+    font-size:21px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,0.88);
+
+    max-width:760px;
+
+    margin:0 auto 40px auto;
+}
+
+.comprar-intro{
+
+    padding:120px 8% 40px;
+
+    background:#ffffff;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   CARDS PREMIUM
+========================================================= */
+
+.cards{
+
+    padding:40px 8% 120px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:36px;
+}
+
+.card{
+
+    background:#ffffff;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.06);
+
+    transition:0.4s ease;
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 24px 50px rgba(0,0,0,0.12);
+}
+
+.card img{
+
+    width:100%;
+
+    height:280px;
+
+    object-fit:cover;
+
+    transition:0.5s ease;
+}
+
+.card:hover img{
+
+    transform:scale(1.04);
+}
+
+.card-content{
+
+    padding:34px;
+}
+
+.card-content h3{
+
+    font-size:30px;
+
+    line-height:1.3;
+
+    margin-bottom:18px;
+
+    color:var(--primary);
+}
+
+.card-content p{
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    color:var(--text);
+
+    margin-bottom:26px;
+}
+
+.card-infos{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:30px;
+}
+
+.card-infos span{
+
+    background:#f1f5f9;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:var(--primary);
+}
+
+/* =========================================================
+   BOTÃO CARD
+========================================================= */
+
+.card-btn{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:700;
+
+    transition:0.3s ease;
+}
+
+.card-btn:hover{
+
+    background:#1e293b;
+
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   RESPONSIVO PREMIUM
+========================================================= */
+
+@media(max-width:900px){
+
+    .comprar-hero{
+
+        min-height:auto;
+
+        padding:
+        180px 20px 100px;
+    }
+
+    .comprar-hero-content h1{
+
+        font-size:56px;
+    }
+
+    .comprar-hero-content p{
+
+        font-size:18px;
+    }
+}
+
+@media(max-width:600px){
+
+    .comprar-hero-content h1{
+
+        font-size:42px;
+    }
+
+    .comprar-hero-content p{
+
+        font-size:17px;
+
+        line-height:1.8;
+    }
+
+    .cards{
+
+        padding:
+        20px 20px 80px;
+    }
+
+    .card-content{
+
+        padding:26px;
+    }
+
+    .card-content h3{
+
+        font-size:24px;
+    }
+}
