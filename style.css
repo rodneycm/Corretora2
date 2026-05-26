@@ -1344,6 +1344,73 @@ RESPONSIVO
    CONTATO PREMIUM
 ========================================================= */
 
+.contato-hero{
+
+    position:relative;
+
+    min-height:72vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:180px 20px 120px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(rgba(15,23,42,0.78),
+    rgba(15,23,42,0.82)),
+
+    url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2070&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.contato-hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+
+    color:white;
+}
+
+.contato-hero-content h1{
+
+    font-size:clamp(44px,7vw,78px);
+
+    line-height:1.08;
+
+    margin-bottom:26px;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+}
+
+.contato-hero-content p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,0.88);
+
+    max-width:760px;
+
+    margin:auto;
+}
+
+/* =========================================================
+   ÁREA CONTATO
+========================================================= */
+
 .contato-section{
 
     padding:120px 8%;
@@ -1354,34 +1421,35 @@ RESPONSIVO
 .contato-wrapper{
 
     width:100%;
+
     max-width:1280px;
 
     margin:auto;
 
     display:grid;
 
-    grid-template-columns:1fr 420px;
+    grid-template-columns:1fr 430px;
 
-    gap:50px;
+    gap:40px;
 
     align-items:start;
 }
 
 /* =========================================================
-   BLOCO PRINCIPAL
+   BLOCO ESQUERDO
 ========================================================= */
 
 .contato-content{
 
-    background:#ffffff;
+    background:white;
 
     padding:60px;
 
-    border-radius:32px;
-
-    box-shadow:0 18px 45px rgba(0,0,0,0.06);
+    border-radius:34px;
 
     border:1px solid #edf2f7;
+
+    box-shadow:0 18px 45px rgba(0,0,0,0.06);
 }
 
 .contato-badge{
@@ -1406,7 +1474,7 @@ RESPONSIVO
 
     letter-spacing:1px;
 
-    margin-bottom:28px;
+    margin-bottom:26px;
 }
 
 .contato-content h2{
@@ -1428,18 +1496,18 @@ RESPONSIVO
 
     color:var(--text);
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 /* =========================================================
-   CARDS DE CONTATO
+   CARDS
 ========================================================= */
 
 .contato-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 
     gap:24px;
 
@@ -1448,13 +1516,13 @@ RESPONSIVO
 
 .contato-card{
 
-    background:#ffffff;
+    background:white;
 
-    border:1px solid #edf2f7;
-
-    border-radius:24px;
+    border-radius:26px;
 
     padding:34px 28px;
+
+    border:1px solid #edf2f7;
 
     transition:0.35s ease;
 
@@ -1470,14 +1538,14 @@ RESPONSIVO
 
 .contato-card i{
 
-    width:70px;
-    height:70px;
+    width:72px;
+    height:72px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border-radius:18px;
+    border-radius:20px;
 
     background:#f1f5f9;
 
@@ -1522,7 +1590,7 @@ RESPONSIVO
 
     padding:50px 40px;
 
-    border-radius:32px;
+    border-radius:34px;
 
     color:white;
 
@@ -1539,7 +1607,7 @@ RESPONSIVO
 
     line-height:1.3;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .formulario-box p{
@@ -1578,25 +1646,17 @@ RESPONSIVO
     font-size:16px;
 
     outline:none;
-
-    transition:0.3s ease;
 }
 
 .formulario input::placeholder,
 .formulario textarea::placeholder{
 
-    color:rgba(255,255,255,0.60);
-}
-
-.formulario input:focus,
-.formulario textarea:focus{
-
-    background:rgba(255,255,255,0.14);
+    color:rgba(255,255,255,0.58);
 }
 
 .formulario textarea{
 
-    min-height:150px;
+    min-height:160px;
 
     resize:none;
 }
@@ -1622,8 +1682,6 @@ RESPONSIVO
     cursor:pointer;
 
     transition:0.3s ease;
-
-    margin-top:10px;
 }
 
 .formulario button:hover{
@@ -1634,7 +1692,7 @@ RESPONSIVO
 }
 
 /* =========================================================
-   MAPA / LOCALIZAÇÃO
+   MAPA
 ========================================================= */
 
 .mapa-section{
@@ -1647,30 +1705,31 @@ RESPONSIVO
 .mapa-box{
 
     width:100%;
+
     max-width:1280px;
 
     margin:auto;
 
     overflow:hidden;
 
-    border-radius:32px;
-
-    box-shadow:0 18px 45px rgba(0,0,0,0.08);
+    border-radius:34px;
 
     border:1px solid #edf2f7;
+
+    box-shadow:0 18px 45px rgba(0,0,0,0.08);
 }
 
 .mapa-box iframe{
 
     width:100%;
 
-    height:500px;
+    height:520px;
 
     border:none;
 }
 
 /* =========================================================
-   RESPONSIVO CONTATO
+   RESPONSIVO
 ========================================================= */
 
 @media(max-width:1100px){
@@ -1710,11 +1769,6 @@ RESPONSIVO
         padding:40px 28px;
     }
 
-    .formulario-box h3{
-
-        font-size:30px;
-    }
-
     .mapa-section{
 
         padding:0 20px 90px;
@@ -1722,11 +1776,31 @@ RESPONSIVO
 
     .mapa-box iframe{
 
-        height:380px;
+        height:400px;
     }
 }
 
 @media(max-width:600px){
+
+    .contato-hero{
+
+        padding:190px 20px 100px;
+    }
+
+    .contato-hero-content h1{
+
+        font-size:42px;
+    }
+
+    .contato-hero-content p{
+
+        font-size:17px;
+    }
+
+    .contato-content{
+
+        padding:34px 24px;
+    }
 
     .contato-content h2{
 
@@ -1738,11 +1812,6 @@ RESPONSIVO
         font-size:16px;
     }
 
-    .contato-card{
-
-        padding:28px 24px;
-    }
-
     .formulario-box{
 
         padding:34px 24px;
@@ -1750,6 +1819,6 @@ RESPONSIVO
 
     .formulario-box h3{
 
-        font-size:26px;
+        font-size:28px;
     }
 }
