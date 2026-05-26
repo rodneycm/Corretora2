@@ -698,3 +698,25 @@ footer{
     font-size:17px;
     line-height:1.7;
 }
+
+/* CONTATO PREMIUM */
+
+.contato-destaques{
+    margin-top:30px;
+    display:grid;
+    gap:14px;
+}
+
+.contato-destaques div{
+    background:white;
+    padding:16px 18px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    font-weight:600;
+    color:#0f172a;
+}
+
+.contato-destaques i{
+    color:#16a34a;
+    margin-right:10px;
+}
