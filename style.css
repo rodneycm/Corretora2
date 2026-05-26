@@ -8,17 +8,34 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f8fafc;
+    color:#0f172a;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
+
 :root{
+
     --primary:#0f172a;
     --primary-light:#1e293b;
 
     --secondary:#25d366;
     --secondary-dark:#1faa52;
 
+    --white:#ffffff;
+
     --background:#f8fafc;
     --background-soft:#f1f5f9;
-
-    --white:#ffffff;
 
     --text:#475569;
     --text-light:#64748b;
@@ -26,26 +43,14 @@
     --border:#e2e8f0;
 
     --shadow-sm:0 4px 12px rgba(0,0,0,0.05);
-    --shadow-md:0 8px 25px rgba(0,0,0,0.08);
-    --shadow-lg:0 12px 35px rgba(0,0,0,0.12);
+    --shadow-md:0 10px 30px rgba(0,0,0,0.08);
+    --shadow-lg:0 18px 45px rgba(0,0,0,0.12);
 
-    --radius-sm:10px;
-    --radius-md:18px;
-    --radius-lg:24px;
+    --radius-sm:12px;
+    --radius-md:22px;
+    --radius-lg:30px;
 
     --transition:0.3s ease;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, sans-serif;
-    background:var(--background);
-    color:var(--primary);
-    line-height:1.7;
-    overflow-x:hidden;
 }
 
 /* =========================================================
@@ -73,88 +78,60 @@ section{
 }
 
 /* =========================================================
-   BOTÕES
-========================================================= */
-
-.whatsapp-btn,
-.card-btn,
-.saiba-mais-btn,
-.btn-interesse,
-.hero-btn,
-.secao-btn,
-.cta-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-
-    font-weight:bold;
-    border-radius:var(--radius-sm);
-
-    transition:var(--transition);
-}
-
-.whatsapp-btn:hover,
-.card-btn:hover,
-.saiba-mais-btn:hover,
-.btn-interesse:hover,
-.hero-btn:hover,
-.secao-btn:hover,
-.cta-btn:hover{
-    transform:translateY(-2px);
-}
-
-/* =========================================================
    HEADER
 ========================================================= */
 
 .header{
+
     position:fixed;
+
     top:0;
     left:0;
 
     width:100%;
 
-    padding:14px 8%;
-
-    background:rgba(255,255,255,0.96);
-    backdrop-filter:blur(10px);
+    padding:18px 8%;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
+    background:rgba(255,255,255,0.94);
+
+    backdrop-filter:blur(14px);
+
     z-index:999;
 
-    box-shadow:0 2px 15px rgba(0,0,0,0.06);
+    border-bottom:1px solid rgba(226,232,240,0.6);
+
+    box-shadow:0 2px 18px rgba(0,0,0,0.04);
 }
 
 .logo-area img{
-    width:185px;
-    transition:var(--transition);
-}
-
-.logo-area img:hover{
-    transform:scale(1.02);
+    width:190px;
 }
 
 nav{
     display:flex;
     align-items:center;
-    gap:24px;
+    gap:26px;
 }
 
 nav a{
-    color:var(--primary);
-    font-weight:700;
-    font-size:15px;
     position:relative;
+
+    color:var(--primary);
+
+    font-size:15px;
+    font-weight:700;
 }
 
 nav a:not(.whatsapp-btn)::after{
+
     content:"";
 
     position:absolute;
+
     left:0;
     bottom:-6px;
 
@@ -170,16 +147,114 @@ nav a:not(.whatsapp-btn):hover::after{
     width:100%;
 }
 
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.whatsapp-btn,
+.card-btn,
+.saiba-mais-btn,
+.hero-btn,
+.hero-btn-outline,
+.cta-btn,
+.secao-btn,
+.btn-interesse{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+    cursor:pointer;
+}
+
 .whatsapp-btn{
+
     background:var(--secondary);
     color:white;
 
-    padding:12px 20px;
+    padding:13px 22px;
 
     box-shadow:var(--shadow-sm);
 }
 
 .whatsapp-btn:hover{
+    background:var(--secondary-dark);
+    transform:translateY(-2px);
+}
+
+.hero-btn{
+
+    background:white;
+    color:var(--primary);
+
+    padding:16px 28px;
+}
+
+.hero-btn:hover{
+    transform:translateY(-3px);
+}
+
+.hero-btn-outline{
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    color:white;
+
+    padding:16px 28px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(6px);
+}
+
+.hero-btn-outline:hover{
+    background:rgba(255,255,255,0.16);
+}
+
+.card-btn,
+.saiba-mais-btn,
+.cta-btn,
+.secao-btn{
+
+    background:var(--primary);
+    color:white;
+
+    padding:15px 24px;
+}
+
+.card-btn:hover,
+.saiba-mais-btn:hover,
+.cta-btn:hover,
+.secao-btn:hover{
+    background:var(--primary-light);
+    transform:translateY(-2px);
+}
+
+.btn-interesse{
+
+    width:100%;
+
+    background:var(--secondary);
+
+    color:white;
+
+    padding:18px;
+
+    font-size:18px;
+
+    margin-top:30px;
+}
+
+.btn-interesse:hover{
     background:var(--secondary-dark);
 }
 
@@ -188,14 +263,10 @@ nav a:not(.whatsapp-btn):hover::after{
 ========================================================= */
 
 .hero{
+
+    position:relative;
+
     min-height:100vh;
-
-    background:
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop');
-
-    background-size:cover;
-    background-position:center;
 
     display:flex;
     align-items:center;
@@ -203,99 +274,233 @@ nav a:not(.whatsapp-btn):hover::after{
 
     text-align:center;
 
-    color:white;
+    overflow:hidden;
 
-    padding:20px;
+    padding:120px 20px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.60)),
+    url('assets/branding/hero-home.webp');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
 }
 
 .hero-content{
-    max-width:900px;
+
+    position:relative;
+    z-index:2;
+
+    max-width:980px;
+
+    color:white;
+}
+
+.hero-mini{
+
+    display:inline-block;
+
+    margin-bottom:26px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    font-size:13px;
+    letter-spacing:1.5px;
+    font-weight:700;
 }
 
 .hero-content h1{
+
     font-size:72px;
     line-height:1.15;
-    margin-bottom:24px;
+
+    margin-bottom:28px;
 }
 
 .hero-content p{
-    font-size:26px;
-    line-height:1.8;
-    color:rgba(255,255,255,0.92);
+
+    font-size:24px;
+    line-height:1.9;
+
+    color:rgba(255,255,255,0.90);
+
+    max-width:850px;
+
+    margin:auto auto 40px;
 }
 
-.creci{
-    display:inline-block;
+.hero-buttons{
 
-    margin-top:35px;
-    padding:14px 26px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
 
-    background:rgba(255,255,255,0.14);
+    flex-wrap:wrap;
+}
 
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:14px;
+.hero-info{
 
-    backdrop-filter:blur(8px);
+    margin-top:70px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.hero-info div{
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    backdrop-filter:blur(10px);
+}
+
+.hero-info strong{
+
+    display:block;
+
+    font-size:26px;
+
+    margin-bottom:8px;
+}
+
+.hero-info span{
+
+    color:rgba(255,255,255,0.85);
+
+    font-size:15px;
 }
 
 /* =========================================================
-   TOPO DAS PÁGINAS
+   TOPO DE PÁGINAS
 ========================================================= */
 
 .page-topo{
-    padding:190px 20px 90px;
+
+    padding:210px 20px 100px;
+
+    text-align:center;
 
     background:
-    linear-gradient(rgba(15,23,42,0.90), rgba(15,23,42,0.92));
+    linear-gradient(rgba(15,23,42,0.92), rgba(15,23,42,0.94));
 
     color:white;
-    text-align:center;
 }
 
 .page-topo h1{
+
     font-size:56px;
-    margin-bottom:22px;
+
+    margin-bottom:24px;
 }
 
 .page-topo p{
-    max-width:760px;
+
+    max-width:820px;
+
     margin:auto;
 
     font-size:20px;
-    line-height:1.8;
+    line-height:1.9;
 
     color:rgba(255,255,255,0.88);
 }
 
 /* =========================================================
-   SOBRE / QUEM SOMOS
+   SECTION TITLES
+========================================================= */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+}
+
+.section-title span{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    color:var(--text-light);
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+
+    font-size:48px;
+    line-height:1.25;
+
+    margin-bottom:18px;
+}
+
+.section-title p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--text);
+
+    line-height:1.9;
+}
+
+/* =========================================================
+   SOBRE HOME
 ========================================================= */
 
 .sobre-home{
-    padding:110px 10%;
+
+    padding:120px 10%;
+
     background:var(--background-soft);
 }
 
 .sobre-home-content{
+
     display:grid;
-    grid-template-columns:1fr 440px;
-    gap:70px;
+    grid-template-columns:1fr 460px;
+
+    gap:80px;
+
     align-items:center;
 }
 
 .sobre-home-content img{
-    width:100%;
+
     border-radius:var(--radius-lg);
 
-    object-fit:cover;
+    box-shadow:var(--shadow-lg);
 
-    box-shadow:var(--shadow-md);
+    object-fit:cover;
 }
 
 .sobre-mini{
+
     display:block;
 
-    margin-bottom:14px;
+    margin-bottom:18px;
 
     color:var(--text-light);
 
@@ -305,84 +510,39 @@ nav a:not(.whatsapp-btn):hover::after{
 }
 
 .sobre-home h2{
-    font-size:46px;
-    line-height:1.25;
 
-    margin-bottom:28px;
+    font-size:48px;
+    line-height:1.3;
+
+    margin-bottom:30px;
 }
 
 .sobre-home p{
-    margin-bottom:20px;
+
+    margin-bottom:22px;
 
     color:var(--text);
 
     font-size:17px;
-    line-height:1.9;
-}
-
-.saiba-mais-btn{
-    margin-top:24px;
-
-    background:var(--primary);
-    color:white;
-
-    padding:15px 24px;
-}
-
-.saiba-mais-btn:hover{
-    background:var(--primary-light);
+    line-height:1.95;
 }
 
 /* =========================================================
-   DIFERENCIAIS / DESTAQUES
-========================================================= */
-
-.contato-destaques,
-.mini-destaques,
-.diferenciais-grid{
-    display:grid;
-    gap:16px;
-}
-
-.contato-destaques{
-    margin-top:35px;
-}
-
-.contato-destaques div,
-.mini-destaques span,
-.diferencial-box{
-    background:white;
-
-    padding:18px 20px;
-
-    border-radius:16px;
-
-    box-shadow:var(--shadow-sm);
-}
-
-.contato-destaques div{
-    font-weight:600;
-}
-
-.contato-destaques i,
-.mini-destaques i{
-    color:#16a34a;
-    margin-right:10px;
-}
-
-/* =========================================================
-   CARDS DE IMÓVEIS
+   CARDS
 ========================================================= */
 
 .cards{
-    padding:80px 10%;
+
+    padding:0 10% 120px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:32px;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:36px;
 }
 
 .card{
+
     background:white;
 
     border-radius:var(--radius-md);
@@ -395,168 +555,201 @@ nav a:not(.whatsapp-btn):hover::after{
 }
 
 .card:hover{
-    transform:translateY(-6px);
+
+    transform:translateY(-8px);
+
     box-shadow:var(--shadow-lg);
 }
 
 .card img{
+
     width:100%;
-    height:240px;
+    height:260px;
 
     object-fit:cover;
 }
 
 .card-content{
-    padding:26px;
+    padding:28px;
 }
 
 .card-content h3{
-    margin-bottom:16px;
 
-    font-size:24px;
-    line-height:1.4;
+    font-size:28px;
+
+    line-height:1.3;
+
+    margin-bottom:18px;
 }
 
 .card-content p{
-    margin-bottom:12px;
 
     color:var(--text);
+
+    margin-bottom:18px;
+
+    line-height:1.8;
 }
 
-.card-btn{
-    margin-top:18px;
-
-    background:var(--primary);
-    color:white;
-
-    padding:13px 20px;
-}
-
-/* =========================================================
-   HERO IMÓVEL
-========================================================= */
-
-.hero-imovel{
-    position:relative;
-
-    height:88vh;
-
-    overflow:hidden;
+.card-infos{
 
     display:flex;
-    align-items:center;
-    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
 
-    text-align:center;
-    color:white;
+    margin-bottom:24px;
 }
 
-.hero-imovel img{
-    position:absolute;
+.card-infos span{
 
-    width:100%;
-    height:100%;
+    background:var(--background-soft);
 
-    object-fit:cover;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-
-    background:rgba(0,0,0,0.58);
-
-    z-index:1;
-}
-
-.hero-imovel-content{
-    position:relative;
-    z-index:2;
-
-    max-width:900px;
-
-    padding:20px;
-}
-
-.hero-imovel-content h1{
-    font-size:64px;
-    line-height:1.2;
-
-    margin-bottom:22px;
-}
-
-.hero-imovel-content p{
-    font-size:24px;
-    line-height:1.8;
-
-    color:rgba(255,255,255,0.92);
-}
-
-.tag-venda,
-.tag-aluguel{
-    display:inline-block;
-
-    padding:10px 18px;
+    padding:10px 14px;
 
     border-radius:999px;
 
     font-size:14px;
-    font-weight:bold;
+    font-weight:600;
+}
+
+/* =========================================================
+   DESTAQUES / BENEFÍCIOS
+========================================================= */
+
+.beneficios{
+
+    padding:120px 10%;
+
+    background:white;
+}
+
+.beneficios-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+}
+
+.beneficio-box{
+
+    background:var(--background-soft);
+
+    padding:40px 34px;
+
+    border-radius:24px;
+
+    transition:var(--transition);
+}
+
+.beneficio-box:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-md);
+}
+
+.beneficio-box i{
+
+    font-size:38px;
+
+    margin-bottom:22px;
+
+    color:var(--primary);
+}
+
+.beneficio-box h3{
+
+    font-size:24px;
+
+    margin-bottom:18px;
+}
+
+.beneficio-box p{
+
+    color:var(--text);
+
+    line-height:1.9;
+}
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.cta-final{
+
+    padding:120px 10%;
+
+    background:
+    linear-gradient(rgba(15,23,42,0.95), rgba(15,23,42,0.96));
+
+    color:white;
+
+    text-align:center;
+}
+
+.cta-final-content{
+
+    max-width:860px;
+
+    margin:auto;
+}
+
+.cta-final h2{
+
+    font-size:52px;
+    line-height:1.25;
 
     margin-bottom:26px;
 }
 
-.tag-venda{
-    background:white;
-    color:var(--primary);
-}
+.cta-final p{
 
-.tag-aluguel{
-    background:#dcfce7;
-    color:#166534;
-}
+    font-size:20px;
+    line-height:1.9;
 
-.hero-btn{
-    margin-top:36px;
+    color:rgba(255,255,255,0.86);
 
-    background:white;
-    color:var(--primary);
-
-    padding:16px 26px;
+    margin-bottom:40px;
 }
 
 /* =========================================================
-   DETALHE DO IMÓVEL
+   IMÓVEL DETALHE
 ========================================================= */
 
 .imovel-detalhe{
-    padding:90px 10%;
+
+    padding:100px 10%;
 
     display:grid;
     grid-template-columns:1.2fr 0.8fr;
-    gap:55px;
+
+    gap:60px;
 }
 
 .galeria-imovel{
+
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:16px;
+
+    gap:18px;
 }
 
 .galeria-imovel a{
+
     overflow:hidden;
+
     border-radius:20px;
 }
 
 .galeria-imovel img{
+
     width:100%;
     height:280px;
 
     object-fit:cover;
 
     border-radius:20px;
-
-    cursor:pointer;
 
     transition:var(--transition);
 
@@ -568,11 +761,12 @@ nav a:not(.whatsapp-btn):hover::after{
 }
 
 .info-imovel{
+
     background:white;
 
-    padding:38px;
+    padding:40px;
 
-    border-radius:24px;
+    border-radius:28px;
 
     box-shadow:var(--shadow-md);
 
@@ -580,62 +774,33 @@ nav a:not(.whatsapp-btn):hover::after{
 }
 
 .imovel-tag{
+
     display:inline-block;
 
     margin-bottom:22px;
 
     padding:10px 18px;
 
+    border-radius:999px;
+
     background:var(--primary);
 
     color:white;
 
-    border-radius:10px;
-
     font-size:14px;
-    font-weight:bold;
+    font-weight:700;
 }
 
 .info-imovel h2{
+
     font-size:48px;
+
     line-height:1.2;
 
-    margin-bottom:28px;
-}
-
-/* =========================================================
-   DESCRIÇÃO DO IMÓVEL
-========================================================= */
-
-.descricao-imovel{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-.descricao-imovel p{
-    color:var(--text);
-
-    font-size:17px;
-    line-height:1.95;
-}
-
-.descricao-destaque{
-    font-size:24px !important;
-    line-height:1.5 !important;
-
-    color:var(--primary) !important;
-
-    font-weight:bold;
-}
-
-.descricao-final{
-    font-weight:600;
-    color:var(--primary) !important;
+    margin-bottom:24px;
 }
 
 .frase-impacto{
-    margin-bottom:24px;
 
     color:var(--text-light);
 
@@ -643,92 +808,57 @@ nav a:not(.whatsapp-btn):hover::after{
     line-height:1.8;
 }
 
-.mini-destaques{
-    margin-top:12px;
-}
+.descricao-imovel{
 
-.mini-destaques span{
-    font-weight:600;
-}
-
-/* =========================================================
-   INFORMAÇÕES DO IMÓVEL
-========================================================= */
-
-.imovel-infos-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
+    display:flex;
+    flex-direction:column;
 
     gap:18px;
 
-    margin:35px 0;
+    margin-top:30px;
 }
 
-.imovel-infos-grid div{
-    background:var(--background-soft);
+.descricao-imovel p{
 
-    padding:20px;
-
-    border-radius:16px;
-}
-
-.imovel-infos-grid strong{
-    display:block;
-    margin-bottom:8px;
-}
-
-.btn-interesse{
-    width:100%;
-
-    background:var(--secondary);
-    color:white;
-
-    padding:18px;
-
-    font-size:18px;
-}
-
-.btn-interesse:hover{
-    background:var(--secondary-dark);
-}
-
-/* =========================================================
-   SEÇÃO EXCLUSIVA
-========================================================= */
-
-.secao-exclusiva{
-    padding:110px 10%;
-
-    background:white;
-
-    text-align:center;
-}
-
-.secao-exclusiva-content{
-    max-width:850px;
-    margin:auto;
-}
-
-.secao-exclusiva h2{
-    font-size:44px;
-    line-height:1.3;
-
-    margin-bottom:24px;
-}
-
-.secao-exclusiva p{
     color:var(--text);
 
     line-height:1.95;
 }
 
-.secao-btn{
-    margin-top:36px;
+.descricao-destaque{
 
-    background:var(--primary);
-    color:white;
+    font-size:24px !important;
 
-    padding:16px 28px;
+    font-weight:700;
+
+    color:var(--primary) !important;
+}
+
+.descricao-final{
+
+    font-weight:700;
+
+    color:var(--primary) !important;
+}
+
+.mini-destaques{
+
+    display:grid;
+
+    gap:14px;
+
+    margin-top:10px;
+}
+
+.mini-destaques span{
+
+    background:var(--background-soft);
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    font-weight:600;
 }
 
 /* =========================================================
@@ -736,36 +866,45 @@ nav a:not(.whatsapp-btn):hover::after{
 ========================================================= */
 
 footer{
+
     background:var(--primary);
 
     color:white;
 
-    padding:80px 10% 40px;
+    padding:90px 10% 40px;
 }
 
 .footer-grid{
+
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:45px;
+
+    gap:50px;
 }
 
 .footer-logo-white{
-    width:250px;
+
+    width:240px;
+
     margin-bottom:24px;
 }
 
 .footer-desc{
+
     color:#cbd5e1;
+
     line-height:1.9;
 }
 
 .footer-grid h3{
-    margin-bottom:20px;
 
     font-size:20px;
+
+    margin-bottom:22px;
 }
 
 .footer-grid a{
+
     display:block;
 
     margin-bottom:14px;
@@ -778,18 +917,16 @@ footer{
 }
 
 .footer-grid p{
+
     color:#cbd5e1;
+
     line-height:1.9;
 }
 
-.footer-whatsapp{
-    display:inline-flex !important;
-    align-items:center;
-    gap:8px;
-}
-
 .footer-bottom{
-    margin-top:55px;
+
+    margin-top:60px;
+
     padding-top:30px;
 
     border-top:1px solid rgba(255,255,255,0.1);
@@ -817,105 +954,137 @@ footer{
    RESPONSIVO
 ========================================================= */
 
-@media(max-width:1100px){
+@media(max-width:1150px){
 
     .sobre-home-content,
     .imovel-detalhe{
+
         grid-template-columns:1fr;
     }
 
-    .sobre-home-content{
-        gap:50px;
+    .hero-content h1{
+        font-size:58px;
     }
 }
 
 @media(max-width:900px){
 
     .header{
-        padding:18px 20px;
+
+        padding:20px;
 
         flex-direction:column;
-        gap:16px;
-    }
 
-    nav{
-        flex-wrap:wrap;
-        justify-content:center;
         gap:18px;
     }
 
-    .hero-content h1,
-    .hero-imovel-content h1{
+    nav{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:18px;
+    }
+
+    .hero{
+
+        min-height:auto;
+    }
+
+    .hero-content h1{
+
         font-size:44px;
     }
 
-    .hero-content p,
-    .hero-imovel-content p{
+    .hero-content p{
+
         font-size:20px;
     }
 
-    .page-topo{
-        padding-top:220px;
-    }
+    .hero-info{
 
-    .page-topo h1{
-        font-size:40px;
-    }
-
-    .sobre-home h2,
-    .secao-exclusiva h2{
-        font-size:34px;
-    }
-
-    .info-imovel h2{
-        font-size:38px;
-    }
-
-    .galeria-imovel{
         grid-template-columns:1fr;
     }
 
-    .imovel-infos-grid{
+    .page-topo{
+
+        padding-top:240px;
+    }
+
+    .page-topo h1{
+
+        font-size:42px;
+    }
+
+    .section-title h2,
+    .sobre-home h2,
+    .cta-final h2{
+
+        font-size:36px;
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+    }
+
+    .galeria-imovel{
+
         grid-template-columns:1fr;
     }
 }
 
 @media(max-width:600px){
 
-    .hero-content h1,
-    .hero-imovel-content h1{
+    .hero-content h1{
+
         font-size:36px;
     }
 
     .hero-content p,
-    .hero-imovel-content p,
     .page-topo p{
+
         font-size:18px;
     }
 
+    .hero-buttons{
+
+        flex-direction:column;
+    }
+
+    .hero-btn,
+    .hero-btn-outline{
+
+        width:100%;
+    }
+
     .sobre-home,
+    .beneficios,
+    .cta-final,
     .cards,
     .imovel-detalhe,
-    .secao-exclusiva,
     footer{
+
         padding-left:20px;
         padding-right:20px;
     }
 
-    .card-content{
-        padding:22px;
-    }
-
+    .card-content,
     .info-imovel{
-        padding:28px;
+
+        padding:24px;
     }
 
     .logo-area img{
-        width:155px;
+
+        width:160px;
     }
 
     .whatsapp-btn{
+
         width:100%;
+
         justify-content:center;
     }
 }
