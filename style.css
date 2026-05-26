@@ -607,7 +607,7 @@ CARDS
 
     padding:120px 8%;
 
-    background:#ffffff;
+    background:#f8fafc;
 }
 
 .beneficios .section-title{
@@ -661,6 +661,8 @@ CARDS
 .beneficio-box{
 
     background:#ffffff;
+
+    min-height:100%;
 
     padding:42px 34px;
 
@@ -745,6 +747,8 @@ CARDS
     color:var(--text);
 
     margin:0;
+
+    text-align:left;
 }
 
 /* =========================================================
