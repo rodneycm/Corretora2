@@ -649,3 +649,44 @@ footer{
 .goverlay{
     background:rgba(0,0,0,0.94) !important;
 }
+
+/* DESCRIÇÃO PROFISSIONAL DO IMÓVEL */
+
+.descricao-imovel{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.descricao-imovel p{
+    line-height:1.9;
+    color:#475569;
+    font-size:17px;
+}
+
+.descricao-destaque{
+    font-size:24px !important;
+    font-weight:bold;
+    color:#0f172a !important;
+    line-height:1.5;
+}
+
+.descricao-final{
+    font-weight:600;
+    color:#0f172a !important;
+}
+
+.mini-destaques{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:10px;
+}
+
+.mini-destaques span{
+    background:#f1f5f9;
+    padding:14px 16px;
+    border-radius:12px;
+    font-weight:600;
+    color:#0f172a;
+}
