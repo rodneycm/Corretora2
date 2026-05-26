@@ -120,7 +120,7 @@ nav a{
     position:relative;
 }
 
-nav a:not(.whatsapp-btn)::after{
+nav a:not(.whatsapp-btn):not(.nav-active)::after{
 
     content:"";
 
@@ -132,7 +132,7 @@ nav a:not(.whatsapp-btn)::after{
     width:0;
     height:2px;
 
-    background:var(--secondary);
+    background:#22c55e !important;
 
     transition:var(--transition);
 }
@@ -142,7 +142,9 @@ nav a:not(.whatsapp-btn):hover::after{
 }
 
 .nav-active{
-    color:var(--secondary);
+    color:#22c55e !important;
+
+    font-weight:800;
 }
 
 .nav-active::after{
