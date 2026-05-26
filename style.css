@@ -1,10 +1,11 @@
-/* RESET */
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 html{
@@ -12,18 +13,74 @@ html{
 }
 
 body{
+    font-family:Arial, sans-serif;
     background:#f8fafc;
     color:#0f172a;
     overflow-x:hidden;
+    line-height:1.6;
 }
 
-/* HEADER */
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
+
+:root{
+    --primary:#0f172a;
+    --secondary:#25d366;
+    --text:#475569;
+    --light:#f8fafc;
+    --white:#ffffff;
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,0.08);
+
+    --radius:18px;
+
+    --transition:0.3s;
+}
+
+/* =========================================================
+   LINKS E BOTÕES
+========================================================= */
+
+a{
+    text-decoration:none;
+    transition:var(--transition);
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.whatsapp-btn,
+.card-btn,
+.saiba-mais-btn,
+.btn-interesse,
+.hero-btn,
+.secao-btn{
+    transition:var(--transition);
+}
+
+.whatsapp-btn:hover,
+.card-btn:hover,
+.saiba-mais-btn:hover,
+.btn-interesse:hover,
+.hero-btn:hover,
+.secao-btn:hover{
+    transform:translateY(-2px);
+    opacity:0.92;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header{
     position:fixed;
     top:0;
     width:100%;
-    background:white;
+    background:var(--white);
     padding:14px 8%;
     display:flex;
     justify-content:space-between;
@@ -34,11 +91,6 @@ body{
 
 .logo-area img{
     width:180px;
-    transition:0.3s;
-}
-
-.logo-area img:hover{
-    transform:scale(1.03);
 }
 
 nav{
@@ -48,10 +100,8 @@ nav{
 }
 
 nav a{
-    text-decoration:none;
-    color:#0f172a;
+    color:var(--primary);
     font-weight:bold;
-    transition:0.3s;
 }
 
 nav a:hover{
@@ -59,13 +109,15 @@ nav a:hover{
 }
 
 .whatsapp-btn{
-    background:#25d366;
+    background:var(--secondary);
     color:white;
     padding:12px 18px;
     border-radius:10px;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:100vh;
@@ -98,7 +150,7 @@ nav a:hover{
 
 .hero-content p{
     font-size:28px;
-    line-height:1.6;
+    line-height:1.7;
 }
 
 .creci{
@@ -109,16 +161,15 @@ nav a:hover{
     border-radius:12px;
 }
 
-/* TOPO DAS PÁGINAS */
+/* =========================================================
+   TOPO DAS PÁGINAS
+========================================================= */
 
 .page-topo{
-    padding-top:180px;
-    padding-bottom:80px;
-    background:#0f172a;
+    padding:180px 20px 80px;
+    background:var(--primary);
     color:white;
     text-align:center;
-    padding-left:20px;
-    padding-right:20px;
 }
 
 .page-topo h1{
@@ -133,7 +184,9 @@ nav a:hover{
     line-height:1.7;
 }
 
-/* SOBRE HOME */
+/* =========================================================
+   SOBRE
+========================================================= */
 
 .sobre-home{
     padding:100px 10%;
@@ -148,11 +201,13 @@ nav a:hover{
 }
 
 .sobre-home-content img{
-    width:100%;
     border-radius:20px;
+    box-shadow:var(--shadow);
 }
 
 .sobre-mini{
+    display:block;
+    margin-bottom:10px;
     color:#64748b;
     font-size:14px;
     letter-spacing:2px;
@@ -162,59 +217,28 @@ nav a:hover{
 .sobre-home h2{
     font-size:42px;
     margin:20px 0;
+    line-height:1.3;
 }
 
 .sobre-home p{
-    line-height:1.8;
-    color:#475569;
+    color:var(--text);
     margin-bottom:18px;
+    line-height:1.9;
 }
 
 .saiba-mais-btn{
     display:inline-block;
     margin-top:20px;
-    background:#0f172a;
+    background:var(--primary);
     color:white;
     padding:14px 22px;
     border-radius:10px;
-    text-decoration:none;
     font-weight:bold;
 }
 
-/* FILTROS */
-
-.filtros{
-    padding:90px 10%;
-    background:white;
-}
-
-.filtros h2{
-    margin-bottom:30px;
-    font-size:38px;
-}
-
-.filtro-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-}
-
-.filtro-grid input,
-.filtro-grid select,
-.filtro-grid button{
-    padding:16px;
-    border-radius:12px;
-    border:1px solid #d1d5db;
-}
-
-.filtro-grid button{
-    background:#0f172a;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-/* CARDS */
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards{
     padding:70px 10%;
@@ -225,10 +249,10 @@ nav a:hover{
 
 .card{
     background:white;
-    border-radius:18px;
+    border-radius:var(--radius);
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+    box-shadow:var(--shadow);
+    transition:var(--transition);
 }
 
 .card:hover{
@@ -243,153 +267,38 @@ nav a:hover{
 }
 
 .card-content{
-    padding:22px;
+    padding:24px;
 }
 
 .card-content h3{
     margin-bottom:15px;
+    font-size:24px;
 }
 
 .card-content p{
-    margin-bottom:10px;
-    line-height:1.7;
+    margin-bottom:12px;
+    color:var(--text);
 }
 
 .card-btn{
     display:inline-block;
     margin-top:15px;
-    background:#0f172a;
+    background:var(--primary);
     color:white;
     padding:12px 18px;
     border-radius:10px;
-    text-decoration:none;
     font-weight:bold;
 }
 
-/* DIFERENCIAIS */
-
-.diferenciais{
-    padding:90px 10%;
-    background:white;
-    text-align:center;
-}
-
-.diferenciais h2{
-    font-size:42px;
-    margin-bottom:50px;
-}
-
-.diferenciais-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.diferencial-box{
-    background:#f8fafc;
-    padding:40px 30px;
-    border-radius:18px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.05);
-}
-
-.diferencial-box i{
-    font-size:40px;
-    color:#0f172a;
-    margin-bottom:20px;
-}
-
-.diferencial-box h3{
-    margin-bottom:15px;
-    font-size:24px;
-}
-
-.diferencial-box p{
-    color:#475569;
-    line-height:1.7;
-}
-
-/* HERO IMÓVEL */
-
-.hero-imovel{
-    position:relative;
-    height:85vh;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-}
-
-.hero-imovel img{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.55);
-    z-index:1;
-}
-
-.hero-imovel-content{
-    position:relative;
-    z-index:2;
-    max-width:850px;
-    padding:20px;
-}
-
-.hero-imovel-content h1{
-    font-size:64px;
-    margin-bottom:20px;
-}
-
-.hero-imovel-content p{
-    font-size:24px;
-    line-height:1.7;
-}
-
-.tag-venda,
-.tag-aluguel{
-    display:inline-block;
-    padding:10px 18px;
-    border-radius:999px;
-    font-weight:bold;
-    margin-bottom:25px;
-}
-
-.tag-venda{
-    background:white;
-    color:#0f172a;
-}
-
-.tag-aluguel{
-    background:#dcfce7;
-    color:#166534;
-}
-
-.hero-btn{
-    display:inline-block;
-    margin-top:35px;
-    background:white;
-    color:#0f172a;
-    padding:16px 26px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* DETALHE IMÓVEL */
+/* =========================================================
+   DETALHE DO IMÓVEL
+========================================================= */
 
 .imovel-detalhe{
     padding:80px 10%;
     display:grid;
     grid-template-columns:1.2fr 0.8fr;
     gap:50px;
-    background:#f8fafc;
 }
 
 .galeria-imovel{
@@ -408,25 +317,25 @@ nav a:hover{
     height:260px;
     object-fit:cover;
     border-radius:18px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+    cursor:pointer;
+    transition:var(--transition);
+    box-shadow:var(--shadow);
 }
 
 .galeria-imovel img:hover{
-    transform:scale(1.03);
-    box-shadow:0 12px 30px rgba(0,0,0,0.15);
+    transform:scale(1.02);
 }
 
 .info-imovel{
     background:white;
     padding:35px;
     border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    box-shadow:var(--shadow);
     height:fit-content;
 }
 
 .imovel-tag{
-    background:#0f172a;
+    background:var(--primary);
     color:white;
     padding:10px 18px;
     border-radius:10px;
@@ -436,21 +345,68 @@ nav a:hover{
 }
 
 .info-imovel h2{
-    font-size:42px;
-    margin-bottom:25px;
-}
-
-.descricao-imovel{
-    line-height:1.8;
-    color:#475569;
+    font-size:52px;
     margin-bottom:30px;
 }
+
+/* =========================================================
+   DESCRIÇÃO PROFISSIONAL
+========================================================= */
+
+.descricao-imovel{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.descricao-imovel p{
+    color:var(--text);
+    line-height:1.9;
+    font-size:17px;
+}
+
+.descricao-destaque{
+    font-size:24px !important;
+    font-weight:bold;
+    color:var(--primary) !important;
+    line-height:1.5;
+}
+
+.descricao-final{
+    font-weight:600;
+    color:var(--primary) !important;
+}
+
+.frase-impacto{
+    margin-top:-10px;
+    margin-bottom:25px;
+    color:#64748b;
+    font-size:17px;
+    line-height:1.7;
+}
+
+.mini-destaques{
+    display:grid;
+    gap:12px;
+    margin-top:10px;
+}
+
+.mini-destaques span{
+    background:#f1f5f9;
+    padding:14px 16px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+/* =========================================================
+   GRID INFORMAÇÕES
+========================================================= */
 
 .imovel-infos-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:20px;
-    margin-bottom:35px;
+    margin:35px 0;
 }
 
 .imovel-infos-grid div{
@@ -467,76 +423,43 @@ nav a:hover{
 .btn-interesse{
     display:block;
     text-align:center;
-    background:#25d366;
+    background:var(--secondary);
     color:white;
     padding:18px;
     border-radius:14px;
-    text-decoration:none;
-    font-weight:bold;
     font-size:18px;
+    font-weight:bold;
 }
 
-/* BENEFÍCIOS */
+/* =========================================================
+   CONTATO PREMIUM
+========================================================= */
 
-.beneficios-aluguel,
-.destaques-imovel{
+.contato-destaques{
     margin-top:30px;
     display:grid;
-    gap:15px;
+    gap:14px;
 }
 
-.beneficios-aluguel div,
-.destaques-imovel div{
-    background:#f8fafc;
-    padding:16px;
-    border-radius:12px;
+.contato-destaques div{
+    background:white;
+    padding:16px 18px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
     font-weight:600;
 }
 
-.beneficios-aluguel i,
-.destaques-imovel i{
+.contato-destaques i{
     color:#16a34a;
     margin-right:10px;
 }
 
-/* SEÇÃO EXTRA */
-
-.secao-exclusiva{
-    padding:100px 10%;
-    background:#f8fafc;
-    text-align:center;
-}
-
-.secao-exclusiva-content{
-    max-width:850px;
-    margin:auto;
-}
-
-.secao-exclusiva h2{
-    font-size:42px;
-    margin-bottom:25px;
-}
-
-.secao-exclusiva p{
-    line-height:1.9;
-    color:#475569;
-}
-
-.secao-btn{
-    display:inline-block;
-    margin-top:35px;
-    background:#0f172a;
-    color:white;
-    padding:16px 26px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-    background:#0f172a;
+    background:var(--primary);
     color:white;
     padding:70px 10%;
 }
@@ -549,7 +472,6 @@ footer{
 
 .footer-logo-white{
     width:260px;
-    height:auto;
     margin-bottom:25px;
 }
 
@@ -566,16 +488,11 @@ footer{
     display:block;
     color:white;
     margin-bottom:12px;
-    text-decoration:none;
 }
 
 .footer-grid p{
     color:#cbd5e1;
     line-height:1.8;
-}
-
-.footer-whatsapp{
-    color:white;
 }
 
 .footer-bottom{
@@ -587,7 +504,21 @@ footer{
     font-size:14px;
 }
 
-/* RESPONSIVO */
+/* =========================================================
+   GLIGHTBOX
+========================================================= */
+
+.glightbox-clean .gslide-image img{
+    border-radius:18px;
+}
+
+.goverlay{
+    background:rgba(0,0,0,0.94) !important;
+}
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
 
 @media(max-width:900px){
 
@@ -612,14 +543,7 @@ footer{
         font-size:20px;
     }
 
-    .sobre-home-content{
-        grid-template-columns:1fr;
-    }
-
-    .page-topo h1{
-        font-size:38px;
-    }
-
+    .sobre-home-content,
     .imovel-detalhe{
         grid-template-columns:1fr;
     }
@@ -628,95 +552,15 @@ footer{
         grid-template-columns:1fr;
     }
 
-}
-/* GALERIA PREMIUM */
+    .page-topo h1{
+        font-size:38px;
+    }
 
-.galeria-imovel img{
-    cursor:pointer;
-    transition:0.3s;
-}
+    .info-imovel h2{
+        font-size:38px;
+    }
 
-.galeria-imovel img:hover{
-    transform:scale(1.02);
-}
-
-/* GLIGHTBOX PREMIUM */
-
-.glightbox-clean .gslide-image img{
-    border-radius:18px;
-}
-
-.goverlay{
-    background:rgba(0,0,0,0.94) !important;
-}
-
-/* DESCRIÇÃO PROFISSIONAL DO IMÓVEL */
-
-.descricao-imovel{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-.descricao-imovel p{
-    line-height:1.9;
-    color:#475569;
-    font-size:17px;
-}
-
-.descricao-destaque{
-    font-size:24px !important;
-    font-weight:bold;
-    color:#0f172a !important;
-    line-height:1.5;
-}
-
-.descricao-final{
-    font-weight:600;
-    color:#0f172a !important;
-}
-
-.mini-destaques{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:12px;
-    margin-top:10px;
-}
-
-.mini-destaques span{
-    background:#f1f5f9;
-    padding:14px 16px;
-    border-radius:12px;
-    font-weight:600;
-    color:#0f172a;
-}
-
-.frase-impacto{
-    margin-top:-10px;
-    margin-bottom:25px;
-    color:#64748b;
-    font-size:17px;
-    line-height:1.7;
-}
-
-/* CONTATO PREMIUM */
-
-.contato-destaques{
-    margin-top:30px;
-    display:grid;
-    gap:14px;
-}
-
-.contato-destaques div{
-    background:white;
-    padding:16px 18px;
-    border-radius:14px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.05);
-    font-weight:600;
-    color:#0f172a;
-}
-
-.contato-destaques i{
-    color:#16a34a;
-    margin-right:10px;
+    .sobre-home h2{
+        font-size:34px;
+    }
 }
