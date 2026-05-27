@@ -111,13 +111,19 @@ CARD
     transform:translateY(-8px);
 }
 
-.imovel-card img{
+/* =========================================================
+IMAGENS PADRONIZADAS
+========================================================= */
+
+.card-imovel img{
 
     width:100%;
 
-    height:280px;
+    height:260px;
 
     object-fit:cover;
+
+    display:block;
 }
 
 .imovel-content{
