@@ -511,3 +511,443 @@ CTA
 
     font-weight:700;
 }
+
+/* =========================================================
+HOME HERO
+========================================================= */
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(15,23,42,0.72), rgba(15,23,42,0.72)),
+    url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding:180px 20px 120px;
+}
+
+.hero-content{
+
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+
+    position:relative;
+    z-index:2;
+}
+
+.hero-mini{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,0.12);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    margin-bottom:28px;
+
+    font-size:13px;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+.hero-content h1{
+
+    font-size:clamp(40px, 6vw, 76px);
+
+    line-height:1.08;
+
+    margin-bottom:28px;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+}
+
+.hero-content p{
+
+    max-width:760px;
+
+    margin:auto auto 40px;
+
+    font-size:clamp(18px, 2vw, 23px);
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,0.92);
+}
+
+.hero-buttons{
+
+    display:flex;
+    justify-content:center;
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+.hero-btn{
+
+    background:white;
+
+    color:var(--primary);
+
+    padding:16px 30px;
+
+    border-radius:14px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
+
+.hero-btn-outline{
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    padding:16px 30px;
+
+    border-radius:14px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
+
+.hero-info{
+
+    margin-top:70px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.hero-info div{
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    backdrop-filter:blur(8px);
+}
+
+/* =========================================================
+SECTIONS
+========================================================= */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+}
+
+.section-title span{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    color:var(--secondary);
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+
+    font-size:48px;
+
+    line-height:1.2;
+
+    margin-bottom:18px;
+}
+
+.section-title p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--text);
+
+    line-height:1.9;
+}
+
+/* =========================================================
+SOBRE HOME
+========================================================= */
+
+.sobre-home{
+
+    padding:110px 10%;
+
+    background:white;
+}
+
+.sobre-home-content{
+
+    display:grid;
+    grid-template-columns:1fr 460px;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.sobre-home-content img{
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow-lg);
+
+    object-fit:cover;
+}
+
+.sobre-home h2{
+
+    font-size:46px;
+
+    margin-bottom:28px;
+
+    line-height:1.3;
+}
+
+.sobre-home p{
+
+    margin-bottom:22px;
+
+    color:var(--text);
+
+    font-size:17px;
+
+    line-height:1.9;
+}
+
+/* =========================================================
+DESTAQUES
+========================================================= */
+
+.destaques-home{
+
+    padding:120px 8%;
+
+    background:#f8fafc;
+}
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:36px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:var(--shadow-md);
+
+    transition:0.3s ease;
+}
+
+.card img{
+
+    width:100%;
+    height:260px;
+
+    object-fit:cover;
+}
+
+.card-content{
+    padding:30px;
+}
+
+.card-content h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+}
+
+.card-content p{
+
+    color:var(--text);
+
+    margin-bottom:20px;
+
+    line-height:1.8;
+}
+
+.card-infos{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:24px;
+}
+
+.card-infos span{
+
+    background:#f8fafc;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.card-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:15px 24px;
+
+    border-radius:14px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
+
+/* =========================================================
+BENEFÍCIOS
+========================================================= */
+
+.beneficios{
+
+    padding:120px 8%;
+
+    background:#ffffff;
+}
+
+.beneficios-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:32px;
+}
+
+.beneficio-box{
+
+    background:#ffffff;
+
+    padding:42px 34px;
+
+    border-radius:26px;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* =========================================================
+CTA FINAL
+========================================================= */
+
+.cta-final{
+
+    padding:120px 10%;
+
+    background:
+    linear-gradient(rgba(15,23,42,0.96), rgba(15,23,42,0.96));
+
+    color:white;
+
+    text-align:center;
+}
+
+.cta-final-content{
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+.cta-final h2{
+
+    font-size:52px;
+
+    margin-bottom:24px;
+
+    line-height:1.25;
+}
+
+.cta-final p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,0.86);
+
+    margin-bottom:40px;
+}
+
+.cta-btn{
+
+    background:var(--secondary);
+
+    color:white;
+
+    padding:16px 30px;
+
+    border-radius:14px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
