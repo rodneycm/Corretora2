@@ -4,31 +4,24 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contato | Stephanie Campos Consultoria Imobiliária</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Contato | Stephanie Campos Consultoria Imobiliária
+    </title>
 
     <meta name="description"
         content="Entre em contato com Stephanie Campos Consultoria Imobiliária em Teresópolis RJ. Atendimento especializado para compra, venda, locação e avaliação imobiliária.">
 
-    <link rel="canonical"
-        href="https://rodneycm.github.io/Corretora2/contato.html">
+    <!-- CSS -->
 
-    <meta property="og:title"
-        content="Contato | Stephanie Campos Consultoria Imobiliária">
+    <link rel="stylesheet"
+        href="css/global.css">
 
-    <meta property="og:description"
-        content="Atendimento imobiliário especializado em Teresópolis RJ.">
-
-    <meta property="og:type"
-        content="website">
-
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop">
-
-    <link rel="icon"
-        type="image/png"
-        href="assets/favicon.png">
+    <link rel="stylesheet"
+        href="css/contato.css">
 
     <!-- FONT AWESOME -->
 
@@ -46,14 +39,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- CSS -->
-
-    <link rel="stylesheet"
-        href="css/global.css">
-
-    <link rel="stylesheet"
-        href="css/contato.css">
 
 </head>
 
@@ -73,13 +58,21 @@
 
         <nav>
 
-            <a href="index.html">Início</a>
+            <a href="index.html">
+                Início
+            </a>
 
-            <a href="comprar.html">Comprar</a>
+            <a href="comprar.html">
+                Comprar
+            </a>
 
-            <a href="aluguel.html">Alugar</a>
+            <a href="aluguel.html">
+                Alugar
+            </a>
 
-            <a href="quem-somos.html">Quem Somos</a>
+            <a href="quem-somos.html">
+                Quem Somos
+            </a>
 
             <a href="contato.html"
                 class="nav-active">
@@ -94,6 +87,7 @@
                 rel="noopener noreferrer">
 
                 <i class="fab fa-whatsapp"></i>
+
                 WhatsApp
 
             </a>
@@ -119,7 +113,7 @@
             <p>
                 Atendimento especializado para compra,
                 venda, locação e avaliação de imóveis
-                em Teresópolis.
+                em Teresópolis e região serrana.
             </p>
 
         </div>
@@ -136,95 +130,141 @@
 
             <div class="contato-left">
 
-                <div class="contato-item">
+                <!-- WHATSAPP -->
+
+                <a class="contato-item"
+                    href="https://wa.me/5521989321485"
+                    target="_blank">
 
                     <i class="fab fa-whatsapp"></i>
 
                     <div>
 
-                        <h3>WhatsApp</h3>
+                        <h3>
+                            WhatsApp
+                        </h3>
 
                         <p>
-                            Atendimento rápido e personalizado.
+                            Atendimento rápido,
+                            personalizado e humanizado.
                         </p>
 
-                        <a href="https://wa.me/5521989321485"
-                            target="_blank">
+                        <span class="contato-action">
 
-                            (21) 98932-1485
+                            Conversar no WhatsApp
 
-                        </a>
+                        </span>
 
                     </div>
 
-                </div>
+                </a>
 
-                <div class="contato-item">
+                <!-- EMAIL -->
+
+                <a class="contato-item"
+                    href="mailto:stetavarescampos@gmail.com">
 
                     <i class="fa-solid fa-envelope"></i>
 
                     <div>
 
-                        <h3>E-mail</h3>
+                        <h3>
+                            E-mail
+                        </h3>
 
                         <p>
-                            Entre em contato diretamente por e-mail.
+                            Tire dúvidas ou solicite
+                            informações diretamente
+                            por e-mail.
                         </p>
 
-                        <a href="mailto:stetavarescampos@gmail.com">
+                        <span class="contato-action">
 
-                            stetavarescampos@gmail.com
+                            Enviar e-mail
 
-                        </a>
+                        </span>
 
                     </div>
 
-                </div>
+                </a>
 
-                <div class="contato-item">
+                <!-- MAPA -->
+
+                <a class="contato-item"
+                    href="#mapa">
 
                     <i class="fa-solid fa-location-dot"></i>
 
                     <div>
 
-                        <h3>Região de atendimento</h3>
+                        <h3>
+                            Região de atendimento
+                        </h3>
 
                         <p>
-                            Teresópolis e região serrana do RJ.
+                            Atendimento em Teresópolis
+                            e região serrana do RJ.
                         </p>
+
+                        <span class="contato-action">
+
+                            Ver localização
+
+                        </span>
 
                     </div>
 
-                </div>
+                </a>
 
             </div>
 
-            <!-- FORM -->
+            <!-- FORMULÁRIO -->
 
             <div class="contato-form-box">
 
                 <h2>
-                    Solicite um atendimento
+                    Vamos encontrar o imóvel ideal para você
                 </h2>
 
                 <p>
-                    Preencha os dados abaixo e retornaremos
-                    o mais rápido possível.
+                    Preencha os dados abaixo e nossa consultoria
+                    entrará em contato com atendimento personalizado.
                 </p>
 
-                <form class="contato-form">
+                <form class="contato-form"
+                    action="https://formsubmit.co/stetavarescampos@gmail.com"
+                    method="POST">
+
+                    <!-- CONFIG FORM -->
+
+                    <input type="hidden"
+                        name="_captcha"
+                        value="false">
+
+                    <input type="hidden"
+                        name="_next"
+                        value="https://rodneycm.github.io/Corretora2/obrigado.html">
+
+                    <!-- CAMPOS -->
 
                     <input type="text"
-                        placeholder="Seu nome">
+                        name="nome"
+                        placeholder="Seu nome"
+                        required>
 
                     <input type="tel"
+                        name="telefone"
                         placeholder="Seu telefone">
 
                     <input type="email"
-                        placeholder="Seu e-mail">
+                        name="email"
+                        placeholder="Seu e-mail"
+                        required>
 
                     <textarea
-                        placeholder="Como podemos ajudar você?"></textarea>
+                        name="mensagem"
+                        placeholder="Como podemos ajudar você?"
+                        required></textarea>
 
                     <button type="submit">
 
@@ -242,7 +282,8 @@
 
     <!-- MAPA -->
 
-    <section class="mapa-section">
+    <section class="mapa-section"
+        id="mapa">
 
         <iframe
             src="https://www.google.com/maps?q=Teres%C3%B3polis%20RJ&output=embed"
@@ -276,35 +317,50 @@
 
             <div>
 
-                <h3>Navegação</h3>
+                <h3>
+                    Navegação
+                </h3>
 
                 <a href="index.html">Início</a>
+
                 <a href="comprar.html">Comprar</a>
+
                 <a href="aluguel.html">Alugar</a>
+
                 <a href="quem-somos.html">Quem Somos</a>
+
                 <a href="contato.html">Contato</a>
 
             </div>
 
             <div>
 
-                <h3>Contato</h3>
+                <h3>
+                    Contato
+                </h3>
 
-                <p>(21) 98932-1485</p>
+                <p>
+                    Atendimento online e presencial
+                </p>
 
-                <p>Teresópolis - RJ</p>
-
-                <p>Atendimento online e presencial</p>
+                <p>
+                    Teresópolis - RJ
+                </p>
 
             </div>
 
             <div>
 
-                <h3>Especialidades</h3>
+                <h3>
+                    Especialidades
+                </h3>
 
                 <p>Compra de imóveis</p>
+
                 <p>Venda de imóveis</p>
+
                 <p>Locação imobiliária</p>
+
                 <p>Avaliação imobiliária - CNAI</p>
 
             </div>
