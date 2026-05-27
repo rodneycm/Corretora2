@@ -209,7 +209,11 @@ SOBRE
 
     padding:120px 8%;
 
-    background:white;
+    background:
+    linear-gradient(
+    to bottom,
+    #ffffff,
+    #f8fafc);
 }
 
 .sobre-home-content{
@@ -314,20 +318,31 @@ CARDS
 
 .card{
 
-    background:white;
+    background:
+    linear-gradient(
+    180deg,
+    #ffffff,
+    #f8fafc);
 
     border-radius:28px;
 
     overflow:hidden;
 
-    box-shadow:var(--shadow-md);
+    border:1px solid rgba(226,232,240,0.9);
 
-    transition:0.3s ease;
+    box-shadow:
+    0 15px 40px rgba(15,23,42,0.08);
+
+    transition:0.35s ease;
 }
 
 .card:hover{
 
-    transform:translateY(-8px);
+    transform:
+    translateY(-10px);
+
+    box-shadow:
+    0 25px 55px rgba(15,23,42,0.14);
 }
 
 .card img{
@@ -412,7 +427,11 @@ BENEFÍCIOS
 
     padding:120px 8%;
 
-    background:white;
+    background:
+    linear-gradient(
+    to bottom,
+    #ffffff,
+    #eef2f7);
 }
 
 .beneficios-grid{
