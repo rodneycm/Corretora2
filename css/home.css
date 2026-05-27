@@ -9,11 +9,14 @@ HERO
     min-height:100vh;
 
     background:
-    linear-gradient(rgba(15,23,42,0.72), rgba(15,23,42,0.72)),
+    linear-gradient(
+    rgba(15,23,42,0.78),
+    rgba(15,23,42,0.82)),
     url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop');
 
     background-size:cover;
     background-position:center;
+    background-attachment:fixed;
 
     display:flex;
     align-items:center;
@@ -24,6 +27,8 @@ HERO
     color:white;
 
     padding:180px 20px 120px;
+
+    overflow:hidden;
 }
 
 .hero-content{
@@ -159,7 +164,7 @@ SECTION TITLE
 
     text-align:center;
 
-    margin-bottom:60px;
+    margin-bottom:80px;
 }
 
 .section-title span{
@@ -204,7 +209,10 @@ SOBRE HOME
     padding:140px 8%;
 
     background:
-    linear-gradient(to bottom,#ffffff 0%, #f8fafc 100%);
+    linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f1f5f9 100%);
 
     position:relative;
 }
@@ -297,9 +305,10 @@ DESTAQUES
     padding:140px 8%;
 
     background:
-    linear-gradient(to bottom,#f8fafc 0%, #eef2f7 100%);
-
-    position:relative;
+    linear-gradient(
+    to bottom,
+    #e2e8f0 0%,
+    #f8fafc 100%);
 }
 
 /* =========================================================
@@ -320,24 +329,25 @@ CARDS
 
     background:white;
 
-    border-radius:28px;
+    border-radius:32px;
 
     overflow:hidden;
 
-    border:1px solid #edf2f7;
+    border:1px solid rgba(226,232,240,0.9);
 
     box-shadow:
-    0 15px 40px rgba(15,23,42,0.08);
+    0 20px 50px rgba(15,23,42,0.08);
 
-    transition:0.3s ease;
+    transition:0.45s ease;
 }
 
 .card:hover{
 
-    transform:translateY(-10px);
+    transform:
+    translateY(-12px);
 
     box-shadow:
-    0 25px 60px rgba(15,23,42,0.14);
+    0 35px 80px rgba(15,23,42,0.16);
 }
 
 .card img{
@@ -421,7 +431,10 @@ BENEFÍCIOS
     padding:140px 8%;
 
     background:
-    linear-gradient(to bottom,#ffffff 0%, #f8fafc 100%);
+    linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #eef2f7 100%);
 }
 
 .beneficios-grid{
