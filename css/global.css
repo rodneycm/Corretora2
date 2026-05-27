@@ -550,3 +550,86 @@ footer a:hover{
 
     color:rgba(255,255,255,0.6);
 }
+
+/* =========================================================
+FOOTER LOGO INTERATIVA
+========================================================= */
+
+.footer-logo-link{
+
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:max-content;
+
+    transition:0.35s ease;
+
+    cursor:pointer;
+}
+
+.footer-logo-link:hover{
+
+    transform:translateY(-4px) scale(1.02);
+}
+
+.footer-logo-white{
+
+    transition:0.35s ease;
+}
+
+.footer-logo-link:hover .footer-logo-white{
+
+    filter:
+    drop-shadow(0 0 18px rgba(255,255,255,0.18));
+}
+
+/* =========================================================
+TOOLTIP
+========================================================= */
+
+.footer-logo-tooltip{
+
+    position:absolute;
+
+    bottom:-42px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:white;
+
+    color:#0f172a;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:0.3s ease;
+
+    white-space:nowrap;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.12);
+}
+
+.footer-logo-link:hover .footer-logo-tooltip{
+
+    opacity:1;
+
+    visibility:visible;
+
+    bottom:-48px;
+}
