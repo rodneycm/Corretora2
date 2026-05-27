@@ -1,5 +1,5 @@
 /* =========================================================
-HERO HOME
+HOME HERO
 ========================================================= */
 
 .hero{
@@ -91,6 +91,34 @@ HERO HOME
     flex-wrap:wrap;
 }
 
+.hero-btn{
+
+    background:white;
+
+    color:var(--primary);
+
+    padding:16px 30px;
+
+    border-radius:14px;
+
+    font-weight:700;
+}
+
+.hero-btn-outline{
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    padding:16px 30px;
+
+    border-radius:14px;
+
+    font-weight:700;
+}
+
 .hero-info{
 
     margin-top:70px;
@@ -123,11 +151,48 @@ HERO HOME
     margin-bottom:10px;
 }
 
-.hero-info span{
+/* =========================================================
+SECTIONS
+========================================================= */
 
-    color:rgba(255,255,255,0.86);
+.section-title{
 
-    font-size:15px;
+    text-align:center;
+
+    margin-bottom:60px;
+}
+
+.section-title span{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    color:var(--secondary);
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+
+    font-size:48px;
+
+    line-height:1.2;
+
+    margin-bottom:18px;
+}
+
+.section-title p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--text);
+
+    line-height:1.9;
 }
 
 /* =========================================================
@@ -180,13 +245,162 @@ SOBRE HOME
     line-height:1.9;
 }
 
+.sobre-mini{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:#f1f5f9;
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:28px;
+}
+
+.saiba-mais-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:16px 30px;
+
+    border-radius:16px;
+
+    font-weight:700;
+}
+
 /* =========================================================
-DESTAQUES HOME
+DESTAQUES
 ========================================================= */
 
 .destaques-home{
 
-    padding:0 10% 120px;
+    padding:120px 8%;
+
+    background:#f8fafc;
+}
+
+/* =========================================================
+CARDS
+========================================================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:36px;
+}
+
+.card{
+
+    background:#ffffff;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.06);
+
+    transition:0.4s ease;
+}
+
+.card img{
+
+    width:100%;
+
+    height:280px;
+
+    object-fit:cover;
+}
+
+.card-content{
+
+    padding:34px;
+}
+
+.card-content h3{
+
+    font-size:30px;
+
+    margin-bottom:18px;
+}
+
+.card-content p{
+
+    color:var(--text);
+
+    margin-bottom:26px;
+
+    line-height:1.9;
+}
+
+.card-infos{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:30px;
+}
+
+.card-infos span{
+
+    background:#f1f5f9;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+    font-weight:600;
+}
+
+.card-btn{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:700;
 }
 
 /* =========================================================
@@ -197,16 +411,10 @@ BENEFÍCIOS
 
     padding:120px 8%;
 
-    background:#f8fafc;
+    background:white;
 }
 
 .beneficios-grid{
-
-    width:100%;
-
-    max-width:1280px;
-
-    margin:auto;
 
     display:grid;
 
@@ -219,8 +427,6 @@ BENEFÍCIOS
 
     background:#ffffff;
 
-    min-height:100%;
-
     padding:42px 34px;
 
     border-radius:26px;
@@ -228,38 +434,6 @@ BENEFÍCIOS
     border:1px solid #edf2f7;
 
     box-shadow:0 10px 30px rgba(0,0,0,0.05);
-
-    transition:0.35s ease;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.beneficio-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:4px;
-
-    background:linear-gradient(
-        90deg,
-        var(--secondary),
-        #38ef7d
-    );
-}
-
-.beneficio-box:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,0.10);
 }
 
 .beneficio-box i{
@@ -282,28 +456,8 @@ BENEFÍCIOS
     margin-bottom:26px;
 }
 
-.beneficio-box h3{
-
-    font-size:24px;
-
-    line-height:1.4;
-
-    color:var(--primary);
-
-    margin-bottom:18px;
-}
-
-.beneficio-box p{
-
-    font-size:16px;
-
-    line-height:1.9;
-
-    color:var(--text);
-}
-
 /* =========================================================
-CTA FINAL
+CTA
 ========================================================= */
 
 .cta-final{
@@ -345,75 +499,15 @@ CTA FINAL
     margin-bottom:40px;
 }
 
-/* =========================================================
-RESPONSIVO HOME
-========================================================= */
+.cta-btn{
 
-@media(max-width:1150px){
+    background:var(--secondary);
 
-    .sobre-home-content{
-        grid-template-columns:1fr;
-    }
+    color:white;
 
-    .hero-info{
-        grid-template-columns:1fr;
-    }
-}
+    padding:18px 34px;
 
-@media(max-width:900px){
+    border-radius:16px;
 
-    .hero{
-
-        padding-top:220px;
-    }
-
-    .hero-content h1{
-
-        font-size:42px;
-    }
-
-    .hero-content p{
-
-        font-size:19px;
-    }
-
-    .sobre-home h2,
-    .cta-final h2{
-
-        font-size:34px;
-    }
-}
-
-@media(max-width:600px){
-
-    .hero{
-
-        padding:220px 20px 100px;
-    }
-
-    .hero-content h1{
-
-        font-size:34px;
-    }
-
-    .hero-content p{
-
-        font-size:17px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .sobre-home,
-    .destaques-home,
-    .cta-final{
-
-        padding-left:20px;
-        padding-right:20px;
-    }
-
-    .logo-area img{
-        width:160px;
-    }
+    font-weight:700;
 }
