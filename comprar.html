@@ -4,30 +4,40 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>
-Comprar Imóveis | Stephanie Campos
+Comprar Imoveis | Stephanie Campos
 </title>
+
+<meta name="description"
+content="Imoveis selecionados para compra em Teresopolis com atendimento especializado e consultoria imobiliaria completa.">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<link rel="stylesheet" href="css/global.css">
-<link rel="stylesheet" href="css/comprar.css">
+<link rel="stylesheet"
+href="css/global.css">
+
+<link rel="stylesheet"
+href="css/comprar.css">
 
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header class="header">
 
 <div class="logo-area">
 
-<a href="index.html">
+<a href="index.html"
+aria-label="Voltar para pagina inicial">
 
 <img src="assets/branding/logo.png"
-alt="Stephanie Campos">
+alt="Stephanie Campos Consultoria Imobiliaria">
 
 </a>
 
@@ -35,19 +45,31 @@ alt="Stephanie Campos">
 
 <nav>
 
-<a href="index.html">Início</a>
+<a href="index.html">
+Inicio
+</a>
 
-<a href="comprar.html" class="nav-active">Comprar</a>
+<a href="comprar.html"
+class="nav-active">
+Comprar
+</a>
 
-<a href="aluguel.html">Alugar</a>
+<a href="aluguel.html">
+Alugar
+</a>
 
-<a href="quem-somos.html">Quem Somos</a>
+<a href="quem-somos.html">
+Quem Somos
+</a>
 
-<a href="contato.html">Contato</a>
+<a href="contato.html">
+Contato
+</a>
 
 <a class="whatsapp-btn"
-href="https://wa.me/5521989321485"
-target="_blank">
+href="https://wa.me/5521989321485?text=Ola%20Stephanie!%20Vim%20pelo%20site%20da%20consultoria%20imobiliaria%20e%20gostaria%20de%20receber%20mais%20informacoes%20sobre%20os%20imoveis%20disponiveis."
+target="_blank"
+rel="noopener noreferrer">
 
 <i class="fab fa-whatsapp"></i>
 
@@ -59,27 +81,28 @@ WhatsApp
 
 </header>
 
+<!-- HERO -->
+
 <main>
 
 <section class="comprar-hero">
 
-<div class="comprar-overlay"></div>
-
 <div class="comprar-content">
 
 <span>
-IMÓVEIS À VENDA
+IMOVEIS A VENDA
 </span>
 
 <h1>
 
-Encontre oportunidades exclusivas em Teresópolis
+Encontre oportunidades exclusivas em Teresopolis
 
 </h1>
 
 <p>
 
-Imóveis selecionados com suporte completo em todas as etapas da compra.
+Imoveis selecionados estrategicamente para quem busca conforto,
+seguranca, valorizacao e qualidade de vida na serra.
 
 </p>
 
@@ -87,26 +110,129 @@ Imóveis selecionados com suporte completo em todas as etapas da compra.
 
 </section>
 
+<!-- LISTAGEM -->
+
 <section class="imoveis-listagem">
 
 <div class="section-title">
 
-<span>OPORTUNIDADES</span>
+<span>
+OPORTUNIDADES
+</span>
 
 <h2>
-Imóveis disponíveis para compra
+
+Imoveis disponiveis para compra
+
 </h2>
 
 <p>
 
-Explore imóveis selecionados estrategicamente em Teresópolis e região.
+Explore imoveis cuidadosamente selecionados em Teresopolis
+e encontre a opcao ideal para moradia ou investimento.
 
 </p>
 
 </div>
 
+<!-- CARDS -->
+
 <div id="lista-imoveis"
 class="cards-grid">
+
+<!-- IMOVEL 1 -->
+
+<article class="imovel-card">
+
+<div class="imovel-image">
+
+<img src="assets/imoveis/venda/casa-albuquerque-790/foto1.jpeg"
+alt="Casa em Albuquerque">
+
+</div>
+
+<div class="imovel-content">
+
+<h3>
+Casa aconchegante em Albuquerque
+</h3>
+
+<p>
+
+Imovel com excelente terreno,
+area verde e ambiente ideal para quem busca tranquilidade.
+
+</p>
+
+<div class="imovel-info">
+
+<span>
+📍 Albuquerque
+</span>
+
+<span>
+💰 R$ 790.000
+</span>
+
+</div>
+
+<a class="imovel-btn"
+href="imoveis/venda/casa-albuquerque-790.html">
+
+Ver imovel
+
+</a>
+
+</div>
+
+</article>
+
+<!-- IMOVEL 2 -->
+
+<article class="imovel-card">
+
+<div class="imovel-image">
+
+<img src="assets/imoveis/venda/imovel2/foto1.jpeg"
+alt="Imovel em Teresopolis">
+
+</div>
+
+<div class="imovel-content">
+
+<h3>
+Oportunidade em Teresopolis
+</h3>
+
+<p>
+
+Imovel selecionado com excelente localizacao,
+conforto e potencial de valorizacao.
+
+</p>
+
+<div class="imovel-info">
+
+<span>
+📍 Teresopolis
+</span>
+
+<span>
+💰 Consulte
+</span>
+
+</div>
+
+<a class="imovel-btn"
+href="#">
+
+Ver imovel
+
+</a>
+
+</div>
+
+</article>
 
 </div>
 
@@ -114,7 +240,7 @@ class="cards-grid">
 
 </main>
 
-<script src="script.js"></script>
+<!-- FOOTER -->
 
 <footer>
 
@@ -122,15 +248,24 @@ class="cards-grid">
 
 <div>
 
+<a href="index.html"
+class="footer-logo-link"
+aria-label="Voltar para pagina inicial">
+
 <img src="assets/branding/logo-white.png"
 class="footer-logo-white"
-alt="Stephanie Campos Consultoria Imobiliária">
+alt="Stephanie Campos">
+
+<span class="footer-logo-tooltip">
+Voltar ao inicio
+</span>
+
+</a>
 
 <p class="footer-desc">
 
-Consultoria imobiliária especializada em compra,
-venda, locação e avaliação de imóveis em
-Teresópolis e região serrana do RJ.
+Consultoria imobiliaria especializada em compra,
+venda, aluguel e avaliacao de imoveis em Teresopolis.
 
 </p>
 
@@ -138,9 +273,9 @@ Teresópolis e região serrana do RJ.
 
 <div>
 
-<h3>Navegação</h3>
+<h3>Navegacao</h3>
 
-<a href="index.html">Início</a>
+<a href="index.html">Inicio</a>
 <a href="comprar.html">Comprar</a>
 <a href="aluguel.html">Alugar</a>
 <a href="quem-somos.html">Quem Somos</a>
@@ -152,19 +287,9 @@ Teresópolis e região serrana do RJ.
 
 <h3>Contato</h3>
 
-<a class="footer-whatsapp"
-href="https://wa.me/5521989321485?text=Olá%20Stephanie,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
-target="_blank"
-rel="noopener noreferrer">
-
-<i class="fab fa-whatsapp"></i>
-WhatsApp
-
-</a>
-
 <p>(21) 98932-1485</p>
 
-<p>Teresópolis - RJ</p>
+<p>Teresopolis - RJ</p>
 
 <p>Atendimento online e presencial</p>
 
@@ -174,10 +299,10 @@ WhatsApp
 
 <h3>Especialidades</h3>
 
-<p>Compra de imóveis</p>
-<p>Venda de imóveis</p>
-<p>Locação imobiliária</p>
-<p>Avaliação imobiliária - CNAI</p>
+<p>Compra de imoveis</p>
+<p>Venda de imoveis</p>
+<p>Locacao imobiliaria</p>
+<p>Avaliacao imobiliaria - CNAI</p>
 
 </div>
 
@@ -187,7 +312,7 @@ WhatsApp
 
 <p>
 
-© 2026 Stephanie Campos Consultoria Imobiliária.
+© 2026 Stephanie Campos Consultoria Imobiliaria.
 Todos os direitos reservados.
 
 </p>
