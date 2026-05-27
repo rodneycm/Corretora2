@@ -1,0 +1,287 @@
+/* =========================================================
+HERO
+========================================================= */
+
+.quem-hero{
+
+    min-height:60vh;
+
+    background:
+    linear-gradient(
+    rgba(15,23,42,0.82),
+    rgba(15,23,42,0.82)),
+    url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1974&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding:160px 20px 100px;
+}
+
+.quem-hero-content{
+
+    max-width:900px;
+}
+
+.quem-hero-content span{
+
+    display:inline-block;
+
+    margin-bottom:24px;
+
+    padding:12px 20px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    font-weight:700;
+}
+
+.quem-hero-content h1{
+
+    font-size:64px;
+
+    line-height:1.1;
+
+    margin-bottom:24px;
+}
+
+.quem-hero-content p{
+
+    font-size:20px;
+
+    color:rgba(255,255,255,0.85);
+}
+
+/* =========================================================
+SOBRE
+========================================================= */
+
+.sobre-stephanie{
+
+    padding:120px 8%;
+
+    background:#eef2f7;
+}
+
+.sobre-grid{
+
+    display:grid;
+
+    grid-template-columns:420px 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.sobre-image img{
+
+    width:100%;
+
+    border-radius:28px;
+
+    box-shadow:var(--shadow-lg);
+}
+
+.sobre-texto span{
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    color:var(--secondary);
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    font-weight:700;
+}
+
+.sobre-texto h2{
+
+    font-size:48px;
+
+    line-height:1.2;
+
+    margin-bottom:28px;
+}
+
+.sobre-texto p{
+
+    margin-bottom:20px;
+
+    color:var(--text);
+
+    line-height:1.9;
+}
+
+/* =========================================================
+VALORES
+========================================================= */
+
+.valores{
+
+    padding:120px 8%;
+
+    background:white;
+}
+
+.valores-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:32px;
+}
+
+.valor-box{
+
+    background:#f8fafc;
+
+    padding:42px 34px;
+
+    border-radius:26px;
+
+    transition:0.3s ease;
+}
+
+.valor-box:hover{
+
+    transform:translateY(-8px);
+}
+
+.valor-box i{
+
+    width:70px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:white;
+
+    font-size:28px;
+
+    margin-bottom:24px;
+
+    color:var(--primary);
+}
+
+.valor-box h3{
+
+    margin-bottom:18px;
+
+    font-size:24px;
+}
+
+.valor-box p{
+
+    color:var(--text);
+
+    line-height:1.8;
+}
+
+/* =========================================================
+CTA
+========================================================= */
+
+.cta-quem{
+
+    padding:120px 8%;
+
+    background:#0f172a;
+
+    color:white;
+
+    text-align:center;
+}
+
+.cta-quem-content{
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+.cta-quem h2{
+
+    font-size:52px;
+
+    margin-bottom:24px;
+}
+
+.cta-quem p{
+
+    color:rgba(255,255,255,0.82);
+
+    margin-bottom:36px;
+
+    line-height:1.8;
+}
+
+.cta-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:18px 34px;
+
+    border-radius:16px;
+
+    background:var(--secondary);
+
+    color:white;
+
+    font-weight:700;
+}
+
+/* =========================================================
+RESPONSIVO
+========================================================= */
+
+@media(max-width:900px){
+
+    .sobre-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .quem-hero-content h1{
+
+        font-size:46px;
+    }
+
+    .sobre-texto h2{
+
+        font-size:36px;
+    }
+
+    .cta-quem h2{
+
+        font-size:38px;
+    }
+}
