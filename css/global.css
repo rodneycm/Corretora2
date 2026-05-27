@@ -478,3 +478,75 @@ RESPONSIVO GLOBAL
         width:100%;
     }
 }
+
+/* =========================================================
+
+footer{
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:90px 8% 40px;
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:50px;
+}
+
+.footer-logo-white{
+
+    width:180px;
+
+    margin-bottom:24px;
+}
+
+.footer-desc{
+
+    color:rgba(255,255,255,0.75);
+
+    line-height:1.8;
+}
+
+footer h3{
+
+    margin-bottom:24px;
+
+    font-size:20px;
+}
+
+footer a,
+footer p{
+
+    display:block;
+
+    color:rgba(255,255,255,0.75);
+
+    margin-bottom:14px;
+
+    line-height:1.7;
+}
+
+footer a:hover{
+
+    color:white;
+}
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,0.08);
+
+    margin-top:60px;
+
+    padding-top:30px;
+
+    text-align:center;
+
+    color:rgba(255,255,255,0.6);
+}
