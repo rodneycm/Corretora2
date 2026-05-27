@@ -1,79 +1,70 @@
-<footer>
+async function carregarImoveis() {
 
-<div class="footer-grid">
+    const container = document.getElementById('lista-imoveis');
 
-<div>
+    if(!container) return;
 
-<img src="assets/branding/logo-white.png"
-class="footer-logo-white"
-alt="Stephanie Campos Consultoria Imobiliária">
+    try {
 
-<p class="footer-desc">
+        const resposta = await fetch('data/imoveis.json');
 
-Consultoria imobiliária especializada em compra,
-venda, locação e avaliação de imóveis em
-Teresópolis e região serrana do RJ.
+        const imoveis = await resposta.json();
 
-</p>
+        container.innerHTML = '';
 
-</div>
+        imoveis.forEach(imovel => {
 
-<div>
+            const card = document.createElement('div');
 
-<h3>Navegação</h3>
+            card.classList.add('card-imovel');
 
-<a href="index.html">Início</a>
-<a href="comprar.html">Comprar</a>
-<a href="aluguel.html">Alugar</a>
-<a href="quem-somos.html">Quem Somos</a>
-<a href="contato.html">Contato</a>
+            card.innerHTML = `
 
-</div>
+                <img src="${imovel.imagem}" alt="${imovel.titulo}">
 
-<div>
+                <div class="card-imovel-content">
 
-<h3>Contato</h3>
+                    <span class="tipo">
+                        ${imovel.tipo}
+                    </span>
 
-<a class="footer-whatsapp"
-href="https://wa.me/5521989321485?text=Olá%20Stephanie,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
-target="_blank"
-rel="noopener noreferrer">
+                    <h3>
+                        ${imovel.titulo}
+                    </h3>
 
-<i class="fab fa-whatsapp"></i>
-WhatsApp
+                    <p class="bairro">
+                        📍 ${imovel.bairro}
+                    </p>
 
-</a>
+                    <p class="descricao">
+                        ${imovel.descricao}
+                    </p>
 
-<p>(21) 98932-1485</p>
+                    <div class="card-bottom">
 
-<p>Teresópolis - RJ</p>
+                        <strong>
+                            R$ ${imovel.preco.toLocaleString('pt-BR')}
+                        </strong>
 
-<p>Atendimento online e presencial</p>
+                        <a href="#">
+                            Ver imóvel
+                        </a>
 
-</div>
+                    </div>
 
-<div>
+                </div>
+            `;
 
-<h3>Especialidades</h3>
+            container.appendChild(card);
 
-<p>Compra de imóveis</p>
-<p>Venda de imóveis</p>
-<p>Locação imobiliária</p>
-<p>Avaliação imobiliária - CNAI</p>
+        });
 
-</div>
+    } catch(error) {
 
-</div>
+        console.error('Erro ao carregar imóveis:', error);
 
-<div class="footer-bottom">
+    }
 
-<p>
+}
 
-© 2026 Stephanie Campos Consultoria Imobiliária.
-Todos os direitos reservados.
-
-</p>
-
-</div>
-
-</footer>
+carregarImoveis();
