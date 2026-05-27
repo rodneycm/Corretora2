@@ -595,13 +595,15 @@ TOOLTIP
 
     position:absolute;
 
-    bottom:-42px;
+    bottom:110%;
 
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+    translateX(-50%)
+    translateY(8px);
 
-    background:white;
+    background:rgba(255,255,255,0.96);
 
     color:#0f172a;
 
@@ -609,9 +611,11 @@ TOOLTIP
 
     border-radius:999px;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:700;
+
+    letter-spacing:0.5px;
 
     opacity:0;
 
@@ -621,8 +625,12 @@ TOOLTIP
 
     white-space:nowrap;
 
+    pointer-events:none;
+
     box-shadow:
-    0 10px 30px rgba(0,0,0,0.12);
+    0 10px 30px rgba(0,0,0,0.14);
+
+    backdrop-filter:blur(8px);
 }
 
 .footer-logo-link:hover .footer-logo-tooltip{
@@ -631,5 +639,7 @@ TOOLTIP
 
     visibility:visible;
 
-    bottom:-48px;
+    transform:
+    translateX(-50%)
+    translateY(0);
 }
