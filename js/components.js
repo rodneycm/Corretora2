@@ -8,6 +8,12 @@ async function loadComponent(elementId, filePath){
 
         const response = await fetch(filePath);
 
+        if(!response.ok){
+
+            throw new Error(`Erro ao carregar ${filePath}`);
+
+        }
+
         const html = await response.text();
 
         element.innerHTML = html;
@@ -15,20 +21,25 @@ async function loadComponent(elementId, filePath){
     }catch(error){
 
         console.error(
-        "Erro ao carregar componente:",
-        filePath
+            "Erro ao carregar componente:",
+            filePath,
+            error
         );
 
     }
 
 }
 
-loadComponent(
-"header-component",
-"/Corretora2/components/header.html"
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-loadComponent(
-"footer-component",
-"/Corretora2/components/footer.html"
-);
+    loadComponent(
+        "header-component",
+        "components/header.html"
+    );
+
+    loadComponent(
+        "footer-component",
+        "components/footer.html"
+    );
+
+});
