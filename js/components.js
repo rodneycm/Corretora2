@@ -18,6 +18,12 @@ async function loadComponent(elementId, filePath){
 
         element.innerHTML = html;
 
+        if(elementId === "header-component"){
+
+            activateCurrentPage();
+
+        }
+
     }catch(error){
 
         console.error(
@@ -29,6 +35,40 @@ async function loadComponent(elementId, filePath){
     }
 
 }
+
+/* =========================================================
+MENU ATIVO
+========================================================= */
+
+function activateCurrentPage(){
+
+    const currentPage =
+    window.location.pathname.split("/").pop();
+
+    const navLinks =
+    document.querySelectorAll("nav a");
+
+    navLinks.forEach(link => {
+
+        const linkPage =
+        link.getAttribute("href").split("/").pop();
+
+        if(
+            currentPage === linkPage ||
+            (currentPage === "" && linkPage === "index.html")
+        ){
+
+            link.classList.add("nav-active");
+
+        }
+
+    });
+
+}
+
+/* =========================================================
+LOAD COMPONENTS
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
