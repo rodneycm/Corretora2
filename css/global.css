@@ -13,10 +13,15 @@ html{
 }
 
 body{
+
     font-family:Arial, sans-serif;
-    background:#f3f6fb;
+
+    background:#f8fafc;
+
     color:#0f172a;
+
     line-height:1.7;
+
     overflow-x:hidden;
 }
 
@@ -43,16 +48,18 @@ VARIAVEIS
     --border:#e2e8f0;
 
     --shadow-sm:0 4px 12px rgba(0,0,0,0.06);
+
     --shadow-md:0 12px 30px rgba(0,0,0,0.08);
+
     --shadow-lg:0 20px 50px rgba(0,0,0,0.12);
 
     --radius-sm:12px;
+
     --radius-md:24px;
+
     --radius-lg:34px;
 
-    --transition-fast:0.2s ease;
     --transition:0.3s ease;
-    --transition-slow:0.45s ease;
 }
 
 /* =========================================================
@@ -60,38 +67,31 @@ GLOBAL
 ========================================================= */
 
 img{
+
     max-width:100%;
+
     display:block;
 }
 
 a{
+
     text-decoration:none;
+
     transition:var(--transition);
 }
 
 button,
 input,
 textarea{
+
     font-family:inherit;
 }
 
 .container{
+
     width:min(1280px,92%);
+
     margin:auto;
-}
-
-/* =========================================================
-FOCUS ACESSIBILIDADE
-========================================================= */
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible{
-
-    outline:2px solid var(--secondary);
-
-    outline-offset:3px;
 }
 
 /* =========================================================
@@ -107,26 +107,48 @@ HEADER
 
     width:100%;
 
-    padding:18px 8%;
+    height:92px;
 
     display:flex;
 
-    justify-content:space-between;
     align-items:center;
 
-    background:rgba(248,250,252,0.92);
+    justify-content:space-between;
+
+    padding:0 8%;
+
+    background:rgba(255,255,255,0.96);
 
     backdrop-filter:blur(12px);
 
     border-bottom:1px solid rgba(226,232,240,0.7);
 
-    z-index:999;
+    z-index:9999;
+}
+
+/* =========================================================
+LOGO
+========================================================= */
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
 }
 
 .logo-area img{
 
-    width:185px;
+    width:82px;
+
+    height:auto;
+
+    object-fit:contain;
 }
+
+/* =========================================================
+NAV
+========================================================= */
 
 nav{
 
@@ -134,7 +156,7 @@ nav{
 
     align-items:center;
 
-    gap:28px;
+    gap:34px;
 }
 
 nav a{
@@ -148,7 +170,7 @@ nav a{
     position:relative;
 }
 
-nav a:not(.whatsapp-btn):not(.nav-active)::after{
+nav a:not(.whatsapp-btn)::after{
 
     content:"";
 
@@ -160,9 +182,9 @@ nav a:not(.whatsapp-btn):not(.nav-active)::after{
     width:0;
     height:2px;
 
-    background:#22c55e;
+    background:var(--secondary);
 
-    transition:var(--transition);
+    transition:0.3s ease;
 }
 
 nav a:not(.whatsapp-btn):hover::after{
@@ -172,20 +194,14 @@ nav a:not(.whatsapp-btn):hover::after{
 
 .nav-active{
 
-    color:#22c55e;
-
-    font-weight:800;
+    color:var(--secondary);
 }
 
+/* =========================================================
+WHATSAPP BUTTON
+========================================================= */
+
 .whatsapp-btn{
-
-    background:var(--secondary);
-
-    color:white;
-
-    padding:14px 24px;
-
-    border-radius:14px;
 
     display:inline-flex;
 
@@ -194,9 +210,17 @@ nav a:not(.whatsapp-btn):hover::after{
 
     gap:10px;
 
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    background:var(--secondary);
+
+    color:white;
+
     font-weight:700;
 
-    transition:var(--transition);
+    transition:0.3s ease;
 }
 
 .whatsapp-btn:hover{
@@ -214,7 +238,7 @@ HERO GLOBAL
 
     position:relative;
 
-    min-height:60vh;
+    min-height:65vh;
 
     display:flex;
 
@@ -225,44 +249,54 @@ HERO GLOBAL
 
     color:white;
 
-    padding:160px 20px 100px;
+    padding:
+    180px
+    20px
+    100px;
 
     background-size:cover;
+
     background-position:center;
 }
 
 .page-hero-content{
 
     width:100%;
+
     max-width:900px;
+
+    margin:auto;
 }
 
 .page-hero-tag{
 
-    display:inline-block;
+    display:inline-flex;
 
-    margin-bottom:24px;
+    align-items:center;
+    justify-content:center;
 
-    padding:12px 20px;
+    padding:12px 22px;
 
     border-radius:999px;
 
-    background:rgba(255,255,255,0.10);
+    background:rgba(255,255,255,0.12);
 
-    border:1px solid rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.14);
+
+    margin-bottom:26px;
 
     font-size:13px;
 
-    letter-spacing:2px;
-
     font-weight:700;
+
+    letter-spacing:2px;
 }
 
 .page-hero h1{
 
-    font-size:clamp(42px,6vw,64px);
+    font-size:clamp(42px,6vw,68px);
 
-    line-height:1.1;
+    line-height:1.08;
 
     margin-bottom:24px;
 }
@@ -270,6 +304,8 @@ HERO GLOBAL
 .page-hero p{
 
     font-size:20px;
+
+    line-height:1.9;
 
     color:rgba(255,255,255,0.88);
 }
@@ -282,14 +318,14 @@ SECTION TITLE
 
     text-align:center;
 
-    margin-bottom:60px;
+    margin-bottom:70px;
 }
 
 .section-title span{
 
     display:inline-block;
 
-    margin-bottom:14px;
+    margin-bottom:16px;
 
     color:var(--secondary);
 
@@ -302,11 +338,13 @@ SECTION TITLE
 
 .section-title h2{
 
-    font-size:clamp(34px,5vw,48px);
+    font-size:clamp(34px,5vw,52px);
 
     line-height:1.2;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
+
+    color:var(--primary);
 }
 
 .section-title p{
@@ -321,192 +359,6 @@ SECTION TITLE
 }
 
 /* =========================================================
-GRID GLOBAL
-========================================================= */
-
-.cards-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(340px,1fr));
-
-    gap:36px;
-}
-
-/* =========================================================
-CARD GLOBAL
-========================================================= */
-
-.imovel-card{
-
-    background:white;
-
-    border-radius:28px;
-
-    overflow:hidden;
-
-    box-shadow:var(--shadow-md);
-
-    transition:var(--transition);
-
-    display:flex;
-
-    flex-direction:column;
-
-    height:100%;
-}
-
-.imovel-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:var(--shadow-lg);
-}
-
-/* =========================================================
-IMAGEM PADRONIZADA
-========================================================= */
-
-.imovel-image{
-
-    width:100%;
-
-    height:260px;
-
-    overflow:hidden;
-
-    background:#e5e7eb;
-}
-
-.imovel-image img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-    transition:var(--transition-slow);
-}
-
-.imovel-card:hover .imovel-image img{
-
-    transform:scale(1.04);
-}
-
-/* =========================================================
-CONTEUDO CARD
-========================================================= */
-
-.imovel-content{
-
-    padding:30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    flex:1;
-}
-
-.imovel-content h3{
-
-    font-size:28px;
-
-    margin-bottom:18px;
-}
-
-.imovel-content p{
-
-    color:var(--text);
-
-    line-height:1.8;
-
-    margin-bottom:20px;
-}
-
-.imovel-info{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-bottom:24px;
-}
-
-.imovel-info span{
-
-    background:#f1f5f9;
-
-    padding:10px 14px;
-
-    border-radius:999px;
-
-    font-size:14px;
-
-    font-weight:600;
-}
-
-.imovel-btn{
-
-    width:100%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:16px;
-
-    border-radius:16px;
-
-    background:var(--primary);
-
-    color:white;
-
-    font-weight:700;
-
-    margin-top:auto;
-
-    transition:var(--transition);
-}
-
-.imovel-btn:hover{
-
-    transform:translateY(-2px);
-
-    background:var(--primary-light);
-}
-
-/* =========================================================
-BOTOES GLOBAIS
-========================================================= */
-
-.hero-btn,
-.hero-btn-outline,
-.card-btn,
-.cta-btn,
-.saiba-mais-btn{
-
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border:none;
-
-    font-weight:700;
-
-    transition:var(--transition);
-
-    cursor:pointer;
-}
-
-/* =========================================================
 FOOTER
 ========================================================= */
 
@@ -516,7 +368,10 @@ footer{
 
     color:white;
 
-    padding:100px 8% 50px;
+    padding:
+    100px
+    8%
+    50px;
 }
 
 .footer-grid{
@@ -529,80 +384,11 @@ footer{
     gap:50px;
 }
 
-.footer-logo-link{
-
-    position:relative;
-
-    display:inline-flex;
-
-    width:max-content;
-
-    transition:var(--transition);
-}
-
-.footer-logo-link:hover{
-
-    transform:translateY(-4px);
-}
-
 .footer-logo-white{
 
-    width:220px;
+    width:180px;
 
     margin-bottom:24px;
-}
-
-.footer-logo-tooltip{
-
-    position:absolute;
-
-    bottom:110%;
-    left:50%;
-
-    transform:
-    translateX(-50%)
-    translateY(8px);
-
-    background:rgba(255,255,255,0.96);
-
-    color:#0f172a;
-
-    padding:8px 14px;
-
-    border-radius:999px;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:var(--transition);
-
-    white-space:nowrap;
-
-    pointer-events:none;
-}
-
-.footer-logo-link:hover .footer-logo-tooltip{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:
-    translateX(-50%)
-    translateY(0);
-}
-
-.footer-desc,
-.footer-grid p{
-
-    color:#cbd5e1;
-
-    line-height:1.9;
 }
 
 .footer-grid h3{
@@ -621,13 +407,21 @@ footer{
     color:white;
 }
 
+.footer-desc,
+.footer-grid p{
+
+    color:#cbd5e1;
+
+    line-height:1.9;
+}
+
 .footer-bottom{
 
     margin-top:60px;
 
     padding-top:30px;
 
-    border-top:1px solid rgba(255,255,255,0.1);
+    border-top:1px solid rgba(255,255,255,0.10);
 
     text-align:center;
 
@@ -640,15 +434,17 @@ footer{
 RESPONSIVO
 ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:980px){
 
     .header{
 
-        padding:18px 20px;
+        height:auto;
+
+        padding:20px;
 
         flex-direction:column;
 
-        gap:18px;
+        gap:20px;
     }
 
     nav{
@@ -659,34 +455,40 @@ RESPONSIVO
 
         gap:18px;
     }
-
-    .cards-grid{
-
-        grid-template-columns:1fr;
-    }
 }
 
-@media(max-width:600px){
+@media(max-width:768px){
 
     .logo-area img{
 
-        width:160px;
-    }
-
-    .whatsapp-btn{
-
-        width:100%;
-
-        justify-content:center;
+        width:72px;
     }
 
     .page-hero{
 
-        padding:180px 20px 100px;
+        padding-top:220px;
     }
 
     .page-hero p{
 
         font-size:18px;
+    }
+}
+
+@media(max-width:600px){
+
+    nav{
+
+        width:100%;
+    }
+
+    .whatsapp-btn{
+
+        width:100%;
+    }
+
+    .page-hero h1{
+
+        font-size:42px;
     }
 }
