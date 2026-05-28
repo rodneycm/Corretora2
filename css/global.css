@@ -14,9 +14,9 @@ html{
 
 body{
 
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
-    background:#f8fafc;
+    background:#f3f6fb;
 
     color:#0f172a;
 
@@ -26,7 +26,7 @@ body{
 }
 
 /* =========================================================
-VARIAVEIS
+VARIÁVEIS
 ========================================================= */
 
 :root{
@@ -47,19 +47,22 @@ VARIAVEIS
 
     --border:#e2e8f0;
 
-    --shadow-sm:0 4px 12px rgba(0,0,0,0.06);
+    --shadow-sm:
+    0 4px 12px rgba(0,0,0,0.06);
 
-    --shadow-md:0 12px 30px rgba(0,0,0,0.08);
+    --shadow-md:
+    0 12px 30px rgba(0,0,0,0.08);
 
-    --shadow-lg:0 20px 50px rgba(0,0,0,0.12);
+    --shadow-lg:
+    0 20px 50px rgba(0,0,0,0.12);
 
     --radius-sm:12px;
-
     --radius-md:24px;
-
     --radius-lg:34px;
 
+    --transition-fast:0.2s ease;
     --transition:0.3s ease;
+    --transition-slow:0.45s ease;
 }
 
 /* =========================================================
@@ -95,6 +98,20 @@ textarea{
 }
 
 /* =========================================================
+FOCUS
+========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+
+    outline:2px solid var(--secondary);
+
+    outline-offset:3px;
+}
+
+/* =========================================================
 HEADER
 ========================================================= */
 
@@ -107,7 +124,7 @@ HEADER
 
     width:100%;
 
-    height:92px;
+    min-height:108px;
 
     display:flex;
 
@@ -115,13 +132,14 @@ HEADER
 
     justify-content:space-between;
 
-    padding:0 8%;
+    padding:18px 8%;
 
     background:rgba(255,255,255,0.96);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
 
-    border-bottom:1px solid rgba(226,232,240,0.7);
+    border-bottom:
+    1px solid rgba(226,232,240,0.7);
 
     z-index:9999;
 }
@@ -139,7 +157,7 @@ LOGO
 
 .logo-area img{
 
-    width:82px;
+    width:170px;
 
     height:auto;
 
@@ -156,7 +174,7 @@ nav{
 
     align-items:center;
 
-    gap:34px;
+    gap:28px;
 }
 
 nav a{
@@ -168,9 +186,11 @@ nav a{
     font-weight:700;
 
     position:relative;
+
+    white-space:nowrap;
 }
 
-nav a:not(.whatsapp-btn)::after{
+nav a:not(.whatsapp-btn):not(.nav-active)::after{
 
     content:"";
 
@@ -180,11 +200,12 @@ nav a:not(.whatsapp-btn)::after{
     bottom:-6px;
 
     width:0;
+
     height:2px;
 
-    background:var(--secondary);
+    background:#22c55e;
 
-    transition:0.3s ease;
+    transition:var(--transition);
 }
 
 nav a:not(.whatsapp-btn):hover::after{
@@ -194,14 +215,24 @@ nav a:not(.whatsapp-btn):hover::after{
 
 .nav-active{
 
-    color:var(--secondary);
+    color:#22c55e;
+
+    font-weight:800;
 }
 
 /* =========================================================
-WHATSAPP BUTTON
+WHATSAPP BTN
 ========================================================= */
 
 .whatsapp-btn{
+
+    background:var(--secondary);
+
+    color:white;
+
+    padding:14px 24px;
+
+    border-radius:14px;
 
     display:inline-flex;
 
@@ -210,17 +241,9 @@ WHATSAPP BUTTON
 
     gap:10px;
 
-    padding:14px 24px;
-
-    border-radius:14px;
-
-    background:var(--secondary);
-
-    color:white;
-
     font-weight:700;
 
-    transition:0.3s ease;
+    transition:var(--transition);
 }
 
 .whatsapp-btn:hover{
@@ -238,7 +261,7 @@ HERO GLOBAL
 
     position:relative;
 
-    min-height:65vh;
+    min-height:60vh;
 
     display:flex;
 
@@ -270,33 +293,32 @@ HERO GLOBAL
 
 .page-hero-tag{
 
-    display:inline-flex;
+    display:inline-block;
 
-    align-items:center;
-    justify-content:center;
+    margin-bottom:24px;
 
-    padding:12px 22px;
+    padding:12px 20px;
 
     border-radius:999px;
 
-    background:rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.10);
 
-    border:1px solid rgba(255,255,255,0.14);
-
-    margin-bottom:26px;
+    border:
+    1px solid rgba(255,255,255,0.12);
 
     font-size:13px;
 
-    font-weight:700;
-
     letter-spacing:2px;
+
+    font-weight:700;
 }
 
 .page-hero h1{
 
-    font-size:clamp(42px,6vw,68px);
+    font-size:
+    clamp(42px,6vw,64px);
 
-    line-height:1.08;
+    line-height:1.1;
 
     margin-bottom:24px;
 }
@@ -304,8 +326,6 @@ HERO GLOBAL
 .page-hero p{
 
     font-size:20px;
-
-    line-height:1.9;
 
     color:rgba(255,255,255,0.88);
 }
@@ -318,14 +338,14 @@ SECTION TITLE
 
     text-align:center;
 
-    margin-bottom:70px;
+    margin-bottom:60px;
 }
 
 .section-title span{
 
     display:inline-block;
 
-    margin-bottom:16px;
+    margin-bottom:14px;
 
     color:var(--secondary);
 
@@ -338,13 +358,12 @@ SECTION TITLE
 
 .section-title h2{
 
-    font-size:clamp(34px,5vw,52px);
+    font-size:
+    clamp(34px,5vw,48px);
 
     line-height:1.2;
 
-    margin-bottom:20px;
-
-    color:var(--primary);
+    margin-bottom:18px;
 }
 
 .section-title p{
@@ -356,6 +375,192 @@ SECTION TITLE
     color:var(--text);
 
     line-height:1.9;
+}
+
+/* =========================================================
+GRID GLOBAL
+========================================================= */
+
+.cards-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:36px;
+}
+
+/* =========================================================
+CARD GLOBAL
+========================================================= */
+
+.imovel-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-md);
+
+    transition:var(--transition);
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+}
+
+.imovel-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-lg);
+}
+
+/* =========================================================
+IMAGEM CARD
+========================================================= */
+
+.imovel-image{
+
+    width:100%;
+
+    height:260px;
+
+    overflow:hidden;
+
+    background:#e5e7eb;
+}
+
+.imovel-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:var(--transition-slow);
+}
+
+.imovel-card:hover .imovel-image img{
+
+    transform:scale(1.04);
+}
+
+/* =========================================================
+CONTEÚDO CARD
+========================================================= */
+
+.imovel-content{
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+}
+
+.imovel-content h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+}
+
+.imovel-content p{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+}
+
+.imovel-info{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:24px;
+}
+
+.imovel-info span{
+
+    background:#f1f5f9;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+    font-weight:600;
+}
+
+.imovel-btn{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:700;
+
+    margin-top:auto;
+
+    transition:var(--transition);
+}
+
+.imovel-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:var(--primary-light);
+}
+
+/* =========================================================
+BOTÕES GLOBAIS
+========================================================= */
+
+.hero-btn,
+.hero-btn-outline,
+.card-btn,
+.cta-btn,
+.saiba-mais-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+    cursor:pointer;
 }
 
 /* =========================================================
@@ -384,11 +589,81 @@ footer{
     gap:50px;
 }
 
+.footer-logo-link{
+
+    position:relative;
+
+    display:inline-flex;
+
+    width:max-content;
+
+    transition:var(--transition);
+}
+
+.footer-logo-link:hover{
+
+    transform:translateY(-4px);
+}
+
 .footer-logo-white{
 
-    width:180px;
+    width:220px;
 
     margin-bottom:24px;
+}
+
+.footer-logo-tooltip{
+
+    position:absolute;
+
+    bottom:110%;
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    translateY(8px);
+
+    background:
+    rgba(255,255,255,0.96);
+
+    color:#0f172a;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:var(--transition);
+
+    white-space:nowrap;
+
+    pointer-events:none;
+}
+
+.footer-logo-link:hover .footer-logo-tooltip{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+.footer-desc,
+.footer-grid p{
+
+    color:#cbd5e1;
+
+    line-height:1.9;
 }
 
 .footer-grid h3{
@@ -407,21 +682,14 @@ footer{
     color:white;
 }
 
-.footer-desc,
-.footer-grid p{
-
-    color:#cbd5e1;
-
-    line-height:1.9;
-}
-
 .footer-bottom{
 
     margin-top:60px;
 
     padding-top:30px;
 
-    border-top:1px solid rgba(255,255,255,0.10);
+    border-top:
+    1px solid rgba(255,255,255,0.1);
 
     text-align:center;
 
@@ -438,13 +706,16 @@ RESPONSIVO
 
     .header{
 
-        height:auto;
-
         padding:20px;
 
         flex-direction:column;
 
         gap:20px;
+    }
+
+    .logo-area img{
+
+        width:150px;
     }
 
     nav{
@@ -455,40 +726,59 @@ RESPONSIVO
 
         gap:18px;
     }
+
+    .cards-grid{
+
+        grid-template-columns:1fr;
+    }
 }
 
-@media(max-width:768px){
+@media(max-width:600px){
+
+    .header{
+
+        padding:18px;
+    }
 
     .logo-area img{
 
-        width:72px;
+        width:130px;
+    }
+
+    nav{
+
+        width:100%;
+
+        gap:14px;
+    }
+
+    nav a{
+
+        font-size:14px;
+    }
+
+    .whatsapp-btn{
+
+        width:100%;
+
+        justify-content:center;
     }
 
     .page-hero{
 
-        padding-top:220px;
+        padding:
+        200px
+        20px
+        100px;
     }
 
     .page-hero p{
 
         font-size:18px;
     }
-}
 
-@media(max-width:600px){
+    .footer-grid{
 
-    nav{
-
-        width:100%;
-    }
-
-    .whatsapp-btn{
-
-        width:100%;
-    }
-
-    .page-hero h1{
-
-        font-size:42px;
+        gap:36px;
     }
 }
