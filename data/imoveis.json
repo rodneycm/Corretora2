@@ -1,71 +1,63 @@
 [
   {
     "id": "casa-albuquerque-790",
-
     "slug": "casa-com-piscina-albuquerque-teresopolis",
-
     "titulo": "Casa com Piscina em Albuquerque",
-
     "subtitulo": "Refúgio exclusivo na serra com amplo terreno e natureza",
-
     "tipo": "Casa",
-
     "finalidade": "Venda",
-
-    "status": "Disponível",
+    "status": "Disponivel",
 
     "bairro": "Albuquerque",
-
     "cidade": "Teresópolis",
-
     "estado": "RJ",
 
     "preco": 790000,
-
     "precoFormatado": "R$ 790.000",
 
-    "areaTerreno": "1457m²",
+    "codigo": "SCV001",
 
-    "areaConstruida": "103m²",
+    "areaTerreno": 1457,
+    "areaConstruida": 103,
 
     "quartos": 3,
-
     "suites": 1,
-
     "banheiros": 2,
-
     "vagas": 2,
 
     "destaque": true,
+    "exibirNaHome": true,
 
-    "condominio": false,
-
-    "aceitaFinanciamento": true,
-
-    "airbnb": true,
-
-    "descricao": "Casa à venda em Albuquerque, Teresópolis RJ, com piscina, jardim arborizado e excelente potencial para moradia ou temporada.",
+    "descricaoCurta": "Casa com piscina, terreno amplo e excelente potencial de valorização em Albuquerque.",
 
     "descricaoCompleta": [
       "Se você busca tranquilidade, contato com a natureza e qualidade de vida, esta propriedade é a oportunidade perfeita.",
-
       "Localizada em Albuquerque, uma das regiões mais valorizadas e procuradas de Teresópolis.",
-
-      "O imóvel possui 3 quartos, sendo 1 suíte, sala ampla em dois ambientes e excelente iluminação natural.",
-
-      "Na área externa, a propriedade possui piscina, lindo jardim arborizado e uma pequena casa independente ideal para hóspedes."
+      "O imóvel conta com 3 quartos, sendo 1 suíte, sala ampla em 2 ambientes, varanda aconchegante e excelente iluminação natural.",
+      "Na área externa possui piscina, jardim arborizado e casa independente para hóspedes."
     ],
 
     "destaques": [
+      "Terreno com 1.457m²",
       "Piscina privativa",
-      "Terreno amplo",
       "Casa independente para hóspedes",
       "Excelente incidência solar",
-      "Região valorizada",
-      "Ótimo potencial Airbnb"
+      "Ideal para Airbnb",
+      "Região valorizada"
     ],
 
-    "imagens": [
+    "comodidades": [
+      "Piscina",
+      "Jardim",
+      "Varanda",
+      "Área gourmet",
+      "Casa de hóspedes",
+      "Vista para natureza"
+    ],
+
+    "thumbnail": "/assets/imoveis/venda/casa-albuquerque-790/foto1.jpeg",
+
+    "galeria": [
       "/assets/imoveis/venda/casa-albuquerque-790/foto1.jpeg",
       "/assets/imoveis/venda/casa-albuquerque-790/foto2.jpeg",
       "/assets/imoveis/venda/casa-albuquerque-790/foto3.jpeg",
@@ -87,24 +79,28 @@
       "/assets/imoveis/venda/casa-albuquerque-790/foto19.jpeg"
     ],
 
-    "thumb": "/assets/imoveis/venda/casa-albuquerque-790/foto1.jpeg",
-
-    "url": "/imoveis/venda/casa-albuquerque-790.html",
+    "corretor": {
+      "nome": "Stephanie Campos",
+      "telefone": "5521989321485",
+      "creci": "CNAI"
+    },
 
     "whatsapp": "https://wa.me/5521989321485?text=Olá%20Stephanie,%20tenho%20interesse%20na%20Casa%20em%20Albuquerque.",
 
     "seo": {
       "title": "Casa com Piscina à Venda em Albuquerque – Teresópolis RJ",
-
-      "description": "Casa com piscina à venda em Albuquerque, Teresópolis RJ. Imóvel com suíte, terreno amplo e excelente localização.",
-
+      "description": "Casa com piscina à venda em Albuquerque, Teresópolis RJ. Imóvel com 3 quartos, suíte e terreno amplo.",
       "keywords": [
         "casa em Albuquerque",
         "imóvel Teresópolis",
         "casa à venda Teresópolis",
-        "casa com piscina Teresópolis",
-        "imóvel na serra"
+        "Stephanie Campos"
       ]
+    },
+
+    "datas": {
+      "criadoEm": "2026-05-20",
+      "atualizadoEm": "2026-05-20"
     }
   }
 ]
