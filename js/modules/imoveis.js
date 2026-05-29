@@ -1,4 +1,3 @@
-
 import CONFIG from "../core/config.js";
 
 let imoveisCache = [];
@@ -33,9 +32,9 @@ export async function carregarImoveis() {
 
         console.log(data);
 
-        /* =========================
-        GARANTIR ARRAY
-        ========================= */
+        /* =====================================================
+        GARANTIR ESTRUTURA
+        ===================================================== */
 
         if(
             !data.imoveis ||
@@ -101,6 +100,10 @@ CRIAR CARD HTML
 
 function criarCard(imovel) {
 
+    const imagemPrincipal =
+        imovel.galeria?.[0]
+        || "assets/imoveis/placeholder.jpg";
+
     return `
 
     <article class="imovel-card">
@@ -108,7 +111,7 @@ function criarCard(imovel) {
         <div class="imovel-image">
 
             <img
-                src="${imovel.imagens[0]}"
+                src="${imagemPrincipal}"
                 alt="${imovel.titulo}">
 
         </div>
@@ -128,7 +131,7 @@ function criarCard(imovel) {
             <div class="imovel-info">
 
                 <span>
-                    📍 ${imovel.bairro}
+                    📍 ${imovel.localizacao.bairro}
                 </span>
 
                 <span>
@@ -154,7 +157,7 @@ function criarCard(imovel) {
 }
 
 /* =========================================================
-RENDERIZAR IMÓVEIS
+RENDERIZAR IMÓVEIS VENDA
 ========================================================= */
 
 export async function renderizarImoveisVenda() {
@@ -179,20 +182,51 @@ export async function renderizarImoveisVenda() {
         Array.isArray(imoveis)
     );
 
-    console.log(
-        imoveis
-    );
+    console.log(imoveis);
 
     const venda =
         imoveis.filter(
             item =>
-            
-            item.finalidade.toLowerCase() === "venda"
+
+            item.finalidade
+            .toLowerCase() === "venda"
 
         );
 
     container.innerHTML =
         venda
+        .map(criarCard)
+        .join("");
+
+}
+
+/* =========================================================
+RENDERIZAR IMÓVEIS ALUGUEL
+========================================================= */
+
+export async function renderizarImoveisAluguel() {
+
+    const container =
+        document.getElementById(
+            "lista-imoveis"
+        );
+
+    if(!container) return;
+
+    const imoveis =
+        await carregarImoveis();
+
+    const aluguel =
+        imoveis.filter(
+            item =>
+
+            item.finalidade
+            .toLowerCase() === "aluguel"
+
+        );
+
+    container.innerHTML =
+        aluguel
         .map(criarCard)
         .join("");
 
