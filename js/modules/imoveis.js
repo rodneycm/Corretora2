@@ -169,6 +169,20 @@ export async function renderizarImoveisVenda() {
     const imoveis =
         await carregarImoveis();
 
+    console.log(
+        "TIPO:",
+        typeof imoveis
+    );
+
+    console.log(
+        "ARRAY?",
+        Array.isArray(imoveis)
+    );
+
+    console.log(
+        imoveis
+    );
+
     const venda =
         imoveis.filter(
             item =>
