@@ -10,11 +10,19 @@ export async function carregarImoveis() {
 
     try {
 
+        /* =====================================================
+        CACHE
+        ===================================================== */
+
         if(imoveisCache.length > 0) {
 
             return imoveisCache;
 
         }
+
+        /* =====================================================
+        FETCH JSON
+        ===================================================== */
 
         const response =
             await fetch(CONFIG.API_URL);
@@ -30,10 +38,8 @@ export async function carregarImoveis() {
         const data =
             await response.json();
 
-        console.log(data);
-
         /* =====================================================
-        VALIDAR ESTRUTURA
+        VALIDAR JSON
         ===================================================== */
 
         if(
@@ -47,16 +53,21 @@ export async function carregarImoveis() {
 
         }
 
+        /* =====================================================
+        SALVAR CACHE
+        ===================================================== */
+
         imoveisCache =
             data.imoveis;
-
-        console.log(imoveisCache);
 
         return imoveisCache;
 
     } catch(error) {
 
-        console.error(error);
+        console.error(
+            "Erro ao carregar imóveis:",
+            error
+        );
 
         return [];
 
@@ -65,7 +76,7 @@ export async function carregarImoveis() {
 }
 
 /* =========================================================
-BUSCAR POR SLUG
+BUSCAR IMÓVEL POR SLUG
 ========================================================= */
 
 export async function buscarImovelPorSlug(slug) {
@@ -74,13 +85,14 @@ export async function buscarImovelPorSlug(slug) {
         await carregarImoveis();
 
     return imoveis.find(
-        imovel => imovel.slug === slug
+        imovel =>
+            imovel.slug === slug
     );
 
 }
 
 /* =========================================================
-DESTAQUES
+OBTER DESTAQUES
 ========================================================= */
 
 export async function obterDestaques() {
@@ -89,7 +101,8 @@ export async function obterDestaques() {
         await carregarImoveis();
 
     return imoveis.filter(
-        imovel => imovel.destaque === true
+        imovel =>
+            imovel.destaque === true
     );
 
 }
@@ -99,6 +112,12 @@ FORMATAR PREÇO
 ========================================================= */
 
 function formatarPreco(valor) {
+
+    if(!valor) {
+
+        return "Sob consulta";
+
+    }
 
     return valor.toLocaleString(
         "pt-BR",
@@ -111,19 +130,35 @@ function formatarPreco(valor) {
 }
 
 /* =========================================================
-CRIAR CARD HTML
+CRIAR CARD
 ========================================================= */
 
 function criarCard(imovel) {
 
+    /* =====================================================
+    IMAGEM PRINCIPAL
+    ===================================================== */
+
     const imagemPrincipal =
+
         imovel.midia?.thumbnail ||
+
+        imovel.midia?.galeria?.[0] ||
+
         "assets/imoveis/placeholder.jpg";
+
+    /* =====================================================
+    PREÇO
+    ===================================================== */
 
     const preco =
         formatarPreco(
-            imovel.preco?.valor || 0
+            imovel.preco?.valor
         );
+
+    /* =====================================================
+    HTML
+    ===================================================== */
 
     return `
 
@@ -152,7 +187,7 @@ function criarCard(imovel) {
             <div class="imovel-info">
 
                 <span>
-                    📍 ${imovel.bairro}
+                    📍 ${imovel.bairro || ""}
                 </span>
 
                 <span>
@@ -173,7 +208,7 @@ function criarCard(imovel) {
 
     </article>
 
-`;
+    `;
 
 }
 
@@ -188,37 +223,63 @@ export async function renderizarImoveisVenda() {
             "lista-imoveis"
         );
 
-    if(!container) return;
+    if(!container) {
+
+        return;
+
+    }
+
+    /* =====================================================
+    CARREGAR IMÓVEIS
+    ===================================================== */
 
     const imoveis =
         await carregarImoveis();
 
-    console.log(
-        "TIPO:",
-        typeof imoveis
-    );
-
-    console.log(
-        "ARRAY?",
-        Array.isArray(imoveis)
-    );
-
-    console.log(
-        imoveis
-    );
+    /* =====================================================
+    FILTRAR VENDA
+    ===================================================== */
 
     const venda =
         imoveis.filter(
+
             item =>
 
-            item.finalidade &&
-            item.finalidade.toLowerCase() === "venda"
+                item.finalidade &&
+
+                item.finalidade
+                    .toLowerCase() === "venda"
 
         );
 
+    /* =====================================================
+    SEM RESULTADOS
+    ===================================================== */
+
+    if(venda.length === 0) {
+
+        container.innerHTML = `
+
+            <p class="sem-imoveis">
+
+                Nenhum imóvel encontrado.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    /* =====================================================
+    RENDERIZAR
+    ===================================================== */
+
     container.innerHTML =
+
         venda
-        .map(criarCard)
-        .join("");
+            .map(imovel => criarCard(imovel))
+            .join("");
 
 }
