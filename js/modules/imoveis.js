@@ -33,7 +33,7 @@ export async function carregarImoveis() {
         console.log(data);
 
         /* =====================================================
-        GARANTIR ESTRUTURA
+        VALIDAR ESTRUTURA
         ===================================================== */
 
         if(
@@ -95,14 +95,35 @@ export async function obterDestaques() {
 }
 
 /* =========================================================
+FORMATAR PREÇO
+========================================================= */
+
+function formatarPreco(valor) {
+
+    return valor.toLocaleString(
+        "pt-BR",
+        {
+            style: "currency",
+            currency: "BRL"
+        }
+    );
+
+}
+
+/* =========================================================
 CRIAR CARD HTML
 ========================================================= */
 
 function criarCard(imovel) {
 
     const imagemPrincipal =
-        imovel.galeria?.[0]
-        || "assets/imoveis/placeholder.jpg";
+        imovel.midia?.thumbnail ||
+        "assets/imoveis/placeholder.jpg";
+
+    const preco =
+        formatarPreco(
+            imovel.preco?.valor || 0
+        );
 
     return `
 
@@ -124,25 +145,25 @@ function criarCard(imovel) {
 
             <p>
 
-                ${imovel.descricaoCurta}
+                ${imovel.descricao?.resumo || ""}
 
             </p>
 
             <div class="imovel-info">
 
                 <span>
-                    📍 ${imovel.localizacao.bairro}
+                    📍 ${imovel.bairro}
                 </span>
 
                 <span>
-                    💰 ${imovel.precoFormatado}
+                    💰 ${preco}
                 </span>
 
             </div>
 
             <a
                 class="imovel-btn"
-                href="${imovel.url}">
+                href="imoveis/venda/${imovel.id}.html">
 
                 Ver imóvel
 
@@ -152,7 +173,7 @@ function criarCard(imovel) {
 
     </article>
 
-    `;
+`;
 
 }
 
@@ -182,51 +203,21 @@ export async function renderizarImoveisVenda() {
         Array.isArray(imoveis)
     );
 
-    console.log(imoveis);
+    console.log(
+        imoveis
+    );
 
     const venda =
         imoveis.filter(
             item =>
 
-            item.finalidade
-            .toLowerCase() === "venda"
+            item.finalidade &&
+            item.finalidade.toLowerCase() === "venda"
 
         );
 
     container.innerHTML =
         venda
-        .map(criarCard)
-        .join("");
-
-}
-
-/* =========================================================
-RENDERIZAR IMÓVEIS ALUGUEL
-========================================================= */
-
-export async function renderizarImoveisAluguel() {
-
-    const container =
-        document.getElementById(
-            "lista-imoveis"
-        );
-
-    if(!container) return;
-
-    const imoveis =
-        await carregarImoveis();
-
-    const aluguel =
-        imoveis.filter(
-            item =>
-
-            item.finalidade
-            .toLowerCase() === "aluguel"
-
-        );
-
-    container.innerHTML =
-        aluguel
         .map(criarCard)
         .join("");
 
