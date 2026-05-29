@@ -31,7 +31,7 @@ export async function carregarImoveis() {
         const data =
             await response.json();
 
-        imoveisCache = data;
+        imoveisCache = data.imoveis;
 
         return data;
 
