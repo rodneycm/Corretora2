@@ -1,6 +1,7 @@
+javascript
 import {
-    renderizarImoveis
-} from "../modules/renderImoveis.js";
+    renderizarImoveisVenda
+} from "../modules/imoveis.js";
 
 /* =========================================================
 APP START
@@ -10,7 +11,7 @@ document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-        await renderizarImoveis();
+        await renderizarImoveisVenda();
 
     }
 );

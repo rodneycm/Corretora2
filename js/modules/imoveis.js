@@ -1,20 +1,163 @@
-const CONFIG = {
+javascript
+import CONFIG from "../core/config.js";
 
-    SITE_NAME: "Stephanie Campos Consultoria Imobiliária",
+let imoveisCache = [];
 
-    SITE_URL: "https://rodneycm.github.io/Corretora2",
+/* =========================================================
+CARREGAR IMÓVEIS
+========================================================= */
 
-    WHATSAPP: "5521989321485",
+export async function carregarImoveis() {
 
-    API_URL: "./data/imoveis.json",
+    try {
 
-    ITEMS_PER_PAGE: 12,
+        if(imoveisCache.length > 0) {
 
-    FEATURED_LIMIT: 6,
+            return imoveisCache;
 
-    IMAGE_FALLBACK:
-        "./assets/imoveis/default.jpg"
+        }
 
-};
+        const response =
+            await fetch(CONFIG.API_URL);
 
-export default CONFIG;
+        if(!response.ok) {
+
+            throw new Error(
+                "Erro ao carregar imóveis"
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        imoveisCache = data;
+
+        return data;
+
+    } catch(error) {
+
+        console.error(error);
+
+        return [];
+
+    }
+
+}
+
+/* =========================================================
+BUSCAR POR SLUG
+========================================================= */
+
+export async function buscarImovelPorSlug(slug) {
+
+    const imoveis =
+        await carregarImoveis();
+
+    return imoveis.find(
+        imovel => imovel.slug === slug
+    );
+
+}
+
+/* =========================================================
+DESTAQUES
+========================================================= */
+
+export async function obterDestaques() {
+
+    const imoveis =
+        await carregarImoveis();
+
+    return imoveis.filter(
+        imovel => imovel.destaque === true
+    );
+
+}
+
+/* =========================================================
+CRIAR CARD HTML
+========================================================= */
+
+function criarCard(imovel) {
+
+    return `
+
+    <article class="imovel-card">
+
+        <div class="imovel-image">
+
+            <img
+                src="${imovel.imagens[0]}"
+                alt="${imovel.titulo}">
+
+        </div>
+
+        <div class="imovel-content">
+
+            <h3>
+                ${imovel.titulo}
+            </h3>
+
+            <p>
+
+                ${imovel.descricaoCurta}
+
+            </p>
+
+            <div class="imovel-info">
+
+                <span>
+                    📍 ${imovel.bairro}
+                </span>
+
+                <span>
+                    💰 ${imovel.precoFormatado}
+                </span>
+
+            </div>
+
+            <a
+                class="imovel-btn"
+                href="${imovel.url}">
+
+                Ver imóvel
+
+            </a>
+
+        </div>
+
+    </article>
+
+    `;
+
+}
+
+/* =========================================================
+RENDERIZAR IMÓVEIS
+========================================================= */
+
+export async function renderizarImoveisVenda() {
+
+    const container =
+        document.getElementById(
+            "lista-imoveis"
+        );
+
+    if(!container) return;
+
+    const imoveis =
+        await carregarImoveis();
+
+    const venda =
+        imoveis.filter(
+            item =>
+            item.finalidade === "venda"
+        );
+
+    container.innerHTML =
+        venda
+        .map(criarCard)
+        .join("");
+
+}
