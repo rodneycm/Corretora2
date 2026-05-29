@@ -283,3 +283,196 @@ export async function renderizarImoveisVenda() {
             .join("");
 
 }
+
+/* =========================================================
+RENDERIZAR PÁGINA DO IMÓVEL
+========================================================= */
+
+export async function renderizarPaginaImovel() {
+
+    /* =====================================================
+    PEGAR SLUG DA URL
+    ===================================================== */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const slug =
+        params.get("slug");
+
+    if(!slug) return;
+
+    /* =====================================================
+    BUSCAR IMÓVEL
+    ===================================================== */
+
+    const imovel =
+        await buscarImovelPorSlug(slug);
+
+    if(!imovel) {
+
+        console.error(
+            "Imóvel não encontrado"
+        );
+
+        return;
+
+    }
+
+    /* =====================================================
+    ELEMENTOS
+    ===================================================== */
+
+    const galeria =
+        document.getElementById(
+            "imovel-galeria"
+        );
+
+    const info =
+        document.getElementById(
+            "imovel-info"
+        );
+
+    if(!galeria || !info) return;
+
+    /* =====================================================
+    GALERIA
+    ===================================================== */
+
+    galeria.innerHTML =
+        imovel.midia.galeria
+        .map(
+            imagem => `
+
+            <img
+                src="${imagem}"
+                alt="${imovel.titulo}">
+
+        `
+        )
+        .join("");
+
+    /* =====================================================
+    PREÇO
+    ===================================================== */
+
+    const preco =
+        formatarPreco(
+            imovel.preco.valor
+        );
+
+    /* =====================================================
+    DIFERENCIAIS
+    ===================================================== */
+
+    const diferenciais =
+        imovel.diferenciais
+        .map(
+            item => `
+
+            <li>${item}</li>
+
+        `
+        )
+        .join("");
+
+    /* =====================================================
+    DESCRIÇÃO
+    ===================================================== */
+
+    const descricao =
+        imovel.descricao.completa
+        .map(
+            texto => `
+
+            <p>${texto}</p>
+
+        `
+        )
+        .join("");
+
+    /* =====================================================
+    INFO
+    ===================================================== */
+
+    info.innerHTML = `
+
+        <span class="imovel-tag">
+
+            ${imovel.finalidade}
+
+        </span>
+
+        <h1>
+
+            ${imovel.titulo}
+
+        </h1>
+
+        <h2>
+
+            ${preco}
+
+        </h2>
+
+        <p>
+
+            ${imovel.subtitulo}
+
+        </p>
+
+        <div class="descricao-imovel">
+
+            ${descricao}
+
+        </div>
+
+        <h3>
+
+            Diferenciais
+
+        </h3>
+
+        <ul class="imovel-diferenciais">
+
+            ${diferenciais}
+
+        </ul>
+
+        <a
+            class="imovel-whatsapp"
+            target="_blank"
+            href="https://wa.me/${imovel.contato.whatsapp}?text=Olá,%20tenho%20interesse%20no%20imóvel%20${imovel.titulo}">
+
+            <i class="fab fa-whatsapp"></i>
+
+            Falar sobre este imóvel
+
+        </a>
+
+    `;
+
+    /* =====================================================
+    SEO DINÂMICO
+    ===================================================== */
+
+    document.title =
+        imovel.seo.title;
+
+    const metaDescription =
+        document.querySelector(
+            'meta[name="description"]'
+        );
+
+    if(metaDescription) {
+
+        metaDescription.setAttribute(
+            "content",
+            imovel.seo.description
+        );
+
+    }
+
+}

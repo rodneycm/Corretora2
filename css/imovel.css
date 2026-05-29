@@ -1,0 +1,53 @@
+.imovel-page{
+
+    padding:140px 8%;
+
+    background:#f8fafc;
+
+}
+
+.imovel-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 420px;
+
+    gap:40px;
+
+}
+
+#imovel-galeria{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+#imovel-galeria img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    object-fit:cover;
+
+}
+
+#imovel-info{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:28px;
+
+    position:sticky;
+
+    top:120px;
+
+    height:fit-content;
+
+}
