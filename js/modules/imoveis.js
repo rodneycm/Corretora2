@@ -198,7 +198,7 @@ function criarCard(imovel) {
 
             <a
                 class="imovel-btn"
-                href="imoveis/venda/${imovel.id}.html">
+                href="imovel.html?slug=${imovel.slug}"
 
                 Ver imóvel
 
