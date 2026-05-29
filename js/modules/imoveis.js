@@ -27,11 +27,15 @@ export async function carregarImoveis() {
             );
 
         }
+        
+const data =
+    await response.json();
 
-        const data =
-            await response.json();
+console.log(data);
 
-        imoveisCache = data.imoveis;
+imoveisCache = data.imoveis;
+
+console.log(imoveisCache);
 
         return data;
 
