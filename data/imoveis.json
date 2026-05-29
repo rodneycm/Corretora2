@@ -1,20 +1,110 @@
 [
   {
-    "titulo": "Casa moderna em Agriões",
-    "bairro": "Agriões",
+    "id": "casa-albuquerque-790",
+
+    "slug": "casa-com-piscina-albuquerque-teresopolis",
+
+    "titulo": "Casa com Piscina em Albuquerque",
+
+    "subtitulo": "Refúgio exclusivo na serra com amplo terreno e natureza",
+
     "tipo": "Casa",
+
     "finalidade": "Venda",
-    "preco": 850000,
-    "imagem": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1974&auto=format&fit=crop",
-    "descricao": "Casa moderna com 3 quartos e área gourmet."
-  },
-  {
-    "titulo": "Apartamento no Alto",
-    "bairro": "Alto",
-    "tipo": "Apartamento",
-    "finalidade": "Aluguel",
-    "preco": 2500,
-    "imagem": "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop",
-    "descricao": "Apartamento próximo ao centro de Teresópolis."
+
+    "status": "Disponível",
+
+    "bairro": "Albuquerque",
+
+    "cidade": "Teresópolis",
+
+    "estado": "RJ",
+
+    "preco": 790000,
+
+    "precoFormatado": "R$ 790.000",
+
+    "areaTerreno": "1457m²",
+
+    "areaConstruida": "103m²",
+
+    "quartos": 3,
+
+    "suites": 1,
+
+    "banheiros": 2,
+
+    "vagas": 2,
+
+    "destaque": true,
+
+    "condominio": false,
+
+    "aceitaFinanciamento": true,
+
+    "airbnb": true,
+
+    "descricao": "Casa à venda em Albuquerque, Teresópolis RJ, com piscina, jardim arborizado e excelente potencial para moradia ou temporada.",
+
+    "descricaoCompleta": [
+      "Se você busca tranquilidade, contato com a natureza e qualidade de vida, esta propriedade é a oportunidade perfeita.",
+
+      "Localizada em Albuquerque, uma das regiões mais valorizadas e procuradas de Teresópolis.",
+
+      "O imóvel possui 3 quartos, sendo 1 suíte, sala ampla em dois ambientes e excelente iluminação natural.",
+
+      "Na área externa, a propriedade possui piscina, lindo jardim arborizado e uma pequena casa independente ideal para hóspedes."
+    ],
+
+    "destaques": [
+      "Piscina privativa",
+      "Terreno amplo",
+      "Casa independente para hóspedes",
+      "Excelente incidência solar",
+      "Região valorizada",
+      "Ótimo potencial Airbnb"
+    ],
+
+    "imagens": [
+      "/assets/imoveis/venda/casa-albuquerque-790/foto1.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto2.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto3.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto4.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto5.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto6.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto7.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto8.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto9.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto10.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto11.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto12.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto13.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto14.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto15.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto16.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto17.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto18.jpeg",
+      "/assets/imoveis/venda/casa-albuquerque-790/foto19.jpeg"
+    ],
+
+    "thumb": "/assets/imoveis/venda/casa-albuquerque-790/foto1.jpeg",
+
+    "url": "/imoveis/venda/casa-albuquerque-790.html",
+
+    "whatsapp": "https://wa.me/5521989321485?text=Olá%20Stephanie,%20tenho%20interesse%20na%20Casa%20em%20Albuquerque.",
+
+    "seo": {
+      "title": "Casa com Piscina à Venda em Albuquerque – Teresópolis RJ",
+
+      "description": "Casa com piscina à venda em Albuquerque, Teresópolis RJ. Imóvel com suíte, terreno amplo e excelente localização.",
+
+      "keywords": [
+        "casa em Albuquerque",
+        "imóvel Teresópolis",
+        "casa à venda Teresópolis",
+        "casa com piscina Teresópolis",
+        "imóvel na serra"
+      ]
+    }
   }
 ]
