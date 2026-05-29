@@ -186,7 +186,9 @@ export async function renderizarImoveisVenda() {
     const venda =
         imoveis.filter(
             item =>
-            item.finalidade === "venda"
+            
+            item.finalidade.toLowerCase() === "venda"
+
         );
 
     container.innerHTML =
