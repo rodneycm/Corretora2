@@ -27,17 +27,33 @@ export async function carregarImoveis() {
             );
 
         }
-        
-const data =
-    await response.json();
 
-console.log(data);
+        const data =
+            await response.json();
 
-imoveisCache = data.imoveis;
+        console.log(data);
 
-console.log(imoveisCache);
+        /* =========================
+        GARANTIR ARRAY
+        ========================= */
 
-        return data;
+        if(
+            !data.imoveis ||
+            !Array.isArray(data.imoveis)
+        ) {
+
+            throw new Error(
+                "Estrutura do JSON inválida"
+            );
+
+        }
+
+        imoveisCache =
+            data.imoveis;
+
+        console.log(imoveisCache);
+
+        return imoveisCache;
 
     } catch(error) {
 
