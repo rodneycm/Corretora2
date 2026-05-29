@@ -1,20 +1,25 @@
 async function loadComponent(elementId, filePath){
 
-    const element = document.getElementById(elementId);
+    const element =
+    document.getElementById(elementId);
 
     if(!element) return;
 
     try{
 
-        const response = await fetch(filePath);
+        const response =
+        await fetch(filePath);
 
         if(!response.ok){
 
-            throw new Error(`Erro ao carregar ${filePath}`);
+            throw new Error(
+                `Erro ao carregar ${filePath}`
+            );
 
         }
 
-        const html = await response.text();
+        const html =
+        await response.text();
 
         element.innerHTML = html;
 
@@ -50,12 +55,20 @@ function activateCurrentPage(){
 
     navLinks.forEach(link => {
 
+        const linkHref =
+        link.getAttribute("href");
+
+        if(!linkHref) return;
+
         const linkPage =
-        link.getAttribute("href").split("/").pop();
+        linkHref.split("/").pop();
 
         if(
             currentPage === linkPage ||
-            (currentPage === "" && linkPage === "index.html")
+            (
+                currentPage === "" &&
+                linkPage === "index.html"
+            )
         ){
 
             link.classList.add("nav-active");
@@ -70,16 +83,19 @@ function activateCurrentPage(){
 LOAD COMPONENTS
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    loadComponent(
-        "header-component",
-        "components/header.html"
-    );
+        loadComponent(
+            "header-component",
+            "/Corretora2/components/header.html"
+        );
 
-    loadComponent(
-        "footer-component",
-        "components/footer.html"
-    );
+        loadComponent(
+            "footer-component",
+            "/Corretora2/components/footer.html"
+        );
 
-});
+    }
+);

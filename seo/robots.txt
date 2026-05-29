@@ -2,4 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://seudominio.com/seo/sitemap.xml
+Sitemap: https://rodneycm.github.io/Corretora2/seo/sitemap.xml
