@@ -1,4 +1,4 @@
-javascript
+
 import CONFIG from "../core/config.js";
 
 let imoveisCache = [];

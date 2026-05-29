@@ -1,4 +1,4 @@
-javascript
+
 import {
     renderizarImoveisVenda
 } from "../modules/imoveis.js";
