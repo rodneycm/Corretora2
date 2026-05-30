@@ -1,53 +1,226 @@
 .imovel-page{
-
     padding:140px 8%;
-
     background:#f8fafc;
-
 }
 
 .imovel-container{
-
     display:grid;
-
     grid-template-columns:1fr 420px;
-
     gap:40px;
-
+    align-items:start;
 }
+
+/* =========================================
+   GALERIA
+========================================= */
 
 #imovel-galeria{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
+    display:flex;
+    flex-direction:column;
     gap:20px;
-
 }
 
-#imovel-galeria img{
-
+.foto-principal{
     width:100%;
-
-    border-radius:20px;
-
-    object-fit:cover;
-
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--shadow-md);
 }
+
+.foto-principal img{
+    width:100%;
+    height:600px;
+    object-fit:cover;
+    display:block;
+}
+
+.miniaturas-imovel{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+    gap:12px;
+}
+
+.thumb-imovel{
+    width:100%;
+    height:90px;
+    object-fit:cover;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.thumb-imovel:hover{
+    transform:scale(1.04);
+}
+
+/* =========================================
+   INFO
+========================================= */
 
 #imovel-info{
-
     background:white;
-
     padding:40px;
-
     border-radius:28px;
-
     position:sticky;
-
     top:120px;
+    box-shadow:var(--shadow-md);
+}
 
-    height:fit-content;
+.imovel-tag{
+    display:inline-block;
+    background:#25d366;
+    color:white;
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
+}
 
+#imovel-info h1{
+    font-size:36px;
+    line-height:1.2;
+    margin-bottom:14px;
+}
+
+#imovel-info h2{
+    font-size:34px;
+    color:#0f172a;
+    margin-bottom:18px;
+}
+
+#imovel-info p{
+    color:#475569;
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+.descricao-imovel{
+    margin-top:20px;
+}
+
+.descricao-imovel p{
+    margin-bottom:18px;
+}
+
+/* =========================================
+   DIFERENCIAIS
+========================================= */
+
+.imovel-diferenciais{
+    list-style:none;
+    padding:0;
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.imovel-diferenciais li{
+    background:#f8fafc;
+    padding:14px 16px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.imovel-diferenciais i{
+    color:#25d366;
+}
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+.imovel-whatsapp{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:30px;
+    width:100%;
+    padding:18px;
+    border-radius:16px;
+    background:#25d366;
+    color:white;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+.imovel-whatsapp:hover{
+    background:#1faa52;
+}
+
+.whatsapp-mobile{
+    display:none;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media(max-width:980px){
+
+    .imovel-container{
+        grid-template-columns:1fr;
+    }
+
+    #imovel-info{
+        position:relative;
+        top:auto;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .imovel-page{
+        padding:120px 20px;
+    }
+
+    .foto-principal img{
+        height:320px;
+    }
+
+    .thumb-imovel{
+        height:70px;
+    }
+
+    #imovel-info{
+        padding:28px;
+    }
+
+    #imovel-info h1{
+        font-size:28px;
+    }
+
+    #imovel-info h2{
+        font-size:28px;
+    }
+
+    .whatsapp-mobile{
+        display:block;
+        position:fixed;
+        left:15px;
+        right:15px;
+        bottom:15px;
+        z-index:9999;
+    }
+
+    .whatsapp-mobile a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:10px;
+        padding:18px;
+        border-radius:16px;
+        background:#25d366;
+        color:white;
+        font-weight:700;
+        text-decoration:none;
+        box-shadow:0 15px 40px rgba(0,0,0,.25);
+    }
 }
