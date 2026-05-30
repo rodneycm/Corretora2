@@ -377,7 +377,6 @@ galeria.innerHTML = `
     
 
 `;
-renderizarPaginaImovel()
 
 const imagemPrincipal =
     document.getElementById(
