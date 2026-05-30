@@ -341,19 +341,64 @@ export async function renderizarPaginaImovel() {
     GALERIA
     ===================================================== */
 
-    galeria.innerHTML =
-        imovel.midia.galeria
-        .map(
-            imagem => `
+    const fotoPrincipal =
+    imovel.midia.galeria[0];
 
-            <img
-                src="${imagem}"
-                alt="${imovel.titulo}">
+const miniaturas =
+    imovel.midia.galeria
+    .map(
+        imagem => `
 
-        `
-        )
-        .join("");
+        <img
+            class="thumb-imovel"
+            src="${imagem}"
+            alt="${imovel.titulo}">
 
+    `
+    )
+    .join("");
+
+galeria.innerHTML = `
+
+    <div class="foto-principal">
+
+        <img
+            id="imagem-principal"
+            src="${fotoPrincipal}"
+            alt="${imovel.titulo}">
+
+    </div>
+
+    <div class="miniaturas-imovel">
+
+        ${miniaturas}
+        
+    </div>
+    
+
+`;
+renderizarPaginaImovel()
+
+const imagemPrincipal =
+    document.getElementById(
+        "imagem-principal"
+    );
+
+document
+.querySelectorAll(".thumb-imovel")
+.forEach(thumb => {
+
+    thumb.addEventListener(
+        "click",
+        () => {
+
+            imagemPrincipal.src =
+                thumb.src;
+
+        }
+    );
+
+});
     /* =====================================================
     PREÇO
     ===================================================== */
