@@ -196,9 +196,9 @@ function criarCard(imovel) {
 
             </div>
 
-            <a
+           <a
                 class="imovel-btn"
-                href="imovel.html?slug=${imovel.slug}"
+                href="imovel.html?slug=${imovel.slug}">
 
                 Ver imóvel
 
