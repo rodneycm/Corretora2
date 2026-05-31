@@ -532,6 +532,194 @@ document.addEventListener(
 
     }
 );
+
+/* =====================================================
+LIGHTBOX
+===================================================== */
+
+imagemPrincipal.style.cursor = "zoom-in";
+
+imagemPrincipal.addEventListener(
+    "click",
+    () => {
+
+        const lightbox =
+            document.createElement("div");
+
+        lightbox.className =
+            "lightbox-imovel";
+
+        lightbox.innerHTML = `
+
+            <button
+                class="lightbox-fechar">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <button
+                class="lightbox-nav lightbox-anterior">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+            <img
+                class="lightbox-img"
+                src="${galeriaImagens[indiceAtual]}">
+
+            <button
+                class="lightbox-nav lightbox-proximo">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+        `;
+
+        document.body.appendChild(
+            lightbox
+        );
+
+        const imagemLightbox =
+            lightbox.querySelector(
+                ".lightbox-img"
+            );
+
+        function atualizarLightbox() {
+
+            imagemLightbox.src =
+                galeriaImagens[indiceAtual];
+
+        }
+
+        lightbox
+        .querySelector(
+            ".lightbox-anterior"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                indiceAtual--;
+
+                if(indiceAtual < 0) {
+
+                    indiceAtual =
+                        galeriaImagens.length - 1;
+
+                }
+
+                atualizarLightbox();
+
+            }
+        );
+
+        lightbox
+        .querySelector(
+            ".lightbox-proximo"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                indiceAtual++;
+
+                if(
+                    indiceAtual >=
+                    galeriaImagens.length
+                ) {
+
+                    indiceAtual = 0;
+
+                }
+
+                atualizarLightbox();
+
+            }
+        );
+
+        function fecharLightbox() {
+
+            lightbox.remove();
+
+            document.removeEventListener(
+                "keydown",
+                tecladoLightbox
+            );
+
+        }
+
+        lightbox
+        .querySelector(
+            ".lightbox-fechar"
+        )
+        .addEventListener(
+            "click",
+            fecharLightbox
+        );
+
+        lightbox.addEventListener(
+            "click",
+            event => {
+
+                if(
+                    event.target ===
+                    lightbox
+                ) {
+
+                    fecharLightbox();
+
+                }
+
+            }
+        );
+
+        function tecladoLightbox(event) {
+
+            if(
+                event.key === "Escape"
+            ) {
+
+                fecharLightbox();
+
+            }
+
+            if(
+                event.key === "ArrowLeft"
+            ) {
+
+                lightbox
+                .querySelector(
+                    ".lightbox-anterior"
+                )
+                .click();
+
+            }
+
+            if(
+                event.key === "ArrowRight"
+            ) {
+
+                lightbox
+                .querySelector(
+                    ".lightbox-proximo"
+                )
+                .click();
+
+            }
+
+        }
+
+        document.addEventListener(
+            "keydown",
+            tecladoLightbox
+        );
+
+    }
+);
+
     /* =====================================================
     PREÇO
     ===================================================== */
