@@ -41,58 +41,47 @@ BOTÕES DA GALERIA
 ========================================= */
 
 .btn-galeria{
+
 position:absolute;
+
 top:50%;
 transform:translateY(-50%);
-width:52px;
-height:52px;
+
+width:46px;
+height:46px;
+
 border:none;
 border-radius:50%;
-background:rgba(255,255,255,.95);
-color:#0f172a;
+
+background:rgba(15,23,42,.45);
+
+backdrop-filter:blur(6px);
+
+color:white;
+
 cursor:pointer;
+
 z-index:5;
-font-size:18px;
-box-shadow:0 8px 20px rgba(0,0,0,.15);
-transition:.3s ease;
+
+font-size:16px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+transition:.25s ease;
+
 }
 
 .btn-galeria:hover{
-transform:translateY(-50%) scale(1.08);
-}
 
-.btn-anterior{
-left:15px;
-}
+background:rgba(15,23,42,.75);
 
-.btn-proximo{
-right:15px;
-}
+transform:
+translateY(-50%)
+scale(1.05);
 
-.miniaturas-imovel{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
-gap:12px;
 }
-
-.thumb-imovel{
-width:100%;
-height:90px;
-object-fit:cover;
-border-radius:14px;
-cursor:pointer;
-transition:.3s ease;
-border:3px solid transparent;
-}
-
-.thumb-imovel:hover{
-transform:scale(1.04);
-}
-
-.thumb-ativa{
-border:3px solid #25d366;
-}
-
 /* =========================================
 INFO
 ========================================= */
