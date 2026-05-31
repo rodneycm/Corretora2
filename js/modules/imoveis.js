@@ -155,6 +155,43 @@ function criarCard(imovel) {
         formatarPreco(
             imovel.preco?.valor
         );
+        const caracteristicas = `
+
+<div class="imovel-caracteristicas">
+
+    <div class="caracteristica-item">
+        <i class="fa-solid fa-bed"></i>
+        ${imovel.caracteristicas.quartos} Quartos
+    </div>
+
+    <div class="caracteristica-item">
+        <i class="fa-solid fa-bath"></i>
+        ${imovel.caracteristicas.banheiros} Banheiros
+    </div>
+
+    <div class="caracteristica-item">
+        <i class="fa-solid fa-car"></i>
+        ${imovel.caracteristicas.vagas} Vagas
+    </div>
+
+    <div class="caracteristica-item">
+        <i class="fa-solid fa-star"></i>
+        ${imovel.caracteristicas.suites} Suíte(s)
+    </div>
+
+    <div class="caracteristica-item">
+        <i class="fa-solid fa-ruler-combined"></i>
+        ${imovel.metragem.areaConstruida} m² Construídos
+    </div>
+
+    <div class="caracteristica-item">
+        <i class="fa-solid fa-tree"></i>
+        ${imovel.metragem.areaTerreno} m² Terreno
+    </div>
+
+</div>
+
+`;
 
     /* =====================================================
     HTML
@@ -782,6 +819,8 @@ imagemPrincipal.addEventListener(
             ${preco}
 
         </h2>
+
+        ${caracteristicas}
 
         <p>
 
