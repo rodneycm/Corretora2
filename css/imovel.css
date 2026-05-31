@@ -189,10 +189,12 @@ text-decoration:none;
 transition:.3s ease;
 }
 
-.imovel-whatsapp:hover
+.imovel-whatsapp:hover{
+    background:#1faa52;
+}
 
 .whatsapp-mobile{
-display:none;
+    display:none;
 }
 
 /* =========================================
