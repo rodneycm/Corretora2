@@ -337,24 +337,29 @@ export async function renderizarPaginaImovel() {
 
     if(!galeria || !info) return;
 
-    /* =====================================================
-    GALERIA
-    ===================================================== */
+  /* =====================================================
+GALERIA
+===================================================== */
 
-    const fotoPrincipal =
-    imovel.midia.galeria[0];
+const galeriaImagens =
+    imovel.midia?.galeria || [];
+
+const fotoPrincipal =
+    galeriaImagens[0] ||
+    "assets/imoveis/placeholder.jpg";
 
 const miniaturas =
-    imovel.midia.galeria
+    galeriaImagens
     .map(
-        imagem => `
+        (imagem, index) => `
 
         <img
-            class="thumb-imovel"
+            class="thumb-imovel ${index === 0 ? "thumb-ativa" : ""}"
+            data-index="${index}"
             src="${imagem}"
             alt="${imovel.titulo}">
 
-    `
+        `
     )
     .join("");
 
@@ -362,42 +367,171 @@ galeria.innerHTML = `
 
     <div class="foto-principal">
 
+        <button
+            class="btn-galeria btn-anterior"
+            id="btn-anterior">
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+        </button>
+
         <img
             id="imagem-principal"
             src="${fotoPrincipal}"
             alt="${imovel.titulo}">
+
+        <button
+            class="btn-galeria btn-proximo"
+            id="btn-proximo">
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </button>
 
     </div>
 
     <div class="miniaturas-imovel">
 
         ${miniaturas}
-        
+
     </div>
-    
 
 `;
+
+let indiceAtual = 0;
 
 const imagemPrincipal =
     document.getElementById(
         "imagem-principal"
     );
 
-document
-.querySelectorAll(".thumb-imovel")
-.forEach(thumb => {
-
-    thumb.addEventListener(
-        "click",
-        () => {
-
-            imagemPrincipal.src =
-                thumb.src;
-
-        }
+const miniaturasDOM =
+    document.querySelectorAll(
+        ".thumb-imovel"
     );
 
-});
+function atualizarGaleria(index) {
+
+    indiceAtual = index;
+
+    imagemPrincipal.src =
+        galeriaImagens[index];
+
+    miniaturasDOM.forEach(
+        thumb =>
+            thumb.classList.remove(
+                "thumb-ativa"
+            )
+    );
+
+    miniaturasDOM[index]
+        ?.classList.add(
+            "thumb-ativa"
+        );
+
+}
+
+miniaturasDOM.forEach(
+    thumb => {
+
+        thumb.addEventListener(
+            "click",
+            () => {
+
+                atualizarGaleria(
+                    Number(
+                        thumb.dataset.index
+                    )
+                );
+
+            }
+        );
+
+    }
+);
+
+document
+.getElementById(
+    "btn-anterior"
+)
+?.addEventListener(
+    "click",
+    () => {
+
+        indiceAtual--;
+
+        if(indiceAtual < 0) {
+
+            indiceAtual =
+                galeriaImagens.length - 1;
+
+        }
+
+        atualizarGaleria(
+            indiceAtual
+        );
+
+    }
+);
+
+document
+.getElementById(
+    "btn-proximo"
+)
+?.addEventListener(
+    "click",
+    () => {
+
+        indiceAtual++;
+
+        if(
+            indiceAtual >=
+            galeriaImagens.length
+        ) {
+
+            indiceAtual = 0;
+
+        }
+
+        atualizarGaleria(
+            indiceAtual
+        );
+
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key ===
+            "ArrowLeft"
+        ) {
+
+            document
+            .getElementById(
+                "btn-anterior"
+            )
+            ?.click();
+
+        }
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ) {
+
+            document
+            .getElementById(
+                "btn-proximo"
+            )
+            ?.click();
+
+        }
+
+    }
+);
     /* =====================================================
     PREÇO
     ===================================================== */
