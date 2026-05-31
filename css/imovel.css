@@ -151,6 +151,32 @@ color:#0f172a;
 margin-bottom:18px;
 }
 
+/* =========================================
+LOCALIZAÇÃO
+========================================= */
+
+.imovel-localizacao{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+margin-bottom:25px;
+
+font-size:15px;
+font-weight:600;
+
+color:#475569;
+
+}
+
+.imovel-localizacao i{
+
+color:#25d366;
+font-size:18px;
+
+}
+
 #imovel-info p{
 color:#475569;
 line-height:1.9;

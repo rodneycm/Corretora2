@@ -817,11 +817,24 @@ imagemPrincipal.addEventListener(
 
         <h2>
 
-            ${preco}
+    ${preco}
 
-        </h2>
+</h2>
 
-        ${caracteristicas}
+<div class="imovel-localizacao">
+
+    <i class="fa-solid fa-location-dot"></i>
+
+    <span>
+
+        ${imovel.bairro},
+        ${imovel.cidade} - ${imovel.estado}
+
+    </span>
+
+</div>
+
+${caracteristicas}
 
         <p>
 
