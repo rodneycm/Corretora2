@@ -797,68 +797,91 @@ imagemPrincipal.addEventListener(
 
 `;
 
-    /* =====================================================
+       /* =====================================================
     INFO
     ===================================================== */
 
     info.innerHTML = `
 
         <span class="imovel-tag">
-
             ${imovel.finalidade}
-
         </span>
 
         <h1>
-
             ${imovel.titulo}
-
         </h1>
 
         <h2>
+            ${preco}
+        </h2>
 
-    ${preco}
+        <div class="imovel-localizacao">
 
-</h2>
+            <i class="fa-solid fa-location-dot"></i>
 
-<div class="imovel-localizacao">
-
-    <i class="fa-solid fa-location-dot"></i>
-
-    <span>
-
-        ${imovel.bairro},
-        ${imovel.cidade} - ${imovel.estado}
-
-    </span>
-
-</div>
-
-${caracteristicas}
-
-        <p>
-
-            ${imovel.subtitulo}
-
-        </p>
-
-        <div class="descricao-imovel">
-
-            ${descricao}
+            <span>
+                ${imovel.bairro},
+                ${imovel.cidade} - ${imovel.estado}
+            </span>
 
         </div>
 
+        ${caracteristicas}
+
+        <p>
+            ${imovel.subtitulo}
+        </p>
+
+        <div class="descricao-imovel">
+            ${descricao}
+        </div>
+
         <h3>
-
             Diferenciais
-
         </h3>
 
         <ul class="imovel-diferenciais">
-
             ${diferenciais}
-
         </ul>
+
+        <div class="imovel-compartilhar">
+
+            <h3>
+                Compartilhar imóvel
+            </h3>
+
+            <div class="compartilhar-botoes">
+
+                <button
+                    id="compartilhar-whatsapp"
+                    class="btn-compartilhar">
+
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+
+                </button>
+
+                <button
+                    id="compartilhar-facebook"
+                    class="btn-compartilhar">
+
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook
+
+                </button>
+
+                <button
+                    id="copiar-link"
+                    class="btn-compartilhar">
+
+                    <i class="fa-solid fa-link"></i>
+                    Copiar Link
+
+                </button>
+
+            </div>
+
+        </div>
 
         <a
             class="imovel-whatsapp"
@@ -872,7 +895,6 @@ ${caracteristicas}
         </a>
 
     `;
-
     /* =====================================================
     SEO DINÂMICO
     ===================================================== */
