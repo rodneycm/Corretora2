@@ -155,6 +155,7 @@ function criarCard(imovel) {
         formatarPreco(
             imovel.preco?.valor
         );
+        
         const caracteristicas = `
 
 <div class="imovel-caracteristicas">
