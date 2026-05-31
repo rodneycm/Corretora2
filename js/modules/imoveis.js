@@ -821,7 +821,7 @@ imagemPrincipal.addEventListener(
 
         </h2>
 
-        ${caracteristicas}
+        TESTE
 
         <p>
 
