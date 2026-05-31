@@ -896,73 +896,93 @@ imagemPrincipal.addEventListener(
 
     `;
 
-    /* =========================================
-COMPARTILHAMENTO
-========================================= */
+    /* =====================================================
+IMÓVEIS RELACIONADOS
+===================================================== */
 
-const urlAtual =
-    window.location.href;
+const containerRelacionados =
+    document.getElementById(
+        "imoveis-relacionados"
+    );
 
-document
-.getElementById(
-    "compartilhar-whatsapp"
-)
-?.addEventListener(
-    "click",
-    () => {
+if(containerRelacionados){
 
-        window.open(
+    const todosImoveis =
+        await carregarImoveis();
 
-            `https://wa.me/?text=${encodeURIComponent(
-                imovel.titulo +
-                " - " +
-                urlAtual
-            )}`,
+    const relacionados =
+        todosImoveis
+        .filter(item =>
 
-            "_blank"
+            item.slug !== imovel.slug &&
 
-        );
+            item.finalidade ===
+            imovel.finalidade &&
+
+            item.cidade ===
+            imovel.cidade
+
+        )
+        .slice(0,3);
+
+    if(relacionados.length > 0){
+
+        containerRelacionados.innerHTML = `
+
+            <h2>
+                Você também pode gostar
+            </h2>
+
+            <div class="relacionados-grid">
+
+                ${relacionados.map(item => `
+
+                    <article class="relacionado-card">
+
+                        <img
+                            src="${item.midia?.thumbnail || item.midia?.galeria?.[0]}"
+                            alt="${item.titulo}">
+
+                        <div class="relacionado-content">
+
+                            <h3>
+                                ${item.titulo}
+                            </h3>
+
+                            <div class="relacionado-local">
+
+                                ${item.bairro},
+                                ${item.cidade}
+
+                            </div>
+
+                            <div class="relacionado-preco">
+
+                                ${formatarPreco(item.preco?.valor)}
+
+                            </div>
+
+                            <a
+                                class="relacionado-btn"
+                                href="imovel.html?slug=${item.slug}">
+
+                                Ver imóvel
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                `).join("")}
+
+            </div>
+
+        `;
 
     }
-);
 
-document
-.getElementById(
-    "compartilhar-facebook"
-)
-?.addEventListener(
-    "click",
-    () => {
-
-        window.open(
-
-            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
-
-            "_blank"
-
-        );
-
-    }
-);
-
-document
-.getElementById(
-    "copiar-link"
-)
-?.addEventListener(
-    "click",
-    async () => {
-
-        await navigator.clipboard.writeText(
-            urlAtual
-        );
-
-        alert(
-            "Link copiado com sucesso!"
-        );
-
-    }
-);
+}
     /* =====================================================
     SEO DINÂMICO
     ===================================================== */
