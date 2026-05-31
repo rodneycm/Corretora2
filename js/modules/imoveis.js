@@ -895,6 +895,74 @@ imagemPrincipal.addEventListener(
         </a>
 
     `;
+
+    /* =========================================
+COMPARTILHAMENTO
+========================================= */
+
+const urlAtual =
+    window.location.href;
+
+document
+.getElementById(
+    "compartilhar-whatsapp"
+)
+?.addEventListener(
+    "click",
+    () => {
+
+        window.open(
+
+            `https://wa.me/?text=${encodeURIComponent(
+                imovel.titulo +
+                " - " +
+                urlAtual
+            )}`,
+
+            "_blank"
+
+        );
+
+    }
+);
+
+document
+.getElementById(
+    "compartilhar-facebook"
+)
+?.addEventListener(
+    "click",
+    () => {
+
+        window.open(
+
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
+
+            "_blank"
+
+        );
+
+    }
+);
+
+document
+.getElementById(
+    "copiar-link"
+)
+?.addEventListener(
+    "click",
+    async () => {
+
+        await navigator.clipboard.writeText(
+            urlAtual
+        );
+
+        alert(
+            "Link copiado com sucesso!"
+        );
+
+    }
+);
     /* =====================================================
     SEO DINÂMICO
     ===================================================== */
