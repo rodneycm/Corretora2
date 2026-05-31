@@ -156,6 +156,26 @@ function criarCard(imovel) {
             imovel.preco?.valor
         );
 
+        const resumoCaracteristicas = `
+
+<div class="card-caracteristicas">
+
+    ${imovel.caracteristicas?.quartos > 0
+        ? `<span><i class="fa-solid fa-bed"></i> ${imovel.caracteristicas.quartos}</span>`
+        : ""}
+
+    ${imovel.caracteristicas?.banheiros > 0
+        ? `<span><i class="fa-solid fa-bath"></i> ${imovel.caracteristicas.banheiros}</span>`
+        : ""}
+
+    ${imovel.caracteristicas?.vagas > 0
+        ? `<span><i class="fa-solid fa-car"></i> ${imovel.caracteristicas.vagas}</span>`
+        : ""}
+
+</div>
+
+`;
+
     /* =====================================================
     HTML
     ===================================================== */
@@ -183,6 +203,8 @@ function criarCard(imovel) {
                 ${imovel.descricao?.resumo || ""}
 
             </p>
+
+        ${resumoCaracteristicas}
 
             <div class="imovel-info">
 
@@ -759,51 +781,39 @@ imagemPrincipal.addEventListener(
         )
         .join("");
 
-       const caracteristicas = `
+        const caracteristicas = `
 
 <div class="imovel-caracteristicas">
 
-    ${imovel.caracteristicas?.quartos > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-bed"></i>
-        ${imovel.caracteristicas.quartos} Quartos
+        ${imovel.caracteristicas?.quartos || 0} Quartos
     </div>
-    ` : ""}
 
-    ${imovel.caracteristicas?.banheiros > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-bath"></i>
-        ${imovel.caracteristicas.banheiros} Banheiros
+        ${imovel.caracteristicas?.banheiros || 0} Banheiros
     </div>
-    ` : ""}
 
-    ${imovel.caracteristicas?.vagas > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-car"></i>
-        ${imovel.caracteristicas.vagas} Vaga(s)
+        ${imovel.caracteristicas?.vagas || 0} Vagas
     </div>
-    ` : ""}
 
-    ${imovel.caracteristicas?.suites > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-star"></i>
-        ${imovel.caracteristicas.suites} Suíte(s)
+        ${imovel.caracteristicas?.suites || 0} Suíte(s)
     </div>
-    ` : ""}
 
-    ${imovel.metragem?.areaConstruida > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-ruler-combined"></i>
-        ${imovel.metragem.areaConstruida} m² Construídos
+        ${imovel.metragem?.areaConstruida || 0} m² Construídos
     </div>
-    ` : ""}
 
-    ${imovel.metragem?.areaTerreno > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-tree"></i>
-        ${imovel.metragem.areaTerreno} m² Terreno
+        ${imovel.metragem?.areaTerreno || 0} m² Terreno
     </div>
-    ` : ""}
 
 </div>
 
