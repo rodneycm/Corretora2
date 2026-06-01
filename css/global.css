@@ -486,6 +486,44 @@ CONTEÚDO CARD
     margin-bottom:20px;
 }
 
+.card-caracteristicas{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:12px;
+
+    margin-bottom:22px;
+
+    flex-wrap:wrap;
+
+}
+
+.card-caracteristicas span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#475569;
+
+}
+
+.card-caracteristicas i{
+
+    color:#25d366;
+
+}
+
 .imovel-info{
 
     display:flex;
