@@ -785,40 +785,51 @@ imagemPrincipal.addEventListener(
 
 <div class="imovel-caracteristicas">
 
+    ${imovel.caracteristicas?.quartos > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-bed"></i>
-        ${imovel.caracteristicas?.quartos || 0} Quartos
+        ${imovel.caracteristicas.quartos} Quartos
     </div>
+    ` : ""}
 
+    ${imovel.caracteristicas?.banheiros > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-bath"></i>
-        ${imovel.caracteristicas?.banheiros || 0} Banheiros
+        ${imovel.caracteristicas.banheiros} Banheiros
     </div>
+    ` : ""}
 
+    ${imovel.caracteristicas?.vagas > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-car"></i>
-        ${imovel.caracteristicas?.vagas || 0} Vagas
+        ${imovel.caracteristicas.vagas} Vagas
     </div>
+    ` : ""}
 
+    ${imovel.caracteristicas?.suites > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-star"></i>
-        ${imovel.caracteristicas?.suites || 0} Suíte(s)
+        ${imovel.caracteristicas.suites} Suíte(s)
     </div>
+    ` : ""}
 
+    ${imovel.metragem?.areaConstruida > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-ruler-combined"></i>
-        ${imovel.metragem?.areaConstruida || 0} m² Construídos
+        ${imovel.metragem.areaConstruida} m² Construídos
     </div>
+    ` : ""}
 
+    ${imovel.metragem?.areaTerreno > 0 ? `
     <div class="caracteristica-item">
         <i class="fa-solid fa-tree"></i>
-        ${imovel.metragem?.areaTerreno || 0} m² Terreno
+        ${imovel.metragem.areaTerreno} m² Terreno
     </div>
+    ` : ""}
 
 </div>
 
 `;
-
        /* =====================================================
     INFO
     ===================================================== */
