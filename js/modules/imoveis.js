@@ -3,6 +3,32 @@ import CONFIG from "../core/config.js";
 let imoveisCache = [];
 
 /* =========================================================
+UTILITÁRIOS
+========================================================= */
+
+function arraySeguro(valor) {
+
+    return Array.isArray(valor)
+        ? valor
+        : [];
+
+}
+
+function textoSeguro(valor) {
+
+    return typeof valor === "string"
+        ? valor
+        : "";
+
+}
+
+function numeroSeguro(valor) {
+
+    return Number(valor) || 0;
+
+}
+
+/* =========================================================
 CARREGAR IMÓVEIS
 ========================================================= */
 
@@ -10,19 +36,11 @@ export async function carregarImoveis() {
 
     try {
 
-        /* =====================================================
-        CACHE
-        ===================================================== */
-
         if(imoveisCache.length > 0) {
 
             return imoveisCache;
 
         }
-
-        /* =====================================================
-        FETCH JSON
-        ===================================================== */
 
         const response =
             await fetch(CONFIG.API_URL);
@@ -38,34 +56,30 @@ export async function carregarImoveis() {
         const data =
             await response.json();
 
-        /* =====================================================
-        VALIDAR JSON
-        ===================================================== */
-
         if(
-            !data.imoveis ||
+            !data ||
             !Array.isArray(data.imoveis)
         ) {
 
             throw new Error(
-                "Estrutura do JSON inválida"
+                "Estrutura JSON inválida"
             );
 
         }
 
-        /* =====================================================
-        SALVAR CACHE
-        ===================================================== */
-
         imoveisCache =
-            data.imoveis;
+            data.imoveis.filter(
+                item =>
+                    item &&
+                    item.sistema?.publicado !== false
+            );
 
         return imoveisCache;
 
     } catch(error) {
 
         console.error(
-            "Erro ao carregar imóveis:",
+            "[IMOVEIS]",
             error
         );
 
@@ -81,13 +95,51 @@ BUSCAR IMÓVEL POR SLUG
 
 export async function buscarImovelPorSlug(slug) {
 
+    if(!slug) {
+
+        return null;
+
+    }
+
     const imoveis =
         await carregarImoveis();
 
     return imoveis.find(
+
         imovel =>
-            imovel.slug === slug
-    );
+
+            textoSeguro(
+                imovel.slug
+            ) === textoSeguro(slug)
+
+    ) || null;
+
+}
+
+/* =========================================================
+BUSCAR IMÓVEL POR ID
+========================================================= */
+
+export async function buscarImovelPorId(id) {
+
+    if(!id) {
+
+        return null;
+
+    }
+
+    const imoveis =
+        await carregarImoveis();
+
+    return imoveis.find(
+
+        imovel =>
+
+            textoSeguro(
+                imovel.id
+            ) === textoSeguro(id)
+
+    ) || null;
 
 }
 
@@ -101,8 +153,38 @@ export async function obterDestaques() {
         await carregarImoveis();
 
     return imoveis.filter(
+
         imovel =>
+
             imovel.destaque === true
+
+    );
+
+}
+
+/* =========================================================
+OBTER IMÓVEIS POR FINALIDADE
+========================================================= */
+
+export async function obterPorFinalidade(finalidade) {
+
+    const imoveis =
+        await carregarImoveis();
+
+    return imoveis.filter(
+
+        item =>
+
+            textoSeguro(
+                item.finalidade
+            ).toLowerCase()
+
+            ===
+
+            textoSeguro(
+                finalidade
+            ).toLowerCase()
+
     );
 
 }
@@ -113,19 +195,29 @@ FORMATAR PREÇO
 
 function formatarPreco(valor) {
 
-    if(!valor) {
+    const preco =
+        Number(valor) || 0;
 
-        return "Sob consulta";
+    return preco.toLocaleString(
 
-    }
-
-    return valor.toLocaleString(
         "pt-BR",
+
         {
             style: "currency",
             currency: "BRL"
         }
+
     );
+
+}
+
+/* =========================================================
+FORMATAR URL SEO
+========================================================= */
+
+function urlImovel(slug) {
+
+    return `imovel.html?slug=${encodeURIComponent(slug)}`;
 
 }
 
@@ -135,46 +227,155 @@ CRIAR CARD
 
 function criarCard(imovel) {
 
-    /* =====================================================
-    IMAGEM PRINCIPAL
-    ===================================================== */
-
     const imagemPrincipal =
 
-        imovel.midia?.thumbnail ||
+        textoSeguro(
+            imovel?.midia?.thumbnail
+        )
 
-        imovel.midia?.galeria?.[0] ||
+        ||
 
-        "assets/imoveis/placeholder.jpg";
+        textoSeguro(
+            imovel?.midia?.galeria?.[0]
+        )
 
-    /* =====================================================
-    PREÇO
-    ===================================================== */
+        ||
+
+        CONFIG.IMAGE_FALLBACK;
 
     const preco =
+
         formatarPreco(
-            imovel.preco?.valor
+            imovel?.preco?.valor
         );
 
-        const resumoCaracteristicas = `
+    const titulo =
 
-<div class="card-caracteristicas">
+        textoSeguro(
+            imovel?.titulo
+        );
 
-    ${imovel.caracteristicas?.quartos > 0
-    ? `<span><i class="fa-solid fa-bed"></i> ${imovel.caracteristicas.quartos} Quartos</span>`
-    : ""}
+    const resumo =
 
-${imovel.caracteristicas?.banheiros > 0
-    ? `<span><i class="fa-solid fa-bath"></i> ${imovel.caracteristicas.banheiros} Banheiros</span>`
-    : ""}
+        textoSeguro(
+            imovel?.descricao?.resumo
+        );
 
-${imovel.caracteristicas?.vagas > 0
-    ? `<span><i class="fa-solid fa-car"></i> ${imovel.caracteristicas.vagas} Vagas</span>`
-    : ""}
+    const bairro =
 
-</div>
+        textoSeguro(
+            imovel?.bairro
+        );
 
-`;
+    const finalidade =
+
+        textoSeguro(
+            imovel?.finalidade
+        );
+
+    const status =
+
+        textoSeguro(
+            imovel?.status
+        );
+
+    const quartos =
+        numeroSeguro(
+            imovel?.caracteristicas?.quartos
+        );
+
+    const banheiros =
+        numeroSeguro(
+            imovel?.caracteristicas?.banheiros
+        );
+
+    const vagas =
+        numeroSeguro(
+            imovel?.caracteristicas?.vagas
+        );
+
+    /* =====================================================
+    BADGES
+    ===================================================== */
+
+    let badgeStatus = "";
+
+    if(
+        status.toLowerCase() === "vendido"
+    ) {
+
+        badgeStatus =
+
+        `<span class="badge-status badge-vendido">
+            Vendido
+        </span>`;
+
+    }
+
+    if(
+        status.toLowerCase() === "alugado"
+    ) {
+
+        badgeStatus =
+
+        `<span class="badge-status badge-alugado">
+            Alugado
+        </span>`;
+
+    }
+
+    const badgeFinalidade =
+
+        finalidade
+
+        ?
+
+        `<span class="badge-finalidade">
+            ${finalidade}
+        </span>`
+
+        :
+
+        "";
+
+    /* =====================================================
+    CARACTERÍSTICAS
+    ===================================================== */
+
+    const resumoCaracteristicas = `
+
+    <div class="card-caracteristicas">
+
+        ${quartos > 0
+        ? `
+        <span>
+            <i class="fa-solid fa-bed"></i>
+            ${quartos} Quartos
+        </span>
+        `
+        : ""}
+
+        ${banheiros > 0
+        ? `
+        <span>
+            <i class="fa-solid fa-bath"></i>
+            ${banheiros} Banheiros
+        </span>
+        `
+        : ""}
+
+        ${vagas > 0
+        ? `
+        <span>
+            <i class="fa-solid fa-car"></i>
+            ${vagas} Vagas
+        </span>
+        `
+        : ""}
+
+    </div>
+
+    `;
 
     /* =====================================================
     HTML
@@ -186,30 +387,33 @@ ${imovel.caracteristicas?.vagas > 0
 
         <div class="imovel-image">
 
+            ${badgeFinalidade}
+
+            ${badgeStatus}
+
             <img
+                loading="lazy"
                 src="${imagemPrincipal}"
-                alt="${imovel.titulo}">
+                alt="${titulo}">
 
         </div>
 
         <div class="imovel-content">
 
             <h3>
-                ${imovel.titulo}
+                ${titulo}
             </h3>
 
             <p>
-
-                ${imovel.descricao?.resumo || ""}
-
+                ${resumo}
             </p>
 
-        ${resumoCaracteristicas}
+            ${resumoCaracteristicas}
 
             <div class="imovel-info">
 
                 <span>
-                    📍 ${imovel.bairro || ""}
+                    📍 ${bairro}
                 </span>
 
                 <span>
@@ -218,9 +422,9 @@ ${imovel.caracteristicas?.vagas > 0
 
             </div>
 
-           <a
+            <a
                 class="imovel-btn"
-                href="imovel.html?slug=${imovel.slug}">
+                href="${urlImovel(imovel.slug)}">
 
                 Ver imóvel
 
@@ -743,13 +947,50 @@ imagemPrincipal.addEventListener(
 );
 
     /* =====================================================
-    PREÇO
-    ===================================================== */
+PREÇO E DADOS PRINCIPAIS
+===================================================== */
 
-    const preco =
-        formatarPreco(
-            imovel.preco.valor
-        );
+const preco =
+    formatarPreco(
+        imovel.preco?.valor
+    );
+
+const bairro =
+    imovel.localizacao?.bairro ||
+    imovel.bairro ||
+    "";
+
+const cidade =
+    imovel.localizacao?.cidade ||
+    imovel.cidade ||
+    "";
+
+const estado =
+    imovel.localizacao?.estado ||
+    imovel.estado ||
+    "";
+
+const whatsapp =
+    imovel.contato?.whatsapp ||
+    CONFIG.WHATSAPP;
+
+const urlAtual =
+    window.location.href;
+
+const titulo =
+    imovel.titulo || "";
+
+const descricaoResumo =
+    imovel.descricao?.resumo ||
+    "";
+
+const imagemCompartilhamento =
+
+    imovel.midia?.thumbnail ||
+
+    imovel.midia?.galeria?.[0] ||
+
+    CONFIG.IMAGE_FALLBACK;
 
     /* =====================================================
     DIFERENCIAIS
@@ -833,103 +1074,128 @@ imagemPrincipal.addEventListener(
        /* =====================================================
     INFO
     ===================================================== */
+info.innerHTML = `
 
-    info.innerHTML = `
+    <span class="imovel-tag">
 
-        <span class="imovel-tag">
-            ${imovel.finalidade}
+        ${imovel.finalidade || ""}
+
+    </span>
+
+    <h1>
+
+        ${titulo}
+
+    </h1>
+
+    <h2>
+
+        ${preco}
+
+    </h2>
+
+    <div class="imovel-localizacao">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <span>
+
+            ${bairro},
+            ${cidade} - ${estado}
+
         </span>
 
-        <h1>
-            ${imovel.titulo}
-        </h1>
+    </div>
 
-        <h2>
-            ${preco}
-        </h2>
+    ${caracteristicas}
 
-        <div class="imovel-localizacao">
+    <p>
 
-            <i class="fa-solid fa-location-dot"></i>
+        ${imovel.subtitulo || ""}
 
-            <span>
-                ${imovel.bairro},
-                ${imovel.cidade} - ${imovel.estado}
-            </span>
+    </p>
 
-        </div>
+    <div class="descricao-imovel">
 
-        ${caracteristicas}
+        ${descricao}
 
-        <p>
-            ${imovel.subtitulo}
-        </p>
+    </div>
 
-        <div class="descricao-imovel">
-            ${descricao}
-        </div>
+    <h3>
+
+        Diferenciais
+
+    </h3>
+
+    <ul class="imovel-diferenciais">
+
+        ${diferenciais}
+
+    </ul>
+
+    <div class="imovel-compartilhar">
 
         <h3>
-            Diferenciais
+
+            Compartilhar imóvel
+
         </h3>
 
-        <ul class="imovel-diferenciais">
-            ${diferenciais}
-        </ul>
+        <div class="compartilhar-botoes">
 
-        <div class="imovel-compartilhar">
+            <button
+                id="compartilhar-whatsapp"
+                class="btn-compartilhar">
 
-            <h3>
-                Compartilhar imóvel
-            </h3>
+                <i class="fab fa-whatsapp"></i>
 
-            <div class="compartilhar-botoes">
+                WhatsApp
 
-                <button
-                    id="compartilhar-whatsapp"
-                    class="btn-compartilhar">
+            </button>
 
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp
+            <button
+                id="compartilhar-facebook"
+                class="btn-compartilhar">
 
-                </button>
+                <i class="fab fa-facebook-f"></i>
 
-                <button
-                    id="compartilhar-facebook"
-                    class="btn-compartilhar">
+                Facebook
 
-                    <i class="fab fa-facebook-f"></i>
-                    Facebook
+            </button>
 
-                </button>
+            <button
+                id="copiar-link"
+                class="btn-compartilhar">
 
-                <button
-                    id="copiar-link"
-                    class="btn-compartilhar">
+                <i class="fa-solid fa-link"></i>
 
-                    <i class="fa-solid fa-link"></i>
-                    Copiar Link
+                Copiar Link
 
-                </button>
-
-            </div>
+            </button>
 
         </div>
 
-        <a
-            class="imovel-whatsapp"
-            target="_blank"
-            href="https://wa.me/${imovel.contato.whatsapp}?text=Olá,%20tenho%20interesse%20no%20imóvel%20${imovel.titulo}">
+    </div>
 
-            <i class="fab fa-whatsapp"></i>
+    <a
+        class="imovel-whatsapp"
+        target="_blank"
+        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(
+            `Olá, tenho interesse no imóvel ${titulo}`
+        )}">
 
-            Falar sobre este imóvel
+        <i class="fab fa-whatsapp"></i>
 
-        </a>
+        Falar sobre este imóvel
 
-    `;
+    </a>
 
+`;
+  
     /* =====================================================
+IMÓVEIS RELACIONADOS
+===================================================== */
+/* =====================================================
 IMÓVEIS RELACIONADOS
 ===================================================== */
 
@@ -945,69 +1211,112 @@ if(containerRelacionados){
 
     const relacionados =
         todosImoveis
+
         .filter(item =>
 
             item.slug !== imovel.slug &&
 
-            item.finalidade ===
-            imovel.finalidade &&
-
-            item.cidade ===
-            imovel.cidade
+            (
+                item.finalidade ===
+                imovel.finalidade
+            )
 
         )
-        .slice(0,3);
+
+        .slice(0, 3);
 
     if(relacionados.length > 0){
 
         containerRelacionados.innerHTML = `
 
-            <h2>
+            <h2 class="titulo-relacionados">
+
                 Você também pode gostar
+
             </h2>
 
             <div class="relacionados-grid">
 
-                ${relacionados.map(item => `
+                ${relacionados.map(item => {
 
-                    <article class="relacionado-card">
+                    const imagem =
 
-                        <img
-                            src="${item.midia?.thumbnail || item.midia?.galeria?.[0]}"
-                            alt="${item.titulo}">
+                        item.midia?.thumbnail ||
 
-                        <div class="relacionado-content">
+                        item.midia?.galeria?.[0] ||
 
-                            <h3>
-                                ${item.titulo}
-                            </h3>
+                        CONFIG.IMAGE_FALLBACK;
 
-                            <div class="relacionado-local">
+                    const precoRelacionado =
 
-                                ${item.bairro},
-                                ${item.cidade}
+                        formatarPreco(
+                            item.preco?.valor
+                        );
+
+                    const bairroRelacionado =
+
+                        item.localizacao?.bairro ||
+
+                        item.bairro ||
+
+                        "";
+
+                    const cidadeRelacionada =
+
+                        item.localizacao?.cidade ||
+
+                        item.cidade ||
+
+                        "";
+
+                    return `
+
+                        <article
+                            class="relacionado-card">
+
+                            <img
+                                src="${imagem}"
+                                alt="${item.titulo}">
+
+                            <div
+                                class="relacionado-content">
+
+                                <h3>
+
+                                    ${item.titulo}
+
+                                </h3>
+
+                                <div
+                                    class="relacionado-local">
+
+                                    ${bairroRelacionado}
+                                    ${cidadeRelacionada ? ` - ${cidadeRelacionada}` : ""}
+
+                                </div>
+
+                                <div
+                                    class="relacionado-preco">
+
+                                    ${precoRelacionado}
+
+                                </div>
+
+                                <a
+                                    class="relacionado-btn"
+                                    href="${urlImovel(item.slug)}">
+
+                                    Ver imóvel
+
+                                </a>
 
                             </div>
 
-                            <div class="relacionado-preco">
+                        </article>
 
-                                ${formatarPreco(item.preco?.valor)}
+                    `;
 
-                            </div>
-
-                            <a
-                                class="relacionado-btn"
-                                href="imovel.html?slug=${item.slug}">
-
-                                Ver imóvel
-
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                `).join("")}
+                }).join("")}
 
             </div>
 
@@ -1016,7 +1325,8 @@ if(containerRelacionados){
     }
 
 }
-    /* =====================================================
+
+/* =====================================================
     SEO DINÂMICO
     ===================================================== */
 
