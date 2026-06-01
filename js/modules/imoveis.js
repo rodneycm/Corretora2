@@ -161,16 +161,16 @@ function criarCard(imovel) {
 <div class="card-caracteristicas">
 
     ${imovel.caracteristicas?.quartos > 0
-        ? `<span><i class="fa-solid fa-bed"></i> ${imovel.caracteristicas.quartos}</span>`
-        : ""}
+    ? `<span><i class="fa-solid fa-bed"></i> ${imovel.caracteristicas.quartos} Quartos</span>`
+    : ""}
 
-    ${imovel.caracteristicas?.banheiros > 0
-        ? `<span><i class="fa-solid fa-bath"></i> ${imovel.caracteristicas.banheiros}</span>`
-        : ""}
+${imovel.caracteristicas?.banheiros > 0
+    ? `<span><i class="fa-solid fa-bath"></i> ${imovel.caracteristicas.banheiros} Banheiros</span>`
+    : ""}
 
-    ${imovel.caracteristicas?.vagas > 0
-        ? `<span><i class="fa-solid fa-car"></i> ${imovel.caracteristicas.vagas}</span>`
-        : ""}
+${imovel.caracteristicas?.vagas > 0
+    ? `<span><i class="fa-solid fa-car"></i> ${imovel.caracteristicas.vagas} Vagas</span>`
+    : ""}
 
 </div>
 
