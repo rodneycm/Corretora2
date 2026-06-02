@@ -1142,24 +1142,29 @@ info.innerHTML = `
 
 </div>
 
-<div class="imovel-codigo">
+<div class="imovel-meta">
 
-    <strong>Código:</strong>
+    <div class="imovel-codigo">
 
-    ${imovel.codigo || "N/D"}
+        <strong>Código:</strong>
 
-</div>
+        ${imovel.codigo || "N/D"}
 
-<div class="imovel-status">
+    </div>
 
-    <span class="
-        status-badge
-        status-${(imovel.status || '').toLowerCase()}
-    ">
+    <div class="imovel-status">
 
-        ${imovel.status || "Disponível"}
+        <span class="
+            status-badge
+            status-${(imovel.status || '').toLowerCase()}
+        ">
 
-    </span>
+            ${(imovel.status || "Disponivel")
+                .replace("Disponivel","Disponível")}
+
+        </span>
+
+    </div>
 
 </div>
 

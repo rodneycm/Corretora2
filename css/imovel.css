@@ -795,7 +795,11 @@ STATUS DO IMÓVEL
 
 .status-badge{
 
-    display:inline-block;
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
 
     padding:8px 14px;
 
@@ -804,6 +808,20 @@ STATUS DO IMÓVEL
     font-size:13px;
 
     font-weight:600;
+
+}
+
+.status-badge::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:currentColor;
 
 }
 
@@ -834,5 +852,23 @@ STATUS DO IMÓVEL
     background:#fff4e5;
 
     color:#e67e22;
+
+}
+
+/* =====================================================
+META DO IMÓVEL
+===================================================== */
+
+.imovel-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
 
 }
