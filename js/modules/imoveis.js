@@ -1327,24 +1327,212 @@ if(containerRelacionados){
 }
 
 /* =====================================================
-    SEO DINÂMICO
-    ===================================================== */
+SEO DINÂMICO
+===================================================== */
 
-    document.title =
-        imovel.seo.title;
+document.title =
 
-    const metaDescription =
-        document.querySelector(
-            'meta[name="description"]'
-        );
+    imovel.seo?.title ||
 
-    if(metaDescription) {
+    `${titulo} | ${CONFIG.SITE_NAME}`;
 
-        metaDescription.setAttribute(
-            "content",
-            imovel.seo.description
+/* =====================================================
+META DESCRIPTION
+===================================================== */
+
+const metaDescription =
+
+    document.querySelector(
+        'meta[name="description"]'
+    );
+
+if(metaDescription){
+
+    metaDescription.setAttribute(
+
+        "content",
+
+        imovel.seo?.description ||
+
+        descricaoResumo
+
+    );
+
+}
+
+/* =====================================================
+OPEN GRAPH TITLE
+===================================================== */
+
+let ogTitle =
+
+    document.querySelector(
+        'meta[property="og:title"]'
+    );
+
+if(ogTitle){
+
+    ogTitle.setAttribute(
+
+        "content",
+
+        imovel.seo?.title ||
+
+        titulo
+
+    );
+
+}
+
+/* =====================================================
+OPEN GRAPH DESCRIPTION
+===================================================== */
+
+let ogDescription =
+
+    document.querySelector(
+        'meta[property="og:description"]'
+    );
+
+if(ogDescription){
+
+    ogDescription.setAttribute(
+
+        "content",
+
+        imovel.seo?.description ||
+
+        descricaoResumo
+
+    );
+
+}
+
+/* =====================================================
+OPEN GRAPH IMAGE
+===================================================== */
+
+let ogImage =
+
+    document.querySelector(
+        'meta[property="og:image"]'
+    );
+
+if(ogImage){
+
+    ogImage.setAttribute(
+
+        "content",
+
+        imagemCompartilhamento
+
+    );
+
+}
+
+/* =====================================================
+OPEN GRAPH URL
+===================================================== */
+
+let ogUrl =
+
+    document.querySelector(
+        'meta[property="og:url"]'
+    );
+
+if(ogUrl){
+
+    ogUrl.setAttribute(
+
+        "content",
+
+        urlAtual
+
+    );
+
+}
+
+/* =====================================================
+COMPARTILHAMENTO WHATSAPP
+===================================================== */
+
+document
+.getElementById(
+    "compartilhar-whatsapp"
+)
+?.addEventListener(
+    "click",
+    () => {
+
+        const mensagem =
+
+            `${titulo}\n\n${urlAtual}`;
+
+        window.open(
+
+            `https://wa.me/?text=${encodeURIComponent(mensagem)}`,
+
+            "_blank"
+
         );
 
     }
+);
+
+/* =====================================================
+COMPARTILHAMENTO FACEBOOK
+===================================================== */
+
+document
+.getElementById(
+    "compartilhar-facebook"
+)
+?.addEventListener(
+    "click",
+    () => {
+
+        window.open(
+
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
+
+            "_blank"
+
+        );
+
+    }
+);
+
+/* =====================================================
+COPIAR LINK
+===================================================== */
+
+document
+.getElementById(
+    "copiar-link"
+)
+?.addEventListener(
+    "click",
+
+    async () => {
+
+        try {
+
+            await navigator.clipboard.writeText(
+                urlAtual
+            );
+
+            alert(
+                "Link copiado com sucesso!"
+            );
+
+        } catch(error){
+
+            console.error(error);
+
+        }
+
+    }
+
+);
 
 }
