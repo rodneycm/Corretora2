@@ -730,3 +730,33 @@ font-size:26px;
 }
 
 }
+
+/* =====================================================
+BREADCRUMB
+===================================================== */
+
+.breadcrumb{
+
+    max-width:1200px;
+
+    margin:20px auto;
+
+    padding:0 20px;
+
+    font-size:14px;
+
+}
+
+.breadcrumb a{
+
+    text-decoration:none;
+
+    color:var(--primary-color);
+
+}
+
+.breadcrumb span{
+
+    margin:0 4px;
+
+}

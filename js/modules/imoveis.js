@@ -1073,6 +1073,39 @@ const imagemCompartilhamento =
 </div>
 
 `;
+
+/* =====================================================
+BREADCRUMB
+===================================================== */
+
+const breadcrumb =
+    document.getElementById(
+        "breadcrumb"
+    );
+
+if(breadcrumb){
+
+    breadcrumb.innerHTML = `
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <span>/</span>
+
+        <a href="comprar.html">
+            ${imovel.finalidade}
+        </a>
+
+        <span>/</span>
+
+        <span>
+            ${imovel.titulo}
+        </span>
+
+    `;
+
+}
        /* =====================================================
     INFO
     ===================================================== */
