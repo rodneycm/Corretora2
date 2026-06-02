@@ -1106,6 +1106,44 @@ if(breadcrumb){
     `;
 
 }
+
+/* =====================================================
+LOCALIZAÇÃO
+===================================================== */
+
+const localizacaoCompleta = `
+
+    <div class="localizacao-completa">
+
+        <h3>
+
+            Localização
+
+        </h3>
+
+        <p>
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            ${bairro}, ${cidade} - ${estado}
+
+        </p>
+
+        ${imovel.endereco?.referencia ? `
+
+            <p class="localizacao-referencia">
+
+                <strong>Referência:</strong>
+
+                ${imovel.endereco.referencia}
+
+            </p>
+
+        ` : ""}
+
+    </div>
+
+`;
        /* =====================================================
     INFO
     ===================================================== */
@@ -1170,11 +1208,13 @@ info.innerHTML = `
 
 ${caracteristicas}
 
-    <p>
+${localizacaoCompleta}
 
-        ${imovel.subtitulo || ""}
+<p>
 
-    </p>
+    ${imovel.subtitulo || ""}
+
+</p>
 
     <div class="descricao-imovel">
 

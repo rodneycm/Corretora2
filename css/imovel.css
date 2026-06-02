@@ -872,3 +872,49 @@ META DO IMÓVEL
     flex-wrap:wrap;
 
 }
+
+/* =====================================================
+LOCALIZAÇÃO COMPLETA
+===================================================== */
+
+.localizacao-completa{
+
+    margin:25px 0;
+
+    padding:20px;
+
+    background:#f8fafc;
+
+    border-radius:16px;
+
+}
+
+.localizacao-completa h3{
+
+    margin-bottom:12px;
+
+    color:#0f172a;
+
+}
+
+.localizacao-completa p{
+
+    margin:0;
+
+    color:#475569;
+
+}
+
+.localizacao-completa i{
+
+    color:#25d366;
+
+    margin-right:8px;
+
+}
+
+.localizacao-referencia{
+
+    margin-top:10px !important;
+
+}
