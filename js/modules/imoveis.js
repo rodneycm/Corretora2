@@ -455,6 +455,62 @@ export async function renderizarImoveisVenda() {
 
     }
 
+    /* =========================================================
+RENDERIZAR IMÓVEIS ALUGUEL
+========================================================= */
+
+export async function renderizarImoveisAluguel() {
+
+    const container =
+        document.getElementById(
+            "lista-imoveis-aluguel"
+        );
+
+    if(!container) {
+
+        return;
+
+    }
+
+    const imoveis =
+        await carregarImoveis();
+
+    const aluguel =
+        imoveis.filter(
+
+            item =>
+
+                item.finalidade &&
+
+                item.finalidade
+                    .toLowerCase() === "aluguel"
+
+        );
+
+    if(aluguel.length === 0) {
+
+        container.innerHTML = `
+
+            <p class="sem-imoveis">
+
+                Nenhum imóvel encontrado.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML =
+
+        aluguel
+            .map(imovel => criarCard(imovel))
+            .join("");
+
+}
+
     /* =====================================================
     CARREGAR IMÓVEIS
     ===================================================== */

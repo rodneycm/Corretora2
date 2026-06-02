@@ -1,5 +1,6 @@
 import {
     renderizarImoveisVenda,
+    renderizarImoveisAluguel,
     renderizarPaginaImovel
 }
 from "../modules/imoveis.js";
@@ -25,6 +26,16 @@ document.addEventListener(
             await renderizarImoveisVenda();
 
         }
+
+        if(
+            document.getElementById(
+              "lista-imoveis-aluguel"
+             )
+        ) {
+
+    await renderizarImoveisAluguel();
+
+}
 
         /* =========================================
         PÁGINA DO IMÓVEL
