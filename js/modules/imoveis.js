@@ -1131,18 +1131,26 @@ info.innerHTML = `
 
     <div class="imovel-localizacao">
 
-        <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot"></i>
 
-        <span>
+    <span>
 
-            ${bairro},
-            ${cidade} - ${estado}
+        ${bairro},
+        ${cidade} - ${estado}
 
-        </span>
+    </span>
 
-    </div>
+</div>
 
-    ${caracteristicas}
+<div class="imovel-codigo">
+
+    <strong>Código:</strong>
+
+    ${imovel.codigo || "N/D"}
+
+</div>
+
+${caracteristicas}
 
     <p>
 
@@ -1226,10 +1234,7 @@ info.innerHTML = `
     </a>
 
 `;
-  
-    /* =====================================================
-IMÓVEIS RELACIONADOS
-===================================================== */
+
 /* =====================================================
 IMÓVEIS RELACIONADOS
 ===================================================== */

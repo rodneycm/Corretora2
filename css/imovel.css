@@ -760,3 +760,25 @@ BREADCRUMB
     margin:0 4px;
 
 }
+
+/* =====================================================
+CÓDIGO DO IMÓVEL
+===================================================== */
+
+.imovel-codigo{
+
+    margin-top:10px;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+
+    color:#666;
+
+}
+
+.imovel-codigo strong{
+
+    color:#222;
+
+}
