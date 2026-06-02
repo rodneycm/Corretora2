@@ -986,11 +986,13 @@ const descricaoResumo =
 
 const imagemCompartilhamento =
 
-    imovel.midia?.thumbnail ||
-
-    imovel.midia?.galeria?.[0] ||
-
-    CONFIG.IMAGE_FALLBACK;
+    `${CONFIG.SITE_URL}/${
+        (
+            imovel.midia?.thumbnail ||
+            imovel.midia?.galeria?.[0] ||
+            CONFIG.IMAGE_FALLBACK
+        ).replace(/^\.?\//, "")
+    }`;
 
     /* =====================================================
     DIFERENCIAIS
