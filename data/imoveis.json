@@ -27,7 +27,7 @@
 
       "finalidade": "Venda",
 
-      "status":"Disponivel",
+      "status":"disponivel",
 
       "destaque": true,
 
@@ -176,7 +176,7 @@
 
   "finalidade": "Venda",
 
-  "status": "Disponivel",
+  "status": "disponível",
 
   "destaque": true,
 
@@ -303,8 +303,154 @@
     "publicado": true
    }
 
-    }
+    },
+{
+  "id": "recanto-das-pimenteiras-ii",
 
-  ]
+  "slug": "apartamento-mobiliado-recanto-das-pimenteiras-ii",
+
+  "titulo": "Apartamento Mobiliado no Recanto das Pimenteiras II",
+
+  "subtitulo": "Apartamento pronto para morar em condomínio familiar e seguro.",
+
+  "codigo": "SCA001",
+
+  "tipo": "Apartamento",
+
+  "categoria": "Residencial",
+
+  "finalidade": "Aluguel",
+
+  "status": "disponivel",
+
+  "destaque": true,
+
+  "exibirNaHome": true,
+
+  "bairro": "Pimenteiras",
+
+  "cidade": "Teresópolis",
+
+  "estado": "RJ",
+
+  "endereco": {
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "cep": "",
+    "referencia": "Condomínio Recanto das Pimenteiras II"
+  },
+
+  "localizacao": {
+    "latitude": "",
+    "longitude": ""
+  },
+
+  "preco": {
+    "valor": 2000,
+    "condominio": 0,
+    "iptu": 0,
+    "moeda": "BRL"
+  },
+
+  "metragem": {
+    "areaTerreno": 0,
+    "areaConstruida": 50,
+    "unidade": "m²"
+  },
+
+  "caracteristicas": {
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "salas": 1,
+    "andares": 3,
+    "aceitaPet": true,
+    "mobiliado": true
+  },
+
+  "diferenciais": [
+    "Totalmente mobiliado",
+    "Aceita pet de pequeno porte",
+    "Churrasqueira",
+    "Parquinho infantil",
+    "Bicicletário",
+    "Condomínio familiar",
+    "Excelente localização"
+  ],
+
+  "descricao": {
+    "resumo": "Apartamento mobiliado de 2 quartos em Pimenteiras com lazer e excelente localização.",
+
+    "completa": [
+      "Apartamento totalmente mobiliado pronto para morar no condomínio Recanto das Pimenteiras II.",
+      "Possui 2 quartos, sala aconchegante, cozinha equipada e banheiro moderno.",
+      "Localizado no terceiro andar com apenas dois lances de escada.",
+      "Condomínio com churrasqueira, parquinho infantil e bicicletário.",
+      "Excelente opção para casal, pequena família ou profissionais que buscam praticidade.",
+      "Aceita pet de pequeno porte."
+    ]
+  },
+
+  "midia": {
+
+    "thumbnail": "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto1.jpg",
+
+    "galeria": [
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto1.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto2.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto3.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto4.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto5.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto6.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto7.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto8.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto9.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto10.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto11.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto12.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto13.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto14.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto15.jpg",
+      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto16.jpg"
+    ],
+
+    "videoTour": "",
+    "youtube": "",
+    "planta": ""
+  },
+
+  "seo": {
+    "title": "Apartamento Mobiliado para Aluguel em Pimenteiras | Stephanie Campos",
+
+    "description": "Apartamento mobiliado para aluguel em Pimenteiras, Teresópolis. Condomínio com churrasqueira, parquinho e bicicletário.",
+
+    "keywords": [
+      "apartamento aluguel Teresópolis",
+      "apartamento mobiliado Teresópolis",
+      "Pimenteiras",
+      "Recanto das Pimenteiras II"
+    ]
+  },
+
+  "contato": {
+    "corretor": "Stephanie Campos",
+    "telefone": "(21) 98932-1485",
+    "whatsapp": "5521989321485"
+  },
+
+  "sistema": {
+    "views": 0,
+    "favoritos": 0,
+    "leads": 0,
+    "createdAt": "2026-06-02",
+    "updatedAt": "2026-06-02",
+    "publicado": true
+  }
+
+}
+
+]
 
 }
