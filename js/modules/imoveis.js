@@ -455,7 +455,46 @@ export async function renderizarImoveisVenda() {
 
     }
 
-    /* =========================================================
+    const imoveis =
+        await carregarImoveis();
+
+    const venda =
+        imoveis.filter(
+
+            item =>
+
+                item.finalidade &&
+
+                item.finalidade
+                    .toLowerCase() === "venda"
+
+        );
+
+    if(venda.length === 0) {
+
+        container.innerHTML = `
+
+            <p class="sem-imoveis">
+
+                Nenhum imóvel encontrado.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML =
+
+        venda
+            .map(imovel => criarCard(imovel))
+            .join("");
+
+}
+
+/* =========================================================
 RENDERIZAR IMÓVEIS ALUGUEL
 ========================================================= */
 
@@ -506,61 +545,6 @@ export async function renderizarImoveisAluguel() {
     container.innerHTML =
 
         aluguel
-            .map(imovel => criarCard(imovel))
-            .join("");
-
-}
-
-    /* =====================================================
-    CARREGAR IMÓVEIS
-    ===================================================== */
-
-    const imoveis =
-        await carregarImoveis();
-
-    /* =====================================================
-    FILTRAR VENDA
-    ===================================================== */
-
-    const venda =
-        imoveis.filter(
-
-            item =>
-
-                item.finalidade &&
-
-                item.finalidade
-                    .toLowerCase() === "venda"
-
-        );
-
-    /* =====================================================
-    SEM RESULTADOS
-    ===================================================== */
-
-    if(venda.length === 0) {
-
-        container.innerHTML = `
-
-            <p class="sem-imoveis">
-
-                Nenhum imóvel encontrado.
-
-            </p>
-
-        `;
-
-        return;
-
-    }
-
-    /* =====================================================
-    RENDERIZAR
-    ===================================================== */
-
-    container.innerHTML =
-
-        venda
             .map(imovel => criarCard(imovel))
             .join("");
 
