@@ -1150,6 +1150,19 @@ info.innerHTML = `
 
 </div>
 
+<div class="imovel-status">
+
+    <span class="
+        status-badge
+        status-${(imovel.status || '').toLowerCase()}
+    ">
+
+        ${imovel.status || "Disponível"}
+
+    </span>
+
+</div>
+
 ${caracteristicas}
 
     <p>
