@@ -36,7 +36,7 @@ export async function carregarImoveis() {
 
     try {
 
-        if(imoveisCache.length > 0) {
+        if (imoveisCache.length > 0) {
 
             return imoveisCache;
 
@@ -45,7 +45,7 @@ export async function carregarImoveis() {
         const response =
             await fetch(CONFIG.API_URL);
 
-        if(!response.ok) {
+        if (!response.ok) {
 
             throw new Error(
                 "Erro ao carregar imóveis"
@@ -56,7 +56,7 @@ export async function carregarImoveis() {
         const data =
             await response.json();
 
-        if(
+        if (
             !data ||
             !Array.isArray(data.imoveis)
         ) {
@@ -76,7 +76,7 @@ export async function carregarImoveis() {
 
         return imoveisCache;
 
-    } catch(error) {
+    } catch (error) {
 
         console.error(
             "[IMOVEIS]",
@@ -95,7 +95,7 @@ BUSCAR IMÓVEL POR SLUG
 
 export async function buscarImovelPorSlug(slug) {
 
-    if(!slug) {
+    if (!slug) {
 
         return null;
 
@@ -122,7 +122,7 @@ BUSCAR IMÓVEL POR ID
 
 export async function buscarImovelPorId(id) {
 
-    if(!id) {
+    if (!id) {
 
         return null;
 
@@ -154,14 +154,14 @@ export async function obterDestaques() {
 
     return imoveis.filter(
 
-    imovel =>
+        imovel =>
 
-        imovel.destaque === true
+            imovel.destaque === true
 
-);
+    );
 
 }
-    /* =========================================================
+/* =========================================================
 RENDERIZAR DESTAQUES HOME
 ========================================================= */
 
@@ -172,7 +172,7 @@ export async function renderizarDestaquesHome() {
             "imoveis-destaque-home"
         );
 
-    if(!container) {
+    if (!container) {
 
         return;
 
@@ -181,7 +181,7 @@ export async function renderizarDestaquesHome() {
     const destaques =
         await obterDestaques();
 
-    if(destaques.length === 0) {
+    if (destaques.length === 0) {
 
         container.innerHTML = `
 
@@ -345,25 +345,25 @@ export function criarCard(imovel) {
 
     let badgeStatus = "";
 
-    if(
+    if (
         status.toLowerCase() === "vendido"
     ) {
 
         badgeStatus =
 
-        `<span class="badge-status badge-vendido">
+            `<span class="badge-status badge-vendido">
             Vendido
         </span>`;
 
     }
 
-    if(
+    if (
         status.toLowerCase() === "alugado"
     ) {
 
         badgeStatus =
 
-        `<span class="badge-status badge-alugado">
+            `<span class="badge-status badge-alugado">
             Alugado
         </span>`;
 
@@ -373,15 +373,15 @@ export function criarCard(imovel) {
 
         finalidade
 
-        ?
+            ?
 
-        `<span class="badge-finalidade">
+            `<span class="badge-finalidade">
             ${finalidade}
         </span>`
 
-        :
+            :
 
-        "";
+            "";
 
     /* =====================================================
     CARACTERÍSTICAS
@@ -392,31 +392,31 @@ export function criarCard(imovel) {
     <div class="card-caracteristicas">
 
         ${quartos > 0
-        ? `
+            ? `
         <span>
             <i class="fa-solid fa-bed"></i>
             ${quartos} Quartos
         </span>
         `
-        : ""}
+            : ""}
 
         ${banheiros > 0
-        ? `
+            ? `
         <span>
             <i class="fa-solid fa-bath"></i>
             ${banheiros} Banheiros
         </span>
         `
-        : ""}
+            : ""}
 
         ${vagas > 0
-        ? `
+            ? `
         <span>
             <i class="fa-solid fa-car"></i>
             ${vagas} Vagas
         </span>
         `
-        : ""}
+            : ""}
 
     </div>
 
@@ -494,7 +494,7 @@ export async function renderizarImoveisVenda() {
             "lista-imoveis"
         );
 
-    if(!container) {
+    if (!container) {
 
         return;
 
@@ -515,7 +515,7 @@ export async function renderizarImoveisVenda() {
 
         );
 
-    if(venda.length === 0) {
+    if (venda.length === 0) {
 
         container.innerHTML = `
 
@@ -550,7 +550,7 @@ export async function renderizarImoveisAluguel() {
             "lista-imoveis-aluguel"
         );
 
-    if(!container) {
+    if (!container) {
 
         return;
 
@@ -571,7 +571,7 @@ export async function renderizarImoveisAluguel() {
 
         );
 
-    if(aluguel.length === 0) {
+    if (aluguel.length === 0) {
 
         container.innerHTML = `
 
@@ -613,7 +613,7 @@ export async function renderizarPaginaImovel() {
     const slug =
         params.get("slug");
 
-    if(!slug) return;
+    if (!slug) return;
 
     /* =====================================================
     BUSCAR IMÓVEL
@@ -622,7 +622,7 @@ export async function renderizarPaginaImovel() {
     const imovel =
         await buscarImovelPorSlug(slug);
 
-    if(!imovel) {
+    if (!imovel) {
 
         console.error(
             "Imóvel não encontrado"
@@ -646,23 +646,23 @@ export async function renderizarPaginaImovel() {
             "imovel-info"
         );
 
-    if(!galeria || !info) return;
+    if (!galeria || !info) return;
 
-  /* =====================================================
-GALERIA
-===================================================== */
+    /* =====================================================
+  GALERIA
+  ===================================================== */
 
-const galeriaImagens =
-    imovel.midia?.galeria || [];
+    const galeriaImagens =
+        imovel.midia?.galeria || [];
 
-const fotoPrincipal =
-    galeriaImagens[0] ||
-    "assets/imoveis/placeholder.jpg";
+    const fotoPrincipal =
+        galeriaImagens[0] ||
+        "assets/imoveis/placeholder.jpg";
 
-const miniaturas =
-    galeriaImagens
-    .map(
-        (imagem, index) => `
+    const miniaturas =
+        galeriaImagens
+            .map(
+                (imagem, index) => `
 
         <img
             class="thumb-imovel ${index === 0 ? "thumb-ativa" : ""}"
@@ -671,10 +671,10 @@ const miniaturas =
             alt="${imovel.titulo}">
 
         `
-    )
-    .join("");
+            )
+            .join("");
 
-galeria.innerHTML = `
+    galeria.innerHTML = `
 
     <div class="foto-principal">
 
@@ -709,158 +709,158 @@ galeria.innerHTML = `
 
 `;
 
-let indiceAtual = 0;
+    let indiceAtual = 0;
 
-const imagemPrincipal =
-    document.getElementById(
-        "imagem-principal"
-    );
-
-const miniaturasDOM =
-    document.querySelectorAll(
-        ".thumb-imovel"
-    );
-
-function atualizarGaleria(index) {
-
-    indiceAtual = index;
-
-    imagemPrincipal.src =
-        galeriaImagens[index];
-
-    miniaturasDOM.forEach(
-        thumb =>
-            thumb.classList.remove(
-                "thumb-ativa"
-            )
-    );
-
-    miniaturasDOM[index]
-        ?.classList.add(
-            "thumb-ativa"
+    const imagemPrincipal =
+        document.getElementById(
+            "imagem-principal"
         );
 
-}
+    const miniaturasDOM =
+        document.querySelectorAll(
+            ".thumb-imovel"
+        );
 
-miniaturasDOM.forEach(
-    thumb => {
+    function atualizarGaleria(index) {
 
-        thumb.addEventListener(
+        indiceAtual = index;
+
+        imagemPrincipal.src =
+            galeriaImagens[index];
+
+        miniaturasDOM.forEach(
+            thumb =>
+                thumb.classList.remove(
+                    "thumb-ativa"
+                )
+        );
+
+        miniaturasDOM[index]
+            ?.classList.add(
+                "thumb-ativa"
+            );
+
+    }
+
+    miniaturasDOM.forEach(
+        thumb => {
+
+            thumb.addEventListener(
+                "click",
+                () => {
+
+                    atualizarGaleria(
+                        Number(
+                            thumb.dataset.index
+                        )
+                    );
+
+                }
+            );
+
+        }
+    );
+
+    document
+        .getElementById(
+            "btn-anterior"
+        )
+        ?.addEventListener(
             "click",
             () => {
 
+                indiceAtual--;
+
+                if (indiceAtual < 0) {
+
+                    indiceAtual =
+                        galeriaImagens.length - 1;
+
+                }
+
                 atualizarGaleria(
-                    Number(
-                        thumb.dataset.index
-                    )
+                    indiceAtual
                 );
 
             }
         );
 
-    }
-);
+    document
+        .getElementById(
+            "btn-proximo"
+        )
+        ?.addEventListener(
+            "click",
+            () => {
 
-document
-.getElementById(
-    "btn-anterior"
-)
-?.addEventListener(
-    "click",
-    () => {
+                indiceAtual++;
 
-        indiceAtual--;
+                if (
+                    indiceAtual >=
+                    galeriaImagens.length
+                ) {
 
-        if(indiceAtual < 0) {
+                    indiceAtual = 0;
 
-            indiceAtual =
-                galeriaImagens.length - 1;
+                }
 
-        }
+                atualizarGaleria(
+                    indiceAtual
+                );
 
-        atualizarGaleria(
-            indiceAtual
+            }
         );
 
-    }
-);
+    document.addEventListener(
+        "keydown",
+        event => {
 
-document
-.getElementById(
-    "btn-proximo"
-)
-?.addEventListener(
-    "click",
-    () => {
+            if (
+                event.key ===
+                "ArrowLeft"
+            ) {
 
-        indiceAtual++;
+                document
+                    .getElementById(
+                        "btn-anterior"
+                    )
+                    ?.click();
 
-        if(
-            indiceAtual >=
-            galeriaImagens.length
-        ) {
+            }
 
-            indiceAtual = 0;
+            if (
+                event.key ===
+                "ArrowRight"
+            ) {
 
-        }
+                document
+                    .getElementById(
+                        "btn-proximo"
+                    )
+                    ?.click();
 
-        atualizarGaleria(
-            indiceAtual
-        );
-
-    }
-);
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key ===
-            "ArrowLeft"
-        ) {
-
-            document
-            .getElementById(
-                "btn-anterior"
-            )
-            ?.click();
+            }
 
         }
+    );
 
-        if(
-            event.key ===
-            "ArrowRight"
-        ) {
+    /* =====================================================
+    LIGHTBOX
+    ===================================================== */
 
-            document
-            .getElementById(
-                "btn-proximo"
-            )
-            ?.click();
+    imagemPrincipal.style.cursor = "zoom-in";
 
-        }
+    imagemPrincipal.addEventListener(
+        "click",
+        () => {
 
-    }
-);
+            const lightbox =
+                document.createElement("div");
 
-/* =====================================================
-LIGHTBOX
-===================================================== */
+            lightbox.className =
+                "lightbox-imovel";
 
-imagemPrincipal.style.cursor = "zoom-in";
-
-imagemPrincipal.addEventListener(
-    "click",
-    () => {
-
-        const lightbox =
-            document.createElement("div");
-
-        lightbox.className =
-            "lightbox-imovel";
-
-        lightbox.innerHTML = `
+            lightbox.innerHTML = `
 
             <button
                 class="lightbox-fechar">
@@ -889,195 +889,194 @@ imagemPrincipal.addEventListener(
 
         `;
 
-        document.body.appendChild(
+            document.body.appendChild(
+                lightbox
+            );
+
+            const imagemLightbox =
+                lightbox.querySelector(
+                    ".lightbox-img"
+                );
+
+            function atualizarLightbox() {
+
+                imagemLightbox.src =
+                    galeriaImagens[indiceAtual];
+
+            }
+
             lightbox
-        );
+                .querySelector(
+                    ".lightbox-anterior"
+                )
+                .addEventListener(
+                    "click",
+                    () => {
 
-        const imagemLightbox =
-            lightbox.querySelector(
-                ".lightbox-img"
-            );
+                        indiceAtual--;
 
-        function atualizarLightbox() {
+                        if (indiceAtual < 0) {
 
-            imagemLightbox.src =
-                galeriaImagens[indiceAtual];
+                            indiceAtual =
+                                galeriaImagens.length - 1;
 
-        }
+                        }
 
-        lightbox
-        .querySelector(
-            ".lightbox-anterior"
-        )
-        .addEventListener(
-            "click",
-            () => {
+                        atualizarLightbox();
 
-                indiceAtual--;
+                    }
+                );
 
-                if(indiceAtual < 0) {
+            lightbox
+                .querySelector(
+                    ".lightbox-proximo"
+                )
+                .addEventListener(
+                    "click",
+                    () => {
 
-                    indiceAtual =
-                        galeriaImagens.length - 1;
+                        indiceAtual++;
 
-                }
+                        if (
+                            indiceAtual >=
+                            galeriaImagens.length
+                        ) {
 
-                atualizarLightbox();
+                            indiceAtual = 0;
 
-            }
-        );
+                        }
 
-        lightbox
-        .querySelector(
-            ".lightbox-proximo"
-        )
-        .addEventListener(
-            "click",
-            () => {
+                        atualizarLightbox();
 
-                indiceAtual++;
+                    }
+                );
 
-                if(
-                    indiceAtual >=
-                    galeriaImagens.length
-                ) {
+            function fecharLightbox() {
 
-                    indiceAtual = 0;
+                lightbox.remove();
 
-                }
-
-                atualizarLightbox();
+                document.removeEventListener(
+                    "keydown",
+                    tecladoLightbox
+                );
 
             }
-        );
 
-        function fecharLightbox() {
+            lightbox
+                .querySelector(
+                    ".lightbox-fechar"
+                )
+                .addEventListener(
+                    "click",
+                    fecharLightbox
+                );
 
-            lightbox.remove();
+            lightbox.addEventListener(
+                "click",
+                event => {
 
-            document.removeEventListener(
-                "keydown",
-                tecladoLightbox
+                    if (
+                        event.target ===
+                        lightbox
+                    ) {
+
+                        fecharLightbox();
+
+                    }
+
+                }
             );
 
-        }
+            function tecladoLightbox(event) {
 
-        lightbox
-        .querySelector(
-            ".lightbox-fechar"
-        )
-        .addEventListener(
-            "click",
-            fecharLightbox
-        );
-
-        lightbox.addEventListener(
-            "click",
-            event => {
-
-                if(
-                    event.target ===
-                    lightbox
+                if (
+                    event.key === "Escape"
                 ) {
 
                     fecharLightbox();
 
                 }
 
-            }
-        );
+                if (
+                    event.key === "ArrowLeft"
+                ) {
 
-        function tecladoLightbox(event) {
+                    lightbox
+                        .querySelector(
+                            ".lightbox-anterior"
+                        )
+                        .click();
 
-            if(
-                event.key === "Escape"
-            ) {
+                }
 
-                fecharLightbox();
+                if (
+                    event.key === "ArrowRight"
+                ) {
 
-            }
+                    lightbox
+                        .querySelector(
+                            ".lightbox-proximo"
+                        )
+                        .click();
 
-            if(
-                event.key === "ArrowLeft"
-            ) {
-
-                lightbox
-                .querySelector(
-                    ".lightbox-anterior"
-                )
-                .click();
-
-            }
-
-            if(
-                event.key === "ArrowRight"
-            ) {
-
-                lightbox
-                .querySelector(
-                    ".lightbox-proximo"
-                )
-                .click();
+                }
 
             }
+
+            document.addEventListener(
+                "keydown",
+                tecladoLightbox
+            );
 
         }
-
-        document.addEventListener(
-            "keydown",
-            tecladoLightbox
-        );
-
-    }
-);
+    );
 
     /* =====================================================
 PREÇO E DADOS PRINCIPAIS
 ===================================================== */
 
-const preco =
-    formatarPreco(
-        imovel.preco?.valor
-    );
+    const preco =
+        formatarPreco(
+            imovel.preco?.valor
+        );
 
-const bairro =
-    imovel.localizacao?.bairro ||
-    imovel.bairro ||
-    "";
+    const bairro =
+        imovel.localizacao?.bairro ||
+        imovel.bairro ||
+        "";
 
-const cidade =
-    imovel.localizacao?.cidade ||
-    imovel.cidade ||
-    "";
+    const cidade =
+        imovel.localizacao?.cidade ||
+        imovel.cidade ||
+        "";
 
-const estado =
-    imovel.localizacao?.estado ||
-    imovel.estado ||
-    "";
+    const estado =
+        imovel.localizacao?.estado ||
+        imovel.estado ||
+        "";
 
-const whatsapp =
-    imovel.contato?.whatsapp ||
-    CONFIG.WHATSAPP;
+    const whatsapp =
+        imovel.contato?.whatsapp ||
+        CONFIG.WHATSAPP;
 
-const urlAtual =
-    window.location.href;
+    const urlAtual =
+        window.location.href;
 
-const titulo =
-    imovel.titulo || "";
+    const titulo =
+        imovel.titulo || "";
 
-const descricaoResumo =
-    imovel.descricao?.resumo ||
-    "";
+    const descricaoResumo =
+        imovel.descricao?.resumo ||
+        "";
 
-const imagemCompartilhamento =
+    const imagemCompartilhamento =
 
-    `${CONFIG.SITE_URL}/${
-        (
+        `${CONFIG.SITE_URL}/${(
             imovel.midia?.thumbnail ||
             imovel.midia?.galeria?.[0] ||
             CONFIG.IMAGE_FALLBACK
         ).replace(/^\.?\//, "")
-    }`;
+        }`;
 
     /* =====================================================
     DIFERENCIAIS
@@ -1085,14 +1084,14 @@ const imagemCompartilhamento =
 
     const diferenciais =
         imovel.diferenciais
-        .map(
-            item => `
+            .map(
+                item => `
 
             <li>${item}</li>
 
         `
-        )
-        .join("");
+            )
+            .join("");
 
     /* =====================================================
     DESCRIÇÃO
@@ -1100,16 +1099,16 @@ const imagemCompartilhamento =
 
     const descricao =
         imovel.descricao.completa
-        .map(
-            texto => `
+            .map(
+                texto => `
 
             <p>${texto}</p>
 
         `
-        )
-        .join("");
+            )
+            .join("");
 
-        const caracteristicas = `
+    const caracteristicas = `
 
 <div class="imovel-caracteristicas">
 
@@ -1159,18 +1158,18 @@ const imagemCompartilhamento =
 
 `;
 
-/* =====================================================
-BREADCRUMB
-===================================================== */
+    /* =====================================================
+    BREADCRUMB
+    ===================================================== */
 
-const breadcrumb =
-    document.getElementById(
-        "breadcrumb"
-    );
+    const breadcrumb =
+        document.getElementById(
+            "breadcrumb"
+        );
 
-if(breadcrumb){
+    if (breadcrumb) {
 
-    breadcrumb.innerHTML = `
+        breadcrumb.innerHTML = `
 
         <a href="index.html">
             Início
@@ -1190,13 +1189,13 @@ if(breadcrumb){
 
     `;
 
-}
+    }
 
-/* =====================================================
-LOCALIZAÇÃO
-===================================================== */
+    /* =====================================================
+    LOCALIZAÇÃO
+    ===================================================== */
 
-const localizacaoCompleta = `
+    const localizacaoCompleta = `
 
     <div class="localizacao-completa">
 
@@ -1229,10 +1228,10 @@ const localizacaoCompleta = `
     </div>
 
 `;
-       /* =====================================================
-    INFO
-    ===================================================== */
-info.innerHTML = `
+    /* =====================================================
+ INFO
+ ===================================================== */
+    info.innerHTML = `
 
     <span class="imovel-tag">
 
@@ -1283,7 +1282,7 @@ info.innerHTML = `
         ">
 
             ${(imovel.status || "Disponivel")
-                .replace("Disponivel","Disponível")}
+            .replace("Disponivel", "Disponível")}
 
         </span>
 
@@ -1367,8 +1366,8 @@ ${localizacaoCompleta}
         class="imovel-whatsapp"
         target="_blank"
         href="https://wa.me/${whatsapp}?text=${encodeURIComponent(
-            `Olá, tenho interesse no imóvel ${titulo}`
-        )}">
+                `Olá, tenho interesse no imóvel ${titulo}`
+            )}">
 
         <i class="fab fa-whatsapp"></i>
 
@@ -1378,39 +1377,39 @@ ${localizacaoCompleta}
 
 `;
 
-/* =====================================================
-IMÓVEIS RELACIONADOS
-===================================================== */
+    /* =====================================================
+    IMÓVEIS RELACIONADOS
+    ===================================================== */
 
-const containerRelacionados =
-    document.getElementById(
-        "imoveis-relacionados"
-    );
+    const containerRelacionados =
+        document.getElementById(
+            "imoveis-relacionados"
+        );
 
-if(containerRelacionados){
+    if (containerRelacionados) {
 
-    const todosImoveis =
-        await carregarImoveis();
+        const todosImoveis =
+            await carregarImoveis();
 
-    const relacionados =
-        todosImoveis
+        const relacionados =
+            todosImoveis
 
-        .filter(item =>
+                .filter(item =>
 
-            item.slug !== imovel.slug &&
+                    item.slug !== imovel.slug &&
 
-            (
-                item.finalidade ===
-                imovel.finalidade
-            )
+                    (
+                        item.finalidade ===
+                        imovel.finalidade
+                    )
 
-        )
+                )
 
-        .slice(0, 3);
+                .slice(0, 3);
 
-    if(relacionados.length > 0){
+        if (relacionados.length > 0) {
 
-        containerRelacionados.innerHTML = `
+            containerRelacionados.innerHTML = `
 
             <h2 class="titulo-relacionados">
 
@@ -1422,37 +1421,37 @@ if(containerRelacionados){
 
                 ${relacionados.map(item => {
 
-                    const imagem =
+                const imagem =
 
-                        item.midia?.thumbnail ||
+                    item.midia?.thumbnail ||
 
-                        item.midia?.galeria?.[0] ||
+                    item.midia?.galeria?.[0] ||
 
-                        CONFIG.IMAGE_FALLBACK;
+                    CONFIG.IMAGE_FALLBACK;
 
-                    const precoRelacionado =
+                const precoRelacionado =
 
-                        formatarPreco(
-                            item.preco?.valor
-                        );
+                    formatarPreco(
+                        item.preco?.valor
+                    );
 
-                    const bairroRelacionado =
+                const bairroRelacionado =
 
-                        item.localizacao?.bairro ||
+                    item.localizacao?.bairro ||
 
-                        item.bairro ||
+                    item.bairro ||
 
-                        "";
+                    "";
 
-                    const cidadeRelacionada =
+                const cidadeRelacionada =
 
-                        item.localizacao?.cidade ||
+                    item.localizacao?.cidade ||
 
-                        item.cidade ||
+                    item.cidade ||
 
-                        "";
+                    "";
 
-                    return `
+                return `
 
                         <article
                             class="relacionado-card">
@@ -1499,223 +1498,223 @@ if(containerRelacionados){
 
                     `;
 
-                }).join("")}
+            }).join("")}
 
             </div>
 
         `;
 
-    }
-
-}
-
-/* =====================================================
-SEO DINÂMICO
-===================================================== */
-
-document.title =
-
-    imovel.seo?.title ||
-
-    `${titulo} | ${CONFIG.SITE_NAME}`;
-
-/* =====================================================
-META DESCRIPTION
-===================================================== */
-
-const metaDescription =
-
-    document.querySelector(
-        'meta[name="description"]'
-    );
-
-if(metaDescription){
-
-    metaDescription.setAttribute(
-
-        "content",
-
-        imovel.seo?.description ||
-
-        descricaoResumo
-
-    );
-
-}
-
-/* =====================================================
-OPEN GRAPH TITLE
-===================================================== */
-
-let ogTitle =
-
-    document.querySelector(
-        'meta[property="og:title"]'
-    );
-
-if(ogTitle){
-
-    ogTitle.setAttribute(
-
-        "content",
-
-        imovel.seo?.title ||
-
-        titulo
-
-    );
-
-}
-
-/* =====================================================
-OPEN GRAPH DESCRIPTION
-===================================================== */
-
-let ogDescription =
-
-    document.querySelector(
-        'meta[property="og:description"]'
-    );
-
-if(ogDescription){
-
-    ogDescription.setAttribute(
-
-        "content",
-
-        imovel.seo?.description ||
-
-        descricaoResumo
-
-    );
-
-}
-
-/* =====================================================
-OPEN GRAPH IMAGE
-===================================================== */
-
-let ogImage =
-
-    document.querySelector(
-        'meta[property="og:image"]'
-    );
-
-if(ogImage){
-
-    ogImage.setAttribute(
-
-        "content",
-
-        imagemCompartilhamento
-
-    );
-
-}
-
-/* =====================================================
-OPEN GRAPH URL
-===================================================== */
-
-let ogUrl =
-
-    document.querySelector(
-        'meta[property="og:url"]'
-    );
-
-if(ogUrl){
-
-    ogUrl.setAttribute(
-
-        "content",
-
-        urlAtual
-
-    );
-
-}
-
-/* =====================================================
-COMPARTILHAMENTO WHATSAPP
-===================================================== */
-
-document
-.getElementById(
-    "compartilhar-whatsapp"
-)
-?.addEventListener(
-    "click",
-    () => {
-
-        const mensagem =
-
-            `${titulo}\n\n${urlAtual}`;
-
-        window.open(
-
-            `https://wa.me/?text=${encodeURIComponent(mensagem)}`,
-
-            "_blank"
-
-        );
-
-    }
-);
-
-/* =====================================================
-COMPARTILHAMENTO FACEBOOK
-===================================================== */
-
-document
-.getElementById(
-    "compartilhar-facebook"
-)
-?.addEventListener(
-    "click",
-    () => {
-
-        window.open(
-
-            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
-
-            "_blank"
-
-        );
-
-    }
-);
-
-/* =====================================================
-COPIAR LINK
-===================================================== */
-
-document
-.getElementById(
-    "copiar-link"
-)
-?.addEventListener(
-    "click",
-
-    async () => {
-
-        try {
-
-            await navigator.clipboard.writeText(
-                urlAtual
-            );
-
-            alert(
-                "Link copiado com sucesso!"
-            );
-
-        } catch(error){
-
-            console.error(error);
-
         }
 
     }
 
-);
+    /* =====================================================
+    SEO DINÂMICO
+    ===================================================== */
+
+    document.title =
+
+        imovel.seo?.title ||
+
+        `${titulo} | ${CONFIG.SITE_NAME}`;
+
+    /* =====================================================
+    META DESCRIPTION
+    ===================================================== */
+
+    const metaDescription =
+
+        document.querySelector(
+            'meta[name="description"]'
+        );
+
+    if (metaDescription) {
+
+        metaDescription.setAttribute(
+
+            "content",
+
+            imovel.seo?.description ||
+
+            descricaoResumo
+
+        );
+
+    }
+
+    /* =====================================================
+    OPEN GRAPH TITLE
+    ===================================================== */
+
+    let ogTitle =
+
+        document.querySelector(
+            'meta[property="og:title"]'
+        );
+
+    if (ogTitle) {
+
+        ogTitle.setAttribute(
+
+            "content",
+
+            imovel.seo?.title ||
+
+            titulo
+
+        );
+
+    }
+
+    /* =====================================================
+    OPEN GRAPH DESCRIPTION
+    ===================================================== */
+
+    let ogDescription =
+
+        document.querySelector(
+            'meta[property="og:description"]'
+        );
+
+    if (ogDescription) {
+
+        ogDescription.setAttribute(
+
+            "content",
+
+            imovel.seo?.description ||
+
+            descricaoResumo
+
+        );
+
+    }
+
+    /* =====================================================
+    OPEN GRAPH IMAGE
+    ===================================================== */
+
+    let ogImage =
+
+        document.querySelector(
+            'meta[property="og:image"]'
+        );
+
+    if (ogImage) {
+
+        ogImage.setAttribute(
+
+            "content",
+
+            imagemCompartilhamento
+
+        );
+
+    }
+
+    /* =====================================================
+    OPEN GRAPH URL
+    ===================================================== */
+
+    let ogUrl =
+
+        document.querySelector(
+            'meta[property="og:url"]'
+        );
+
+    if (ogUrl) {
+
+        ogUrl.setAttribute(
+
+            "content",
+
+            urlAtual
+
+        );
+
+    }
+
+    /* =====================================================
+    COMPARTILHAMENTO WHATSAPP
+    ===================================================== */
+
+    document
+        .getElementById(
+            "compartilhar-whatsapp"
+        )
+        ?.addEventListener(
+            "click",
+            () => {
+
+                const mensagem =
+
+                    `${titulo}\n\n${urlAtual}`;
+
+                window.open(
+
+                    `https://wa.me/?text=${encodeURIComponent(mensagem)}`,
+
+                    "_blank"
+
+                );
+
+            }
+        );
+
+    /* =====================================================
+    COMPARTILHAMENTO FACEBOOK
+    ===================================================== */
+
+    document
+        .getElementById(
+            "compartilhar-facebook"
+        )
+        ?.addEventListener(
+            "click",
+            () => {
+
+                window.open(
+
+                    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
+
+                    "_blank"
+
+                );
+
+            }
+        );
+
+    /* =====================================================
+    COPIAR LINK
+    ===================================================== */
+
+    document
+        .getElementById(
+            "copiar-link"
+        )
+        ?.addEventListener(
+            "click",
+
+            async () => {
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        urlAtual
+                    );
+
+                    alert(
+                        "Link copiado com sucesso!"
+                    );
+
+                } catch (error) {
+
+                    console.error(error);
+
+                }
+
+            }
+
+        );
 
 }
