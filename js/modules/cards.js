@@ -161,6 +161,46 @@ const destaque =
 
     "";
 
+    const destaque =
+
+    Boolean(
+        imovel?.destaque
+    );
+
+const badgeDestaque =
+
+    destaque
+
+    ?
+
+    `<span class="badge-destaque">
+        ⭐ Destaque
+    </span>`
+
+    :
+
+    "";
+
+    const mobiliado =
+
+    Boolean(
+        imovel?.caracteristicas?.mobiliado
+    );
+
+const badgeMobiliado =
+
+    mobiliado
+
+    ?
+
+    `<span class="badge-mobiliado">
+        🛋 Mobiliado
+    </span>`
+
+    :
+
+    "";
+
     const badgeFinalidade =
 
     
