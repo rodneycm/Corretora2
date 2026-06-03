@@ -122,22 +122,95 @@ const mobiliado =
         imovel?.caracteristicas?.mobiliado
     );
 
-    const badgeFinalidade =
+const destaque =
+    Boolean(
+        imovel?.destaque
+    );
 
+let badgeStatus = "";
+
+if (
+    status.toLowerCase() === "vendido"
+) {
+
+    badgeStatus = `
+
+    <span class="badge-status badge-vendido">
+        Vendido
+    </span>
+
+    `;
+
+}
+
+if (
+    status.toLowerCase() === "alugado"
+) {
+
+    badgeStatus = `
+
+    <span class="badge-status badge-alugado">
+        Alugado
+    </span>
+
+    `;
+
+}
+
+const badgeDestaque =
+
+    destaque
+
+    ?
+
+    `
+
+    <span class="badge-destaque">
+        ⭐ Destaque
+    </span>
+
+    `
+
+    :
+
+    "";
+
+    const badgeMobiliado =
+
+    mobiliado
+
+    ?
+
+    `
+
+    <span class="badge-mobiliado">
+        🛋️ Mobiliado
+    </span>
+
+    `
+
+    :
+
+    "";
+
+const badgeFinalidade =
+
+    finalidade
+
+    ?
+
+    `
+
+    <span class="badge-finalidade">
+        ${finalidade}
+    </span>
+
+    `
+
+    :
+
+    "";
     
-
-        finalidade
-
-        ?
-
-        `<span class="badge-finalidade">
-            ${finalidade}
-        </span>`
-
-        :
-
-        "";
-
     const resumoCaracteristicas = `
 
 <div class="card-caracteristicas">
