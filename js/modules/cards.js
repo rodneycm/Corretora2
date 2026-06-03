@@ -280,7 +280,7 @@ const badgeMobiliado =
     ${badgeMobiliado}
 
     ${badgeStatus}
-
+    
             <img
                 loading="lazy"
                 src="${imagemPrincipal}"
