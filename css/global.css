@@ -485,6 +485,19 @@ CONTEÚDO CARD
     line-height:1.8;
 
     margin-bottom:20px;
+
+    display:-webkit-box;
+
+    -webkit-box-orient:vertical;
+
+    -webkit-line-clamp:3;
+
+    line-clamp:3;
+
+    overflow:hidden;
+
+    min-height:81px;
+
 }
 
 .card-caracteristicas{
