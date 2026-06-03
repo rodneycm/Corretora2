@@ -861,3 +861,56 @@ BADGE FINALIDADE
     z-index:2;
 
 }
+
+.badge-destaque{
+    position:absolute;
+    top:12px;
+    right:12px;
+
+    background:#ffb800;
+    color:#000;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:.75rem;
+    font-weight:700;
+
+    z-index:2;
+}
+
+.badge-mobiliado{
+    position:absolute;
+
+    top:52px;
+    left:12px;
+
+    background:#1f2937;
+    color:#fff;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:.75rem;
+    font-weight:600;
+
+    z-index:2;
+}
+
+.codigo-imovel{
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    color:#64748b;
+
+    margin-bottom:8px;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+}
