@@ -138,20 +138,6 @@ const mobiliado =
 
         "";
 
-        const badgeMobiliado =
-
-    mobiliado
-
-    ?
-
-    `<span class="badge-mobiliado">
-        🛋️ Mobiliado
-    </span>`
-
-    :
-
-    "";
-
     const resumoCaracteristicas = `
 
 <div class="card-caracteristicas">
