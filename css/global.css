@@ -459,13 +459,14 @@ CONTEÚDO CARD
 
 .imovel-content{
 
-    padding:30px;
-
     display:flex;
 
     flex-direction:column;
 
-    flex:1;
+    height:100%;
+
+    padding:20px;
+
 }
 
 .imovel-content h3{
@@ -526,19 +527,16 @@ CONTEÚDO CARD
 
 .imovel-info{
 
+    margin-top:auto;
+
     display:flex;
 
-    flex-wrap:wrap;
+    justify-content:space-between;
 
-    gap:12px;
+    align-items:center;
 
-    margin-top:18px;
+    gap:10px;
 
-    margin-bottom:45px;
-
-    padding-bottom:10px;
-
-    border-bottom:1px solid #e2e8f0;
 }
 
 .imovel-info span{
@@ -559,6 +557,8 @@ CONTEÚDO CARD
 }
 
 .imovel-btn{
+
+    margin-top:15px;
 
     width:100%;
 
