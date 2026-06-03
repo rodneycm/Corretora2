@@ -832,3 +832,32 @@ RESPONSIVO
         gap:36px;
     }
 }
+
+/* =========================================
+BADGE FINALIDADE
+========================================= */
+
+.badge-finalidade{
+
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    background:#25d366;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    z-index:2;
+
+}
