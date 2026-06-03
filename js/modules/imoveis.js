@@ -160,6 +160,51 @@ export async function obterDestaques() {
 
     );
 
+    /* =========================================================
+RENDERIZAR DESTAQUES HOME
+========================================================= */
+
+export async function renderizarDestaquesHome() {
+
+    const container =
+        document.getElementById(
+            "imoveis-destaque-home"
+        );
+
+    if(!container) {
+
+        return;
+
+    }
+
+    const destaques =
+        await obterDestaques();
+
+    if(destaques.length === 0) {
+
+        container.innerHTML = `
+
+            <p class="sem-imoveis">
+
+                Nenhum imóvel em destaque.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML =
+
+        destaques
+            .slice(0, 6)
+            .map(imovel => criarCard(imovel))
+            .join("");
+
+}
+
 }
 
 /* =========================================================
@@ -225,7 +270,7 @@ function urlImovel(slug) {
 CRIAR CARD
 ========================================================= */
 
-function criarCard(imovel) {
+export function criarCard(imovel) {
 
     const imagemPrincipal =
 

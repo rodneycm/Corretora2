@@ -1,7 +1,8 @@
 import {
     renderizarImoveisVenda,
     renderizarImoveisAluguel,
-    renderizarPaginaImovel
+    renderizarPaginaImovel,
+    renderizarDestaquesHome
 }
 from "../modules/imoveis.js";
 
@@ -16,6 +17,15 @@ document.addEventListener(
         /* =========================================
         LISTAGEM DE IMÓVEIS
         ========================================= */
+        if(
+    document.getElementById(
+        "imoveis-destaque-home"
+            )
+        ) {
+
+    await renderizarDestaquesHome();
+
+        }
 
         if(
             document.getElementById(

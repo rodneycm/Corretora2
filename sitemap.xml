@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<urlset
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>
-            https://rodneycm.github.io/Corretora2/index.html
-        </loc>
+        <loc>https://rodneycm.github.io/Corretora2/index.html</loc>
     </url>
 
     <url>
-        <loc>
-            https://rodneycm.github.io/Corretora2/comprar.html
-        </loc>
+        <loc>https://rodneycm.github.io/Corretora2/comprar.html</loc>
     </url>
 
     <url>
-        <loc>
-            https://rodneycm.github.io/Corretora2/aluguel.html
-        </loc>
+        <loc>https://rodneycm.github.io/Corretora2/aluguel.html</loc>
     </url>
 
     <url>
-        <loc>
-            https://rodneycm.github.io/Corretora2/quem-somos.html
-        </loc>
+        <loc>https://rodneycm.github.io/Corretora2/quem-somos.html</loc>
     </url>
 
     <url>
-        <loc>
-            https://rodneycm.github.io/Corretora2/contato.html
-        </loc>
+        <loc>https://rodneycm.github.io/Corretora2/contato.html</loc>
+    </url>
+
+    <url>
+        <loc>https://rodneycm.github.io/Corretora2/imovel.html?slug=casa-com-piscina-albuquerque-teresopolis</loc>
+    </url>
+
+    <url>
+        <loc>https://rodneycm.github.io/Corretora2/imovel.html?slug=apartamento-pimenteiras-teresopolis</loc>
+    </url>
+
+    <url>
+        <loc>https://rodneycm.github.io/Corretora2/imovel.html?slug=apartamento-mobiliado-recanto-das-pimenteiras-ii</loc>
     </url>
 
 </urlset>
