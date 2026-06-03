@@ -122,85 +122,6 @@ const mobiliado =
         imovel?.caracteristicas?.mobiliado
     );
 
-const destaque =
-    Boolean(
-        imovel?.destaque
-    );
-
-    let badgeStatus = "";
-
-    if (status.toLowerCase() === "vendido") {
-
-        badgeStatus =
-        `<span class="badge-status badge-vendido">
-            Vendido
-        </span>`;
-
-    }
-
-    if (status.toLowerCase() === "alugado") {
-
-        badgeStatus =
-        `<span class="badge-status badge-alugado">
-            Alugado
-        </span>`;
-
-    }
-
-    const badgeDestaque =
-
-    destaque
-
-    ?
-
-    `<span class="badge-destaque">
-        ⭐ Destaque
-    </span>`
-
-    :
-
-    "";
-
-    const destaque =
-
-    Boolean(
-        imovel?.destaque
-    );
-
-const badgeDestaque =
-
-    destaque
-
-    ?
-
-    `<span class="badge-destaque">
-        ⭐ Destaque
-    </span>`
-
-    :
-
-    "";
-
-    const mobiliado =
-
-    Boolean(
-        imovel?.caracteristicas?.mobiliado
-    );
-
-const badgeMobiliado =
-
-    mobiliado
-
-    ?
-
-    `<span class="badge-mobiliado">
-        🛋 Mobiliado
-    </span>`
-
-    :
-
-    "";
-
     const badgeFinalidade =
 
     
@@ -280,7 +201,7 @@ const badgeMobiliado =
     ${badgeMobiliado}
 
     ${badgeStatus}
-    
+
             <img
                 loading="lazy"
                 src="${imagemPrincipal}"
