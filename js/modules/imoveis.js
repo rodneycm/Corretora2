@@ -8,6 +8,15 @@ import {
 }
 from "./cards.js";
 
+import {
+
+    filtrarPorBairro,
+    filtrarPorQuartos,
+    filtrarPorPreco
+
+}
+from "./filtros.js";
+
 let imoveisCache = [];
 
 /* =========================================================
