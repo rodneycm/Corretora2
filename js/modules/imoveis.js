@@ -1,6 +1,12 @@
 import CONFIG from "../core/config.js";
-import { criarCard } from "./cards.js";
 import { inicializarGaleria } from "./galeria.js";
+
+import {
+    criarCard,
+    formatarPreco,
+    urlImovel
+}
+from "./cards.js";
 
 let imoveisCache = [];
 
@@ -233,38 +239,6 @@ export async function obterPorFinalidade(finalidade) {
             ).toLowerCase()
 
     );
-
-}
-
-/* =========================================================
-FORMATAR PREÇO
-========================================================= */
-
-function formatarPreco(valor) {
-
-    const preco =
-        Number(valor) || 0;
-
-    return preco.toLocaleString(
-
-        "pt-BR",
-
-        {
-            style: "currency",
-            currency: "BRL"
-        }
-
-    );
-
-}
-
-/* =========================================================
-FORMATAR URL SEO
-========================================================= */
-
-function urlImovel(slug) {
-
-    return `imovel.html?slug=${encodeURIComponent(slug)}`;
 
 }
 

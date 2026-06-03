@@ -14,7 +14,7 @@ function numeroSeguro(valor) {
 
 }
 
-function formatarPreco(valor) {
+export function formatarPreco(valor) {
 
     const preco =
         Number(valor) || 0;
@@ -32,7 +32,7 @@ function formatarPreco(valor) {
 
 }
 
-function urlImovel(slug) {
+export function urlImovel(slug) {
 
     return `imovel.html?slug=${encodeURIComponent(slug)}`;
 
