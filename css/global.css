@@ -968,3 +968,26 @@ BADGE MOBILIADO
     z-index:3;
 
 }
+
+.badge-mobiliado{
+
+    position:absolute;
+    top:50px;
+    left:10px;
+
+    background:#f59e0b;
+
+    color:#ffffff;
+
+    font-size:.75rem;
+    font-weight:700;
+
+    padding:6px 10px;
+
+    border-radius:999px;
+
+    z-index:5;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+}
