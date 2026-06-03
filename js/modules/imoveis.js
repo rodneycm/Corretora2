@@ -154,12 +154,13 @@ export async function obterDestaques() {
 
     return imoveis.filter(
 
-        imovel =>
+    imovel =>
 
-            imovel.destaque === true
+        imovel.destaque === true
 
-    );
+);
 
+}
     /* =========================================================
 RENDERIZAR DESTAQUES HOME
 ========================================================= */
@@ -205,7 +206,6 @@ export async function renderizarDestaquesHome() {
 
 }
 
-}
 
 /* =========================================================
 OBTER IMÓVEIS POR FINALIDADE
@@ -270,7 +270,7 @@ function urlImovel(slug) {
 CRIAR CARD
 ========================================================= */
 
-function criarCard(imovel) {
+export function criarCard(imovel) {
 
     const imagemPrincipal =
 
