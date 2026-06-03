@@ -107,6 +107,26 @@ export function criarCard(imovel) {
             imovel?.caracteristicas?.vagas
         );
 
+        const codigo =
+    textoSeguro(
+        imovel?.codigo
+    );
+
+const areaConstruida =
+    numeroSeguro(
+        imovel?.metragem?.areaConstruida
+    );
+
+const mobiliado =
+    Boolean(
+        imovel?.caracteristicas?.mobiliado
+    );
+
+const destaque =
+    Boolean(
+        imovel?.destaque
+    );
+
     let badgeStatus = "";
 
     if (status.toLowerCase() === "vendido") {
@@ -127,7 +147,23 @@ export function criarCard(imovel) {
 
     }
 
+    const badgeDestaque =
+
+    destaque
+
+    ?
+
+    `<span class="badge-destaque">
+        ⭐ Destaque
+    </span>`
+
+    :
+
+    "";
+
     const badgeFinalidade =
+
+    
 
         finalidade
 
@@ -141,34 +177,55 @@ export function criarCard(imovel) {
 
         "";
 
+        const badgeMobiliado =
+
+    mobiliado
+
+    ?
+
+    `<span class="badge-mobiliado">
+        🛋️ Mobiliado
+    </span>`
+
+    :
+
+    "";
+
     const resumoCaracteristicas = `
 
-    <div class="card-caracteristicas">
+<div class="card-caracteristicas">
 
-        ${quartos > 0 ? `
-        <span>
-            <i class="fa-solid fa-bed"></i>
-            ${quartos} Quartos
-        </span>
-        ` : ""}
+    ${quartos > 0 ? `
+    <span>
+        <i class="fa-solid fa-bed"></i>
+        ${quartos} Quartos
+    </span>
+    ` : ""}
 
-        ${banheiros > 0 ? `
-        <span>
-            <i class="fa-solid fa-bath"></i>
-            ${banheiros} Banheiros
-        </span>
-        ` : ""}
+    ${banheiros > 0 ? `
+    <span>
+        <i class="fa-solid fa-bath"></i>
+        ${banheiros} Banheiros
+    </span>
+    ` : ""}
 
-        ${vagas > 0 ? `
-        <span>
-            <i class="fa-solid fa-car"></i>
-            ${vagas} Vagas
-        </span>
-        ` : ""}
+    ${vagas > 0 ? `
+    <span>
+        <i class="fa-solid fa-car"></i>
+        ${vagas} Vagas
+    </span>
+    ` : ""}
 
-    </div>
+    ${areaConstruida > 0 ? `
+    <span>
+        <i class="fa-solid fa-ruler-combined"></i>
+        ${areaConstruida}m²
+    </span>
+    ` : ""}
 
-    `;
+</div>
+
+`;
 
     return `
 
@@ -176,9 +233,13 @@ export function criarCard(imovel) {
 
         <div class="imovel-image">
 
-            ${badgeFinalidade}
+    ${badgeDestaque}
 
-            ${badgeStatus}
+    ${badgeFinalidade}
+
+    ${badgeMobiliado}
+
+    ${badgeStatus}
 
             <img
                 loading="lazy"
@@ -188,6 +249,12 @@ export function criarCard(imovel) {
         </div>
 
         <div class="imovel-content">
+
+            <div class="codigo-imovel">
+
+            ${codigo}
+
+        </div>
 
             <h3>${titulo}</h3>
 
