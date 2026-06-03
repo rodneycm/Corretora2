@@ -270,7 +270,7 @@ function urlImovel(slug) {
 CRIAR CARD
 ========================================================= */
 
-export function criarCard(imovel) {
+function criarCard(imovel) {
 
     const imagemPrincipal =
 
