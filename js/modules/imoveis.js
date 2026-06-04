@@ -12,7 +12,8 @@ import {
 
     filtrarPorBairro,
     filtrarPorQuartos,
-    filtrarPorPreco
+    filtrarPorPreco,
+    ordenarImoveis
 
 }
 from "./filtros.js";
@@ -262,49 +263,119 @@ export async function renderizarImoveisVenda() {
             "lista-imoveis"
         );
 
-    if (!container) {
+    if (!container) return;
 
-        return;
-
-    }
-
-    const imoveis =
+    const todosImoveis =
         await carregarImoveis();
 
     const venda =
-        imoveis.filter(
+        todosImoveis.filter(
 
             item =>
 
-                item.finalidade &&
-
-                item.finalidade
-                    .toLowerCase() === "venda"
+                item.finalidade?.toLowerCase() ===
+                "venda"
 
         );
 
-    if (venda.length === 0) {
+    function atualizarLista() {
 
-        container.innerHTML = `
+        let resultado = [...venda];
 
-            <p class="sem-imoveis">
+        const bairro =
+            document.getElementById(
+                "filtro-bairro"
+            )?.value || "";
 
-                Nenhum imóvel encontrado.
+        const quartos =
+            document.getElementById(
+                "filtro-quartos"
+            )?.value || "";
 
-            </p>
+        const preco =
+            document.getElementById(
+                "filtro-preco"
+            )?.value || "";
 
-        `;
+        const ordenacao =
+            document.getElementById(
+                "ordenacao"
+            )?.value || "";
 
-        return;
+        resultado =
+            filtrarPorBairro(
+                resultado,
+                bairro
+            );
 
+        resultado =
+            filtrarPorQuartos(
+                resultado,
+                quartos
+            );
+
+        resultado =
+            filtrarPorPreco(
+                resultado,
+                preco
+            );
+
+        resultado =
+            ordenarImoveis(
+                resultado,
+                ordenacao
+            );
+
+        if (resultado.length === 0) {
+
+            container.innerHTML = `
+
+                <p class="sem-imoveis">
+                    Nenhum imóvel encontrado.
+                </p>
+
+            `;
+
+            return;
+        }
+
+        container.innerHTML =
+            resultado
+                .map(imovel =>
+                    criarCard(imovel)
+                )
+                .join("");
     }
 
-    container.innerHTML =
+    atualizarLista();
 
-        venda
-            .map(imovel => criarCard(imovel))
-            .join("");
+    document
+        .getElementById("filtro-bairro")
+        ?.addEventListener(
+            "input",
+            atualizarLista
+        );
 
+    document
+        .getElementById("filtro-quartos")
+        ?.addEventListener(
+            "change",
+            atualizarLista
+        );
+
+    document
+        .getElementById("filtro-preco")
+        ?.addEventListener(
+            "change",
+            atualizarLista
+        );
+
+    document
+        .getElementById("ordenacao")
+        ?.addEventListener(
+            "change",
+            atualizarLista
+        );
 }
 
 /* =========================================================
