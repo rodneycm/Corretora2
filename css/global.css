@@ -1107,3 +1107,60 @@ VOLTAR AO TOPO
     }
 
 }
+
+/* ==================================================
+SCROLL TOP
+================================================== */
+
+.scroll-top {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 55px;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #b99157;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,.20);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition: .3s;
+
+    z-index: 9999;
+}
+
+.scroll-top:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.scroll-top.ativo {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
