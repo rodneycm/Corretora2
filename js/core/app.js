@@ -9,7 +9,7 @@ from "../modules/imoveis.js";
 import {
     inicializarScrollTop
 }
-from "../modules/scroll-top.js";
+from "../ui/scroll-top.js";
 
 /* =========================================================
 APP START
