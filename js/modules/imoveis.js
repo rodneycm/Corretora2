@@ -771,6 +771,76 @@ canonical.setAttribute(
     urlAtual
 );
 
+/* -------------------------------------------------
+SCHEMA BREADCRUMBLIST
+------------------------------------------------- */
+
+const breadcrumbSchema = {
+
+    "@context": "https://schema.org",
+
+    "@type": "BreadcrumbList",
+
+    "itemListElement": [
+
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": CONFIG.SITE_URL
+        },
+
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name":
+                imovel.finalidade === "Venda"
+                ? "Comprar"
+                : "Alugar",
+
+            "item":
+                imovel.finalidade === "Venda"
+                ? `${CONFIG.SITE_URL}/comprar.html`
+                : `${CONFIG.SITE_URL}/aluguel.html`
+        },
+
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": titulo,
+            "item": urlAtual
+        }
+
+    ]
+
+};
+
+let breadcrumbScript =
+    document.getElementById(
+        "breadcrumb-schema"
+    );
+
+if (!breadcrumbScript) {
+
+    breadcrumbScript =
+        document.createElement("script");
+
+    breadcrumbScript.type =
+        "application/ld+json";
+
+    breadcrumbScript.id =
+        "breadcrumb-schema";
+
+    document.head.appendChild(
+        breadcrumbScript
+    );
+}
+
+breadcrumbScript.textContent =
+    JSON.stringify(
+        breadcrumbSchema
+    );
+    
     /* -------------------------------------------------
        COMPARTILHAMENTO
     ------------------------------------------------- */
