@@ -347,6 +347,107 @@ export async function renderizarPaginaImovel() {
         CONFIG.IMAGE_FALLBACK
     ).replace(/^\.?\//, "")}`;
 
+/* -------------------------------------------------
+   SCHEMA REAL ESTATE LISTING
+------------------------------------------------- */
+
+let schemaExistente =
+    document.getElementById(
+        "schema-imovel"
+    );
+
+if (schemaExistente) {
+
+    schemaExistente.remove();
+}
+
+const schemaImovel = {
+
+    "@context": "https://schema.org",
+
+    "@type": "Residence",
+
+    "name": titulo,
+
+    "description":
+        imovel.seo?.description ||
+        descricaoResumo,
+
+    "url": urlAtual,
+
+    "image": [
+
+        imagemCompartilhamento
+
+    ],
+
+    "address": {
+
+        "@type": "PostalAddress",
+
+        "addressLocality": cidade,
+
+        "addressRegion": estado,
+
+        "addressCountry": "BR"
+
+    },
+
+    "numberOfRooms":
+        imovel.caracteristicas?.quartos || 0,
+
+    "numberOfBathroomsTotal":
+        imovel.caracteristicas?.banheiros || 0,
+
+    "floorSize": {
+
+        "@type": "QuantitativeValue",
+
+        "value":
+            imovel.metragem?.areaConstruida || 0,
+
+        "unitCode": "MTK"
+
+    },
+
+    "offers": {
+
+        "@type": "Offer",
+
+        "price":
+            imovel.preco?.valor || 0,
+
+        "priceCurrency": "BRL",
+
+        "availability":
+
+            (imovel.status || "")
+                .toLowerCase() === "vendido"
+
+                ? "https://schema.org/SoldOut"
+
+                : "https://schema.org/InStock",
+
+        "url": urlAtual
+    }
+};
+
+const scriptSchema =
+    document.createElement("script");
+
+scriptSchema.type =
+    "application/ld+json";
+
+scriptSchema.id =
+    "schema-imovel";
+
+scriptSchema.textContent =
+    JSON.stringify(schemaImovel);
+
+document.head.appendChild(
+    scriptSchema
+);
+
     /* -------------------------------------------------
        DIFERENCIAIS
     ------------------------------------------------- */
@@ -603,6 +704,48 @@ export async function renderizarPaginaImovel() {
         ogUrl.setAttribute("content", urlAtual);
     }
 
+    /* -------------------------------------------------
+TWITTER CARD
+------------------------------------------------- */
+
+let twitterTitle =
+    document.querySelector(
+        'meta[name="twitter:title"]'
+    );
+
+if (twitterTitle) {
+
+    twitterTitle.setAttribute(
+        "content",
+        imovel.seo?.title || titulo
+    );
+}
+
+let twitterDescription =
+    document.querySelector(
+        'meta[name="twitter:description"]'
+    );
+
+if (twitterDescription) {
+
+    twitterDescription.setAttribute(
+        "content",
+        imovel.seo?.description || descricaoResumo
+    );
+}
+
+let twitterImage =
+    document.querySelector(
+        'meta[name="twitter:image"]'
+    );
+
+if (twitterImage) {
+
+    twitterImage.setAttribute(
+        "content",
+        imagemCompartilhamento
+    );
+}
     /* -------------------------------------------------
    CANONICAL URL
 ------------------------------------------------- */
