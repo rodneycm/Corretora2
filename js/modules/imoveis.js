@@ -268,6 +268,51 @@ export async function renderizarImoveisVenda() {
     const todosImoveis =
         await carregarImoveis();
 
+        /* =========================================
+POPULAR FILTRO DE BAIRROS
+========================================= */
+
+const filtroBairro =
+    document.getElementById(
+        "filtro-bairro"
+    );
+
+if (filtroBairro) {
+
+    const bairros = [
+
+        ...new Set(
+
+            imoveis
+                .map(item => item.bairro)
+                .filter(Boolean)
+
+        )
+
+    ].sort();
+
+    filtroBairro.innerHTML = `
+
+        <option value="">
+            Todos os bairros
+        </option>
+
+    `;
+
+    bairros.forEach(bairro => {
+
+        filtroBairro.innerHTML += `
+
+            <option value="${bairro}">
+                ${bairro}
+            </option>
+
+        `;
+
+    });
+
+}
+
     const venda =
         todosImoveis.filter(
 
