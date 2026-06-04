@@ -278,6 +278,51 @@ export async function renderizarImoveisVenda() {
 
         );
 
+        /* =========================================
+POPULAR FILTRO DE BAIRROS
+========================================= */
+
+const filtroBairro =
+    document.getElementById(
+        "filtro-bairro"
+    );
+
+if (filtroBairro) {
+
+    const bairros = [
+
+        ...new Set(
+
+            venda
+                .map(item => item.bairro)
+                .filter(Boolean)
+
+        )
+
+    ].sort();
+
+    filtroBairro.innerHTML = `
+
+        <option value="">
+            Todos os bairros
+        </option>
+
+    `;
+
+    bairros.forEach(bairro => {
+
+        filtroBairro.innerHTML += `
+
+            <option value="${bairro}">
+                ${bairro}
+            </option>
+
+        `;
+
+    });
+
+}
+
     function atualizarLista() {
 
         let resultado = [...venda];
@@ -352,7 +397,7 @@ export async function renderizarImoveisVenda() {
     document
         .getElementById("filtro-bairro")
         ?.addEventListener(
-            "input",
+            "change",
             atualizarLista
         );
 
