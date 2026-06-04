@@ -6,6 +6,11 @@ import {
 }
 from "../modules/imoveis.js";
 
+import {
+    inicializarScrollTop
+}
+from "../modules/scroll-top.js";
+
 /* =========================================================
 APP START
 ========================================================= */
@@ -15,19 +20,24 @@ document.addEventListener(
     async () => {
 
         /* =========================================
-        LISTAGEM DE IMÓVEIS
+        HOME
         ========================================= */
-        if(
-    document.getElementById(
-        "imoveis-destaque-home"
+
+        if (
+            document.getElementById(
+                "imoveis-destaque-home"
             )
         ) {
 
-    await renderizarDestaquesHome();
+            await renderizarDestaquesHome();
 
         }
 
-        if(
+        /* =========================================
+        PÁGINA COMPRAR
+        ========================================= */
+
+        if (
             document.getElementById(
                 "lista-imoveis"
             )
@@ -37,21 +47,25 @@ document.addEventListener(
 
         }
 
-        if(
+        /* =========================================
+        PÁGINA ALUGAR
+        ========================================= */
+
+        if (
             document.getElementById(
-              "lista-imoveis-aluguel"
-             )
+                "lista-imoveis-aluguel"
+            )
         ) {
 
-    await renderizarImoveisAluguel();
+            await renderizarImoveisAluguel();
 
-}
+        }
 
         /* =========================================
         PÁGINA DO IMÓVEL
         ========================================= */
 
-        if(
+        if (
             document.getElementById(
                 "imovel-info"
             )
@@ -60,6 +74,12 @@ document.addEventListener(
             await renderizarPaginaImovel();
 
         }
+
+        /* =========================================
+        BOTÃO VOLTAR AO TOPO
+        ========================================= */
+
+        inicializarScrollTop();
 
     }
 );

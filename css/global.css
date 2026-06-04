@@ -1028,3 +1028,82 @@ CÓDIGO DO IMÓVEL
     margin-bottom:10px;
 
 }
+
+/* =========================================================
+VOLTAR AO TOPO
+========================================================= */
+
+.scroll-top-btn{
+
+    position:fixed;
+
+    right:25px;
+    bottom:95px;
+
+    width:52px;
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#0f172a;
+
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.18);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:
+    opacity .25s ease,
+    transform .25s ease,
+    visibility .25s ease;
+
+    z-index:999;
+
+}
+
+.scroll-top-btn.ativo{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+.scroll-top-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+@media(max-width:768px){
+
+    .scroll-top-btn{
+
+        right:18px;
+
+        bottom:85px;
+
+        width:48px;
+        height:48px;
+
+    }
+
+}
