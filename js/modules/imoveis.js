@@ -5,49 +5,35 @@ import {
     criarCard,
     formatarPreco,
     urlImovel
-}
-from "./cards.js";
+} from "./cards.js";
 
 import {
-
     filtrarPorBairro,
     filtrarPorQuartos,
     filtrarPorPreco,
     ordenarImoveis
-
-}
-from "./filtros.js";
+} from "./filtros.js";
 
 let imoveisCache = [];
 
 /* =========================================================
-UTILITÁRIOS
+   UTILITÁRIOS
 ========================================================= */
 
 function arraySeguro(valor) {
-
-    return Array.isArray(valor)
-        ? valor
-        : [];
-
+    return Array.isArray(valor) ? valor : [];
 }
 
 function textoSeguro(valor) {
-
-    return typeof valor === "string"
-        ? valor
-        : "";
-
+    return typeof valor === "string" ? valor : "";
 }
 
 function numeroSeguro(valor) {
-
     return Number(valor) || 0;
-
 }
 
 /* =========================================================
-CARREGAR IMÓVEIS
+   CARREGAR IMÓVEIS
 ========================================================= */
 
 export async function carregarImoveis() {
@@ -55,1172 +41,591 @@ export async function carregarImoveis() {
     try {
 
         if (imoveisCache.length > 0) {
-
             return imoveisCache;
-
         }
 
-        const response =
-            await fetch(CONFIG.API_URL);
+        const response = await fetch(CONFIG.API_URL);
 
         if (!response.ok) {
-
-            throw new Error(
-                "Erro ao carregar imóveis"
-            );
-
+            throw new Error("Erro ao carregar imóveis");
         }
 
-        const data =
-            await response.json();
+        const data = await response.json();
 
-        if (
-            !data ||
-            !Array.isArray(data.imoveis)
-        ) {
-
-            throw new Error(
-                "Estrutura JSON inválida"
-            );
-
+        if (!data || !Array.isArray(data.imoveis)) {
+            throw new Error("Estrutura JSON inválida");
         }
 
-        imoveisCache =
-            data.imoveis.filter(
-                item =>
-                    item &&
-                    item.sistema?.publicado !== false
-            );
+        imoveisCache = data.imoveis.filter(
+            item => item && item.sistema?.publicado !== false
+        );
 
         return imoveisCache;
 
     } catch (error) {
 
-        console.error(
-            "[IMOVEIS]",
-            error
-        );
-
+        console.error("[IMOVEIS]", error);
         return [];
 
     }
-
 }
 
 /* =========================================================
-BUSCAR IMÓVEL POR SLUG
+   BUSCAR IMÓVEL POR SLUG
 ========================================================= */
 
 export async function buscarImovelPorSlug(slug) {
 
-    if (!slug) {
+    if (!slug) return null;
 
-        return null;
-
-    }
-
-    const imoveis =
-        await carregarImoveis();
+    const imoveis = await carregarImoveis();
 
     return imoveis.find(
-
-        imovel =>
-
-            textoSeguro(
-                imovel.slug
-            ) === textoSeguro(slug)
-
+        imovel => textoSeguro(imovel.slug) === textoSeguro(slug)
     ) || null;
-
 }
 
 /* =========================================================
-BUSCAR IMÓVEL POR ID
+   BUSCAR IMÓVEL POR ID
 ========================================================= */
 
 export async function buscarImovelPorId(id) {
 
-    if (!id) {
+    if (!id) return null;
 
-        return null;
-
-    }
-
-    const imoveis =
-        await carregarImoveis();
+    const imoveis = await carregarImoveis();
 
     return imoveis.find(
-
-        imovel =>
-
-            textoSeguro(
-                imovel.id
-            ) === textoSeguro(id)
-
+        imovel => textoSeguro(imovel.id) === textoSeguro(id)
     ) || null;
-
 }
 
 /* =========================================================
-OBTER DESTAQUES
+   OBTER DESTAQUES
 ========================================================= */
 
 export async function obterDestaques() {
 
-    const imoveis =
-        await carregarImoveis();
+    const imoveis = await carregarImoveis();
 
-    return imoveis.filter(
-
-        imovel =>
-
-            imovel.destaque === true
-
-    );
-
+    return imoveis.filter(imovel => imovel.destaque === true);
 }
+
 /* =========================================================
-RENDERIZAR DESTAQUES HOME
+   RENDERIZAR DESTAQUES HOME
 ========================================================= */
 
 export async function renderizarDestaquesHome() {
 
-    const container =
-        document.getElementById(
-            "imoveis-destaque-home"
-        );
+    const container = document.getElementById("imoveis-destaque-home");
 
-    if (!container) {
+    if (!container) return;
 
-        return;
-
-    }
-
-    const destaques =
-        await obterDestaques();
+    const destaques = await obterDestaques();
 
     if (destaques.length === 0) {
-
-        container.innerHTML = `
-
-            <p class="sem-imoveis">
-
-                Nenhum imóvel em destaque.
-
-            </p>
-
-        `;
-
+        container.innerHTML = `<p class="sem-imoveis">Nenhum imóvel em destaque.</p>`;
         return;
-
     }
 
-    container.innerHTML =
-
-        destaques
-            .slice(0, 6)
-            .map(imovel => criarCard(imovel))
-            .join("");
-
+    container.innerHTML = destaques
+        .slice(0, 6)
+        .map(imovel => criarCard(imovel))
+        .join("");
 }
 
-
 /* =========================================================
-OBTER IMÓVEIS POR FINALIDADE
+   OBTER IMÓVEIS POR FINALIDADE
 ========================================================= */
 
 export async function obterPorFinalidade(finalidade) {
 
-    const imoveis =
-        await carregarImoveis();
+    const imoveis = await carregarImoveis();
 
     return imoveis.filter(
-
         item =>
-
-            textoSeguro(
-                item.finalidade
-            ).toLowerCase()
-
-            ===
-
-            textoSeguro(
-                finalidade
-            ).toLowerCase()
-
+            textoSeguro(item.finalidade).toLowerCase() ===
+            textoSeguro(finalidade).toLowerCase()
     );
-
 }
 
 /* =========================================================
-RENDERIZAR IMÓVEIS VENDA
+   RENDERIZAR IMÓVEIS VENDA
 ========================================================= */
 
 export async function renderizarImoveisVenda() {
 
-    const container =
-        document.getElementById(
-            "lista-imoveis"
-        );
+    const container = document.getElementById("lista-imoveis");
 
     if (!container) return;
 
-    const todosImoveis =
-        await carregarImoveis();
+    const todosImoveis = await carregarImoveis();
 
-    const venda =
-        todosImoveis.filter(
-
-            item =>
-
-                item.finalidade?.toLowerCase() ===
-                "venda"
-
-        );
-
-        /* =========================================
-POPULAR FILTRO DE BAIRROS
-========================================= */
-
-const filtroBairro =
-    document.getElementById(
-        "filtro-bairro"
+    const venda = todosImoveis.filter(
+        item => item.finalidade?.toLowerCase() === "venda"
     );
 
-if (filtroBairro) {
+    /* -------------------------------------------------
+       POPULAR FILTRO DE BAIRROS
+    ------------------------------------------------- */
 
-    const bairros = [
+    const filtroBairro = document.getElementById("filtro-bairro");
 
-        ...new Set(
+    if (filtroBairro) {
 
-            venda
-                .map(item => item.bairro)
-                .filter(Boolean)
+        const bairros = [
+            ...new Set(venda.map(item => item.bairro).filter(Boolean))
+        ].sort();
 
-        )
+        filtroBairro.innerHTML = `<option value="">Todos os bairros</option>`;
 
-    ].sort();
+        bairros.forEach(bairro => {
+            filtroBairro.innerHTML += `<option value="${bairro}">${bairro}</option>`;
+        });
+    }
 
-    filtroBairro.innerHTML = `
-
-        <option value="">
-            Todos os bairros
-        </option>
-
-    `;
-
-    bairros.forEach(bairro => {
-
-        filtroBairro.innerHTML += `
-
-            <option value="${bairro}">
-                ${bairro}
-            </option>
-
-        `;
-
-    });
-
-}
+    /* -------------------------------------------------
+       ATUALIZAR LISTA
+    ------------------------------------------------- */
 
     function atualizarLista() {
 
         let resultado = [...venda];
 
-        const bairro =
-            document.getElementById(
-                "filtro-bairro"
-            )?.value || "";
+        const bairro    = document.getElementById("filtro-bairro")?.value  || "";
+        const quartos   = document.getElementById("filtro-quartos")?.value || "";
+        const preco     = document.getElementById("filtro-preco")?.value   || "";
+        const ordenacao = document.getElementById("ordenacao")?.value      || "";
 
-        const quartos =
-            document.getElementById(
-                "filtro-quartos"
-            )?.value || "";
-
-        const preco =
-            document.getElementById(
-                "filtro-preco"
-            )?.value || "";
-
-        const ordenacao =
-            document.getElementById(
-                "ordenacao"
-            )?.value || "";
-
-        resultado =
-            filtrarPorBairro(
-                resultado,
-                bairro
-            );
-
-        resultado =
-            filtrarPorQuartos(
-                resultado,
-                quartos
-            );
-
-        resultado =
-            filtrarPorPreco(
-                resultado,
-                preco
-            );
-
-        resultado =
-            ordenarImoveis(
-                resultado,
-                ordenacao
-            );
+        resultado = filtrarPorBairro(resultado, bairro);
+        resultado = filtrarPorQuartos(resultado, quartos);
+        resultado = filtrarPorPreco(resultado, preco);
+        resultado = ordenarImoveis(resultado, ordenacao);
 
         if (resultado.length === 0) {
-
-            container.innerHTML = `
-
-                <p class="sem-imoveis">
-                    Nenhum imóvel encontrado.
-                </p>
-
-            `;
-
+            container.innerHTML = `<p class="sem-imoveis">Nenhum imóvel encontrado.</p>`;
             return;
         }
 
-        container.innerHTML =
-            resultado
-                .map(imovel =>
-                    criarCard(imovel)
-                )
-                .join("");
+        container.innerHTML = resultado.map(imovel => criarCard(imovel)).join("");
     }
 
     atualizarLista();
 
-    document
-        .getElementById("filtro-bairro")
-        ?.addEventListener(
-            "change",
-            atualizarLista
-        );
-
-    document
-        .getElementById("filtro-quartos")
-        ?.addEventListener(
-            "change",
-            atualizarLista
-        );
-
-    document
-        .getElementById("filtro-preco")
-        ?.addEventListener(
-            "change",
-            atualizarLista
-        );
-
-    document
-        .getElementById("ordenacao")
-        ?.addEventListener(
-            "change",
-            atualizarLista
-        );
+    document.getElementById("filtro-bairro")?.addEventListener("change", atualizarLista);
+    document.getElementById("filtro-quartos")?.addEventListener("change", atualizarLista);
+    document.getElementById("filtro-preco")?.addEventListener("change", atualizarLista);
+    document.getElementById("ordenacao")?.addEventListener("change", atualizarLista);
 }
 
 /* =========================================================
-RENDERIZAR IMÓVEIS ALUGUEL
+   RENDERIZAR IMÓVEIS ALUGUEL
 ========================================================= */
 
 export async function renderizarImoveisAluguel() {
 
-    const container =
-        document.getElementById(
-            "lista-imoveis-aluguel"
-        );
+    const container = document.getElementById("lista-imoveis-aluguel");
 
-    if (!container) {
+    if (!container) return;
 
-        return;
+    const todosImoveis = await carregarImoveis();
 
+    const aluguel = todosImoveis.filter(
+        item => item.finalidade?.toLowerCase() === "aluguel"
+    );
+
+    /* -------------------------------------------------
+       POPULAR FILTRO DE BAIRROS
+    ------------------------------------------------- */
+
+    const filtroBairro = document.getElementById("filtro-bairro");
+
+    if (filtroBairro) {
+
+        const bairros = [
+            ...new Set(aluguel.map(item => item.bairro).filter(Boolean))
+        ].sort();
+
+        filtroBairro.innerHTML = `<option value="">Todos os bairros</option>`;
+
+        bairros.forEach(bairro => {
+            filtroBairro.innerHTML += `<option value="${bairro}">${bairro}</option>`;
+        });
     }
 
-    const imoveis =
-        await carregarImoveis();
+    /* -------------------------------------------------
+       ATUALIZAR LISTA
+    ------------------------------------------------- */
 
-    const aluguel =
-        imoveis.filter(
+    function atualizarLista() {
 
-            item =>
+        let resultado = [...aluguel];
 
-                item.finalidade &&
+        const bairro    = document.getElementById("filtro-bairro")?.value  || "";
+        const quartos   = document.getElementById("filtro-quartos")?.value || "";
+        const preco     = document.getElementById("filtro-preco")?.value   || "";
+        const ordenacao = document.getElementById("ordenacao")?.value      || "";
 
-                item.finalidade
-                    .toLowerCase() === "aluguel"
+        resultado = filtrarPorBairro(resultado, bairro);
+        resultado = filtrarPorQuartos(resultado, quartos);
+        resultado = filtrarPorPreco(resultado, preco);
+        resultado = ordenarImoveis(resultado, ordenacao);
 
-        );
+        if (resultado.length === 0) {
+            container.innerHTML = `<p class="sem-imoveis">Nenhum imóvel encontrado.</p>`;
+            return;
+        }
 
-    if (aluguel.length === 0) {
-
-        container.innerHTML = `
-
-            <p class="sem-imoveis">
-
-                Nenhum imóvel encontrado.
-
-            </p>
-
-        `;
-
-        return;
-
+        container.innerHTML = resultado.map(imovel => criarCard(imovel)).join("");
     }
 
-    container.innerHTML =
+    atualizarLista();
 
-        aluguel
-            .map(imovel => criarCard(imovel))
-            .join("");
+    document.getElementById("filtro-bairro")?.addEventListener("change", atualizarLista);
+    document.getElementById("filtro-quartos")?.addEventListener("change", atualizarLista);
+    document.getElementById("filtro-preco")?.addEventListener("change", atualizarLista);
+    document.getElementById("ordenacao")?.addEventListener("change", atualizarLista);
 
-}
+} // ← CHAVE QUE ESTAVA FALTANDO — fecha renderizarImoveisAluguel
 
 /* =========================================================
-RENDERIZAR PÁGINA DO IMÓVEL
+   RENDERIZAR PÁGINA DO IMÓVEL
 ========================================================= */
 
 export async function renderizarPaginaImovel() {
 
-    /* =====================================================
-    PEGAR SLUG DA URL
-    ===================================================== */
+    /* -------------------------------------------------
+       PEGAR SLUG DA URL
+    ------------------------------------------------- */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const slug =
-        params.get("slug");
+    const params = new URLSearchParams(window.location.search);
+    const slug   = params.get("slug");
 
     if (!slug) return;
 
-    /* =====================================================
-    BUSCAR IMÓVEL
-    ===================================================== */
+    /* -------------------------------------------------
+       BUSCAR IMÓVEL
+    ------------------------------------------------- */
 
-    const imovel =
-        await buscarImovelPorSlug(slug);
+    const imovel = await buscarImovelPorSlug(slug);
 
     if (!imovel) {
-
-        console.error(
-            "Imóvel não encontrado"
-        );
-
+        console.error("Imóvel não encontrado");
         return;
-
     }
 
-    /* =====================================================
-    ELEMENTOS
-    ===================================================== */
+    /* -------------------------------------------------
+       ELEMENTOS
+    ------------------------------------------------- */
 
-    const galeria =
-        document.getElementById(
-            "imovel-galeria"
-        );
-
-    const info =
-        document.getElementById(
-            "imovel-info"
-        );
+    const galeria = document.getElementById("imovel-galeria");
+    const info    = document.getElementById("imovel-info");
 
     if (!galeria || !info) return;
 
-    inicializarGaleria(
-    galeria,
-    imovel
-);
+    inicializarGaleria(galeria, imovel);
 
-    /* =====================================================
-PREÇO E DADOS PRINCIPAIS
-===================================================== */
+    /* -------------------------------------------------
+       PREÇO E DADOS PRINCIPAIS
+    ------------------------------------------------- */
 
-    const preco =
-        formatarPreco(
-            imovel.preco?.valor
-        );
+    const preco  = formatarPreco(imovel.preco?.valor);
 
-    const bairro =
-        imovel.localizacao?.bairro ||
-        imovel.bairro ||
-        "";
+    const bairro = imovel.localizacao?.bairro || imovel.bairro || "";
+    const cidade = imovel.localizacao?.cidade || imovel.cidade || "";
+    const estado = imovel.localizacao?.estado || imovel.estado || "";
 
-    const cidade =
-        imovel.localizacao?.cidade ||
-        imovel.cidade ||
-        "";
+    const whatsapp = imovel.contato?.whatsapp || CONFIG.WHATSAPP;
+    const urlAtual = window.location.href;
+    const titulo   = imovel.titulo || "";
 
-    const estado =
-        imovel.localizacao?.estado ||
-        imovel.estado ||
-        "";
+    const descricaoResumo = imovel.descricao?.resumo || "";
 
-    const whatsapp =
-        imovel.contato?.whatsapp ||
-        CONFIG.WHATSAPP;
+    const imagemCompartilhamento = `${CONFIG.SITE_URL}/${(
+        imovel.midia?.thumbnail   ||
+        imovel.midia?.galeria?.[0] ||
+        CONFIG.IMAGE_FALLBACK
+    ).replace(/^\.?\//, "")}`;
 
-    const urlAtual =
-        window.location.href;
+    /* -------------------------------------------------
+       DIFERENCIAIS
+    ------------------------------------------------- */
 
-    const titulo =
-        imovel.titulo || "";
+    const diferenciais = imovel.diferenciais
+        .map(item => `<li>${item}</li>`)
+        .join("");
 
-    const descricaoResumo =
-        imovel.descricao?.resumo ||
-        "";
+    /* -------------------------------------------------
+       DESCRIÇÃO
+    ------------------------------------------------- */
 
-    const imagemCompartilhamento =
+    const descricao = imovel.descricao.completa
+        .map(texto => `<p>${texto}</p>`)
+        .join("");
 
-        `${CONFIG.SITE_URL}/${(
-            imovel.midia?.thumbnail ||
-            imovel.midia?.galeria?.[0] ||
-            CONFIG.IMAGE_FALLBACK
-        ).replace(/^\.?\//, "")
-        }`;
-
-    /* =====================================================
-    DIFERENCIAIS
-    ===================================================== */
-
-    const diferenciais =
-        imovel.diferenciais
-            .map(
-                item => `
-
-            <li>${item}</li>
-
-        `
-            )
-            .join("");
-
-    /* =====================================================
-    DESCRIÇÃO
-    ===================================================== */
-
-    const descricao =
-        imovel.descricao.completa
-            .map(
-                texto => `
-
-            <p>${texto}</p>
-
-        `
-            )
-            .join("");
+    /* -------------------------------------------------
+       CARACTERÍSTICAS
+    ------------------------------------------------- */
 
     const caracteristicas = `
-
-<div class="imovel-caracteristicas">
-
-    ${imovel.caracteristicas?.quartos > 0 ? `
-    <div class="caracteristica-item">
-        <i class="fa-solid fa-bed"></i>
-        ${imovel.caracteristicas.quartos} Quartos
-    </div>
-    ` : ""}
-
-    ${imovel.caracteristicas?.banheiros > 0 ? `
-    <div class="caracteristica-item">
-        <i class="fa-solid fa-bath"></i>
-        ${imovel.caracteristicas.banheiros} Banheiros
-    </div>
-    ` : ""}
-
-    ${imovel.caracteristicas?.vagas > 0 ? `
-    <div class="caracteristica-item">
-        <i class="fa-solid fa-car"></i>
-        ${imovel.caracteristicas.vagas} Vagas
-    </div>
-    ` : ""}
-
-    ${imovel.caracteristicas?.suites > 0 ? `
-    <div class="caracteristica-item">
-        <i class="fa-solid fa-star"></i>
-        ${imovel.caracteristicas.suites} Suíte(s)
-    </div>
-    ` : ""}
-
-    ${imovel.metragem?.areaConstruida > 0 ? `
-    <div class="caracteristica-item">
-        <i class="fa-solid fa-ruler-combined"></i>
-        ${imovel.metragem.areaConstruida} m² Construídos
-    </div>
-    ` : ""}
-
-    ${imovel.metragem?.areaTerreno > 0 ? `
-    <div class="caracteristica-item">
-        <i class="fa-solid fa-tree"></i>
-        ${imovel.metragem.areaTerreno} m² Terreno
-    </div>
-    ` : ""}
-
-</div>
-
-`;
-
-    /* =====================================================
-    BREADCRUMB
-    ===================================================== */
-
-    const breadcrumb =
-        document.getElementById(
-            "breadcrumb"
-        );
-
-    if (breadcrumb) {
-
-        breadcrumb.innerHTML = `
-
-        <a href="index.html">
-            Início
-        </a>
-
-        <span>/</span>
-
-        <a href="comprar.html">
-            ${imovel.finalidade}
-        </a>
-
-        <span>/</span>
-
-        <span>
-            ${imovel.titulo}
-        </span>
-
-    `;
-
-    }
-
-    /* =====================================================
-    LOCALIZAÇÃO
-    ===================================================== */
-
-    const localizacaoCompleta = `
-
-    <div class="localizacao-completa">
-
-        <h3>
-
-            Localização
-
-        </h3>
-
-        <p>
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            ${bairro}, ${cidade} - ${estado}
-
-        </p>
-
-        ${imovel.endereco?.referencia ? `
-
-            <p class="localizacao-referencia">
-
-                <strong>Referência:</strong>
-
-                ${imovel.endereco.referencia}
-
-            </p>
-
-        ` : ""}
-
-    </div>
-
-`;
-    /* =====================================================
- INFO
- ===================================================== */
-    info.innerHTML = `
-
-    <span class="imovel-tag">
-
-        ${imovel.finalidade || ""}
-
-    </span>
-
-    <h1>
-
-        ${titulo}
-
-    </h1>
-
-    <h2>
-
-        ${preco}
-
-    </h2>
-
-    <div class="imovel-localizacao">
-
-    <i class="fa-solid fa-location-dot"></i>
-
-    <span>
-
-        ${bairro},
-        ${cidade} - ${estado}
-
-    </span>
-
-</div>
-
-<div class="imovel-meta">
-
-    <div class="imovel-codigo">
-
-        <strong>Código:</strong>
-
-        ${imovel.codigo || "N/D"}
-
-    </div>
-
-    <div class="imovel-status">
-
-        <span class="
-            status-badge
-            status-${(imovel.status || '').toLowerCase()}
-        ">
-
-            ${(imovel.status || "Disponivel")
-            .replace("Disponivel", "Disponível")}
-
-        </span>
-
-    </div>
-
-</div>
-
-${caracteristicas}
-
-${localizacaoCompleta}
-
-<p>
-
-    ${imovel.subtitulo || ""}
-
-</p>
-
-    <div class="descricao-imovel">
-
-        ${descricao}
-
-    </div>
-
-    <h3>
-
-        Diferenciais
-
-    </h3>
-
-    <ul class="imovel-diferenciais">
-
-        ${diferenciais}
-
-    </ul>
-
-    <div class="imovel-compartilhar">
-
-        <h3>
-
-            Compartilhar imóvel
-
-        </h3>
-
-        <div class="compartilhar-botoes">
-
-            <button
-                id="compartilhar-whatsapp"
-                class="btn-compartilhar">
-
-                <i class="fab fa-whatsapp"></i>
-
-                WhatsApp
-
-            </button>
-
-            <button
-                id="compartilhar-facebook"
-                class="btn-compartilhar">
-
-                <i class="fab fa-facebook-f"></i>
-
-                Facebook
-
-            </button>
-
-            <button
-                id="copiar-link"
-                class="btn-compartilhar">
-
-                <i class="fa-solid fa-link"></i>
-
-                Copiar Link
-
-            </button>
+        <div class="imovel-caracteristicas">
+
+            ${imovel.caracteristicas?.quartos > 0 ? `
+                <div class="caracteristica-item">
+                    <i class="fa-solid fa-bed"></i>
+                    ${imovel.caracteristicas.quartos} Quartos
+                </div>` : ""}
+
+            ${imovel.caracteristicas?.banheiros > 0 ? `
+                <div class="caracteristica-item">
+                    <i class="fa-solid fa-bath"></i>
+                    ${imovel.caracteristicas.banheiros} Banheiros
+                </div>` : ""}
+
+            ${imovel.caracteristicas?.vagas > 0 ? `
+                <div class="caracteristica-item">
+                    <i class="fa-solid fa-car"></i>
+                    ${imovel.caracteristicas.vagas} Vagas
+                </div>` : ""}
+
+            ${imovel.caracteristicas?.suites > 0 ? `
+                <div class="caracteristica-item">
+                    <i class="fa-solid fa-star"></i>
+                    ${imovel.caracteristicas.suites} Suíte(s)
+                </div>` : ""}
+
+            ${imovel.metragem?.areaConstruida > 0 ? `
+                <div class="caracteristica-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    ${imovel.metragem.areaConstruida} m² Construídos
+                </div>` : ""}
+
+            ${imovel.metragem?.areaTerreno > 0 ? `
+                <div class="caracteristica-item">
+                    <i class="fa-solid fa-tree"></i>
+                    ${imovel.metragem.areaTerreno} m² Terreno
+                </div>` : ""}
 
         </div>
+    `;
 
-    </div>
+    /* -------------------------------------------------
+       BREADCRUMB
+    ------------------------------------------------- */
 
-    <a
-        class="imovel-whatsapp"
-        target="_blank"
-        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(
-                `Olá, tenho interesse no imóvel ${titulo}`
-            )}">
+    const breadcrumb = document.getElementById("breadcrumb");
 
-        <i class="fab fa-whatsapp"></i>
+    if (breadcrumb) {
+        breadcrumb.innerHTML = `
+            <a href="index.html">Início</a>
+            <span>/</span>
+            <a href="comprar.html">${imovel.finalidade}</a>
+            <span>/</span>
+            <span>${imovel.titulo}</span>
+        `;
+    }
 
-        Falar sobre este imóvel
+    /* -------------------------------------------------
+       LOCALIZAÇÃO
+    ------------------------------------------------- */
 
-    </a>
+    const localizacaoCompleta = `
+        <div class="localizacao-completa">
+            <h3>Localização</h3>
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                ${bairro}, ${cidade} - ${estado}
+            </p>
+            ${imovel.endereco?.referencia ? `
+                <p class="localizacao-referencia">
+                    <strong>Referência:</strong>
+                    ${imovel.endereco.referencia}
+                </p>` : ""}
+        </div>
+    `;
 
-`;
+    /* -------------------------------------------------
+       INFO
+    ------------------------------------------------- */
 
-    /* =====================================================
-    IMÓVEIS RELACIONADOS
-    ===================================================== */
+    info.innerHTML = `
 
-    const containerRelacionados =
-        document.getElementById(
-            "imoveis-relacionados"
-        );
+        <span class="imovel-tag">${imovel.finalidade || ""}</span>
+
+        <h1>${titulo}</h1>
+
+        <h2>${preco}</h2>
+
+        <div class="imovel-localizacao">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>${bairro}, ${cidade} - ${estado}</span>
+        </div>
+
+        <div class="imovel-meta">
+            <div class="imovel-codigo">
+                <strong>Código:</strong> ${imovel.codigo || "N/D"}
+            </div>
+            <div class="imovel-status">
+                <span class="status-badge status-${(imovel.status || "").toLowerCase()}">
+                    ${(imovel.status || "Disponivel").replace("Disponivel", "Disponível")}
+                </span>
+            </div>
+        </div>
+
+        ${caracteristicas}
+
+        ${localizacaoCompleta}
+
+        <p>${imovel.subtitulo || ""}</p>
+
+        <div class="descricao-imovel">
+            ${descricao}
+        </div>
+
+        <h3>Diferenciais</h3>
+
+        <ul class="imovel-diferenciais">
+            ${diferenciais}
+        </ul>
+
+        <div class="imovel-compartilhar">
+            <h3>Compartilhar imóvel</h3>
+            <div class="compartilhar-botoes">
+                <button id="compartilhar-whatsapp" class="btn-compartilhar">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button id="compartilhar-facebook" class="btn-compartilhar">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+                <button id="copiar-link" class="btn-compartilhar">
+                    <i class="fa-solid fa-link"></i> Copiar Link
+                </button>
+            </div>
+        </div>
+
+        <a
+            class="imovel-whatsapp"
+            target="_blank"
+            href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no imóvel ${titulo}`)}">
+            <i class="fab fa-whatsapp"></i>
+            Falar sobre este imóvel
+        </a>
+    `;
+
+    /* -------------------------------------------------
+       IMÓVEIS RELACIONADOS
+    ------------------------------------------------- */
+
+    const containerRelacionados = document.getElementById("imoveis-relacionados");
 
     if (containerRelacionados) {
 
-        const todosImoveis =
-            await carregarImoveis();
+        const todosImoveis = await carregarImoveis();
 
-        const relacionados =
-            todosImoveis
-
-                .filter(item =>
-
-                    item.slug !== imovel.slug &&
-
-                    (
-                        item.finalidade ===
-                        imovel.finalidade
-                    )
-
-                )
-
-                .slice(0, 3);
+        const relacionados = todosImoveis
+            .filter(item =>
+                item.slug !== imovel.slug &&
+                item.finalidade === imovel.finalidade
+            )
+            .slice(0, 3);
 
         if (relacionados.length > 0) {
 
             containerRelacionados.innerHTML = `
+                <h2 class="titulo-relacionados">Você também pode gostar</h2>
+                <div class="relacionados-grid">
+                    ${relacionados.map(item => {
 
-            <h2 class="titulo-relacionados">
+                        const imagem =
+                            item.midia?.thumbnail   ||
+                            item.midia?.galeria?.[0] ||
+                            CONFIG.IMAGE_FALLBACK;
 
-                Você também pode gostar
+                        const precoRelacionado    = formatarPreco(item.preco?.valor);
+                        const bairroRelacionado   = item.localizacao?.bairro || item.bairro || "";
+                        const cidadeRelacionada   = item.localizacao?.cidade || item.cidade || "";
 
-            </h2>
-
-            <div class="relacionados-grid">
-
-                ${relacionados.map(item => {
-
-                const imagem =
-
-                    item.midia?.thumbnail ||
-
-                    item.midia?.galeria?.[0] ||
-
-                    CONFIG.IMAGE_FALLBACK;
-
-                const precoRelacionado =
-
-                    formatarPreco(
-                        item.preco?.valor
-                    );
-
-                const bairroRelacionado =
-
-                    item.localizacao?.bairro ||
-
-                    item.bairro ||
-
-                    "";
-
-                const cidadeRelacionada =
-
-                    item.localizacao?.cidade ||
-
-                    item.cidade ||
-
-                    "";
-
-                return `
-
-                        <article
-                            class="relacionado-card">
-
-                            <img
-                                src="${imagem}"
-                                alt="${item.titulo}">
-
-                            <div
-                                class="relacionado-content">
-
-                                <h3>
-
-                                    ${item.titulo}
-
-                                </h3>
-
-                                <div
-                                    class="relacionado-local">
-
-                                    ${bairroRelacionado}
-                                    ${cidadeRelacionada ? ` - ${cidadeRelacionada}` : ""}
-
+                        return `
+                            <article class="relacionado-card">
+                                <img src="${imagem}" alt="${item.titulo}">
+                                <div class="relacionado-content">
+                                    <h3>${item.titulo}</h3>
+                                    <div class="relacionado-local">
+                                        ${bairroRelacionado}${cidadeRelacionada ? ` - ${cidadeRelacionada}` : ""}
+                                    </div>
+                                    <div class="relacionado-preco">${precoRelacionado}</div>
+                                    <a class="relacionado-btn" href="${urlImovel(item.slug)}">
+                                        Ver imóvel
+                                    </a>
                                 </div>
+                            </article>
+                        `;
 
-                                <div
-                                    class="relacionado-preco">
-
-                                    ${precoRelacionado}
-
-                                </div>
-
-                                <a
-                                    class="relacionado-btn"
-                                    href="${urlImovel(item.slug)}">
-
-                                    Ver imóvel
-
-                                </a>
-
-                            </div>
-
-                        </article>
-
-                    `;
-
-            }).join("")}
-
-            </div>
-
-        `;
-
+                    }).join("")}
+                </div>
+            `;
         }
-
     }
 
-    /* =====================================================
-    SEO DINÂMICO
-    ===================================================== */
+    /* -------------------------------------------------
+       SEO DINÂMICO
+    ------------------------------------------------- */
 
-    document.title =
+    document.title = imovel.seo?.title || `${titulo} | ${CONFIG.SITE_NAME}`;
 
-        imovel.seo?.title ||
-
-        `${titulo} | ${CONFIG.SITE_NAME}`;
-
-    /* =====================================================
-    META DESCRIPTION
-    ===================================================== */
-
-    const metaDescription =
-
-        document.querySelector(
-            'meta[name="description"]'
-        );
-
+    /* META DESCRIPTION */
+    const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-
-        metaDescription.setAttribute(
-
-            "content",
-
-            imovel.seo?.description ||
-
-            descricaoResumo
-
-        );
-
+        metaDescription.setAttribute("content", imovel.seo?.description || descricaoResumo);
     }
 
-    /* =====================================================
-    OPEN GRAPH TITLE
-    ===================================================== */
-
-    let ogTitle =
-
-        document.querySelector(
-            'meta[property="og:title"]'
-        );
-
+    /* OG TITLE */
+    const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-
-        ogTitle.setAttribute(
-
-            "content",
-
-            imovel.seo?.title ||
-
-            titulo
-
-        );
-
+        ogTitle.setAttribute("content", imovel.seo?.title || titulo);
     }
 
-    /* =====================================================
-    OPEN GRAPH DESCRIPTION
-    ===================================================== */
-
-    let ogDescription =
-
-        document.querySelector(
-            'meta[property="og:description"]'
-        );
-
+    /* OG DESCRIPTION */
+    const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-
-        ogDescription.setAttribute(
-
-            "content",
-
-            imovel.seo?.description ||
-
-            descricaoResumo
-
-        );
-
+        ogDescription.setAttribute("content", imovel.seo?.description || descricaoResumo);
     }
 
-    /* =====================================================
-    OPEN GRAPH IMAGE
-    ===================================================== */
-
-    let ogImage =
-
-        document.querySelector(
-            'meta[property="og:image"]'
-        );
-
+    /* OG IMAGE */
+    const ogImage = document.querySelector('meta[property="og:image"]');
     if (ogImage) {
-
-        ogImage.setAttribute(
-
-            "content",
-
-            imagemCompartilhamento
-
-        );
-
+        ogImage.setAttribute("content", imagemCompartilhamento);
     }
 
-    /* =====================================================
-    OPEN GRAPH URL
-    ===================================================== */
-
-    let ogUrl =
-
-        document.querySelector(
-            'meta[property="og:url"]'
-        );
-
+    /* OG URL */
+    const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) {
-
-        ogUrl.setAttribute(
-
-            "content",
-
-            urlAtual
-
-        );
-
+        ogUrl.setAttribute("content", urlAtual);
     }
 
-    /* =====================================================
-    COMPARTILHAMENTO WHATSAPP
-    ===================================================== */
+    /* -------------------------------------------------
+       COMPARTILHAMENTO
+    ------------------------------------------------- */
 
-    document
-        .getElementById(
-            "compartilhar-whatsapp"
-        )
-        ?.addEventListener(
-            "click",
-            () => {
+    document.getElementById("compartilhar-whatsapp")?.addEventListener("click", () => {
+        const mensagem = `${titulo}\n\n${urlAtual}`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank");
+    });
 
-                const mensagem =
-
-                    `${titulo}\n\n${urlAtual}`;
-
-                window.open(
-
-                    `https://wa.me/?text=${encodeURIComponent(mensagem)}`,
-
-                    "_blank"
-
-                );
-
-            }
+    document.getElementById("compartilhar-facebook")?.addEventListener("click", () => {
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
+            "_blank"
         );
+    });
 
-    /* =====================================================
-    COMPARTILHAMENTO FACEBOOK
-    ===================================================== */
+    document.getElementById("copiar-link")?.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(urlAtual);
+            alert("Link copiado com sucesso!");
+        } catch (error) {
+            console.error(error);
+        }
+    });
 
-    document
-        .getElementById(
-            "compartilhar-facebook"
-        )
-        ?.addEventListener(
-            "click",
-            () => {
-
-                window.open(
-
-                    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlAtual)}`,
-
-                    "_blank"
-
-                );
-
-            }
-        );
-
-    /* =====================================================
-    COPIAR LINK
-    ===================================================== */
-
-    document
-        .getElementById(
-            "copiar-link"
-        )
-        ?.addEventListener(
-            "click",
-
-            async () => {
-
-                try {
-
-                    await navigator.clipboard.writeText(
-                        urlAtual
-                    );
-
-                    alert(
-                        "Link copiado com sucesso!"
-                    );
-
-                } catch (error) {
-
-                    console.error(error);
-
-                }
-
-            }
-
-        );
-
-}
+} // ← fecha renderizarPaginaImovel
