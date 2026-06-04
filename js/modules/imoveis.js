@@ -840,6 +840,118 @@ breadcrumbScript.textContent =
     JSON.stringify(
         breadcrumbSchema
     );
+
+    /* -------------------------------------------------
+SCHEMA REALESTATELISTING
+------------------------------------------------- */
+
+const listingSchema = {
+
+    "@context": "https://schema.org",
+
+    "@type": "RealEstateListing",
+
+    "name": titulo,
+
+    "description":
+        imovel.seo?.description ||
+        descricaoResumo,
+
+    "url": urlAtual,
+
+    "image": [
+
+        imagemCompartilhamento
+
+    ],
+
+    "offers": {
+
+        "@type": "Offer",
+
+        "price":
+
+            Number(
+                imovel.preco?.valor || 0
+            ),
+
+        "priceCurrency": "BRL",
+
+        "availability":
+
+            imovel.status?.toLowerCase() === "vendido"
+
+            ? "https://schema.org/SoldOut"
+
+            : "https://schema.org/InStock"
+
+    },
+
+    "address": {
+
+        "@type": "PostalAddress",
+
+        "addressLocality": cidade,
+
+        "addressRegion": estado,
+
+        "addressCountry": "BR"
+
+    },
+
+    "numberOfRooms":
+
+        Number(
+            imovel.caracteristicas?.quartos || 0
+        ),
+
+    "numberOfBathroomsTotal":
+
+        Number(
+            imovel.caracteristicas?.banheiros || 0
+        ),
+
+    "floorSize": {
+
+        "@type": "QuantitativeValue",
+
+        "value":
+
+            Number(
+                imovel.metragem?.areaConstruida || 0
+            ),
+
+        "unitCode": "MTK"
+
+    }
+
+};
+
+let listingScript =
+    document.getElementById(
+        "listing-schema"
+    );
+
+if (!listingScript) {
+
+    listingScript =
+        document.createElement("script");
+
+    listingScript.type =
+        "application/ld+json";
+
+    listingScript.id =
+        "listing-schema";
+
+    document.head.appendChild(
+        listingScript
+    );
+}
+
+listingScript.textContent =
+    JSON.stringify(
+        listingSchema
+    ); 
     
     /* -------------------------------------------------
        COMPARTILHAMENTO
