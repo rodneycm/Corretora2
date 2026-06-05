@@ -23,6 +23,28 @@ async function loadComponent(elementId, filePath){
 
         element.innerHTML = html;
 
+        if (
+    elementId === "footer-component"
+) {
+
+    const botao =
+        document.getElementById(
+            "scroll-top"
+        );
+
+    if (botao) {
+
+        import("./ui/scroll-top.js")
+            .then(module => {
+
+                module.inicializarScrollTop();
+
+            });
+
+    }
+
+}
+
         if(elementId === "header-component"){
 
             activateCurrentPage();
