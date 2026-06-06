@@ -918,3 +918,150 @@ LOCALIZAÇÃO COMPLETA
     margin-top:10px !important;
 
 }
+
+/* =========================================================
+CTA INTERMEDIÁRIO
+========================================================= */
+
+.cta-imovel{
+
+    margin-top:70px;
+
+    margin-bottom:70px;
+
+    padding:60px 40px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b
+    );
+
+    color:#ffffff;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.cta-imovel-content{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+.cta-imovel-tag{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:20px;
+
+}
+
+.cta-imovel h2{
+
+    font-size:
+    clamp(30px,4vw,42px);
+
+    margin-bottom:20px;
+
+    line-height:1.2;
+
+}
+
+.cta-imovel p{
+
+    color:
+    rgba(255,255,255,.85);
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.cta-imovel-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    background:#25d366;
+
+    color:#ffffff;
+
+    padding:18px 34px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    transition:.3s ease;
+
+}
+
+.cta-imovel-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:#1faa52;
+
+}
+
+@media(max-width:768px){
+
+    .cta-imovel{
+
+        padding:40px 25px;
+
+        margin-top:50px;
+
+        margin-bottom:50px;
+
+    }
+
+    .cta-imovel p{
+
+        font-size:16px;
+
+    }
+
+    .cta-imovel-btn{
+
+        width:100%;
+
+    }
+
+}
