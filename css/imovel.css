@@ -974,10 +974,12 @@ CTA INTERMEDIÁRIO
     border-radius:999px;
 
     background:
-    rgba(255,255,255,.12);
+    rgba(255,255,255,.18);
 
     border:
-    1px solid rgba(255,255,255,.15);
+    1px solid rgba(255,255,255,.25);
+
+    color:#ffffff;
 
     font-size:12px;
 
@@ -998,18 +1000,21 @@ CTA INTERMEDIÁRIO
 
     line-height:1.2;
 
+    color:#ffffff;
+
 }
 
 .cta-imovel p{
 
-    color:
-    rgba(255,255,255,.85);
+    color:#ffffff;
 
-    font-size:18px;
+    font-size:17px;
 
     line-height:1.8;
 
     margin-bottom:30px;
+
+    font-weight:500;
 
 }
 
