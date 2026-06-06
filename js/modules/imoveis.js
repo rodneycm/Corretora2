@@ -589,10 +589,6 @@ document.head.appendChild(
     ${diferenciais}
 </ul>
 
-<ul class="imovel-diferenciais">
-    ${diferenciais}
-</ul>
-
 <div class="imovel-compartilhar">
 
         <div class="imovel-compartilhar">
