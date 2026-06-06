@@ -589,37 +589,11 @@ document.head.appendChild(
     ${diferenciais}
 </ul>
 
-<section class="cta-imovel">
+<ul class="imovel-diferenciais">
+    ${diferenciais}
+</ul>
 
-    <div class="cta-imovel-content">
-
-        <span class="cta-imovel-tag">
-            Atendimento Especializado
-        </span>
-
-        <h2>
-            Gostou deste imóvel?
-        </h2>
-
-        <p>
-            Fale diretamente com Stephanie Campos e receba
-            mais informações, fotos adicionais e agende uma visita.
-        </p>
-
-        <a
-        class="cta-imovel-btn"
-        target="_blank"
-        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no imóvel ${titulo}`)}">
-
-            <i class="fab fa-whatsapp"></i>
-
-            Falar agora no WhatsApp
-
-        </a>
-
-    </div>
-
-</section>
+<div class="imovel-compartilhar">
 
         <div class="imovel-compartilhar">
             <h3>Compartilhar imóvel</h3>
