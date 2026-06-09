@@ -1075,9 +1075,9 @@ CONTEÚDO PRINCIPAL
 
     border-radius:28px;
 
-    padding:50px;
+    padding:60px;
 
-    box-shadow:var(--shadow-md);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 
 }
 
@@ -1111,10 +1111,12 @@ CONTEÚDO PRINCIPAL
 
 #imovel-conteudo .descricao-imovel p{
 
-    font-size:22px !important;
+    font-size:18px !important;
 
     line-height:2 !important;
 
-    color:#111827 !important;
+    color:#475569 !important;
+
+    margin-bottom:24px !important;
 
 }
