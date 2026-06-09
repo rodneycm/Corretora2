@@ -548,17 +548,15 @@ document.head.appendChild(
 
     if (conteudo) {
 
-    conteudo.innerHTML = `
+    console.log("DESCRICAO:", descricao);
 
-        <h2>Descrição do imóvel</h2>
+conteudo.innerHTML = `
+    <h2>Descrição do imóvel</h2>
 
-        <div class="descricao-imovel">
-
-            ${descricao}
-
-        </div>
-
-    `;
+    <div class="descricao-imovel">
+        ${descricao}
+    </div>
+`;
 
 }
 
