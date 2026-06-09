@@ -1075,8 +1075,36 @@ CONTEÚDO PRINCIPAL
 
     border-radius:28px;
 
-    padding:40px;
+    padding:50px;
 
     box-shadow:var(--shadow-md);
+
+}
+
+#imovel-conteudo h2{
+
+    font-size:32px;
+
+    color:#0f172a;
+
+    margin-bottom:30px;
+
+}
+
+#imovel-conteudo .descricao-imovel{
+
+    max-width:900px;
+
+}
+
+#imovel-conteudo .descricao-imovel p{
+
+    font-size:18px;
+
+    line-height:2;
+
+    color:#475569;
+
+    margin-bottom:20px;
 
 }
