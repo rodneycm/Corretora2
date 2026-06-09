@@ -549,11 +549,15 @@ document.head.appendChild(
     if (conteudo) {
 
     conteudo.innerHTML = `
-        <h2>TESTE DE CONTEÚDO</h2>
 
-        <p>
-            Esta área ficará abaixo da galeria.
-        </p>
+        <h2>Descrição do imóvel</h2>
+
+        <div class="descricao-imovel">
+
+            ${descricao}
+
+        </div>
+
     `;
 
 }
@@ -591,10 +595,6 @@ document.head.appendChild(
         ${localizacaoCompleta}
 
         <p>${imovel.subtitulo || ""}</p>
-
-        <div class="descricao-imovel">
-            ${descricao}
-        </div>
 
         <h3>Diferenciais</h3>
 
