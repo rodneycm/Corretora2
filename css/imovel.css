@@ -1108,3 +1108,13 @@ CONTEÚDO PRINCIPAL
     margin-bottom:20px;
 
 }
+
+#imovel-conteudo .descricao-imovel p{
+
+    font-size:22px !important;
+
+    line-height:2 !important;
+
+    color:#111827 !important;
+
+}
