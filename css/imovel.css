@@ -993,28 +993,13 @@ CTA INTERMEDIÁRIO
 
 .cta-imovel h2{
 
-    font-size:
-    clamp(30px,4vw,42px);
-
-    margin-bottom:20px;
-
-    line-height:1.2;
-
-    color:#ffffff;
+    color:#ffffff !important;
 
 }
 
 .cta-imovel p{
 
-    color:#ffffff;
-
-    font-size:17px;
-
-    line-height:1.8;
-
-    margin-bottom:30px;
-
-    font-weight:500;
+    color:#ffffff !important;
 
 }
 
