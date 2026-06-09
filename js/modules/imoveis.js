@@ -320,6 +320,7 @@ export async function renderizarPaginaImovel() {
 
     const galeria = document.getElementById("imovel-galeria");
     const info    = document.getElementById("imovel-info");
+    const conteudo = document.getElementById("imovel-conteudo");
 
     if (!galeria || !info) return;
 
@@ -544,6 +545,18 @@ document.head.appendChild(
                 </p>` : ""}
         </div>
     `;
+
+    if (conteudo) {
+
+    conteudo.innerHTML = `
+        <h2>TESTE DE CONTEÚDO</h2>
+
+        <p>
+            Esta área ficará abaixo da galeria.
+        </p>
+    `;
+
+}
 
     /* -------------------------------------------------
        INFO
