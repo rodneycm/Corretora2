@@ -1062,3 +1062,21 @@ CTA INTERMEDIÁRIO
     }
 
 }
+
+/* =========================================
+CONTEÚDO PRINCIPAL
+========================================= */
+
+#imovel-conteudo{
+
+    margin-top:50px;
+
+    background:#ffffff;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow-md);
+
+}
