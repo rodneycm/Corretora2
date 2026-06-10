@@ -1068,15 +1068,15 @@ CTA INTERMEDIÁRIO
 CONTEÚDO PRINCIPAL
 ========================================= */
 
-#imovel-conteudo{
-
-    margin-top:50px;
+.bloco-imovel{
 
     background:#ffffff;
 
     border-radius:28px;
 
-    padding:60px;
+    padding:50px;
+
+    margin-bottom:30px;
 
     box-shadow:0 10px 30px rgba(0,0,0,.08);
 
