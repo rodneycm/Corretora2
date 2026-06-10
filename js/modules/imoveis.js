@@ -546,20 +546,57 @@ document.head.appendChild(
         </div>
     `;
 
-    if (conteudo) {
+   if (conteudo) {
 
-    console.log("DESCRICAO:", descricao);
+    conteudo.innerHTML = `
 
-conteudo.innerHTML = `
-    <h2>Descrição do imóvel</h2>
+        <section class="bloco-imovel">
 
-    <div class="descricao-imovel">
-        ${descricao}
-    </div>
-`;
+            <h2>
+                Características
+            </h2>
+
+            ${caracteristicas}
+
+        </section>
+
+        <section class="bloco-imovel">
+
+            <h2>
+                Descrição do imóvel
+            </h2>
+
+            <div class="descricao-imovel">
+
+                ${descricao}
+
+            </div>
+
+        </section>
+
+        <section class="bloco-imovel">
+
+            <h2>
+                Diferenciais
+            </h2>
+
+            <ul class="imovel-diferenciais">
+
+                ${diferenciais}
+
+            </ul>
+
+        </section>
+
+        <section class="bloco-imovel">
+
+            ${localizacaoCompleta}
+
+        </section>
+
+    `;
 
 }
-
     /* -------------------------------------------------
        INFO
     ------------------------------------------------- */
