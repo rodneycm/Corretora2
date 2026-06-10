@@ -564,98 +564,127 @@ conteudo.innerHTML = `
        INFO
     ------------------------------------------------- */
 
-    info.innerHTML = `
+   info.innerHTML = `
 
-        <span class="imovel-tag">${imovel.finalidade || ""}</span>
+    <span class="imovel-tag">
+        ${imovel.finalidade || ""}
+    </span>
 
-        <h1>${titulo}</h1>
+    <h1>
+        ${titulo}
+    </h1>
 
-        <h2>${preco}</h2>
+    <h2>
+        ${preco}
+    </h2>
 
-        <div class="imovel-localizacao">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>${bairro}, ${cidade} - ${estado}</span>
-        </div>
-
-        <div class="imovel-meta">
-            <div class="imovel-codigo">
-                <strong>Código:</strong> ${imovel.codigo || "N/D"}
-            </div>
-            <div class="imovel-status">
-                <span class="status-badge status-${(imovel.status || "").toLowerCase()}">
-                    ${(imovel.status || "Disponivel").replace("Disponivel", "Disponível")}
-                </span>
-            </div>
-        </div>
-
-        ${caracteristicas}
-
-        ${localizacaoCompleta}
-
-        <p>${imovel.subtitulo || ""}</p>
-
-        <h3>Diferenciais</h3>
-
-<ul class="imovel-diferenciais">
-    ${diferenciais}
-</ul>
-
-<section class="cta-imovel">
-
-    <div class="cta-imovel-content">
-
-        <span class="cta-imovel-tag">
-            Atendimento Especializado
+    <div class="imovel-localizacao">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>
+            ${bairro}, ${cidade} - ${estado}
         </span>
+    </div>
 
-        <h2>
-            Gostou deste imóvel?
-        </h2>
+    <div class="imovel-meta">
 
-        <p>
-            Fale diretamente com Stephanie Campos e receba
-            mais informações, fotos adicionais e agende uma visita.
-        </p>
+        <div class="imovel-codigo">
 
-        <a
-        class="cta-imovel-btn"
-        target="_blank"
-        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no imóvel ${titulo}`)}">
+            <strong>Código:</strong>
 
-            <i class="fab fa-whatsapp"></i>
+            ${imovel.codigo || "N/D"}
 
-            Falar agora no WhatsApp
+        </div>
 
-        </a>
+        <div class="imovel-status">
+
+            <span
+            class="status-badge status-${(imovel.status || "").toLowerCase()}">
+
+                ${(imovel.status || "Disponivel")
+                    .replace("Disponivel", "Disponível")}
+
+            </span>
+
+        </div>
 
     </div>
 
-</section>
+    <section class="cta-imovel">
 
-<div class="imovel-compartilhar">
+        <div class="cta-imovel-content">
 
-            <h3>Compartilhar imóvel</h3>
-            <div class="compartilhar-botoes">
-                <button id="compartilhar-whatsapp" class="btn-compartilhar">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </button>
-                <button id="compartilhar-facebook" class="btn-compartilhar">
-                    <i class="fab fa-facebook-f"></i> Facebook
-                </button>
-                <button id="copiar-link" class="btn-compartilhar">
-                    <i class="fa-solid fa-link"></i> Copiar Link
-                </button>
-            </div>
-        </div>
+            <span class="cta-imovel-tag">
+                Atendimento Especializado
+            </span>
 
-        <a
-            class="imovel-whatsapp"
+            <h2>
+                Gostou deste imóvel?
+            </h2>
+
+            <p>
+                Fale diretamente com Stephanie Campos
+                e receba mais informações,
+                fotos adicionais e agende uma visita.
+            </p>
+
+            <a
+            class="cta-imovel-btn"
             target="_blank"
             href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no imóvel ${titulo}`)}">
-            <i class="fab fa-whatsapp"></i>
-            Falar sobre este imóvel
-        </a>
-    `;
+
+                <i class="fab fa-whatsapp"></i>
+
+                Falar agora no WhatsApp
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <div class="imovel-compartilhar">
+
+        <h3>
+            Compartilhar imóvel
+        </h3>
+
+        <div class="compartilhar-botoes">
+
+            <button
+            id="compartilhar-whatsapp"
+            class="btn-compartilhar">
+
+                <i class="fab fa-whatsapp"></i>
+
+                WhatsApp
+
+            </button>
+
+            <button
+            id="compartilhar-facebook"
+            class="btn-compartilhar">
+
+                <i class="fab fa-facebook-f"></i>
+
+                Facebook
+
+            </button>
+
+            <button
+            id="copiar-link"
+            class="btn-compartilhar">
+
+                <i class="fa-solid fa-link"></i>
+
+                Copiar Link
+
+            </button>
+
+        </div>
+
+    </div>
+
+`;
 
     /* -------------------------------------------------
        IMÓVEIS RELACIONADOS
