@@ -659,9 +659,7 @@ document.head.appendChild(
             </h2>
 
             <p>
-                Fale diretamente com Stephanie Campos
-                e receba mais informações,
-                fotos adicionais e agende uma visita.
+                Fale diretamente com Stephanie Campos, especialista em imóveis em Teresópolis, e receba atendimento personalizado, informações completas e agendamento de visita.
             </p>
 
             <a
