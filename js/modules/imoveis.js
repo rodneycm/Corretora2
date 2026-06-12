@@ -564,9 +564,30 @@ document.head.appendChild(
 
 <section class="bloco-imovel">
     <h2>Descrição do imóvel</h2>
+
     <div class="descricao-imovel">
         ${descricao}
     </div>
+</section>
+
+<section class="bloco-imovel corretora-box">
+
+    <img
+        src="assets/equipe/stephanie1.webp"
+        alt="Stephanie Campos"
+        class="corretora-foto">
+
+    <div class="corretora-info">
+
+        <h2>Stephanie Campos</h2>
+
+        <p>
+            Especialista em imóveis residenciais em Teresópolis.
+            Atendimento personalizado para compra, venda e locação.
+        </p>
+
+    </div>
+
 </section>
 
     `;
