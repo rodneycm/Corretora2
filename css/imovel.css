@@ -1164,3 +1164,43 @@ CONTEÚDO PRINCIPAL
     margin-bottom:24px !important;
 
 }
+
+/* =========================================
+BLOCO STEPHANIE
+========================================= */
+
+.corretora-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.corretora-foto{
+
+    width:220px;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:24px;
+
+    flex-shrink:0;
+
+}
+
+.corretora-info h2{
+
+    margin-bottom:12px;
+
+}
+
+.corretora-info p{
+
+    line-height:1.8;
+
+}
