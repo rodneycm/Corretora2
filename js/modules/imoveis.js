@@ -552,9 +552,11 @@ document.head.appendChild(
 
         <section class="bloco-imovel">
 
-            <h2>
-                Características
-            </h2>
+        <h2>
+            Características
+        </h2>
+
+            ${caracteristicas}
 
         </section>
 
