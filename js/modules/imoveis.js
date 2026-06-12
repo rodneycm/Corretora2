@@ -556,8 +556,6 @@ document.head.appendChild(
                 Características
             </h2>
 
-            ${caracteristicas}
-
         </section>
 
         <section class="bloco-imovel">
