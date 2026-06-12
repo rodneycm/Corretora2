@@ -8,7 +8,7 @@ display:grid;
 grid-template-columns:1fr 420px;
 gap:40px;
 align-items:start;
-grid-auto-rows:min-content;
+margin-bottom:40px;
 }
 
 /* =========================================
