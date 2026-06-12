@@ -126,8 +126,8 @@ padding:40px;
 border-radius:28px;
 position:sticky;
 top:120px;
-max-height:calc(100vh - 140px);
-overflow-y:auto;
+max-height:none;
+overflow:visible;
 box-shadow:var(--shadow-md);
 }
 
