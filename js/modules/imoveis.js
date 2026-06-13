@@ -887,13 +887,17 @@ const listingSchema = {
         imovel.seo?.description ||
         descricaoResumo,
 
-    "url": urlAtual,
+   "url": urlAtual,
 
-    "image": [
+"identifier": imovel.codigo || "",
 
-        imagemCompartilhamento
+"additionalType": imovel.tipo || "",
 
-    ],
+"image": [
+
+    imagemCompartilhamento
+
+],
 
     "offers": {
 
