@@ -841,15 +841,17 @@ const listingSchema = {
 
     "address": {
 
-        "@type": "PostalAddress",
+    "@type": "PostalAddress",
 
-        "addressLocality": cidade,
+    "addressLocality": cidade,
 
-        "addressRegion": estado,
+    "addressRegion": estado,
 
-        "addressCountry": "BR"
+    "addressCountry": "BR",
 
-    },
+    "addressNeighborhood": bairro
+
+},
 
     "numberOfRooms":
 
