@@ -518,13 +518,26 @@ document.head.appendChild(
     const breadcrumb = document.getElementById("breadcrumb");
 
     if (breadcrumb) {
+
+        const paginaFinalidade =
+    imovel.finalidade?.toLowerCase() === "aluguel"
+        ? "aluguel.html"
+        : "comprar.html";
         breadcrumb.innerHTML = `
-            <a href="index.html">Início</a>
-            <span>/</span>
-            <a href="comprar.html">${imovel.finalidade}</a>
-            <span>/</span>
-            <span>${imovel.titulo}</span>
-        `;
+    <a href="index.html">Início</a>
+
+    <span>/</span>
+
+    <a href="${paginaFinalidade}">
+        ${imovel.finalidade}
+    </a>
+
+    <span>/</span>
+
+    <span>
+        ${imovel.titulo}
+    </span>
+`;
     }
 
     /* -------------------------------------------------
