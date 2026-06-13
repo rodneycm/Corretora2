@@ -497,7 +497,7 @@ export async function renderizarPaginaImovel() {
             </span>
 
             <h2>
-                Gostou deste imóvel? MANDA A REAL
+                Gostou deste imóvel? 
             </h2>
 
             <p>
