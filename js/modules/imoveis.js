@@ -461,9 +461,9 @@ document.head.appendChild(
        DESCRIÇÃO
     ------------------------------------------------- */
 
-    const descricao = imovel.descricao.completa
-        .map(texto => `<p>${texto}</p>`)
-        .join("");
+    const descricao = (imovel.descricao?.completa || [])
+    .map(texto => `<p>${texto}</p>`)
+    .join("");
 
     /* -------------------------------------------------
        CARACTERÍSTICAS
