@@ -348,20 +348,6 @@ export async function renderizarPaginaImovel() {
         CONFIG.IMAGE_FALLBACK
     ).replace(/^\.?\//, "")}`;
 
-/* -------------------------------------------------
-   SCHEMA REAL ESTATE LISTING
-------------------------------------------------- */
-
-let schemaExistente =
-    document.getElementById(
-        "schema-imovel"
-    );
-
-if (schemaExistente) {
-
-    schemaExistente.remove();
-}
-
     /* -------------------------------------------------
        DIFERENCIAIS
     ------------------------------------------------- */
