@@ -488,37 +488,6 @@ export async function renderizarPaginaImovel() {
 
     </div>
 
-    <section class="cta-imovel">
-
-        <div class="cta-imovel-content">
-
-            <span class="cta-imovel-tag">
-                Atendimento Especializado
-            </span>
-
-            <h2>
-                Gostou deste imóvel? 
-            </h2>
-
-            <p>
-                Fale diretamente com Stephanie Campos, especialista em imóveis em Teresópolis, e receba atendimento personalizado, informações completas e agendamento de visita.
-            </p>
-
-            <a
-            class="cta-imovel-btn"
-            target="_blank"
-            href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no imóvel ${titulo}`)}">
-
-                <i class="fab fa-whatsapp"></i>
-
-                Falar agora no WhatsApp
-
-            </a>
-
-        </div>
-
-    </section>
-
     <div class="imovel-compartilhar">
 
         <h3>
