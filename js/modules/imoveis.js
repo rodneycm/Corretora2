@@ -563,6 +563,36 @@ export async function renderizarPaginaImovel() {
 
 `;
 
+conteudo.innerHTML = `
+<section class="bloco-imovel">
+
+    <h2>Características</h2>
+
+    ${caracteristicas}
+
+</section>
+
+<section class="bloco-imovel">
+
+    <h2>Descrição do imóvel</h2>
+
+    ${descricao}
+
+</section>
+
+<section class="bloco-imovel">
+
+    <h2>Diferenciais</h2>
+
+    <ul class="lista-diferenciais">
+
+        ${diferenciais}
+
+    </ul>
+
+</section>
+`;
+
     /* -------------------------------------------------
        IMÓVEIS RELACIONADOS
     ------------------------------------------------- */
