@@ -811,8 +811,6 @@ const listingSchema = {
 
 "identifier": imovel.codigo || "",
 
-"additionalType": imovel.tipo || "",
-
 "image": [
 
     imagemCompartilhamento
