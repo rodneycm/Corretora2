@@ -599,7 +599,7 @@ conteudo.innerHTML = `
         <div class="corretora-foto">
 
             <img
-                src="assets/images/stephanie-campos.jpg"
+                src="assets/equipe/stephanie.webp"
                 alt="Stephanie Campos">
 
         </div>
