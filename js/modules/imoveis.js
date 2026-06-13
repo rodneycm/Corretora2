@@ -348,107 +348,6 @@ export async function renderizarPaginaImovel() {
         CONFIG.IMAGE_FALLBACK
     ).replace(/^\.?\//, "")}`;
 
-/* -------------------------------------------------
-   SCHEMA REAL ESTATE LISTING
-------------------------------------------------- */
-
-let schemaExistente =
-    document.getElementById(
-        "schema-imovel"
-    );
-
-if (schemaExistente) {
-
-    schemaExistente.remove();
-}
-
-const schemaImovel = {
-
-    "@context": "https://schema.org",
-
-    "@type": "Residence",
-
-    "name": titulo,
-
-    "description":
-        imovel.seo?.description ||
-        descricaoResumo,
-
-    "url": urlAtual,
-
-    "image": [
-
-        imagemCompartilhamento
-
-    ],
-
-    "address": {
-
-        "@type": "PostalAddress",
-
-        "addressLocality": cidade,
-
-        "addressRegion": estado,
-
-        "addressCountry": "BR"
-
-    },
-
-    "numberOfRooms":
-        imovel.caracteristicas?.quartos || 0,
-
-    "numberOfBathroomsTotal":
-        imovel.caracteristicas?.banheiros || 0,
-
-    "floorSize": {
-
-        "@type": "QuantitativeValue",
-
-        "value":
-            imovel.metragem?.areaConstruida || 0,
-
-        "unitCode": "MTK"
-
-    },
-
-    "offers": {
-
-        "@type": "Offer",
-
-        "price":
-            imovel.preco?.valor || 0,
-
-        "priceCurrency": "BRL",
-
-        "availability":
-
-            (imovel.status || "")
-                .toLowerCase() === "vendido"
-
-                ? "https://schema.org/SoldOut"
-
-                : "https://schema.org/InStock",
-
-        "url": urlAtual
-    }
-};
-
-const scriptSchema =
-    document.createElement("script");
-
-scriptSchema.type =
-    "application/ld+json";
-
-scriptSchema.id =
-    "schema-imovel";
-
-scriptSchema.textContent =
-    JSON.stringify(schemaImovel);
-
-document.head.appendChild(
-    scriptSchema
-);
-
     /* -------------------------------------------------
        DIFERENCIAIS
     ------------------------------------------------- */
@@ -540,72 +439,6 @@ document.head.appendChild(
 `;
     }
 
-    /* -------------------------------------------------
-       LOCALIZAÇÃO
-    ------------------------------------------------- */
-
-    const localizacaoCompleta = `
-        <div class="localizacao-completa">
-            <h3>Localização</h3>
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                ${bairro}, ${cidade} - ${estado}
-            </p>
-            ${imovel.endereco?.referencia ? `
-                <p class="localizacao-referencia">
-                    <strong>Referência:</strong>
-                    ${imovel.endereco.referencia}
-                </p>` : ""}
-        </div>
-    `;
-
-   if (conteudo) {
-
-    conteudo.innerHTML = `
-
-        <section class="bloco-imovel">
-    <h2>Características</h2>
-    ${caracteristicas}
-</section>
-
-<section class="bloco-imovel">
-    <h2>Diferenciais</h2>
-    <ul class="imovel-diferenciais">
-        ${diferenciais}
-    </ul>
-</section>
-
-<section class="bloco-imovel">
-    <h2>Descrição do imóvel</h2>
-
-    <div class="descricao-imovel">
-        ${descricao}
-    </div>
-</section>
-
-<section class="bloco-imovel corretora-box">
-
-    <img
-        src="assets/equipe/stephanie1.webp"
-        alt="Stephanie Campos"
-        class="corretora-foto">
-
-    <div class="corretora-info">
-
-        <h2>Stephanie Campos</h2>
-
-        <p>
-            Especialista em imóveis residenciais em Teresópolis.
-            Atendimento personalizado para compra, venda e locação.
-        </p>
-
-    </div>
-
-</section>
-
-    `;
-
-}
     /* -------------------------------------------------
        INFO
     ------------------------------------------------- */
@@ -974,47 +807,53 @@ const listingSchema = {
         imovel.seo?.description ||
         descricaoResumo,
 
-    "url": urlAtual,
+   "url": urlAtual,
 
-    "image": [
+"identifier": imovel.codigo || "",
 
-        imagemCompartilhamento
+"image": [
 
-    ],
+    imagemCompartilhamento
+
+],
 
     "offers": {
 
-        "@type": "Offer",
+    "@type": "Offer",
 
-        "price":
+    "price":
 
-            Number(
-                imovel.preco?.valor || 0
-            ),
+        Number(
+            imovel.preco?.valor || 0
+        ),
 
-        "priceCurrency": "BRL",
+    "priceCurrency": "BRL",
 
-        "availability":
+    "url": urlAtual,
 
-            imovel.status?.toLowerCase() === "vendido"
+    "availability":
 
-            ? "https://schema.org/SoldOut"
+        imovel.status?.toLowerCase() === "vendido"
 
-            : "https://schema.org/InStock"
+        ? "https://schema.org/SoldOut"
 
-    },
+        : "https://schema.org/InStock"
+
+},
 
     "address": {
 
-        "@type": "PostalAddress",
+    "@type": "PostalAddress",
 
-        "addressLocality": cidade,
+    "addressLocality": cidade,
 
-        "addressRegion": estado,
+    "addressRegion": estado,
 
-        "addressCountry": "BR"
+    "addressCountry": "BR",
 
-    },
+    "addressNeighborhood": bairro
+
+},
 
     "numberOfRooms":
 

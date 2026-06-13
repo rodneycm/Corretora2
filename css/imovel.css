@@ -211,7 +211,7 @@ CARACTERÍSTICAS
 display:grid;
 
 grid-template-columns:
-repeat(2,1fr);
+repeat(auto-fit,minmax(220px,1fr));
 
 gap:12px;
 
@@ -276,14 +276,6 @@ color:#25d366;
 font-size:18px;
 
 flex-shrink:0;
-
-}
-
-.caracteristica-item i{
-
-color:#25d366;
-
-font-size:18px;
 
 }
 
