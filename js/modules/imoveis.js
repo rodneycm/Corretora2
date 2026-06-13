@@ -572,6 +572,42 @@ conteudo.innerHTML = `
 
 </section>
 
+<section class="corretora-destaque">
+
+    <img
+        src="assets/equipe/stephanie.webp"
+        alt="Stephanie Campos Consultora Imobiliária"
+    >
+
+    <div class="corretora-destaque-info">
+
+        <span>
+            Atendimento Personalizado
+        </span>
+
+        <h3>
+            Encontrou um imóvel interessante?
+        </h3>
+
+        <p>
+            Sou Stephanie Campos e posso ajudar você
+            com informações detalhadas, visitação,
+            documentação e todo o processo de locação
+            ou compra do imóvel.
+        </p>
+
+        <a
+            target="_blank"
+            href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no imóvel ${titulo}`)}">
+
+            Falar comigo no WhatsApp
+
+        </a>
+
+    </div>
+
+</section>
+
 <section class="bloco-imovel">
 
     <h2>Descrição do imóvel</h2>
