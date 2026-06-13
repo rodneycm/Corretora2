@@ -596,67 +596,6 @@ conteudo.innerHTML = `
     </ul>
 
 </section>
-
-<section class="bloco-corretora">
-
-    <div class="corretora-card">
-
-        <div class="corretora-foto">
-
-            <img
-                src="assets/equipe/stephanie.webp"
-                alt="Stephanie Campos">
-
-        </div>
-
-        <div class="corretora-info">
-
-            <span class="corretora-tag">
-
-                Atendimento Especializado
-
-            </span>
-
-            <h2>
-
-                Stephanie Campos
-
-            </h2>
-
-            <p>
-
-                Consultora imobiliária especializada
-                em compra, venda e locação de imóveis
-                em Teresópolis e região.
-
-            </p>
-
-            <ul>
-
-                <li>✓ Atendimento personalizado</li>
-
-                <li>✓ Agendamento de visitas</li>
-
-                <li>✓ Suporte completo na negociação</li>
-
-                <li>✓ Atendimento rápido pelo WhatsApp</li>
-
-            </ul>
-
-            <a
-            class="corretora-btn"
-            target="_blank"
-            href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá Stephanie, gostaria de mais informações sobre o imóvel ${titulo}`)}">
-
-                Falar com Stephanie
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
 `;
 
     /* -------------------------------------------------
