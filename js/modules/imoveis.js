@@ -819,25 +819,27 @@ const listingSchema = {
 
     "offers": {
 
-        "@type": "Offer",
+    "@type": "Offer",
 
-        "price":
+    "price":
 
-            Number(
-                imovel.preco?.valor || 0
-            ),
+        Number(
+            imovel.preco?.valor || 0
+        ),
 
-        "priceCurrency": "BRL",
+    "priceCurrency": "BRL",
 
-        "availability":
+    "url": urlAtual,
 
-            imovel.status?.toLowerCase() === "vendido"
+    "availability":
 
-            ? "https://schema.org/SoldOut"
+        imovel.status?.toLowerCase() === "vendido"
 
-            : "https://schema.org/InStock"
+        ? "https://schema.org/SoldOut"
 
-    },
+        : "https://schema.org/InStock"
+
+},
 
     "address": {
 
