@@ -449,8 +449,161 @@
     "publicado": true
   }
 
+},
+{
+  "id": "solar-do-imbui-posse",
+
+  "slug": "apartamento-solar-do-imbui-posse",
+
+  "titulo": "Apartamento Novo no Solar do Imbuí – Posse – Teresópolis/RJ",
+
+  "subtitulo": "Primeira locação em condomínio com lazer completo.",
+
+  "codigo": "SCA002",
+
+  "tipo": "Apartamento",
+
+  "categoria": "Residencial",
+
+  "finalidade": "Aluguel",
+
+  "status": "disponivel",
+
+  "destaque": true,
+
+  "exibirNaHome": true,
+
+  "bairro": "Posse",
+
+  "cidade": "Teresópolis",
+
+  "estado": "RJ",
+
+  "endereco": {
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "cep": "",
+    "referencia": "Condomínio Solar do Imbuí"
+  },
+
+  "localizacao": {
+    "latitude": "",
+    "longitude": ""
+  },
+
+  "preco": {
+    "valor": 1400,
+    "condominio": 360,
+    "iptu": 30,
+    "moeda": "BRL"
+  },
+
+  "metragem": {
+    "areaTerreno": 0,
+    "areaConstruida": 54,
+    "unidade": "m²"
+  },
+
+  "caracteristicas": {
+    "quartos": 2,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 1,
+    "salas": 1,
+    "andares": 1,
+    "aceitaPet": true,
+    "mobiliado": false
+  },
+
+  "diferenciais": [
+    "Primeira locação",
+    "Apartamento térreo",
+    "Piscina",
+    "Sauna",
+    "Churrasqueira",
+    "Parquinho infantil",
+    "Salão de festas",
+    "Portaria 24 horas",
+    "Varanda",
+    "Condomínio fechado",
+    "Excelente custo-benefício"
+  ],
+
+  "descricao": {
+    "resumo": "Apartamento novo para locação no Solar do Imbuí com suíte e lazer completo.",
+
+    "completa": [
+      "Excelente oportunidade para quem busca conforto, segurança e praticidade em um condomínio moderno e completo.",
+      "Apartamento em primeira locação com 54m² muito bem distribuídos.",
+      "Possui sala ampla, cozinha funcional, varanda e dois quartos, sendo uma suíte.",
+      "Localizado no condomínio Solar do Imbuí, no bairro da Posse.",
+      "O condomínio oferece piscina, sauna, churrasqueira, salão de festas, parquinho infantil e portaria 24 horas.",
+      "Ideal para quem deseja morar com tranquilidade e qualidade de vida em Teresópolis."
+    ]
+  },
+
+  "midia": {
+
+    "thumbnail": "assets/imoveis/aluguel/solar-do-imbui/foto1.webp",
+
+    "galeria": [
+      "assets/imoveis/aluguel/solar-do-imbui/foto1.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto2.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto3.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto4.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto5.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto6.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto7.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto8.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto9.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto10.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto11.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto12.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto13.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto14.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto15.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto16.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto17.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto18.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto19.webp",
+      "assets/imoveis/aluguel/solar-do-imbui/foto20.webp"
+    ],
+
+    "videoTour": "",
+    "youtube": "",
+    "planta": ""
+  },
+
+  "seo": {
+    "title": "Apartamento para Alugar no Solar do Imbuí | Posse | Teresópolis",
+
+    "description": "Apartamento novo para locação no Solar do Imbuí, bairro da Posse. 2 quartos, suíte, varanda e lazer completo.",
+
+    "keywords": [
+      "apartamento aluguel Teresópolis",
+      "apartamento Posse",
+      "Solar do Imbuí",
+      "aluguel Teresópolis",
+      "apartamento com piscina"
+    ]
+  },
+
+  "contato": {
+    "corretor": "Stephanie Campos",
+    "telefone": "(21) 98932-1485",
+    "whatsapp": "5521989321485"
+  },
+
+  "sistema": {
+    "views": 0,
+    "favoritos": 0,
+    "leads": 0,
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14",
+    "publicado": true
+  }
 }
 
 ]
-
 }
