@@ -618,6 +618,57 @@ conteudo.innerHTML = `
     }
 
     /* -------------------------------------------------
+   CTA FINAL CORRETORA
+------------------------------------------------- */
+
+const ctaFinal =
+document.getElementById(
+    "cta-corretora-final"
+);
+
+if (ctaFinal) {
+
+    ctaFinal.innerHTML = `
+
+        <div class="cta-final-card">
+
+            <img
+                src="assets/equipe/stephanie.webp"
+                alt="Stephanie Campos"
+            >
+
+            <div class="cta-final-content">
+
+                <span>
+                    Atendimento Personalizado
+                </span>
+
+                <h2>
+                    Ainda não encontrou o imóvel ideal?
+                </h2>
+
+                <p>
+                    Posso ajudar você a encontrar
+                    as melhores oportunidades
+                    de compra e locação em Teresópolis.
+                </p>
+
+                <a
+                    target="_blank"
+                    href="https://wa.me/${whatsapp}">
+
+                    Falar no WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+    /* -------------------------------------------------
        SEO DINÂMICO
     ------------------------------------------------- */
 
