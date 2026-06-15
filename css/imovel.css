@@ -1129,18 +1129,15 @@ CONTEÚDO PRINCIPAL
 
 #imovel-conteudo .descricao-imovel{
 
-    max-width:900px;
+    max-width:850px;
 
 }
 
 #imovel-conteudo .descricao-imovel p{
 
-    font-size:18px;
-
-    line-height:2;
-
+    font-size:17px;
+    line-height:1.8;
     color:#475569;
-
     margin-bottom:20px;
 
 }
@@ -1675,4 +1672,40 @@ font-size:26px;
 
 .diferencial-chip i{
     color:#22c55e;
+}
+
+.descricao-highlight{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:30px;
+
+}
+
+.descricao-highlight span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#0f172a;
+
 }

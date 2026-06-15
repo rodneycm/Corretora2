@@ -369,6 +369,13 @@ export async function renderizarPaginaImovel() {
     .map(texto => `<p>${texto}</p>`)
     .join("");
 
+    const descricaoHighlight = (imovel.diferenciais || [])
+    .slice(0, 3)
+    .map(item => `
+        <span>${item}</span>
+    `)
+    .join("");
+
     /* -------------------------------------------------
        CARACTERÍSTICAS
     ------------------------------------------------- */
@@ -550,7 +557,17 @@ conteudo.innerHTML = `
 
     <h2>Descrição do imóvel</h2>
 
-    ${descricao}
+    <div class="descricao-highlight">
+
+        ${descricaoHighlight}
+
+    </div>
+
+    <div class="descricao-imovel">
+
+        ${descricao}
+
+    </div>
 
 </section>
 
