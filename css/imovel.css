@@ -1635,3 +1635,44 @@ font-size:26px;
 }
 
 }
+
+.lista-diferenciais{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.diferencial-chip{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 16px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    color:#1f2937;
+
+    transition:.2s;
+}
+
+.diferencial-chip:hover{
+    transform:translateY(-2px);
+
+    border-color:#22c55e;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.diferencial-chip i{
+    color:#22c55e;
+}

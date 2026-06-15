@@ -353,8 +353,13 @@ export async function renderizarPaginaImovel() {
     ------------------------------------------------- */
 
     const diferenciais = imovel.diferenciais
-        .map(item => `<li>${item}</li>`)
-        .join("");
+    .map(item => `
+        <div class="diferencial-chip">
+            <i class="fa-solid fa-check"></i>
+            <span>${item}</span>
+        </div>
+    `)
+    .join("");
 
     /* -------------------------------------------------
        DESCRIÇÃO
@@ -553,11 +558,11 @@ conteudo.innerHTML = `
 
     <h2>Diferenciais</h2>
 
-    <ul class="lista-diferenciais">
+    <div class="lista-diferenciais">
 
-        ${diferenciais}
+    ${diferenciais}
 
-    </ul>
+    </div>
 
 </section>
 `;
