@@ -366,13 +366,24 @@ export async function renderizarPaginaImovel() {
     ------------------------------------------------- */
 
     const descricao = (imovel.descricao?.completa || [])
-    .map(texto => `<p>${texto}</p>`)
+    .map((texto,index) => `
+
+        <p class="${index === 0 ? 'descricao-principal' : ''}">
+
+            ${texto}
+
+        </p>
+
+    `)
     .join("");
 
     const descricaoHighlight = (imovel.diferenciais || [])
     .slice(0, 3)
     .map(item => `
-        <span>${item}</span>
+        <span>
+            <i class="fa-solid fa-check"></i>
+            ${item}
+        </span>
     `)
     .join("");
 

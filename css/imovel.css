@@ -1146,11 +1146,11 @@ CONTEÚDO PRINCIPAL
 
     font-size:18px !important;
 
-    line-height:2 !important;
+    line-height:1.8 !important;
 
     color:#475569 !important;
 
-    margin-bottom:24px !important;
+    margin-bottom:16px !important;
 
 }
 
@@ -1707,5 +1707,29 @@ font-size:26px;
     font-weight:600;
 
     color:#0f172a;
+
+    transition:.2s;
+
+}
+
+.descricao-highlight span i{
+
+    color:#22c55e;
+
+    font-size:13px;
+
+}
+
+.descricao-principal{
+
+    font-size:22px !important;
+
+    font-weight:600;
+
+    line-height:1.7 !important;
+
+    color:#0f172a !important;
+
+    margin-bottom:24px !important;
 
 }
