@@ -34,7 +34,7 @@ async function loadComponent(elementId, filePath){
 
     if (botao) {
 
-        import("./ui/scroll-top.js")
+        import("./scroll-top.js")
             .then(module => {
 
                 module.inicializarScrollTop();
