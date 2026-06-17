@@ -112,6 +112,11 @@ export function criarCard(imovel) {
         imovel?.codigo
     );
 
+    const tagPrincipal =
+    textoSeguro(
+        imovel?.tagPrincipal
+    );
+
 const areaConstruida =
     numeroSeguro(
         imovel?.metragem?.areaConstruida
@@ -270,13 +275,25 @@ const badgeFinalidade =
 
         <div class="imovel-content">
 
-            <div class="codigo-imovel">
+            <div class="codigo-wrapper">
 
-            ${codigo}
+    <div class="codigo-imovel">
 
-        </div>
+        ${codigo}
 
-            <h3>${titulo}</h3>
+    </div>
+
+    ${tagPrincipal ? `
+    <div class="tag-principal-imovel">
+
+        ${tagPrincipal}
+
+    </div>
+    ` : ""}
+
+</div>
+
+<h3>${titulo}</h3>
 
             <p>${resumo}</p>
 
