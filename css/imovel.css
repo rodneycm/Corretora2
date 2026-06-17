@@ -826,7 +826,7 @@ CÓDIGO DO IMÓVEL
 
     align-items:center;
 
-    padding:6px 12px;
+    padding:8px 14px;
 
     border-radius:999px;
 
@@ -834,11 +834,9 @@ CÓDIGO DO IMÓVEL
 
     color:#4338ca;
 
-    font-size:.8rem;
+    font-size:13px;
 
-    font-weight:700;
-
-    margin-top:10px;
+    font-weight:600;
 
 }
 
