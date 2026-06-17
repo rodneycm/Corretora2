@@ -1146,12 +1146,6 @@ CONTEÚDO PRINCIPAL
 
 }
 
-.corretora-info p{
-
-    line-height:1.8;
-
-}
-
 /* =========================================
 CORRETORA
 ========================================= */
@@ -1210,16 +1204,6 @@ CORRETORA
     font-weight:700;
 
     margin-bottom:15px;
-
-}
-
-.corretora-info p{
-
-    color:#475569;
-
-    line-height:1.8;
-
-    margin-bottom:20px;
 
 }
 
