@@ -810,10 +810,6 @@ CÓDIGO DO IMÓVEL
 
 .imovel-codigo{
 
-    margin-top:10px;
-
-    margin-bottom:20px;
-
     font-size:14px;
 
     color:#666;
@@ -928,9 +924,9 @@ META DO IMÓVEL
 
     align-items:center;
 
-    gap:14px;
+    gap:12px;
 
-    margin-bottom:20px;
+    margin:12px 0 20px;
 
     flex-wrap:wrap;
 
