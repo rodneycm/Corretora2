@@ -1755,3 +1755,17 @@ font-size:26px;
     margin-bottom:24px !important;
 
 }
+
+.imovel-badges{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:10px;
+
+}

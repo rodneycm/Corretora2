@@ -487,7 +487,7 @@ export async function renderizarPaginaImovel() {
         </span>
     </div>
 
-    <div class="imovel-meta">
+   <div class="imovel-meta">
 
     <div class="imovel-codigo">
 
@@ -497,17 +497,19 @@ export async function renderizarPaginaImovel() {
 
     </div>
 
-    ${imovel.tagPrincipal ? `
+    <div class="imovel-badges">
 
-    <div class="imovel-tag-principal">
+        ${imovel.tagPrincipal ? `
 
-        ${imovel.tagPrincipal}
+        <div class="imovel-tag-principal">
 
-    </div>
+            ${imovel.tagPrincipal}
 
-    ` : ""}
+        </div>
 
-    <div class="imovel-status">
+        ` : ""}
+
+        <div class="imovel-status">
 
             <span
             class="status-badge status-${(imovel.status || "").toLowerCase()}">
@@ -520,6 +522,8 @@ export async function renderizarPaginaImovel() {
         </div>
 
     </div>
+
+</div>
 
     <div class="imovel-compartilhar">
 
