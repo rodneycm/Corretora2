@@ -808,14 +808,6 @@ BREADCRUMB
 CÓDIGO DO IMÓVEL
 ===================================================== */
 
-.imovel-codigo{
-
-    font-size:14px;
-
-    color:#666;
-
-}
-
 .imovel-tag-principal{
 
     display:inline-flex;
@@ -845,13 +837,6 @@ CÓDIGO DO IMÓVEL
 /* =====================================================
 STATUS DO IMÓVEL
 ===================================================== */
-
-.imovel-status{
-
-    margin-bottom:20px;
-
-}
-  
 .status-badge{
 
     display:inline-flex;
