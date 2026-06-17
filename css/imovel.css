@@ -818,15 +818,21 @@ CÓDIGO DO IMÓVEL
 
 .imovel-tag-principal{
 
-    display:flex;
+    display:inline-flex;
 
     align-items:center;
-
-    justify-content:center;
 
     padding:8px 14px;
 
     border-radius:999px;
+
+    background:#eef2ff;
+
+    color:#4338ca;
+
+    font-size:13px;
+
+    font-weight:600;
 
 }
 
@@ -848,15 +854,19 @@ STATUS DO IMÓVEL
   
 .status-badge{
 
-    display:flex;
+    display:inline-flex;
 
     align-items:center;
 
-    justify-content:center;
+    gap:8px;
 
     padding:8px 14px;
 
-    border-radius:999px;
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
 
 }
 
@@ -1733,5 +1743,9 @@ font-size:26px;
     align-items:center;
 
     gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:10px;
 
 }
