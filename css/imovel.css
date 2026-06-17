@@ -820,6 +820,28 @@ CÓDIGO DO IMÓVEL
 
 }
 
+.imovel-tag-principal{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:#eef2ff;
+
+    color:#4338ca;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    margin-top:10px;
+
+}
+
 .imovel-codigo strong{
 
     color:#222;

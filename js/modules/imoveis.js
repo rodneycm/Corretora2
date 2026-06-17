@@ -489,15 +489,25 @@ export async function renderizarPaginaImovel() {
 
     <div class="imovel-meta">
 
-        <div class="imovel-codigo">
+    <div class="imovel-codigo">
 
-            <strong>Código:</strong>
+        <strong>Código:</strong>
 
-            ${imovel.codigo || "N/D"}
+        ${imovel.codigo || "N/D"}
 
-        </div>
+    </div>
 
-        <div class="imovel-status">
+    ${imovel.tagPrincipal ? `
+
+    <div class="imovel-tag-principal">
+
+        ${imovel.tagPrincipal}
+
+    </div>
+
+    ` : ""}
+
+    <div class="imovel-status">
 
             <span
             class="status-badge status-${(imovel.status || "").toLowerCase()}">
