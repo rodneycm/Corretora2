@@ -1207,24 +1207,6 @@ CORRETORA
 
 }
 
-.corretora-info ul{
-
-    list-style:none;
-
-    padding:0;
-
-    margin:0 0 25px 0;
-
-}
-
-.corretora-info li{
-
-    margin-bottom:10px;
-
-    color:#0f172a;
-
-}
-
 .corretora-btn{
 
     display:inline-flex;
