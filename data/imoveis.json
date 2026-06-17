@@ -21,6 +21,8 @@
 
       "codigo": "SCV001",
 
+      "tagPrincipal": "Casa em madeira",
+
       "tipo": "Casa",
 
       "categoria": "Residencial",
@@ -170,6 +172,8 @@
 
   "codigo": "SCV002",
 
+  "tagPrincipal": "Condomínio Completo",
+
   "tipo": "Apartamento",
 
   "categoria": "Residencial",
@@ -314,6 +318,8 @@
   "subtitulo": "Apartamento pronto para morar em condomínio familiar e seguro.",
 
   "codigo": "SCA001",
+
+  "tagPrincipal": "Condomínio Completo",
 
   "tipo": "Apartamento",
 
@@ -460,6 +466,8 @@
   "subtitulo": "Primeira locação em condomínio com lazer completo.",
 
   "codigo": "SCA002",
+
+  "tagPrincipal": "Primeira Locação",
 
   "tipo": "Apartamento",
 
