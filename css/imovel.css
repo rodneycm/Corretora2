@@ -1132,20 +1132,6 @@ CONTEÚDO PRINCIPAL
 
 }
 
-/* =========================================
-BLOCO STEPHANIE
-========================================= */
-
-.corretora-box{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:30px;
-
-}
-
 .corretora-foto{
 
     width:220px;
