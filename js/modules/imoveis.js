@@ -357,6 +357,8 @@ export async function renderizarPaginaImovel() {
     const whatsapp = imovel.contato?.whatsapp || CONFIG.WHATSAPP;
     const urlAtual = window.location.href;
     const titulo   = imovel.titulo || "";
+    const mensagemContato =
+        `Olá Stephanie, tenho interesse neste imóvel: ${titulo}\n\n${urlAtual}`;
 
     const descricaoResumo = imovel.descricao?.resumo || "";
 
@@ -370,7 +372,24 @@ export async function renderizarPaginaImovel() {
        DIFERENCIAIS
     ------------------------------------------------- */
 
-    const diferenciais = imovel.diferenciais
+    const diferenciaisGenericos = new Set([
+        "cozinha",
+        "sala",
+        "banheiro",
+        "quarto",
+        "quartos",
+        "área de serviço",
+        "area de servico"
+    ]);
+
+    const diferenciaisFortes = arraySeguro(imovel.diferenciais)
+        .filter(item =>
+            !diferenciaisGenericos.has(
+                textoSeguro(item).trim().toLowerCase()
+            )
+        );
+
+    const diferenciais = diferenciaisFortes
     .map(item => `
         <div class="diferencial-chip">
             <i class="fa-solid fa-check"></i>
@@ -386,16 +405,16 @@ export async function renderizarPaginaImovel() {
     const descricao = (imovel.descricao?.completa || [])
     .map((texto,index) => `
 
-        <p class="${index === 0 ? 'descricao-principal' : ''}">
+        <div class="descricao-bloco ${index === 0 ? 'descricao-principal' : ''}">
 
             ${texto}
 
-        </p>
+        </div>
 
     `)
     .join("");
 
-    const descricaoHighlight = (imovel.diferenciais || [])
+    const descricaoHighlight = diferenciaisFortes
     .slice(0, 3)
     .map(item => `
         <span>
@@ -498,6 +517,24 @@ export async function renderizarPaginaImovel() {
         ${preco}
     </h2>
 
+    <a
+        class="imovel-whatsapp-principal"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemContato)}">
+
+        <i class="fab fa-whatsapp"></i>
+
+        <span>
+            Falar no WhatsApp
+        </span>
+
+        <small>
+            Resposta rápida · Agende uma visita
+        </small>
+
+    </a>
+
     <div class="imovel-localizacao">
         <i class="fa-solid fa-location-dot"></i>
         <span>
@@ -509,9 +546,13 @@ export async function renderizarPaginaImovel() {
 
     <div class="imovel-codigo">
 
-        <strong>Código:</strong>
+        <span>
+            Código do imóvel
+        </span>
 
-        ${imovel.codigo || "N/D"}
+        <strong>
+            ${imovel.codigo || "N/D"}
+        </strong>
 
     </div>
 
@@ -708,9 +749,9 @@ if (ctaFinal) {
                     Atendimento Personalizado
                 </span>
 
-                <h2>
+                <h3>
                     Ainda não encontrou o imóvel ideal?
-                </h2>
+                </h3>
 
                 <p>
                     Está escolhendo alguém para conduzir uma das decisões mais importantes da sua vida.
@@ -912,53 +953,7 @@ breadcrumbScript.textContent =
 SCHEMA REALESTATELISTING
 ------------------------------------------------- */
 
-const listingSchema = {
-
-    "@context": "https://schema.org",
-
-    "@type": "RealEstateListing",
-
-    "name": titulo,
-
-    "description":
-        imovel.seo?.description ||
-        descricaoResumo,
-
-   "url": urlAtual,
-
-"identifier": imovel.codigo || "",
-
-"image": [
-
-    imagemCompartilhamento
-
-],
-
-    "offers": {
-
-    "@type": "Offer",
-
-    "price":
-
-        Number(
-            imovel.preco?.valor || 0
-        ),
-
-    "priceCurrency": "BRL",
-
-    "url": urlAtual,
-
-    "availability":
-
-        imovel.status?.toLowerCase() === "vendido"
-
-        ? "https://schema.org/SoldOut"
-
-        : "https://schema.org/InStock"
-
-},
-
-    "address": {
+const enderecoSchema = {
 
     "@type": "PostalAddress",
 
@@ -970,16 +965,49 @@ const listingSchema = {
 
     "addressNeighborhood": bairro
 
-},
+};
+
+const ofertaSchema = {
+
+    "@type": "Offer",
+
+    "price":
+        Number(
+            imovel.preco?.valor || 0
+        ),
+
+    "priceCurrency": "BRL",
+
+    "url": urlAtual,
+
+    "availability":
+        imovel.status?.toLowerCase() === "vendido" ||
+        imovel.status?.toLowerCase() === "alugado"
+            ? "https://schema.org/SoldOut"
+            : "https://schema.org/InStock"
+
+};
+
+const residenciaSchema = {
+
+    "@type": "Residence",
+
+    "@id": `${urlAtual}#residence`,
+
+    "name": titulo,
+
+    "description":
+        imovel.seo?.description ||
+        descricaoResumo,
+
+    "address": enderecoSchema,
 
     "numberOfRooms":
-
         Number(
             imovel.caracteristicas?.quartos || 0
         ),
 
     "numberOfBathroomsTotal":
-
         Number(
             imovel.caracteristicas?.banheiros || 0
         ),
@@ -989,7 +1017,6 @@ const listingSchema = {
         "@type": "QuantitativeValue",
 
         "value":
-
             Number(
                 imovel.metragem?.areaConstruida || 0
             ),
@@ -997,6 +1024,44 @@ const listingSchema = {
         "unitCode": "MTK"
 
     }
+
+};
+
+const listingSchema = {
+
+    "@context": "https://schema.org",
+
+    "@graph": [
+
+        {
+            "@type": "RealEstateListing",
+
+            "@id": `${urlAtual}#listing`,
+
+            "name": titulo,
+
+            "description":
+                imovel.seo?.description ||
+                descricaoResumo,
+
+            "url": urlAtual,
+
+            "identifier": imovel.codigo || "",
+
+            "image": [
+                imagemCompartilhamento
+            ],
+
+            "mainEntity": {
+                "@id": `${urlAtual}#residence`
+            },
+
+            "offers": ofertaSchema
+        },
+
+        residenciaSchema
+
+    ]
 
 };
 
