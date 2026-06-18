@@ -695,9 +695,11 @@ if (ctaFinal) {
                 </h2>
 
                 <p>
-                    Posso ajudar você a encontrar
-                    as melhores oportunidades
-                    de compra e locação em Teresópolis.
+                    Está escolhendo alguém para conduzir uma das decisões mais importantes da sua vida.
+
+                    Meu compromisso é oferecer um atendimento transparente, humano e sem pressão, ajudando você a encontrar o imóvel certo no seu tempo e com total segurança.
+
+                    Cada visita, cada negociação e cada etapa são acompanhadas de perto para que sua experiência seja tranquila do início ao fim.
                 </p>
 
                 <a
