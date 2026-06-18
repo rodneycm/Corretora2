@@ -1,5 +1,13 @@
 import CONFIG from "../core/config.js";
 
+import {
+    criarBotaoCardContatoStatus,
+    criarPrecoStatus,
+    criarStatusBadge,
+    criarStatusOverlay,
+    statusIndisponivel
+} from "./status.js";
+
 function textoSeguro(valor) {
 
     return typeof valor === "string"
@@ -55,10 +63,16 @@ export function criarCard(imovel) {
 
         CONFIG.IMAGE_FALLBACK;
 
-    const preco =
+    const precoFormatado =
 
         formatarPreco(
             imovel?.preco?.valor
+        );
+
+    const preco =
+        criarPrecoStatus(
+            imovel,
+            precoFormatado
         );
 
     const titulo =
@@ -137,6 +151,27 @@ export function criarCard(imovel) {
 
     const whatsappUrl =
         `https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemWhatsapp)}`;
+
+    const imovelIndisponivel =
+        statusIndisponivel(imovel);
+
+    const badgeStatus =
+        criarStatusBadge(
+            imovel,
+            "card"
+        );
+
+    const overlayStatus =
+        criarStatusOverlay(
+            imovel,
+            "card"
+        );
+
+    const botaoContato =
+        criarBotaoCardContatoStatus(
+            imovel,
+            whatsappUrl
+        );
 
     const badgeDestaque =
 
@@ -230,15 +265,19 @@ export function criarCard(imovel) {
 
     return `
 
-    <article class="imovel-card">
+    <article class="imovel-card ${imovelIndisponivel ? "imovel-card-indisponivel" : ""}">
 
         <div class="imovel-image">
+
+    ${badgeStatus}
 
     ${badgeDestaque}
 
     ${badgeFinalidade}
 
     ${badgeMobiliado}
+
+    ${overlayStatus}
 
             <img
                 loading="lazy"
@@ -293,19 +332,7 @@ export function criarCard(imovel) {
 
             </div>
 
-            <a
-                class="card-whatsapp-btn"
-                href="${whatsappUrl}"
-                target="_blank"
-                rel="noopener noreferrer">
-
-                <i class="fab fa-whatsapp"></i>
-
-                <span>
-                    Falar no WhatsApp
-                </span>
-
-            </a>
+            ${botaoContato}
 
             <a
                 class="imovel-btn"

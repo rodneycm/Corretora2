@@ -1,7 +1,25 @@
+import {
+    criarStatusBadge,
+    criarStatusOverlay,
+    statusIndisponivel
+} from "./status.js";
+
 export function inicializarGaleria(galeria, imovel) {
 
-    const imovelAlugado =
-        String(imovel.status || "").toLowerCase() === "alugado";
+    const imovelIndisponivel =
+        statusIndisponivel(imovel);
+
+    const badgeStatus =
+        criarStatusBadge(
+            imovel,
+            "galeria"
+        );
+
+    const overlayStatus =
+        criarStatusOverlay(
+            imovel,
+            "galeria"
+        );
 
     const galeriaImagens =
         imovel.midia?.galeria || [];
@@ -27,16 +45,11 @@ export function inicializarGaleria(galeria, imovel) {
 
     galeria.innerHTML = `
 
-    <div class="foto-principal ${imovelAlugado ? "foto-principal-alugado" : ""}">
+    <div class="foto-principal ${imovelIndisponivel ? "foto-principal-indisponivel" : ""}">
 
-        ${imovelAlugado ? `
-        <span class="badge-imovel-alugado">
-            <i class="fa-solid fa-check"></i>
-            IM&Oacute;VEL ALUGADO
-        </span>
+        ${badgeStatus}
 
-        <div class="overlay-imovel-alugado"></div>
-        ` : ""}
+        ${overlayStatus}
 
         <button
             class="btn-galeria btn-anterior"
