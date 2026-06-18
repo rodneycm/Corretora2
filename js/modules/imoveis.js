@@ -1194,7 +1194,20 @@ listingScript.textContent =
     ------------------------------------------------- */
 
     document.getElementById("compartilhar-whatsapp")?.addEventListener("click", () => {
-        const mensagem = `${titulo}\n\n${urlAtual}`;
+        const valorImovel = numeroSeguro(imovel.preco?.valor);
+        const linhaValor =
+            valorImovel > 0
+                ? `\n\n💰 ${preco}`
+                : "";
+        const localizacaoCompartilhamento =
+            `${cidade || CONFIG.CIDADE_PADRAO}/${estado || CONFIG.ESTADO_PADRAO}`;
+        const mensagem =
+            `🏡 ${titulo}\n\n` +
+            `📍 ${localizacaoCompartilhamento}` +
+            `${linhaValor}\n\n` +
+            `Confira este im\u00f3vel:\n\n` +
+            `${urlAtual}`;
+
         window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank");
     });
 
