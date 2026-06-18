@@ -86,12 +86,6 @@ export function criarCard(imovel) {
             imovel?.finalidade
         );
 
-    const status =
-
-        textoSeguro(
-            imovel?.status
-        );
-
     const quartos =
         numeroSeguro(
             imovel?.caracteristicas?.quartos
@@ -131,36 +125,6 @@ const destaque =
     Boolean(
         imovel?.destaque
     );
-
-let badgeStatus = "";
-
-if (
-    status.toLowerCase() === "vendido"
-) {
-
-    badgeStatus = `
-
-    <span class="badge-status badge-vendido">
-        Vendido
-    </span>
-
-    `;
-
-}
-
-if (
-    status.toLowerCase() === "alugado"
-) {
-
-    badgeStatus = `
-
-    <span class="badge-status badge-alugado">
-        Alugado
-    </span>
-
-    `;
-
-}
 
 const badgeDestaque =
 
@@ -263,8 +227,6 @@ const badgeFinalidade =
     ${badgeFinalidade}
 
     ${badgeMobiliado}
-
-    ${badgeStatus}
 
             <img
                 loading="lazy"
