@@ -4,6 +4,10 @@ import {
     statusIndisponivel
 } from "./status.js";
 
+function textoSeguro(valor) {
+    return typeof valor === "string" ? valor : "";
+}
+
 export function inicializarGaleria(galeria, imovel) {
 
     const imovelIndisponivel =
@@ -27,6 +31,9 @@ export function inicializarGaleria(galeria, imovel) {
     const fotoPrincipal =
         galeriaImagens[0] ||
         "assets/imoveis/placeholder.jpg";
+    const textoImagem =
+        textoSeguro(imovel.titulo).trim() ||
+        "Imagem do imovel";
 
     const miniaturas =
         galeriaImagens
@@ -37,7 +44,10 @@ export function inicializarGaleria(galeria, imovel) {
             class="thumb-imovel ${index === 0 ? "thumb-ativa" : ""}"
             data-index="${index}"
             src="${imagem}"
-            alt="${imovel.titulo}">
+            alt="${textoImagem}"
+            title="${textoImagem}"
+            loading="lazy"
+            decoding="async">
 
         `
             )
@@ -62,7 +72,9 @@ export function inicializarGaleria(galeria, imovel) {
         <img
             id="imagem-principal"
             src="${fotoPrincipal}"
-            alt="${imovel.titulo}">
+            alt="${textoImagem}"
+            title="${textoImagem}"
+            decoding="async">
 
         <button
             class="btn-galeria btn-proximo"
@@ -235,7 +247,10 @@ export function inicializarGaleria(galeria, imovel) {
 
                 <img
                     class="lightbox-img"
-                    src="${galeriaImagens[indiceAtual]}">
+                    src="${galeriaImagens[indiceAtual]}"
+                    alt="${textoImagem}"
+                    title="${textoImagem}"
+                    decoding="async">
 
                 <button class="lightbox-nav lightbox-proximo">
                     <i class="fa-solid fa-chevron-right"></i>

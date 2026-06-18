@@ -54,6 +54,217 @@ function upsertMeta(seletor, atributo, valorAtributo, content) {
     meta.setAttribute("content", content);
 }
 
+function upsertLink(seletor, rel, href) {
+    let link = document.querySelector(seletor);
+
+    if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", rel);
+        document.head.appendChild(link);
+    }
+
+    link.setAttribute("href", href);
+}
+
+function normalizarEspacos(texto) {
+    return textoSeguro(texto).replace(/\s+/g, " ").trim();
+}
+
+function limitarMetaDescription(texto) {
+    let descricao = normalizarEspacos(texto);
+
+    if (descricao.length < 140) {
+        descricao = normalizarEspacos(
+            `${descricao} Veja detalhes, fotos, localizacao e informacoes para agendar sua visita com atendimento especializado.`
+        );
+    }
+
+    if (descricao.length <= 160) {
+        return descricao;
+    }
+
+    const limite = descricao.slice(0, 157);
+    const ultimoEspaco = limite.lastIndexOf(" ");
+
+    return `${limite.slice(0, ultimoEspaco > 120 ? ultimoEspaco : 157).trim()}...`;
+}
+
+function gerarMetaDescriptionImovel(imovel, contexto) {
+    const quartos = numeroSeguro(imovel?.caracteristicas?.quartos);
+    const tipo = textoSeguro(imovel?.tipo).trim() || "Imovel";
+    const bairro = textoSeguro(contexto.bairro).trim();
+    const cidade = textoSeguro(contexto.cidade).trim() || CONFIG.CIDADE_PADRAO;
+    const estado = textoSeguro(contexto.estado).trim() || CONFIG.ESTADO_PADRAO;
+    const finalidade = textoSeguro(imovel?.finalidade).trim().toLowerCase();
+    const dormitorios =
+        quartos > 0
+            ? ` com ${quartos} ${quartos === 1 ? "quarto" : "quartos"}`
+            : "";
+    const localizacao =
+        bairro
+            ? `${bairro}, ${cidade}/${estado}`
+            : `${cidade}/${estado}`;
+
+    return limitarMetaDescription(
+        `${tipo}${dormitorios} ${finalidade ? `para ${finalidade} ` : ""}em ${localizacao}. Confira fotos, caracteristicas, valor e detalhes deste imovel.`
+    );
+}
+
+function objetoComValores(dados) {
+    return Object.fromEntries(
+        Object.entries(dados).filter(([, valor]) => {
+            if (valor === undefined || valor === null) return false;
+            if (typeof valor === "string" && valor.trim() === "") return false;
+            if (Array.isArray(valor) && valor.length === 0) return false;
+            return true;
+        })
+    );
+}
+
+function aplicarSeoImovel(imovel, contexto) {
+    const seoTitle = `${contexto.titulo} | ${CONFIG.SITE_NAME}`;
+    const metaDescription = gerarMetaDescriptionImovel(imovel, contexto);
+    const latitudeTexto = textoSeguro(imovel?.localizacao?.latitude).trim();
+    const longitudeTexto = textoSeguro(imovel?.localizacao?.longitude).trim();
+    const latitude = Number(latitudeTexto);
+    const longitude = Number(longitudeTexto);
+    const possuiCoordenadas =
+        latitudeTexto !== "" &&
+        longitudeTexto !== "" &&
+        Number.isFinite(latitude) &&
+        Number.isFinite(longitude);
+    const endereco = imovel?.endereco || {};
+    const possuiEndereco =
+        Boolean(
+            textoSeguro(endereco.logradouro).trim() ||
+            textoSeguro(endereco.numero).trim() ||
+            textoSeguro(endereco.cep).trim() ||
+            textoSeguro(contexto.bairro).trim() ||
+            textoSeguro(contexto.cidade).trim() ||
+            textoSeguro(contexto.estado).trim()
+        );
+    const postalAddress = possuiEndereco
+        ? objetoComValores({
+            "@type": "PostalAddress",
+            "streetAddress": normalizarEspacos(
+                `${textoSeguro(endereco.logradouro)} ${textoSeguro(endereco.numero)}`
+            ),
+            "addressLocality": contexto.cidade,
+            "addressRegion": contexto.estado,
+            "postalCode": textoSeguro(endereco.cep),
+            "addressCountry": "BR",
+            "addressNeighborhood": contexto.bairro
+        })
+        : undefined;
+    const residence = objetoComValores({
+        "@type": "Residence",
+        "@id": `${contexto.urlAtual}#residence`,
+        "name": contexto.titulo,
+        "description": metaDescription,
+        "address": postalAddress,
+        "geo": possuiCoordenadas
+            ? {
+                "@type": "GeoCoordinates",
+                "latitude": latitude,
+                "longitude": longitude
+            }
+            : undefined,
+        "numberOfRooms": numeroSeguro(imovel?.caracteristicas?.quartos) || undefined,
+        "numberOfBathroomsTotal": numeroSeguro(imovel?.caracteristicas?.banheiros) || undefined,
+        "floorSize": numeroSeguro(imovel?.metragem?.areaConstruida) > 0
+            ? {
+                "@type": "QuantitativeValue",
+                "value": numeroSeguro(imovel?.metragem?.areaConstruida),
+                "unitCode": "MTK"
+            }
+            : undefined
+    });
+    const offer = objetoComValores({
+        "@type": "Offer",
+        "price": numeroSeguro(imovel?.preco?.valor) || undefined,
+        "priceCurrency": imovel?.preco?.moeda || CONFIG.MOEDA,
+        "url": contexto.urlAtual,
+        "availability":
+            textoSeguro(imovel?.status).toLowerCase() === "vendido" ||
+            textoSeguro(imovel?.status).toLowerCase() === "alugado"
+                ? "https://schema.org/SoldOut"
+                : "https://schema.org/InStock"
+    });
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": CONFIG.SITE_URL
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Im\u00f3veis",
+                        "item": `${CONFIG.SITE_URL}/`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": contexto.titulo,
+                        "item": contexto.urlAtual
+                    }
+                ]
+            },
+            {
+                "@type": "RealEstateListing",
+                "@id": `${contexto.urlAtual}#listing`,
+                "name": contexto.titulo,
+                "description": metaDescription,
+                "url": contexto.urlAtual,
+                "identifier": textoSeguro(imovel?.codigo),
+                "image": [contexto.imagemCompartilhamento],
+                "mainEntity": {
+                    "@id": `${contexto.urlAtual}#residence`
+                },
+                "offers": offer
+            },
+            residence
+        ]
+    };
+
+    document.title = seoTitle;
+
+    upsertMeta('meta[name="description"]', "name", "description", metaDescription);
+    upsertMeta('meta[name="robots"]', "name", "robots", "index, follow");
+    upsertMeta('meta[property="og:type"]', "property", "og:type", "website");
+    upsertMeta('meta[property="og:title"]', "property", "og:title", seoTitle);
+    upsertMeta('meta[property="og:description"]', "property", "og:description", metaDescription);
+    upsertMeta('meta[property="og:image"]', "property", "og:image", contexto.imagemCompartilhamento);
+    upsertMeta('meta[property="og:url"]', "property", "og:url", contexto.urlAtual);
+    upsertMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
+    upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", seoTitle);
+    upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", metaDescription);
+    upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", contexto.imagemCompartilhamento);
+    upsertLink('link[rel="canonical"]', "canonical", contexto.urlAtual);
+
+    document.getElementById("breadcrumb-schema")?.remove();
+    document.getElementById("listing-schema")?.remove();
+
+    let schemaScript = document.getElementById("imovel-schema");
+
+    if (!schemaScript) {
+        schemaScript = document.createElement("script");
+        schemaScript.type = "application/ld+json";
+        schemaScript.id = "imovel-schema";
+        document.head.appendChild(schemaScript);
+    }
+
+    schemaScript.textContent = JSON.stringify(schema);
+
+    return metaDescription;
+}
+
 function mostrarToastCompartilhamento(mensagem) {
     const toastExistente =
         document.querySelector(".compartilhar-toast");
@@ -414,11 +625,6 @@ export async function renderizarPaginaImovel() {
     const titulo   = textoSeguro(imovel.titulo).trim() || "Imovel";
     const mensagemContato =
         `Olá Stephanie, tenho interesse neste imóvel: ${titulo}\n\n${urlAtual}`;
-
-    const descricaoResumo =
-        textoSeguro(imovel.seo?.description).trim() ||
-        textoSeguro(imovel.descricao?.resumo).trim() ||
-        `${textoSeguro(imovel.tipo).trim() || "Imovel"} em ${bairro || CONFIG.CIDADE_PADRAO}, ${estado || CONFIG.ESTADO_PADRAO}.`;
 
     const imagemCompartilhamento = imagemAbsoluta(
         imovel.midia?.thumbnail   ||
@@ -800,7 +1006,12 @@ conteudo.innerHTML = `
 
                         return `
                             <article class="relacionado-card">
-                                <img src="${imagem}" alt="${item.titulo}">
+                                <img
+                                    src="${imagem}"
+                                    alt="${item.titulo}"
+                                    title="${item.titulo}"
+                                    loading="lazy"
+                                    decoding="async">
                                 <div class="relacionado-content">
                                     <h3>${item.titulo}</h3>
                                     <div class="relacionado-local">
@@ -874,321 +1085,20 @@ if (ctaFinal) {
 
 }
     /* -------------------------------------------------
-       SEO DINÂMICO
+       SEO DINAMICO
     ------------------------------------------------- */
 
-    document.title = imovel.seo?.title || `${titulo} | ${CONFIG.SITE_NAME}`;
-
-    upsertMeta(
-        'meta[name="description"]',
-        "name",
-        "description",
-        descricaoResumo
-    );
-
-    upsertMeta(
-        'meta[property="og:type"]',
-        "property",
-        "og:type",
-        "website"
-    );
-
-    upsertMeta(
-        'meta[property="og:title"]',
-        "property",
-        "og:title",
-        titulo
-    );
-
-    upsertMeta(
-        'meta[property="og:description"]',
-        "property",
-        "og:description",
-        descricaoResumo
-    );
-
-    upsertMeta(
-        'meta[property="og:image"]',
-        "property",
-        "og:image",
-        imagemCompartilhamento
-    );
-
-    upsertMeta(
-        'meta[property="og:url"]',
-        "property",
-        "og:url",
-        urlAtual
-    );
-
-    /* -------------------------------------------------
-TWITTER CARD
-------------------------------------------------- */
-
-upsertMeta(
-    'meta[name="twitter:card"]',
-    "name",
-    "twitter:card",
-    "summary_large_image"
-);
-
-upsertMeta(
-    'meta[name="twitter:title"]',
-    "name",
-    "twitter:title",
-    titulo
-);
-
-upsertMeta(
-    'meta[name="twitter:description"]',
-    "name",
-    "twitter:description",
-    descricaoResumo
-);
-
-upsertMeta(
-    'meta[name="twitter:image"]',
-    "name",
-    "twitter:image",
-    imagemCompartilhamento
-);
-    /* -------------------------------------------------
-   CANONICAL URL
-------------------------------------------------- */
-
-let canonical = document.querySelector('link[rel="canonical"]');
-
-if (!canonical) {
-
-    canonical = document.createElement("link");
-
-    canonical.setAttribute(
-        "rel",
-        "canonical"
-    );
-
-    document.head.appendChild(
-        canonical
-    );
-}
-
-canonical.setAttribute(
-    "href",
-    urlAtual
-);
-
-/* -------------------------------------------------
-SCHEMA BREADCRUMBLIST
-------------------------------------------------- */
-
-const breadcrumbSchema = {
-
-    "@context": "https://schema.org",
-
-    "@type": "BreadcrumbList",
-
-    "itemListElement": [
-
+    aplicarSeoImovel(
+        imovel,
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Início",
-            "item": CONFIG.SITE_URL
-        },
-
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name":
-                imovel.finalidade === "Venda"
-                ? "Comprar"
-                : "Alugar",
-
-            "item":
-                imovel.finalidade === "Venda"
-                ? `${CONFIG.SITE_URL}/comprar.html`
-                : `${CONFIG.SITE_URL}/aluguel.html`
-        },
-
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": titulo,
-            "item": urlAtual
+            titulo,
+            bairro,
+            cidade,
+            estado,
+            urlAtual,
+            imagemCompartilhamento
         }
-
-    ]
-
-};
-
-let breadcrumbScript =
-    document.getElementById(
-        "breadcrumb-schema"
     );
-
-if (!breadcrumbScript) {
-
-    breadcrumbScript =
-        document.createElement("script");
-
-    breadcrumbScript.type =
-        "application/ld+json";
-
-    breadcrumbScript.id =
-        "breadcrumb-schema";
-
-    document.head.appendChild(
-        breadcrumbScript
-    );
-}
-
-breadcrumbScript.textContent =
-    JSON.stringify(
-        breadcrumbSchema
-    );
-
-    /* -------------------------------------------------
-SCHEMA REALESTATELISTING
-------------------------------------------------- */
-
-const enderecoSchema = {
-
-    "@type": "PostalAddress",
-
-    "addressLocality": cidade,
-
-    "addressRegion": estado,
-
-    "addressCountry": "BR",
-
-    "addressNeighborhood": bairro
-
-};
-
-const ofertaSchema = {
-
-    "@type": "Offer",
-
-    "price":
-        Number(
-            imovel.preco?.valor || 0
-        ),
-
-    "priceCurrency": "BRL",
-
-    "url": urlAtual,
-
-    "availability":
-        imovel.status?.toLowerCase() === "vendido" ||
-        imovel.status?.toLowerCase() === "alugado"
-            ? "https://schema.org/SoldOut"
-            : "https://schema.org/InStock"
-
-};
-
-const residenciaSchema = {
-
-    "@type": "Residence",
-
-    "@id": `${urlAtual}#residence`,
-
-    "name": titulo,
-
-    "description":
-        imovel.seo?.description ||
-        descricaoResumo,
-
-    "address": enderecoSchema,
-
-    "numberOfRooms":
-        Number(
-            imovel.caracteristicas?.quartos || 0
-        ),
-
-    "numberOfBathroomsTotal":
-        Number(
-            imovel.caracteristicas?.banheiros || 0
-        ),
-
-    "floorSize": {
-
-        "@type": "QuantitativeValue",
-
-        "value":
-            Number(
-                imovel.metragem?.areaConstruida || 0
-            ),
-
-        "unitCode": "MTK"
-
-    }
-
-};
-
-const listingSchema = {
-
-    "@context": "https://schema.org",
-
-    "@graph": [
-
-        {
-            "@type": "RealEstateListing",
-
-            "@id": `${urlAtual}#listing`,
-
-            "name": titulo,
-
-            "description":
-                imovel.seo?.description ||
-                descricaoResumo,
-
-            "url": urlAtual,
-
-            "identifier": imovel.codigo || "",
-
-            "image": [
-                imagemCompartilhamento
-            ],
-
-            "mainEntity": {
-                "@id": `${urlAtual}#residence`
-            },
-
-            "offers": ofertaSchema
-        },
-
-        residenciaSchema
-
-    ]
-
-};
-
-let listingScript =
-    document.getElementById(
-        "listing-schema"
-    );
-
-if (!listingScript) {
-
-    listingScript =
-        document.createElement("script");
-
-    listingScript.type =
-        "application/ld+json";
-
-    listingScript.id =
-        "listing-schema";
-
-    document.head.appendChild(
-        listingScript
-    );
-}
-
-listingScript.textContent =
-    JSON.stringify(
-        listingSchema
-    ); 
-    
     /* -------------------------------------------------
        COMPARTILHAMENTO
     ------------------------------------------------- */
