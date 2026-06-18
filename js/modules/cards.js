@@ -123,6 +123,21 @@ export function criarCard(imovel) {
             imovel?.destaque
         );
 
+    const whatsapp =
+        textoSeguro(
+            imovel?.contato?.whatsapp
+        )
+
+        ||
+
+        CONFIG.WHATSAPP;
+
+    const mensagemWhatsapp =
+        `Olá Stephanie, tenho interesse neste imóvel: ${titulo}`;
+
+    const whatsappUrl =
+        `https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemWhatsapp)}`;
+
     const badgeDestaque =
 
         destaque
@@ -271,6 +286,24 @@ export function criarCard(imovel) {
                 </span>
 
             </div>
+
+            <a
+                class="card-whatsapp-btn"
+                href="${whatsappUrl}"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <i class="fab fa-whatsapp"></i>
+
+                <span>
+                    Falar no WhatsApp
+                </span>
+
+                <small>
+                    Resposta rápida · Agende uma visita
+                </small>
+
+            </a>
 
             <a
                 class="imovel-btn"
