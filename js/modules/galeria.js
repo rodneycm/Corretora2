@@ -1,5 +1,8 @@
 export function inicializarGaleria(galeria, imovel) {
 
+    const imovelAlugado =
+        String(imovel.status || "").toLowerCase() === "alugado";
+
     const galeriaImagens =
         imovel.midia?.galeria || [];
 
@@ -24,7 +27,16 @@ export function inicializarGaleria(galeria, imovel) {
 
     galeria.innerHTML = `
 
-    <div class="foto-principal">
+    <div class="foto-principal ${imovelAlugado ? "foto-principal-alugado" : ""}">
+
+        ${imovelAlugado ? `
+        <span class="badge-imovel-alugado">
+            <i class="fa-solid fa-check"></i>
+            IM&Oacute;VEL ALUGADO
+        </span>
+
+        <div class="overlay-imovel-alugado"></div>
+        ` : ""}
 
         <button
             class="btn-galeria btn-anterior"

@@ -349,6 +349,10 @@ export async function renderizarPaginaImovel() {
     ------------------------------------------------- */
 
     const preco  = formatarPreco(imovel.preco?.valor);
+    const statusNormalizado =
+        textoSeguro(imovel.status).toLowerCase();
+    const imovelAlugado =
+        statusNormalizado === "alugado";
 
     const bairro = imovel.localizacao?.bairro || imovel.bairro || "";
     const cidade = imovel.localizacao?.cidade || imovel.cidade || "";
@@ -517,6 +521,24 @@ export async function renderizarPaginaImovel() {
         ${preco}
     </h2>
 
+    ${imovelAlugado ? `
+    <div class="aviso-imovel-alugado">
+
+        <strong>
+            Este im&oacute;vel j&aacute; foi alugado.
+        </strong>
+
+        <p>
+            Mas temos outros im&oacute;veis semelhantes dispon&iacute;veis para loca&ccedil;&atilde;o.
+        </p>
+
+        <a href="aluguel.html">
+            Ver outros im&oacute;veis
+        </a>
+
+    </div>
+    ` : ""}
+
     <div class="imovel-localizacao">
         <i class="fa-solid fa-location-dot"></i>
         <span>
@@ -566,6 +588,20 @@ export async function renderizarPaginaImovel() {
 
 </div>
 
+    ${imovelAlugado ? `
+    <button
+        class="imovel-whatsapp-principal imovel-whatsapp-indisponivel"
+        type="button"
+        disabled>
+
+        <i class="fa-solid fa-check"></i>
+
+        <span>
+            Este im&oacute;vel j&aacute; foi alugado
+        </span>
+
+    </button>
+    ` : `
     <a
         class="imovel-whatsapp-principal"
         target="_blank"
@@ -579,6 +615,7 @@ export async function renderizarPaginaImovel() {
         </span>
 
     </a>
+    `}
 
 
     <div class="imovel-compartilhar">
