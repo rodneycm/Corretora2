@@ -16,8 +16,7 @@ function numeroSeguro(valor) {
 
 export function formatarPreco(valor) {
 
-    const preco =
-        Number(valor) || 0;
+    const preco = numeroSeguro(valor);
 
     return preco.toLocaleString(
 
@@ -66,7 +65,11 @@ export function criarCard(imovel) {
 
         textoSeguro(
             imovel?.titulo
-        );
+        )
+
+        ||
+
+        "Imóvel";
 
     const resumo =
 
@@ -101,36 +104,30 @@ export function criarCard(imovel) {
             imovel?.caracteristicas?.vagas
         );
 
-        const codigo =
-    textoSeguro(
-        imovel?.codigo
-    );
+    const codigo = textoSeguro(imovel?.codigo);
 
-    const tagPrincipal =
-    textoSeguro(
-        imovel?.tagPrincipal
-    );
+    const tagPrincipal = textoSeguro(imovel?.tagPrincipal);
 
-const areaConstruida =
-    numeroSeguro(
-        imovel?.metragem?.areaConstruida
-    );
+    const areaConstruida =
+        numeroSeguro(
+            imovel?.metragem?.areaConstruida
+        );
 
-const mobiliado =
-    Boolean(
-        imovel?.caracteristicas?.mobiliado
-    );
+    const mobiliado =
+        Boolean(
+            imovel?.caracteristicas?.mobiliado
+        );
 
-const destaque =
-    Boolean(
-        imovel?.destaque
-    );
+    const destaque =
+        Boolean(
+            imovel?.destaque
+        );
 
-const badgeDestaque =
+    const badgeDestaque =
 
-    destaque
+        destaque
 
-    ?
+        ?
 
     `
 
@@ -140,9 +137,9 @@ const badgeDestaque =
 
     `
 
-    :
+        :
 
-    "";
+        "";
 
     const badgeMobiliado =
 
@@ -162,11 +159,11 @@ const badgeDestaque =
 
     "";
 
-const badgeFinalidade =
+    const badgeFinalidade =
 
-    finalidade
+        finalidade
 
-    ?
+        ?
 
     `
 
@@ -176,9 +173,9 @@ const badgeFinalidade =
 
     `
 
-    :
+        :
 
-    "";
+        "";
     
     const resumoCaracteristicas = `
 
@@ -208,7 +205,7 @@ const badgeFinalidade =
     ${areaConstruida > 0 ? `
     <span>
         <i class="fa-solid fa-ruler-combined"></i>
-        ${areaConstruida}m²
+        ${areaConstruida} m²
     </span>
     ` : ""}
 
@@ -239,11 +236,13 @@ const badgeFinalidade =
 
             <div class="codigo-wrapper">
 
+    ${codigo ? `
     <div class="codigo-imovel">
 
         ${codigo}
 
     </div>
+    ` : ""}
 
     ${tagPrincipal ? `
     <div class="tag-principal-imovel">
