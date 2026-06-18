@@ -550,6 +550,8 @@ CONTEÚDO CARD
 
     gap:10px;
 
+    margin-bottom:12px;
+
 }
 
 .imovel-info span{
@@ -571,7 +573,7 @@ CONTEÚDO CARD
 
 .imovel-btn{
 
-    margin-top:12px;
+    margin-top:10px;
 
     width:100%;
 
@@ -604,11 +606,11 @@ CONTEÚDO CARD
 
     width:100%;
 
-    margin-top:14px;
+    margin-top:0;
 
-    padding:15px 16px;
+    padding:12px 16px;
 
-    border-radius:16px;
+    border-radius:14px;
 
     background:#25d366;
 
@@ -616,33 +618,7 @@ CONTEÚDO CARD
 
     display:flex;
 
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:4px;
-
-    font-weight:800;
-
-    text-align:center;
-
-    box-shadow:0 10px 22px rgba(37,211,102,.24);
-
-    transition:var(--transition);
-
-}
-
-.card-whatsapp-btn i{
-
-    font-size:18px;
-
-}
-
-.card-whatsapp-btn span{
-
-    display:flex;
+    flex-direction:row;
 
     align-items:center;
 
@@ -650,19 +626,27 @@ CONTEÚDO CARD
 
     gap:8px;
 
-    line-height:1.2;
+    font-size:14px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    box-shadow:0 8px 18px rgba(37,211,102,.18);
+
+    transition:var(--transition);
 
 }
 
-.card-whatsapp-btn small{
+.card-whatsapp-btn i{
 
-    color:rgba(255,255,255,.88);
+    font-size:16px;
 
-    font-size:12px;
+}
 
-    font-weight:600;
+.card-whatsapp-btn span{
 
-    line-height:1.3;
+    line-height:1.2;
 
 }
 
@@ -670,7 +654,7 @@ CONTEÚDO CARD
 
     background:#1faa52;
 
-    transform:translateY(-2px);
+    transform:translateY(-1px);
 
 }
 
@@ -1138,6 +1122,50 @@ TAG PRINCIPAL
     margin-left:8px;
 
     margin-bottom:10px;
+
+}
+
+.codigo-wrapper .codigo-imovel{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-bottom:8px;
+
+    padding:0;
+
+    border-radius:0;
+
+    background:transparent;
+
+    color:#64748b;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    letter-spacing:0;
+
+    text-transform:none;
+
+}
+
+.codigo-wrapper .codigo-imovel span{
+
+    font-weight:500;
+
+    color:#64748b;
+
+}
+
+.codigo-wrapper .codigo-imovel strong{
+
+    color:#334155;
+
+    font-weight:800;
 
 }
 

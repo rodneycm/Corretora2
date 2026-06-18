@@ -254,7 +254,13 @@ export function criarCard(imovel) {
     ${codigo ? `
     <div class="codigo-imovel">
 
-        ${codigo}
+        <span>
+            Código:
+        </span>
+
+        <strong>
+            ${codigo}
+        </strong>
 
     </div>
     ` : ""}
@@ -298,10 +304,6 @@ export function criarCard(imovel) {
                 <span>
                     Falar no WhatsApp
                 </span>
-
-                <small>
-                    Resposta rápida · Agende uma visita
-                </small>
 
             </a>
 
