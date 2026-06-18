@@ -628,7 +628,7 @@ export async function renderizarPaginaImovel() {
 conteudo.innerHTML = `
 <section class="bloco-imovel">
 
-    <h2>Características</h2>
+    <h2 class="section-title-imovel">Características</h2>
 
     ${caracteristicas}
 
@@ -636,7 +636,7 @@ conteudo.innerHTML = `
 
 <section class="bloco-imovel">
 
-    <h2>Descrição do imóvel</h2>
+    <h2 class="section-title-imovel">Descrição do imóvel</h2>
 
     <div class="descricao-highlight">
 
@@ -654,7 +654,7 @@ conteudo.innerHTML = `
 
 <section class="bloco-imovel">
 
-    <h2>Diferenciais</h2>
+    <h2 class="section-title-imovel">Diferenciais</h2>
 
     <div class="lista-diferenciais">
 
@@ -685,7 +685,7 @@ conteudo.innerHTML = `
         if (relacionados.length > 0) {
 
             containerRelacionados.innerHTML = `
-                <h2 class="titulo-relacionados">Você também pode gostar</h2>
+                <h2 class="titulo-relacionados section-title-imovel">Você também pode gostar</h2>
                 <div class="relacionados-grid">
                     ${relacionados.map(item => {
 
