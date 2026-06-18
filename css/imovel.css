@@ -164,15 +164,15 @@ line-height:1;
 .imovel-whatsapp-principal{
 
 display:flex;
-flex-direction:column;
+flex-direction:row;
 align-items:center;
 justify-content:center;
-gap:5px;
+gap:7px;
 
 width:100%;
 
-margin-bottom:26px;
-padding:18px 20px;
+margin:18px 0 22px;
+padding:14px 20px;
 
 border-radius:18px;
 
@@ -180,6 +180,7 @@ background:#25d366;
 color:#ffffff;
 
 font-weight:800;
+font-size:16px;
 text-align:center;
 
 box-shadow:0 14px 28px rgba(37,211,102,.28);
@@ -190,23 +191,14 @@ transition:.25s ease;
 
 .imovel-whatsapp-principal i{
 
-font-size:20px;
+font-size:18px;
 
 }
 
 .imovel-whatsapp-principal span{
 
-font-size:17px;
+font-size:16px;
 line-height:1.2;
-
-}
-
-.imovel-whatsapp-principal small{
-
-font-size:13px;
-font-weight:600;
-line-height:1.35;
-color:rgba(255,255,255,.9);
 
 }
 
@@ -227,7 +219,7 @@ display:flex;
 align-items:center;
 gap:10px;
 
-margin-bottom:20px;
+margin-bottom:18px;
 
 font-size:15px;
 font-weight:600;
@@ -620,7 +612,7 @@ COMPARTILHAMENTO
 
 .imovel-compartilhar{
 
-margin-top:22px;
+margin-top:0;
 margin-bottom:18px;
 padding-top:18px;
 
@@ -900,21 +892,11 @@ CÓDIGO DO IMÓVEL
 
 .imovel-codigo{
 
-    display:flex;
+    display:inline-flex;
 
-    flex-direction:column;
+    align-items:baseline;
 
     gap:5px;
-
-    min-width:150px;
-
-    padding:12px 16px;
-
-    border:1px solid #e2e8f0;
-
-    border-radius:16px;
-
-    background:#f8fafc;
 
 }
 
@@ -922,21 +904,21 @@ CÓDIGO DO IMÓVEL
 
     color:#64748b;
 
-    font-size:12px;
+    font-size:14px;
 
-    font-weight:700;
+    font-weight:400;
 
-    letter-spacing:.4px;
+    letter-spacing:0;
 
-    text-transform:uppercase;
+    text-transform:none;
 
 }
 
 .imovel-codigo strong{
 
-    color:#222;
+    color:#0f172a;
 
-    font-size:18px;
+    font-size:14px;
 
     line-height:1.2;
 
@@ -1003,9 +985,9 @@ META DO IMÓVEL
 
     align-items:center;
 
-    gap:12px;
+    gap:10px;
 
-    margin:12px 0 20px;
+    margin:0 0 18px;
 
     flex-wrap:wrap;
 
@@ -1794,6 +1776,6 @@ font-size:26px;
 
     flex-wrap:wrap;
 
-    margin-top:10px;
+    margin-top:0;
 
 }

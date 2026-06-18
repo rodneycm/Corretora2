@@ -517,24 +517,6 @@ export async function renderizarPaginaImovel() {
         ${preco}
     </h2>
 
-    <a
-        class="imovel-whatsapp-principal"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemContato)}">
-
-        <i class="fab fa-whatsapp"></i>
-
-        <span>
-            Falar no WhatsApp
-        </span>
-
-        <small>
-            Resposta rápida · Agende uma visita
-        </small>
-
-    </a>
-
     <div class="imovel-localizacao">
         <i class="fa-solid fa-location-dot"></i>
         <span>
@@ -547,7 +529,7 @@ export async function renderizarPaginaImovel() {
     <div class="imovel-codigo">
 
         <span>
-            Código do imóvel
+            C&oacute;digo:
         </span>
 
         <strong>
@@ -583,6 +565,21 @@ export async function renderizarPaginaImovel() {
     </div>
 
 </div>
+
+    <a
+        class="imovel-whatsapp-principal"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemContato)}">
+
+        <i class="fab fa-whatsapp"></i>
+
+        <span>
+            Falar no WhatsApp
+        </span>
+
+    </a>
+
 
     <div class="imovel-compartilhar">
 
