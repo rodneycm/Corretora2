@@ -216,6 +216,15 @@ export async function renderizarImoveisVenda() {
     document.getElementById("filtro-quartos")?.addEventListener("change", atualizarLista);
     document.getElementById("filtro-preco")?.addEventListener("change", atualizarLista);
     document.getElementById("ordenacao")?.addEventListener("change", atualizarLista);
+
+    document.getElementById("limpar-filtros")?.addEventListener("click", () => {
+        document.getElementById("filtro-bairro").value = "";
+        document.getElementById("filtro-quartos").value = "";
+        document.getElementById("filtro-preco").value = "";
+        document.getElementById("ordenacao").value = "";
+
+        atualizarLista();
+    });
 }
 
 /* =========================================================
@@ -285,6 +294,15 @@ export async function renderizarImoveisAluguel() {
     document.getElementById("filtro-quartos")?.addEventListener("change", atualizarLista);
     document.getElementById("filtro-preco")?.addEventListener("change", atualizarLista);
     document.getElementById("ordenacao")?.addEventListener("change", atualizarLista);
+
+    document.getElementById("limpar-filtros")?.addEventListener("click", () => {
+        document.getElementById("filtro-bairro").value = "";
+        document.getElementById("filtro-quartos").value = "";
+        document.getElementById("filtro-preco").value = "";
+        document.getElementById("ordenacao").value = "";
+
+        atualizarLista();
+    });
 
 } // ← CHAVE QUE ESTAVA FALTANDO — fecha renderizarImoveisAluguel
 
