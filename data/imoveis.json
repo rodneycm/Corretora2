@@ -1,617 +1,610 @@
 {
-  "config": {
-    "siteName": "Stephanie Campos Consultoria Imobiliária",
-    "siteUrl": "https://rodneycm.github.io/Corretora2",
-    "whatsapp": "5521989321485",
-    "cidadePadrao": "Teresópolis",
-    "estadoPadrao": "RJ",
-    "versaoEstrutura": "1.0.0"
-  },
-
-  "imoveis": [
-
-    {
-      "id": "casa-albuquerque-790",
-
-      "slug": "casa-com-piscina-albuquerque-teresopolis",
-
-      "titulo": "Casa 3 Quartos em Albuquerque – Teresópolis/RJ",
-
-      "subtitulo": "Refúgio exclusivo na serra com amplo terreno e excelente potencial de valorização.",
-
-      "codigo": "SCV001",
-
-      "tagPrincipal": "Casa em madeira",
-
-      "tipo": "Casa",
-
-      "categoria": "Residencial",
-
-      "finalidade": "Venda",
-
-      "status":"disponivel",
-
-      "destaque": true,
-
-      "exibirNaHome": true,
-
-      "bairro": "Albuquerque",
-
-      "cidade": "Teresópolis",
-
-      "estado": "RJ",
-
-      "endereco": {
-        "logradouro": "",
-        "numero": "",
-        "complemento": "",
-        "cep": "",
-        "referencia": "Próximo ao centro de Albuquerque"
-      },
-
-      "localizacao": {
-        "latitude": "",
-        "longitude": ""
-      },
-
-      "preco": {
-        "valor": 790000,
-        "condominio": 0,
-        "iptu": 0,
-        "moeda": "BRL"
-      },
-
-      "metragem": {
-        "areaTerreno": 1457,
-        "areaConstruida": 103,
-        "unidade": "m²"
-      },
-
-      "caracteristicas": {
-        "quartos": 3,
-        "suites": 1,
-        "banheiros": 2,
-        "vagas": 5,
-        "salas": 2,
-        "andares": 1,
-        "aceitaPet": true,
-        "mobiliado": false
-      },
-
-      "diferenciais": [
-        "Piscina privativa",
-        "Terreno amplo",
-        "Casa independente para hóspedes",
-        "Jardim arborizado",
-        "Excelente incidência solar",
-        "Ideal para Airbnb"
-      ],
-
-      "descricao": {
-        "resumo": "Casa com piscina privativa, amplo terreno e excelente localização em Albuquerque.",
-
-        "completa": [
-          "Se você busca tranquilidade, contato com a natureza e qualidade de vida, esta propriedade é a oportunidade perfeita.",
-
-          "Localizada em Albuquerque, uma das regiões mais valorizadas e procuradas de Teresópolis, esta charmosa casa oferece conforto, espaço e um belíssimo ambiente natural.",
-
-          "O imóvel conta com 3 quartos, sendo 1 suíte, sala ampla em 2 ambientes, varanda aconchegante, cozinha com armários planejados, área de serviço e excelente iluminação natural.",
-
-          "Na área externa, a propriedade possui piscina, lindo jardim arborizado e uma pequena casa independente ideal para hóspedes, caseiro ou apoio."
-        ]
-      },
-
-      "midia": {
-
-        "thumbnail": "assets/imoveis/venda/casa-albuquerque-790/foto1.webp",
-
-        "galeria": [
-          "assets/imoveis/venda/casa-albuquerque-790/foto1.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto2.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto3.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto4.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto5.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto6.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto7.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto8.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto9.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto10.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto11.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto12.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto13.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto14.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto15.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto16.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto17.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto18.webp",
-          "assets/imoveis/venda/casa-albuquerque-790/foto19.webp"
-        ],
-
-        "videoTour": "",
-        "youtube": "",
-        "planta": ""
-      },
-
-      "seo": {
-        "title": "Casa com Piscina à Venda em Albuquerque – Teresópolis RJ | Stephanie Campos",
-
-        "description": "Casa com piscina à venda em Albuquerque, Teresópolis RJ. Imóvel com 3 quartos, suíte, terreno amplo e excelente localização.",
-
-        "keywords": [
-          "casa em Albuquerque",
-          "imóvel Teresópolis",
-          "casa à venda Teresópolis",
-          "Stephanie Campos"
-        ]
-      },
-
-      "contato": {
-        "corretor": "Stephanie Campos",
-        "telefone": "(21) 98932-1485",
-        "whatsapp": "5521989321485"
-      },
-
-      "sistema": {
-        "views": 0,
-        "favoritos": 0,
-        "leads": 0,
-        "createdAt": "2026-05-20",
-        "updatedAt": "2026-05-20",
-        "publicado": true
-      }
-
-    },
-{
-  "id": "apartamento-pimenteiras-235",
-
-  "slug": "apartamento-pimenteiras-teresopolis",
-
-  "titulo": "Apartamento com 2 Quartos em Pimenteiras  –  Teresópolis/RJ",
-
-  "subtitulo": "Excelente oportunidade para morar próximo a Agriões com conforto, praticidade e ótima localização.",
-
-  "codigo": "SCV002",
-
-  "tagPrincipal": "Condomínio Completo",
-
-  "tipo": "Apartamento",
-
-  "categoria": "Residencial",
-
-  "finalidade": "Venda",
-
-  "status": "disponivel",
-
-  "destaque": true,
-
-  "exibirNaHome": true,
-
-  "bairro": "Pimenteiras",
-
-  "cidade": "Teresópolis",
-
-  "estado": "RJ",
-
-  "endereco": {
-    "logradouro": "",
-    "numero": "",
-    "complemento": "",
-    "cep": "",
-    "referencia": ""
-  },
-
-  "localizacao": {
-    "latitude": "",
-    "longitude": ""
-  },
-
-  "preco": {
-    "valor": 235000,
-    "condominio": 426,
-    "iptu": 320,
-    "moeda": "BRL"
-  },
-
-  "metragem": {
-    "areaTerreno": 0,
-    "areaConstruida": 50,
-    "unidade": "m²"
-  },
-
-  "caracteristicas": {
-    "quartos": 2,
-    "suites": 0,
-    "banheiros": 1,
-    "vagas": 1,
-    "salas": 1,
-    "andares": 3,
-    "aceitaPet": true,
-    "mobiliado": false
-  },
-
-  "diferenciais": [
-    "Localização privilegiada",
-    "Apenas 3 minutos de Agriões",
-    "Excelente iluminação natural",
-    "Vaga de garagem",
-    "Condomínio organizado",
-    "Ideal para moradia ou investimento"
-  ],
-
-  "descricao": {
-    "resumo": "Apartamento próximo a Agriões com vaga de garagem e excelente iluminação natural.",
-
-    "completa": [
-      "Apresentamos uma excelente oportunidade para quem deseja adquirir um imóvel confortável e bem localizado em Teresópolis.",
-
-      "Localizado no bairro Pimenteiras, este apartamento oferece praticidade para o dia a dia e fácil acesso aos principais serviços da cidade.",
-
-      "O imóvel conta com 2 quartos bem distribuídos, banheiro funcional, cozinha organizada e sala aconchegante para momentos de convivência.",
-
-      "Situado no terceiro andar, possui ótima ventilação e iluminação natural, tornando os ambientes mais agradáveis durante todo o dia.",
-
-      "Sua localização estratégica permite chegar ao bairro Agriões em poucos minutos, oferecendo acesso rápido a comércio, transporte e serviços."
-    ]
-  },
-
-  "midia": {
-
-    "thumbnail": "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto1.webp",
-
-    "galeria": [
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto1.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto2.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto3.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto4.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto5.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto6.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto7.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto8.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto9.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto10.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto11.webp",
-      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto12.webp"
-    ],
-
-    "videoTour": "",
-    "youtube": "",
-    "planta": ""
-  },
-
-  "seo": {
-    "title": "Apartamento à Venda em Pimenteiras – Teresópolis RJ | Stephanie Campos",
-
-    "description": "Apartamento de 2 quartos à venda em Pimenteiras, Teresópolis RJ. Próximo a Agriões, vaga de garagem e excelente localização.",
-
-    "keywords": [
-      "apartamento em Pimenteiras",
-      "apartamento Teresópolis",
-      "imóvel em Teresópolis",
-      "apartamento próximo Agriões",
-      "Stephanie Campos"
-    ]
-  },
-
-  "contato": {
-    "corretor": "Stephanie Campos",
-    "telefone": "(21) 98932-1485",
-    "whatsapp": "5521989321485"
-  },
-
-  "sistema": {
-    "views": 0,
-    "favoritos": 0,
-    "leads": 0,
-    "createdAt": "2026-05-31",
-    "updatedAt": "2026-05-31",
-    "publicado": true
-   }
-
-    },
-{
-  "id": "recanto-das-pimenteiras-ii",
-
-  "slug": "apartamento-mobiliado-recanto-das-pimenteiras-ii",
-
-  "titulo": "Apartamento 2 Quartos Mobiliado em Pimenteiras – Teresópolis/RJ",
-
-  "subtitulo": "Apartamento pronto para morar em condomínio familiar e seguro.",
-
-  "codigo": "SCA001",
-
-  "tagPrincipal": "Condomínio Completo",
-
-  "tipo": "Apartamento",
-
-  "categoria": "Residencial",
-
-  "finalidade": "Aluguel",
-
-  "status": "alugado",
-
-  "destaque": true,
-
-  "exibirNaHome": true,
-
-  "bairro": "Pimenteiras",
-
-  "cidade": "Teresópolis",
-
-  "estado": "RJ",
-
-  "endereco": {
-    "logradouro": "",
-    "numero": "",
-    "complemento": "",
-    "cep": "",
-    "referencia": "Condomínio Recanto das Pimenteiras II"
-  },
-
-  "localizacao": {
-    "latitude": "",
-    "longitude": ""
-  },
-
-  "preco": {
-    "valor": 2000,
-    "condominio": 0,
-    "iptu": 0,
-    "moeda": "BRL"
-  },
-
-  "metragem": {
-    "areaTerreno": 0,
-    "areaConstruida": 50,
-    "unidade": "m²"
-  },
-
-  "caracteristicas": {
-    "quartos": 2,
-    "suites": 0,
-    "banheiros": 1,
-    "vagas": 1,
-    "salas": 1,
-    "andares": 3,
-    "aceitaPet": true,
-    "mobiliado": true
-  },
-
-  "diferenciais": [
-    "Totalmente mobiliado",
-    "Aceita pet de pequeno porte",
-    "Churrasqueira",
-    "Parquinho infantil",
-    "Bicicletário",
-    "Condomínio familiar",
-    "Excelente localização"
-  ],
-
-  "descricao": {
-    "resumo": "Apartamento mobiliado com lazer completo e localização privilegiada em Pimenteiras.",
-
-    "completa": [
-      "Apartamento totalmente mobiliado pronto para morar no condomínio Recanto das Pimenteiras II.",
-      "Possui 2 quartos, sala aconchegante, cozinha equipada e banheiro moderno.",
-      "Localizado no terceiro andar com apenas dois lances de escada.",
-      "Condomínio com churrasqueira, parquinho infantil e bicicletário.",
-      "Excelente opção para casal, pequena família ou profissionais que buscam praticidade.",
-      "Aceita pet de pequeno porte."
-    ]
-  },
-
-  "midia": {
-
-    "thumbnail": "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto1.webp",
-
-    "galeria": [
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto1.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto2.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto3.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto4.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto5.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto6.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto7.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto8.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto9.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto10.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto11.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto12.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto13.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto14.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto15.webp",
-      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto16.webp"
-    ],
-
-    "videoTour": "",
-    "youtube": "",
-    "planta": ""
-  },
-
-  "seo": {
-    "title": "Apartamento Mobiliado para Aluguel em Pimenteiras | Stephanie Campos",
-
-    "description": "Apartamento mobiliado para aluguel em Pimenteiras, Teresópolis. Condomínio com churrasqueira, parquinho e bicicletário.",
-
-    "keywords": [
-      "apartamento aluguel Teresópolis",
-      "apartamento mobiliado Teresópolis",
-      "Pimenteiras",
-      "Recanto das Pimenteiras II"
-    ]
-  },
-
-  "contato": {
-    "corretor": "Stephanie Campos",
-    "telefone": "(21) 98932-1485",
-    "whatsapp": "5521989321485"
-  },
-
-  "sistema": {
-    "views": 0,
-    "favoritos": 0,
-    "leads": 0,
-    "createdAt": "2026-06-02",
-    "updatedAt": "2026-06-02",
-    "publicado": true
-  }
-
-},
-{
-  "id": "solar-do-imbui-posse",
-
-  "slug": "apartamento-solar-do-imbui-posse",
-
-  "titulo": "Apartamento Novo no Solar do Imbuí – Posse – Teresópolis/RJ",
-
-  "subtitulo": "Primeira locação em condomínio com lazer completo.",
-
-  "codigo": "SCA002",
-
-  "tagPrincipal": "Primeira Locação",
-
-  "tipo": "Apartamento",
-
-  "categoria": "Residencial",
-
-  "finalidade": "Aluguel",
-
-  "status": "alugado",
-
-  "destaque": true,
-
-  "exibirNaHome": true,
-
-  "bairro": "Posse",
-
-  "cidade": "Teresópolis",
-
-  "estado": "RJ",
-
-  "endereco": {
-    "logradouro": "",
-    "numero": "",
-    "complemento": "",
-    "cep": "",
-    "referencia": "Condomínio Solar do Imbuí"
-  },
-
-  "localizacao": {
-    "latitude": "",
-    "longitude": ""
-  },
-
-  "preco": {
-    "valor": 1400,
-    "condominio": 360,
-    "iptu": 30,
-    "moeda": "BRL"
-  },
-
-  "metragem": {
-    "areaTerreno": 0,
-    "areaConstruida": 54,
-    "unidade": "m²"
-  },
-
-  "caracteristicas": {
-    "quartos": 2,
-    "suites": 1,
-    "banheiros": 2,
-    "vagas": 1,
-    "salas": 1,
-    "andares": 1,
-    "aceitaPet": true,
-    "mobiliado": false
-  },
-
-  "diferenciais": [
-    "Primeira locação",
-    "Apartamento térreo",
-    "Piscina",
-    "Sauna",
-    "Churrasqueira",
-    "Parquinho infantil",
-    "Salão de festas",
-    "Portaria 24 horas",
-    "Varanda",
-    "Condomínio fechado",
-    "Excelente custo-benefício"
-  ],
-
-  "descricao": {
-    "resumo": "Apartamento novo para locação no Solar do Imbuí com suíte e lazer completo.",
-
-    "completa": [
-      "Excelente oportunidade para quem busca conforto, segurança e praticidade em um condomínio moderno e completo.",
-      "Apartamento em primeira locação com 54m² muito bem distribuídos.",
-      "Possui sala ampla, cozinha funcional, varanda e dois quartos, sendo uma suíte.",
-      "Localizado no condomínio Solar do Imbuí, no bairro da Posse.",
-      "O condomínio oferece piscina, sauna, churrasqueira, salão de festas, parquinho infantil e portaria 24 horas.",
-      "Ideal para quem deseja morar com tranquilidade e qualidade de vida em Teresópolis."
-    ]
-  },
-
-  "midia": {
-
-    "thumbnail": "assets/imoveis/aluguel/solar-do-imbui/foto1.webp",
-
-    "galeria": [
-      "assets/imoveis/aluguel/solar-do-imbui/foto1.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto2.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto3.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto4.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto5.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto6.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto7.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto8.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto9.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto10.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto11.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto12.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto13.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto14.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto15.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto16.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto17.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto18.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto19.webp",
-      "assets/imoveis/aluguel/solar-do-imbui/foto20.webp"
-    ],
-
-    "videoTour": "",
-    "youtube": "",
-    "planta": ""
-  },
-
-  "seo": {
-    "title": "Apartamento para Alugar no Solar do Imbuí | Posse | Teresópolis",
-
-    "description": "Apartamento novo para locação no Solar do Imbuí, bairro da Posse. 2 quartos, suíte, varanda e lazer completo.",
-
-    "keywords": [
-      "apartamento aluguel Teresópolis",
-      "apartamento Posse",
-      "Solar do Imbuí",
-      "aluguel Teresópolis",
-      "apartamento com piscina"
-    ]
-  },
-
-  "contato": {
-    "corretor": "Stephanie Campos",
-    "telefone": "(21) 98932-1485",
-    "whatsapp": "5521989321485"
-  },
-
-  "sistema": {
-    "views": 0,
-    "favoritos": 0,
-    "leads": 0,
-    "createdAt": "2026-06-14",
-    "updatedAt": "2026-06-14",
-    "publicado": true
-  }
-}
-
-]
+    "config":  {
+                   "siteName":  "Stephanie Campos Consultoria Imobiliária",
+                   "siteUrl":  "https://rodneycm.github.io/Corretora2",
+                   "whatsapp":  "5521989321485",
+                   "cidadePadrao":  "Teresópolis",
+                   "estadoPadrao":  "RJ",
+                   "versaoEstrutura":  "1.0.0"
+               },
+    "imoveis":  [
+                    {
+                        "id":  "casa-albuquerque-790",
+                        "slug":  "casa-com-piscina-albuquerque-teresopolis",
+                        "titulo":  "Casa 3 Quartos em Albuquerque – Teresópolis/RJ",
+                        "subtitulo":  "Refúgio exclusivo na serra com amplo terreno e excelente potencial de valorização.",
+                        "codigo":  "SCV001",
+                        "tagPrincipal":  "Casa em madeira",
+                        "tipo":  "Casa",
+                        "categoria":  "Residencial",
+                        "finalidade":  "Venda",
+                        "status":  "disponivel",
+                        "destaque":  true,
+                        "exibirNaHome":  true,
+                        "bairro":  "Albuquerque",
+                        "cidade":  "Teresópolis",
+                        "estado":  "RJ",
+                        "endereco":  {
+                                         "logradouro":  "",
+                                         "numero":  "",
+                                         "complemento":  "",
+                                         "cep":  "",
+                                         "referencia":  "Próximo ao centro de Albuquerque"
+                                     },
+                        "localizacao":  {
+                                            "latitude":  null,
+                                            "longitude":  null
+                                        },
+                        "preco":  {
+                                      "valor":  790000,
+                                      "condominio":  0,
+                                      "iptu":  0,
+                                      "moeda":  "BRL"
+                                  },
+                        "metragem":  {
+                                         "areaTerreno":  1457,
+                                         "areaConstruida":  103,
+                                         "unidade":  "m²"
+                                     },
+                        "caracteristicas":  {
+                                                "quartos":  3,
+                                                "suites":  1,
+                                                "banheiros":  2,
+                                                "vagas":  5,
+                                                "salas":  2,
+                                                "andares":  1,
+                                                "aceitaPet":  true,
+                                                "mobiliado":  false
+                                            },
+                        "diferenciais":  [
+                                             "Piscina privativa",
+                                             "Terreno amplo",
+                                             "Casa independente para hóspedes",
+                                             "Jardim arborizado",
+                                             "Excelente incidência solar",
+                                             "Ideal para Airbnb"
+                                         ],
+                        "descricao":  {
+                                          "resumo":  "Casa com piscina privativa, amplo terreno e excelente localização em Albuquerque.",
+                                          "completa":  [
+                                                           "Se você busca tranquilidade, contato com a natureza e qualidade de vida, esta propriedade é a oportunidade perfeita.",
+                                                           "Localizada em Albuquerque, uma das regiões mais valorizadas e procuradas de Teresópolis, esta charmosa casa oferece conforto, espaço e um belíssimo ambiente natural.",
+                                                           "O imóvel conta com 3 quartos, sendo 1 suíte, sala ampla em 2 ambientes, varanda aconchegante, cozinha com armários planejados, área de serviço e excelente iluminação natural.",
+                                                           "Na área externa, a propriedade possui piscina, lindo jardim arborizado e uma pequena casa independente ideal para hóspedes, caseiro ou apoio."
+                                                       ]
+                                      },
+                        "midia":  {
+                                      "thumbnail":  "assets/imoveis/venda/casa-albuquerque-790/foto1.webp",
+                                      "galeria":  [
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto1.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto2.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto3.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto4.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto5.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto6.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto7.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto8.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto9.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto10.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto11.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto12.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto13.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto14.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto15.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto16.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto17.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto18.webp",
+                                                      "assets/imoveis/venda/casa-albuquerque-790/foto19.webp"
+                                                  ],
+                                      "videoTour":  "",
+                                      "youtube":  "",
+                                      "planta":  "",
+                                      "tour360":  ""
+                                  },
+                        "seo":  {
+                                    "title":  "Casa com Piscina à Venda em Albuquerque – Teresópolis RJ | Stephanie Campos",
+                                    "description":  "Casa com piscina à venda em Albuquerque, Teresópolis RJ. Imóvel com 3 quartos, suíte, terreno amplo e excelente localização.",
+                                    "keywords":  [
+                                                     "casa em Albuquerque",
+                                                     "imóvel Teresópolis",
+                                                     "casa à venda Teresópolis",
+                                                     "Stephanie Campos"
+                                                 ],
+                                    "canonical":  "",
+                                    "ogImage":  ""
+                                },
+                        "contato":  {
+                                        "corretor":  "Stephanie Campos",
+                                        "telefone":  "(21) 98932-1485",
+                                        "whatsapp":  "5521989321485"
+                                    },
+                        "sistema":  {
+                                        "views":  0,
+                                        "favoritos":  0,
+                                        "leads":  0,
+                                        "createdAt":  "2026-05-20",
+                                        "updatedAt":  "2026-05-20",
+                                        "publicado":  true,
+                                        "ordem":  0,
+                                        "dataPublicacao":  "",
+                                        "dataExpiracao":  "",
+                                        "ultimaVisualizacao":  "",
+                                        "ultimaEdicao":  ""
+                                    },
+                        "busca":  {
+                                      "sinonimos":  [
+
+                                                    ],
+                                      "palavrasChave":  [
+
+                                                        ]
+                                  },
+                        "comodidades":  [
+                                            "Piscina privativa",
+                                            "Terreno amplo",
+                                            "Casa de hóspedes",
+                                            "Jardim",
+                                            "Varanda",
+                                            "Área de serviço",
+                                            "Armários planejados",
+                                            "Aceita pet",
+                                            "Vagas de garagem"
+                                        ],
+                        "classificacao":  {
+                                              "tipoConstrucao":  "",
+                                              "padrao":  "",
+                                              "perfil":  "",
+                                              "investimento":  false,
+                                              "aceitaFinanciamento":  false
+                                          }
+                    },
+                    {
+                        "id":  "apartamento-pimenteiras-235",
+                        "slug":  "apartamento-pimenteiras-teresopolis",
+                        "titulo":  "Apartamento com 2 Quartos em Pimenteiras  –  Teresópolis/RJ",
+                        "subtitulo":  "Excelente oportunidade para morar próximo a Agriões com conforto, praticidade e ótima localização.",
+                        "codigo":  "SCV002",
+                        "tagPrincipal":  "Condomínio Completo",
+                        "tipo":  "Apartamento",
+                        "categoria":  "Residencial",
+                        "finalidade":  "Venda",
+                        "status":  "disponivel",
+                        "destaque":  true,
+                        "exibirNaHome":  true,
+                        "bairro":  "Pimenteiras",
+                        "cidade":  "Teresópolis",
+                        "estado":  "RJ",
+                        "endereco":  {
+                                         "logradouro":  "",
+                                         "numero":  "",
+                                         "complemento":  "",
+                                         "cep":  "",
+                                         "referencia":  ""
+                                     },
+                        "localizacao":  {
+                                            "latitude":  null,
+                                            "longitude":  null
+                                        },
+                        "preco":  {
+                                      "valor":  235000,
+                                      "condominio":  426,
+                                      "iptu":  320,
+                                      "moeda":  "BRL"
+                                  },
+                        "metragem":  {
+                                         "areaTerreno":  0,
+                                         "areaConstruida":  50,
+                                         "unidade":  "m²"
+                                     },
+                        "caracteristicas":  {
+                                                "quartos":  2,
+                                                "suites":  0,
+                                                "banheiros":  1,
+                                                "vagas":  1,
+                                                "salas":  1,
+                                                "andares":  3,
+                                                "aceitaPet":  true,
+                                                "mobiliado":  false
+                                            },
+                        "diferenciais":  [
+                                             "Localização privilegiada",
+                                             "Apenas 3 minutos de Agriões",
+                                             "Excelente iluminação natural",
+                                             "Vaga de garagem",
+                                             "Condomínio organizado",
+                                             "Ideal para moradia ou investimento"
+                                         ],
+                        "descricao":  {
+                                          "resumo":  "Apartamento próximo a Agriões com vaga de garagem e excelente iluminação natural.",
+                                          "completa":  [
+                                                           "Apresentamos uma excelente oportunidade para quem deseja adquirir um imóvel confortável e bem localizado em Teresópolis.",
+                                                           "Localizado no bairro Pimenteiras, este apartamento oferece praticidade para o dia a dia e fácil acesso aos principais serviços da cidade.",
+                                                           "O imóvel conta com 2 quartos bem distribuídos, banheiro funcional, cozinha organizada e sala aconchegante para momentos de convivência.",
+                                                           "Situado no terceiro andar, possui ótima ventilação e iluminação natural, tornando os ambientes mais agradáveis durante todo o dia.",
+                                                           "Sua localização estratégica permite chegar ao bairro Agriões em poucos minutos, oferecendo acesso rápido a comércio, transporte e serviços."
+                                                       ]
+                                      },
+                        "midia":  {
+                                      "thumbnail":  "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto1.webp",
+                                      "galeria":  [
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto1.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto2.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto3.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto4.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto5.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto6.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto7.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto8.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto9.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto10.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto11.webp",
+                                                      "assets/imoveis/venda/apartamento-em-pimenteiras-235/foto12.webp"
+                                                  ],
+                                      "videoTour":  "",
+                                      "youtube":  "",
+                                      "planta":  "",
+                                      "tour360":  ""
+                                  },
+                        "seo":  {
+                                    "title":  "Apartamento à Venda em Pimenteiras – Teresópolis RJ | Stephanie Campos",
+                                    "description":  "Apartamento de 2 quartos à venda em Pimenteiras, Teresópolis RJ. Próximo a Agriões, vaga de garagem e excelente localização.",
+                                    "keywords":  [
+                                                     "apartamento em Pimenteiras",
+                                                     "apartamento Teresópolis",
+                                                     "imóvel em Teresópolis",
+                                                     "apartamento próximo Agriões",
+                                                     "Stephanie Campos"
+                                                 ],
+                                    "canonical":  "",
+                                    "ogImage":  ""
+                                },
+                        "contato":  {
+                                        "corretor":  "Stephanie Campos",
+                                        "telefone":  "(21) 98932-1485",
+                                        "whatsapp":  "5521989321485"
+                                    },
+                        "sistema":  {
+                                        "views":  0,
+                                        "favoritos":  0,
+                                        "leads":  0,
+                                        "createdAt":  "2026-05-31",
+                                        "updatedAt":  "2026-05-31",
+                                        "publicado":  true,
+                                        "ordem":  0,
+                                        "dataPublicacao":  "",
+                                        "dataExpiracao":  "",
+                                        "ultimaVisualizacao":  "",
+                                        "ultimaEdicao":  ""
+                                    },
+                        "busca":  {
+                                      "sinonimos":  [
+
+                                                    ],
+                                      "palavrasChave":  [
+
+                                                        ]
+                                  },
+                        "comodidades":  [
+                                            "Vaga de garagem",
+                                            "Aceita pet",
+                                            "Boa iluminação natural"
+                                        ],
+                        "classificacao":  {
+                                              "tipoConstrucao":  "",
+                                              "padrao":  "",
+                                              "perfil":  "",
+                                              "investimento":  false,
+                                              "aceitaFinanciamento":  false
+                                          }
+                    },
+                    {
+                        "id":  "recanto-das-pimenteiras-ii",
+                        "slug":  "apartamento-mobiliado-recanto-das-pimenteiras-ii",
+                        "titulo":  "Apartamento 2 Quartos Mobiliado em Pimenteiras – Teresópolis/RJ",
+                        "subtitulo":  "Apartamento pronto para morar em condomínio familiar e seguro.",
+                        "codigo":  "SCA001",
+                        "tagPrincipal":  "Condomínio Completo",
+                        "tipo":  "Apartamento",
+                        "categoria":  "Residencial",
+                        "finalidade":  "Aluguel",
+                        "status":  "alugado",
+                        "destaque":  true,
+                        "exibirNaHome":  true,
+                        "bairro":  "Pimenteiras",
+                        "cidade":  "Teresópolis",
+                        "estado":  "RJ",
+                        "endereco":  {
+                                         "logradouro":  "",
+                                         "numero":  "",
+                                         "complemento":  "",
+                                         "cep":  "",
+                                         "referencia":  "Condomínio Recanto das Pimenteiras II"
+                                     },
+                        "localizacao":  {
+                                            "latitude":  null,
+                                            "longitude":  null
+                                        },
+                        "preco":  {
+                                      "valor":  2000,
+                                      "condominio":  0,
+                                      "iptu":  0,
+                                      "moeda":  "BRL"
+                                  },
+                        "metragem":  {
+                                         "areaTerreno":  0,
+                                         "areaConstruida":  50,
+                                         "unidade":  "m²"
+                                     },
+                        "caracteristicas":  {
+                                                "quartos":  2,
+                                                "suites":  0,
+                                                "banheiros":  1,
+                                                "vagas":  1,
+                                                "salas":  1,
+                                                "andares":  3,
+                                                "aceitaPet":  true,
+                                                "mobiliado":  true
+                                            },
+                        "diferenciais":  [
+                                             "Totalmente mobiliado",
+                                             "Aceita pet de pequeno porte",
+                                             "Churrasqueira",
+                                             "Parquinho infantil",
+                                             "Bicicletário",
+                                             "Condomínio familiar",
+                                             "Excelente localização"
+                                         ],
+                        "descricao":  {
+                                          "resumo":  "Apartamento mobiliado com lazer completo e localização privilegiada em Pimenteiras.",
+                                          "completa":  [
+                                                           "Apartamento totalmente mobiliado pronto para morar no condomínio Recanto das Pimenteiras II.",
+                                                           "Possui 2 quartos, sala aconchegante, cozinha equipada e banheiro moderno.",
+                                                           "Localizado no terceiro andar com apenas dois lances de escada.",
+                                                           "Condomínio com churrasqueira, parquinho infantil e bicicletário.",
+                                                           "Excelente opção para casal, pequena família ou profissionais que buscam praticidade.",
+                                                           "Aceita pet de pequeno porte."
+                                                       ]
+                                      },
+                        "midia":  {
+                                      "thumbnail":  "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto1.webp",
+                                      "galeria":  [
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto1.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto2.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto3.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto4.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto5.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto6.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto7.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto8.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto9.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto10.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto11.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto12.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto13.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto14.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto15.webp",
+                                                      "assets/imoveis/aluguel/recanto-das-pimenteiras-II/foto16.webp"
+                                                  ],
+                                      "videoTour":  "",
+                                      "youtube":  "",
+                                      "planta":  "",
+                                      "tour360":  ""
+                                  },
+                        "seo":  {
+                                    "title":  "Apartamento Mobiliado para Aluguel em Pimenteiras | Stephanie Campos",
+                                    "description":  "Apartamento mobiliado para aluguel em Pimenteiras, Teresópolis. Condomínio com churrasqueira, parquinho e bicicletário.",
+                                    "keywords":  [
+                                                     "apartamento aluguel Teresópolis",
+                                                     "apartamento mobiliado Teresópolis",
+                                                     "Pimenteiras",
+                                                     "Recanto das Pimenteiras II"
+                                                 ],
+                                    "canonical":  "",
+                                    "ogImage":  ""
+                                },
+                        "contato":  {
+                                        "corretor":  "Stephanie Campos",
+                                        "telefone":  "(21) 98932-1485",
+                                        "whatsapp":  "5521989321485"
+                                    },
+                        "sistema":  {
+                                        "views":  0,
+                                        "favoritos":  0,
+                                        "leads":  0,
+                                        "createdAt":  "2026-06-02",
+                                        "updatedAt":  "2026-06-02",
+                                        "publicado":  true,
+                                        "ordem":  0,
+                                        "dataPublicacao":  "",
+                                        "dataExpiracao":  "",
+                                        "ultimaVisualizacao":  "",
+                                        "ultimaEdicao":  ""
+                                    },
+                        "busca":  {
+                                      "sinonimos":  [
+
+                                                    ],
+                                      "palavrasChave":  [
+
+                                                        ]
+                                  },
+                        "comodidades":  [
+                                            "Mobiliado",
+                                            "Aceita pet",
+                                            "Churrasqueira",
+                                            "Parquinho infantil",
+                                            "Bicicletário",
+                                            "Vaga de garagem"
+                                        ],
+                        "classificacao":  {
+                                              "tipoConstrucao":  "",
+                                              "padrao":  "",
+                                              "perfil":  "",
+                                              "investimento":  false,
+                                              "aceitaFinanciamento":  false
+                                          }
+                    },
+                    {
+                        "id":  "solar-do-imbui-posse",
+                        "slug":  "apartamento-solar-do-imbui-posse",
+                        "titulo":  "Apartamento Novo no Solar do Imbuí – Posse – Teresópolis/RJ",
+                        "subtitulo":  "Primeira locação em condomínio com lazer completo.",
+                        "codigo":  "SCA002",
+                        "tagPrincipal":  "Primeira Locação",
+                        "tipo":  "Apartamento",
+                        "categoria":  "Residencial",
+                        "finalidade":  "Aluguel",
+                        "status":  "alugado",
+                        "destaque":  true,
+                        "exibirNaHome":  true,
+                        "bairro":  "Posse",
+                        "cidade":  "Teresópolis",
+                        "estado":  "RJ",
+                        "endereco":  {
+                                         "logradouro":  "",
+                                         "numero":  "",
+                                         "complemento":  "",
+                                         "cep":  "",
+                                         "referencia":  "Condomínio Solar do Imbuí"
+                                     },
+                        "localizacao":  {
+                                            "latitude":  null,
+                                            "longitude":  null
+                                        },
+                        "preco":  {
+                                      "valor":  1400,
+                                      "condominio":  360,
+                                      "iptu":  30,
+                                      "moeda":  "BRL"
+                                  },
+                        "metragem":  {
+                                         "areaTerreno":  0,
+                                         "areaConstruida":  54,
+                                         "unidade":  "m²"
+                                     },
+                        "caracteristicas":  {
+                                                "quartos":  2,
+                                                "suites":  1,
+                                                "banheiros":  2,
+                                                "vagas":  1,
+                                                "salas":  1,
+                                                "andares":  1,
+                                                "aceitaPet":  true,
+                                                "mobiliado":  false
+                                            },
+                        "diferenciais":  [
+                                             "Primeira locação",
+                                             "Apartamento térreo",
+                                             "Piscina",
+                                             "Sauna",
+                                             "Churrasqueira",
+                                             "Parquinho infantil",
+                                             "Salão de festas",
+                                             "Portaria 24 horas",
+                                             "Varanda",
+                                             "Condomínio fechado",
+                                             "Excelente custo-benefício"
+                                         ],
+                        "descricao":  {
+                                          "resumo":  "Apartamento novo para locação no Solar do Imbuí com suíte e lazer completo.",
+                                          "completa":  [
+                                                           "Excelente oportunidade para quem busca conforto, segurança e praticidade em um condomínio moderno e completo.",
+                                                           "Apartamento em primeira locação com 54m² muito bem distribuídos.",
+                                                           "Possui sala ampla, cozinha funcional, varanda e dois quartos, sendo uma suíte.",
+                                                           "Localizado no condomínio Solar do Imbuí, no bairro da Posse.",
+                                                           "O condomínio oferece piscina, sauna, churrasqueira, salão de festas, parquinho infantil e portaria 24 horas.",
+                                                           "Ideal para quem deseja morar com tranquilidade e qualidade de vida em Teresópolis."
+                                                       ]
+                                      },
+                        "midia":  {
+                                      "thumbnail":  "assets/imoveis/aluguel/solar-do-imbui/foto1.webp",
+                                      "galeria":  [
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto1.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto2.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto3.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto4.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto5.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto6.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto7.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto8.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto9.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto10.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto11.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto12.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto13.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto14.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto15.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto16.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto17.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto18.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto19.webp",
+                                                      "assets/imoveis/aluguel/solar-do-imbui/foto20.webp"
+                                                  ],
+                                      "videoTour":  "",
+                                      "youtube":  "",
+                                      "planta":  "",
+                                      "tour360":  ""
+                                  },
+                        "seo":  {
+                                    "title":  "Apartamento para Alugar no Solar do Imbuí | Posse | Teresópolis",
+                                    "description":  "Apartamento novo para locação no Solar do Imbuí, bairro da Posse. 2 quartos, suíte, varanda e lazer completo.",
+                                    "keywords":  [
+                                                     "apartamento aluguel Teresópolis",
+                                                     "apartamento Posse",
+                                                     "Solar do Imbuí",
+                                                     "aluguel Teresópolis",
+                                                     "apartamento com piscina"
+                                                 ],
+                                    "canonical":  "",
+                                    "ogImage":  ""
+                                },
+                        "contato":  {
+                                        "corretor":  "Stephanie Campos",
+                                        "telefone":  "(21) 98932-1485",
+                                        "whatsapp":  "5521989321485"
+                                    },
+                        "sistema":  {
+                                        "views":  0,
+                                        "favoritos":  0,
+                                        "leads":  0,
+                                        "createdAt":  "2026-06-14",
+                                        "updatedAt":  "2026-06-14",
+                                        "publicado":  true,
+                                        "ordem":  0,
+                                        "dataPublicacao":  "",
+                                        "dataExpiracao":  "",
+                                        "ultimaVisualizacao":  "",
+                                        "ultimaEdicao":  ""
+                                    },
+                        "busca":  {
+                                      "sinonimos":  [
+
+                                                    ],
+                                      "palavrasChave":  [
+
+                                                        ]
+                                  },
+                        "comodidades":  [
+                                            "Primeira locação",
+                                            "Apartamento térreo",
+                                            "Piscina",
+                                            "Sauna",
+                                            "Churrasqueira",
+                                            "Parquinho infantil",
+                                            "Salão de festas",
+                                            "Portaria 24 horas",
+                                            "Varanda",
+                                            "Condomínio fechado",
+                                            "Vaga de garagem",
+                                            "Aceita pet"
+                                        ],
+                        "classificacao":  {
+                                              "tipoConstrucao":  "",
+                                              "padrao":  "",
+                                              "perfil":  "",
+                                              "investimento":  false,
+                                              "aceitaFinanciamento":  false
+                                          }
+                    }
+                ]
 }
