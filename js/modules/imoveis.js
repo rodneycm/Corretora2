@@ -32,6 +32,57 @@ function numeroSeguro(valor) {
     return Number(valor) || 0;
 }
 
+function urlCanonicaImovel(slug) {
+    return `${CONFIG.SITE_URL}/${urlImovel(slug)}`;
+}
+
+function imagemAbsoluta(caminho) {
+    const imagem = textoSeguro(caminho) || CONFIG.IMAGE_FALLBACK;
+
+    return `${CONFIG.SITE_URL}/${imagem.replace(/^\.?\//, "")}`;
+}
+
+function upsertMeta(seletor, atributo, valorAtributo, content) {
+    let meta = document.querySelector(seletor);
+
+    if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(atributo, valorAtributo);
+        document.head.appendChild(meta);
+    }
+
+    meta.setAttribute("content", content);
+}
+
+function mostrarToastCompartilhamento(mensagem) {
+    const toastExistente =
+        document.querySelector(".compartilhar-toast");
+
+    if (toastExistente) {
+        toastExistente.remove();
+    }
+
+    const toast = document.createElement("div");
+    toast.className = "compartilhar-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    toast.textContent = mensagem;
+
+    document.body.appendChild(toast);
+
+    window.setTimeout(() => {
+        toast.classList.add("compartilhar-toast-visivel");
+    }, 10);
+
+    window.setTimeout(() => {
+        toast.classList.remove("compartilhar-toast-visivel");
+
+        window.setTimeout(() => {
+            toast.remove();
+        }, 250);
+    }, 2000);
+}
+
 /* =========================================================
    CARREGAR IMÓVEIS
 ========================================================= */
@@ -359,18 +410,21 @@ export async function renderizarPaginaImovel() {
     const estado = imovel.localizacao?.estado || imovel.estado || "";
 
     const whatsapp = imovel.contato?.whatsapp || CONFIG.WHATSAPP;
-    const urlAtual = window.location.href;
-    const titulo   = imovel.titulo || "";
+    const urlAtual = urlCanonicaImovel(imovel.slug);
+    const titulo   = textoSeguro(imovel.titulo).trim() || "Imovel";
     const mensagemContato =
         `Olá Stephanie, tenho interesse neste imóvel: ${titulo}\n\n${urlAtual}`;
 
-    const descricaoResumo = imovel.descricao?.resumo || "";
+    const descricaoResumo =
+        textoSeguro(imovel.seo?.description).trim() ||
+        textoSeguro(imovel.descricao?.resumo).trim() ||
+        `${textoSeguro(imovel.tipo).trim() || "Imovel"} em ${bairro || CONFIG.CIDADE_PADRAO}, ${estado || CONFIG.ESTADO_PADRAO}.`;
 
-    const imagemCompartilhamento = `${CONFIG.SITE_URL}/${(
+    const imagemCompartilhamento = imagemAbsoluta(
         imovel.midia?.thumbnail   ||
         imovel.midia?.galeria?.[0] ||
         CONFIG.IMAGE_FALLBACK
-    ).replace(/^\.?\//, "")}`;
+    );
 
     /* -------------------------------------------------
        DIFERENCIAIS
@@ -628,7 +682,10 @@ export async function renderizarPaginaImovel() {
 
             <button
             id="compartilhar-whatsapp"
-            class="btn-compartilhar">
+            class="btn-compartilhar"
+            type="button"
+            aria-label="Compartilhar im&oacute;vel pelo WhatsApp"
+            title="Compartilhar im&oacute;vel pelo WhatsApp">
 
                 <i class="fab fa-whatsapp"></i>
 
@@ -638,7 +695,10 @@ export async function renderizarPaginaImovel() {
 
             <button
             id="compartilhar-facebook"
-            class="btn-compartilhar">
+            class="btn-compartilhar"
+            type="button"
+            aria-label="Compartilhar im&oacute;vel no Facebook"
+            title="Compartilhar im&oacute;vel no Facebook">
 
                 <i class="fab fa-facebook-f"></i>
 
@@ -648,7 +708,10 @@ export async function renderizarPaginaImovel() {
 
             <button
             id="copiar-link"
-            class="btn-compartilhar">
+            class="btn-compartilhar"
+            type="button"
+            aria-label="Copiar link do im&oacute;vel"
+            title="Copiar link do im&oacute;vel">
 
                 <i class="fa-solid fa-link"></i>
 
@@ -816,78 +879,79 @@ if (ctaFinal) {
 
     document.title = imovel.seo?.title || `${titulo} | ${CONFIG.SITE_NAME}`;
 
-    /* META DESCRIPTION */
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        metaDescription.setAttribute("content", imovel.seo?.description || descricaoResumo);
-    }
+    upsertMeta(
+        'meta[name="description"]',
+        "name",
+        "description",
+        descricaoResumo
+    );
 
-    /* OG TITLE */
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-        ogTitle.setAttribute("content", imovel.seo?.title || titulo);
-    }
+    upsertMeta(
+        'meta[property="og:type"]',
+        "property",
+        "og:type",
+        "website"
+    );
 
-    /* OG DESCRIPTION */
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-        ogDescription.setAttribute("content", imovel.seo?.description || descricaoResumo);
-    }
+    upsertMeta(
+        'meta[property="og:title"]',
+        "property",
+        "og:title",
+        titulo
+    );
 
-    /* OG IMAGE */
-    const ogImage = document.querySelector('meta[property="og:image"]');
-    if (ogImage) {
-        ogImage.setAttribute("content", imagemCompartilhamento);
-    }
+    upsertMeta(
+        'meta[property="og:description"]',
+        "property",
+        "og:description",
+        descricaoResumo
+    );
 
-    /* OG URL */
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) {
-        ogUrl.setAttribute("content", urlAtual);
-    }
+    upsertMeta(
+        'meta[property="og:image"]',
+        "property",
+        "og:image",
+        imagemCompartilhamento
+    );
+
+    upsertMeta(
+        'meta[property="og:url"]',
+        "property",
+        "og:url",
+        urlAtual
+    );
 
     /* -------------------------------------------------
 TWITTER CARD
 ------------------------------------------------- */
 
-let twitterTitle =
-    document.querySelector(
-        'meta[name="twitter:title"]'
-    );
+upsertMeta(
+    'meta[name="twitter:card"]',
+    "name",
+    "twitter:card",
+    "summary_large_image"
+);
 
-if (twitterTitle) {
+upsertMeta(
+    'meta[name="twitter:title"]',
+    "name",
+    "twitter:title",
+    titulo
+);
 
-    twitterTitle.setAttribute(
-        "content",
-        imovel.seo?.title || titulo
-    );
-}
+upsertMeta(
+    'meta[name="twitter:description"]',
+    "name",
+    "twitter:description",
+    descricaoResumo
+);
 
-let twitterDescription =
-    document.querySelector(
-        'meta[name="twitter:description"]'
-    );
-
-if (twitterDescription) {
-
-    twitterDescription.setAttribute(
-        "content",
-        imovel.seo?.description || descricaoResumo
-    );
-}
-
-let twitterImage =
-    document.querySelector(
-        'meta[name="twitter:image"]'
-    );
-
-if (twitterImage) {
-
-    twitterImage.setAttribute(
-        "content",
-        imagemCompartilhamento
-    );
-}
+upsertMeta(
+    'meta[name="twitter:image"]',
+    "name",
+    "twitter:image",
+    imagemCompartilhamento
+);
     /* -------------------------------------------------
    CANONICAL URL
 ------------------------------------------------- */
@@ -1144,7 +1208,7 @@ listingScript.textContent =
     document.getElementById("copiar-link")?.addEventListener("click", async () => {
         try {
             await navigator.clipboard.writeText(urlAtual);
-            alert("Link copiado com sucesso!");
+            mostrarToastCompartilhamento("Link copiado com sucesso!");
         } catch (error) {
             console.error(error);
         }
