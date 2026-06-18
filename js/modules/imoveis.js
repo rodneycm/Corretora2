@@ -1,5 +1,6 @@
 import CONFIG from "../core/config.js";
 import { inicializarGaleria } from "./galeria.js";
+import { normalizarLista } from "./normalizador.js";
 
 import {
     criarCard,
@@ -318,7 +319,7 @@ export async function carregarImoveis() {
             throw new Error("Estrutura JSON inválida");
         }
 
-        imoveisCache = data.imoveis.filter(
+        imoveisCache = normalizarLista(data.imoveis).filter(
             item => item && item.sistema?.publicado !== false
         );
 
