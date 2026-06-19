@@ -1451,13 +1451,15 @@ CONTEÚDO PRINCIPAL
 
     background:#ffffff;
 
-    border-radius:28px;
+    border:1px solid rgba(226,232,240,.72);
+
+    border-radius:24px;
 
     padding:48px 50px;
 
     margin-bottom:var(--imovel-section-gap);
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    box-shadow:var(--shadow-md);
 
 }
 
@@ -1589,6 +1591,7 @@ CONTEÚDO PRINCIPAL
     color:#25d366;
     font-size:14px;
     text-align:center;
+    line-height:1;
 
 }
 
@@ -2103,12 +2106,12 @@ font-size:26px;
 .lista-diferenciais{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
-    margin-top:20px;
+    gap:10px 12px;
+    margin-top:18px;
 }
 
 .diferencial-chip{
-    display:flex;
+    display:inline-flex;
     align-items:center;
     gap:8px;
 
@@ -2161,7 +2164,7 @@ font-size:26px;
 
 .bloco-descricao-imovel > .descricao-highlight span{
 
-    display:flex;
+    display:inline-flex;
 
     align-items:center;
 
@@ -2228,5 +2231,53 @@ font-size:26px;
     flex-wrap:wrap;
 
     margin-top:0;
+
+}
+
+@media(max-width:768px){
+
+    .bloco-imovel,
+    #imovel-conteudo .bloco-caracteristicas-imovel,
+    #imovel-conteudo .bloco-descricao-imovel{
+
+        padding:32px 24px;
+
+        border-radius:22px;
+
+    }
+
+    .section-title-imovel{
+
+        font-size:26px;
+
+        margin-bottom:22px;
+
+    }
+
+    .resumo-estrategico-imovel{
+
+        font-size:16px;
+
+        line-height:1.68;
+
+        margin-bottom:20px;
+
+    }
+
+    #imovel-conteudo .descricao-imovel p,
+    #imovel-conteudo .descricao-bloco{
+
+        font-size:16px !important;
+
+        line-height:1.76 !important;
+
+    }
+
+    .lista-diferenciais,
+    .bloco-descricao-imovel > .descricao-highlight{
+
+        gap:10px;
+
+    }
 
 }

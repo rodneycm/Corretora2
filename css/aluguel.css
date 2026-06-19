@@ -53,14 +53,22 @@ BADGE FINALIDADE
 
     position:absolute;
 
-    top:15px;
-    left:15px;
+    top:14px;
+    left:14px;
 
     background:#25d366;
 
     color:white;
 
-    padding:8px 14px;
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:28px;
+
+    padding:6px 12px;
 
     border-radius:999px;
 
@@ -68,9 +76,15 @@ BADGE FINALIDADE
 
     font-weight:700;
 
+    line-height:1.15;
+
+    letter-spacing:.2px;
+
     text-transform:uppercase;
 
     z-index:2;
+
+    box-shadow:0 6px 16px rgba(15,23,42,.16);
 
 }
 
@@ -81,35 +95,45 @@ FILTROS
 .filtros-imoveis{
 
     display:flex;
-    gap:12px;
+    gap:12px 14px;
     flex-wrap:wrap;
 
-    margin-bottom:30px;
+    align-items:center;
+
+    margin-bottom:32px;
 
 }
 
 .filtros-imoveis input,
 .filtros-imoveis select{
 
+    min-height:46px;
+
     padding:12px 16px;
 
-    border:1px solid #dcdcdc;
+    border:1px solid #e2e8f0;
 
-    border-radius:10px;
+    border-radius:12px;
 
     min-width:180px;
 
     font-size:15px;
 
+    color:#0f172a;
+
+    background:#ffffff;
+
 }
 
 .limpar-filtros-btn{
 
+    min-height:46px;
+
     padding:12px 18px;
 
-    border:1px solid #dcdcdc;
+    border:1px solid #e2e8f0;
 
-    border-radius:10px;
+    border-radius:12px;
 
     background:#ffffff;
 
