@@ -509,51 +509,85 @@ function renderizarNavegacaoImoveis(imovelAtual, lista) {
 }
 
 function gerarResumoEstrategico(imovel) {
-    const tipo = textoSeguro(imovel?.tipo).trim().toLowerCase();
     const bairro = localizacaoImovel(imovel, "bairro").trim();
     const finalidade = textoSeguro(imovel?.finalidade).trim().toLowerCase();
     const tagPrincipal = textoSeguro(imovel?.tagPrincipal).trim();
     const perfil = classificacaoImovel(imovel, "perfil").trim().toLowerCase();
-    const padrao = classificacaoImovel(imovel, "padrao").trim().toLowerCase();
+    const padrao = classificacaoImovel(imovel, "padrao").trim();
     const diferenciais = arraySeguro(imovel?.diferenciais)
         .map(item => textoSeguro(item).trim())
         .filter(Boolean);
     const comodidades = arraySeguro(imovel?.comodidades)
         .map(item => textoSeguro(item).trim())
         .filter(Boolean);
-    const destaque = tagPrincipal || comodidades[0] || diferenciais[0] || "";
-    const localizacao = bairro ? `em ${bairro}` : "";
-    const finalidadeTexto = finalidade === "aluguel"
-        ? "para loca&ccedil;&atilde;o"
-        : finalidade === "venda"
-            ? "para compra"
-            : "";
+    const textos = [
+        tagPrincipal,
+        perfil,
+        padrao,
+        ...diferenciais,
+        ...comodidades
+    ];
+    const indice = normalizarTextoBusca(textos.join(" "));
+    const bairroTexto = bairro ? ` no bairro ${bairro}` : "";
+    const regiaoTexto = bairro ? ` em ${bairro}` : "";
+    const possui = termo => indice.includes(termo);
+    const possuiAlgum = termos => termos.some(possui);
+    const principalDiferencial = diferenciais.find(item => {
+        const texto = normalizarTextoBusca(item);
 
-    if (perfil.includes("famil")) {
-        const atributos = diferenciais.slice(0, 2).join(", ");
+        return !["localizacao privilegiada", "excelente localizacao"].includes(texto);
+    });
+    const beneficio = principalDiferencial || comodidades[0] || tagPrincipal;
+    const beneficioTexto = textoSeguro(beneficio).trim().toLowerCase();
+    const primeiraLocacao = possuiAlgum([
+        "primeira locacao",
+        "primeiro aluguel",
+        "imovel novo",
+        "novo e pronto"
+    ]);
+    const condominioCompleto = possuiAlgum([
+        "condominio completo",
+        "condominio fechado",
+        "infraestrutura completa",
+        "lazer completo"
+    ]);
+    const mobiliado =
+        imovel?.caracteristicas?.mobiliado === true ||
+        possuiAlgum(["mobiliado", "moveis planejados", "armarios planejados"]);
 
-        return atributos
-            ? `Ideal para fam&iacute;lias que buscam ${atributos.toLowerCase()}${localizacao ? `, ${localizacao}` : ""}.`
-            : `Ideal para fam&iacute;lias que procuram conforto${localizacao ? ` ${localizacao}` : ""}.`;
+    if (primeiraLocacao) {
+        return "Im&oacute;vel em primeira loca&ccedil;&atilde;o, perfeito para quem deseja um espa&ccedil;o novo e pronto para morar.";
+    }
+
+    if (condominioCompleto) {
+        return `Ideal para quem busca conforto e praticidade em um condom&iacute;nio completo${bairroTexto}.`;
+    }
+
+    if (mobiliado) {
+        return `Pronto para morar, com detalhes que tornam a rotina mais pr&aacute;tica e acolhedora${regiaoTexto}.`;
+    }
+
+    if (beneficioTexto) {
+        return finalidade === "aluguel"
+            ? `Perfeito para morar com tranquilidade, reunindo ${beneficioTexto} e praticidade no dia a dia.`
+            : `Im&oacute;vel que re&uacute;ne ${beneficioTexto}, conforto e excelente potencial de valoriza&ccedil;&atilde;o.`;
     }
 
     if (perfil.includes("invest") || imovel?.classificacao?.investimento === true) {
-        return `Boa oportunidade de investimento${tipo ? ` em ${tipo}` : ""}${localizacao ? ` ${localizacao}` : ""}.`;
+        return "Im&oacute;vel com perfil vers&aacute;til, pensado para quem valoriza seguran&ccedil;a e bom potencial de retorno.";
     }
 
     if (padrao) {
-        return `Im&oacute;vel de padr&atilde;o ${padrao}${tipo ? ` no formato de ${tipo}` : ""}${localizacao ? ` ${localizacao}` : ""}.`;
+        return `Uma escolha de padr&atilde;o ${padrao.toLowerCase()}, com conforto e boa leitura de valor para o futuro morador.`;
     }
 
-    if (destaque) {
-        return `Excelente op&ccedil;&atilde;o${finalidadeTexto ? ` ${finalidadeTexto}` : ""}${tipo ? ` para quem procura ${tipo}` : ""} com ${destaque.toLowerCase()}${localizacao ? `, localizado ${localizacao}` : ""}.`;
+    if (bairro) {
+        return finalidade === "aluguel"
+            ? `Perfeito para viver com tranquilidade em uma localiza&ccedil;&atilde;o agrad&aacute;vel${regiaoTexto}.`
+            : `Excelente oportunidade para quem busca qualidade de vida e &oacute;tima localiza&ccedil;&atilde;o${regiaoTexto}.`;
     }
 
-    if (tipo || bairro) {
-        return `Excelente op&ccedil;&atilde;o${finalidadeTexto ? ` ${finalidadeTexto}` : ""}${tipo ? ` para quem procura ${tipo}` : ""}${localizacao ? ` ${localizacao}` : ""}.`;
-    }
-
-    return "";
+    return "Im&oacute;vel com atributos bem equilibrados para quem valoriza conforto, praticidade e uma boa experi&ecirc;ncia de moradia.";
 }
 
 function pontuarImovelRelacionado(imovelBase, candidato) {
