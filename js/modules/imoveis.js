@@ -34,18 +34,196 @@ function numeroSeguro(valor) {
     return Number(valor) || 0;
 }
 
+function textoComparavel(valor) {
+    return textoSeguro(valor)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+}
+
+function ordemImovel(imovel) {
+    const ordem = Number(imovel?.sistema?.ordem);
+
+    return Number.isFinite(ordem) ? ordem : 999999;
+}
+
 function ordenarImoveis(lista) {
     return [...arraySeguro(lista)].sort((a, b) => {
-        const ordemA = Number(a?.sistema?.ordem);
-
-        const ordemB = Number(b?.sistema?.ordem);
-
-        return (
-            Number.isFinite(ordemA) ? ordemA : 999999
-        ) - (
-            Number.isFinite(ordemB) ? ordemB : 999999
-        );
+        return ordemImovel(a) - ordemImovel(b);
     });
+}
+
+function localizacaoImovel(imovel, campo) {
+    return (
+        textoSeguro(imovel?.localizacao?.[campo]) ||
+        textoSeguro(imovel?.[campo])
+    );
+}
+
+function classificacaoImovel(imovel, campo) {
+    return textoSeguro(imovel?.classificacao?.[campo]);
+}
+
+function caracteristicaNumerica(imovel, campo) {
+    return numeroSeguro(imovel?.caracteristicas?.[campo]);
+}
+
+function precoImovel(imovel) {
+    return numeroSeguro(imovel?.preco?.valor);
+}
+
+function diferencaPreco(imovelBase, imovelRelacionado) {
+    return Math.abs(precoImovel(imovelBase) - precoImovel(imovelRelacionado));
+}
+
+function valoresIguais(valorA, valorB) {
+    const comparavelA = textoComparavel(valorA);
+    const comparavelB = textoComparavel(valorB);
+
+    return comparavelA !== "" && comparavelA === comparavelB;
+}
+
+function valoresProximos(valorA, valorB, tolerancia = 1) {
+    return valorA > 0 && valorB > 0 && Math.abs(valorA - valorB) <= tolerancia;
+}
+
+function precoSemelhante(imovelBase, imovelRelacionado) {
+    const precoBase = precoImovel(imovelBase);
+    const precoRelacionado = precoImovel(imovelRelacionado);
+
+    if (precoBase <= 0 || precoRelacionado <= 0) return false;
+
+    return Math.abs(precoBase - precoRelacionado) / precoBase <= 0.2;
+}
+
+function condominioImovel(imovel) {
+    return (
+        textoSeguro(imovel?.condominio) ||
+        textoSeguro(imovel?.nomeCondominio) ||
+        textoSeguro(imovel?.condominioNome) ||
+        textoSeguro(imovel?.empreendimento) ||
+        textoSeguro(imovel?.localizacao?.condominio) ||
+        textoSeguro(imovel?.endereco?.condominio)
+    );
+}
+
+function mesmoImovel(imovelBase, candidato) {
+    const slugBase = textoSeguro(imovelBase?.slug);
+    const slugCandidato = textoSeguro(candidato?.slug);
+    const idBase = textoSeguro(imovelBase?.id);
+    const idCandidato = textoSeguro(candidato?.id);
+
+    return (
+        (slugBase !== "" && slugBase === slugCandidato) ||
+        (idBase !== "" && idBase === idCandidato)
+    );
+}
+
+function pontuarImovelRelacionado(imovelBase, candidato) {
+    let pontuacao = 0;
+
+    if (
+        valoresIguais(
+            localizacaoImovel(imovelBase, "bairro"),
+            localizacaoImovel(candidato, "bairro")
+        )
+    ) {
+        pontuacao += 5;
+    }
+
+    if (valoresIguais(imovelBase?.finalidade, candidato?.finalidade)) {
+        pontuacao += 4;
+    }
+
+    if (valoresIguais(imovelBase?.tipo, candidato?.tipo)) {
+        pontuacao += 3;
+    }
+
+    if (precoSemelhante(imovelBase, candidato)) {
+        pontuacao += 3;
+    }
+
+    if (
+        valoresIguais(
+            classificacaoImovel(imovelBase, "padrao"),
+            classificacaoImovel(candidato, "padrao")
+        )
+    ) {
+        pontuacao += 2;
+    }
+
+    if (
+        valoresIguais(
+            classificacaoImovel(imovelBase, "perfil"),
+            classificacaoImovel(candidato, "perfil")
+        )
+    ) {
+        pontuacao += 2;
+    }
+
+    if (
+        valoresProximos(
+            caracteristicaNumerica(imovelBase, "quartos"),
+            caracteristicaNumerica(candidato, "quartos")
+        )
+    ) {
+        pontuacao += 2;
+    }
+
+    if (valoresIguais(condominioImovel(imovelBase), condominioImovel(candidato))) {
+        pontuacao += 2;
+    }
+
+    if (
+        valoresProximos(
+            caracteristicaNumerica(imovelBase, "banheiros"),
+            caracteristicaNumerica(candidato, "banheiros")
+        )
+    ) {
+        pontuacao += 1;
+    }
+
+    if (
+        valoresProximos(
+            caracteristicaNumerica(imovelBase, "vagas"),
+            caracteristicaNumerica(candidato, "vagas")
+        )
+    ) {
+        pontuacao += 1;
+    }
+
+    return pontuacao;
+}
+
+function selecionarImoveisRelacionados(imovelBase, lista) {
+    return arraySeguro(lista)
+        .filter(item =>
+            item &&
+            !mesmoImovel(imovelBase, item) &&
+            valoresIguais(item.finalidade, imovelBase.finalidade)
+        )
+        .map(item => ({
+            imovel: item,
+            pontuacao: pontuarImovelRelacionado(imovelBase, item),
+            diferencaPreco: diferencaPreco(imovelBase, item)
+        }))
+        .sort((a, b) => {
+            if (b.pontuacao !== a.pontuacao) {
+                return b.pontuacao - a.pontuacao;
+            }
+
+            if (Boolean(b.imovel?.destaque) !== Boolean(a.imovel?.destaque)) {
+                return Number(Boolean(b.imovel?.destaque)) - Number(Boolean(a.imovel?.destaque));
+            }
+
+            if (ordemImovel(a.imovel) !== ordemImovel(b.imovel)) {
+                return ordemImovel(a.imovel) - ordemImovel(b.imovel);
+            }
+
+            return a.diferencaPreco - b.diferencaPreco;
+        })
+        .map(item => item.imovel);
 }
 
 function urlCanonicaImovel(slug) {
@@ -1009,11 +1187,7 @@ conteudo.innerHTML = `
 
         const todosImoveis = await carregarImoveis();
 
-        const relacionados = todosImoveis
-            .filter(item =>
-                item.slug !== imovel.slug &&
-                item.finalidade === imovel.finalidade
-            )
+        const relacionados = selecionarImoveisRelacionados(imovel, todosImoveis)
             .slice(0, 3);
 
         if (relacionados.length > 0) {
