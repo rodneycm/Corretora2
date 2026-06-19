@@ -144,6 +144,55 @@ function possuiTexto(valor) {
     return textoSeguro(valor).trim() !== "";
 }
 
+const termosDescricaoHighlight = [
+    "primeira locação",
+    "condomínio completo",
+    "vista panorâmica",
+    "vista livre",
+    "área gourmet",
+    "salão de festas",
+    "aceita pet",
+    "churrasqueira",
+    "financiamento",
+    "planejados",
+    "mobiliado",
+    "academia",
+    "elevador",
+    "portaria",
+    "hospital",
+    "shopping",
+    "garagem",
+    "piscina",
+    "varanda",
+    "escola",
+    "centro",
+    "suíte",
+    "vaga"
+];
+
+function escaparRegex(valor) {
+    return valor.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function criarPadraoDescricaoHighlight(termo) {
+    return escaparRegex(termo)
+        .replace(/a/g, "[aáã]")
+        .replace(/e/g, "[eé]")
+        .replace(/i/g, "[ií]")
+        .replace(/o/g, "[oóô]")
+        .replace(/c/g, "[cç]")
+        .replace(/\s+/g, "\\s+");
+}
+
+function destacarDescricao(texto) {
+    return termosDescricaoHighlight.reduce((descricao, termo) => {
+        const padrao = criarPadraoDescricaoHighlight(termo);
+        const regex = new RegExp(`(^|[^\\p{L}\\p{N}_])(${padrao})(?=$|[^\\p{L}\\p{N}_])`, "giu");
+
+        return descricao.replace(regex, "$1<span class=\"descricao-highlight\">$2</span>");
+    }, textoSeguro(texto));
+}
+
 function possuiNumero(valor) {
     return numeroSeguro(valor) > 0;
 }
@@ -1360,7 +1409,7 @@ export async function renderizarPaginaImovel() {
 
         <div class="descricao-bloco ${index === 0 ? 'descricao-principal' : ''}">
 
-            ${texto}
+            ${destacarDescricao(texto)}
 
         </div>
 
