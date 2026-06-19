@@ -1528,25 +1528,31 @@ CONTEÚDO PRINCIPAL
 .ficha-tecnica-lista{
 
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:28px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:28px 46px;
 
 }
 
-.ficha-tecnica-grupo{
+.ficha-tecnica-coluna{
 
     display:flex;
     flex-direction:column;
 
 }
 
+.ficha-tecnica-lista-uma-coluna{
+
+    grid-template-columns:1fr;
+
+}
+
 .ficha-tecnica-item{
 
     display:grid;
-    grid-template-columns:22px minmax(90px,1fr) auto;
+    grid-template-columns:22px minmax(128px,1fr) minmax(84px,auto);
     gap:12px;
     align-items:center;
-    min-height:42px;
+    min-height:46px;
     padding:12px 0;
     border-bottom:1px solid #eef2f7;
     color:#475569;
@@ -1572,6 +1578,7 @@ CONTEÚDO PRINCIPAL
 .ficha-tecnica-item span{
 
     color:#64748b;
+    min-width:0;
 
 }
 
@@ -1580,6 +1587,7 @@ CONTEÚDO PRINCIPAL
     color:#0f172a;
     font-weight:700;
     text-align:right;
+    min-width:0;
 
 }
 
@@ -1625,16 +1633,6 @@ CONTEÚDO PRINCIPAL
 
 }
 
-@media(max-width:980px){
-
-.ficha-tecnica-lista{
-
-    grid-template-columns:repeat(2,minmax(0,1fr));
-
-}
-
-}
-
 @media(max-width:768px){
 
 .ficha-tecnica-imovel{
@@ -1647,13 +1645,13 @@ CONTEÚDO PRINCIPAL
 .ficha-tecnica-lista{
 
     grid-template-columns:1fr;
-    gap:10px;
+    gap:0;
 
 }
 
 .ficha-tecnica-item{
 
-    grid-template-columns:22px minmax(84px,1fr) auto;
+    grid-template-columns:22px minmax(110px,1fr) minmax(70px,auto);
     gap:10px;
     font-size:14px;
 

@@ -1342,63 +1342,66 @@ export async function renderizarPaginaImovel() {
 
     const itensFicha = [];
 
-    const adicionarItemFicha = (grupo, rotulo, valor, icone) => {
+    const adicionarItemFicha = (rotulo, valor, icone) => {
         const valorTexto = typeof valor === "number" ? String(valor) : textoSeguro(valor).trim();
 
         if (valorTexto === "" || valorTexto === "0") return;
 
-        itensFicha.push({ grupo, rotulo, valor: valorTexto, icone });
+        itensFicha.push({ rotulo, valor: valorTexto, icone });
     };
 
-    const adicionarNumeroFicha = (grupo, rotulo, valor, icone) => {
+    const adicionarNumeroFicha = (rotulo, valor, icone) => {
         const numero = numeroSeguro(valor);
 
         if (numero <= 0) return;
 
-        adicionarItemFicha(grupo, rotulo, numero, icone);
+        adicionarItemFicha(rotulo, numero, icone);
     };
 
-    const adicionarValorFicha = (grupo, rotulo, valor, icone) => {
+    const adicionarValorFicha = (rotulo, valor, icone) => {
         const numero = numeroSeguro(valor);
 
         if (numero <= 0) return;
 
-        adicionarItemFicha(grupo, rotulo, formatarPreco(numero), icone);
+        adicionarItemFicha(rotulo, formatarPreco(numero), icone);
     };
 
-    const adicionarBooleanoFicha = (grupo, rotulo, valor, icone) => {
+    const adicionarBooleanoFicha = (rotulo, valor, icone) => {
         if (valor !== true) return;
 
-        adicionarItemFicha(grupo, rotulo, "Sim", icone);
+        adicionarItemFicha(rotulo, "Sim", icone);
     };
 
-    adicionarItemFicha("Informacoes", "Tipo", imovel.tipo, "fa-house");
-    adicionarItemFicha("Informacoes", "Categoria", imovel.categoria, "fa-layer-group");
-    adicionarItemFicha("Informacoes", "Finalidade", imovel.finalidade, "fa-key");
+    adicionarItemFicha("Tipo", imovel.tipo, "fa-house");
+    adicionarItemFicha("Categoria", imovel.categoria, "fa-layer-group");
+    adicionarItemFicha("Finalidade", imovel.finalidade, "fa-key");
     adicionarItemFicha(
-        "Informacoes",
         "Status",
         (imovel.status || "").replace("disponivel", "Dispon&iacute;vel"),
         "fa-circle-check"
     );
-    adicionarValorFicha("Informacoes", "Condom&iacute;nio", imovel.preco?.condominio, "fa-building");
-    adicionarValorFicha("Informacoes", "IPTU", imovel.preco?.iptu, "fa-file-invoice-dollar");
+    adicionarValorFicha("Condom&iacute;nio", imovel.preco?.condominio, "fa-building");
+    adicionarValorFicha("IPTU", imovel.preco?.iptu, "fa-file-invoice-dollar");
 
-    adicionarNumeroFicha("Detalhes", "Salas", imovel.caracteristicas?.salas, "fa-couch");
-    adicionarNumeroFicha("Detalhes", "Andares", imovel.caracteristicas?.andares, "fa-stairs");
-    adicionarBooleanoFicha("Detalhes", "Aceita pet", imovel.caracteristicas?.aceitaPet, "fa-paw");
-    adicionarBooleanoFicha("Detalhes", "Mobiliado", imovel.caracteristicas?.mobiliado, "fa-chair");
+    adicionarNumeroFicha("Salas", imovel.caracteristicas?.salas, "fa-couch");
+    adicionarNumeroFicha("Andares", imovel.caracteristicas?.andares, "fa-stairs");
+    adicionarBooleanoFicha("Aceita pet", imovel.caracteristicas?.aceitaPet, "fa-paw");
+    adicionarBooleanoFicha("Mobiliado", imovel.caracteristicas?.mobiliado, "fa-chair");
 
-    adicionarItemFicha("Perfil", "Tipo de constru&ccedil;&atilde;o", imovel.classificacao?.tipoConstrucao, "fa-helmet-safety");
-    adicionarItemFicha("Perfil", "Padr&atilde;o", imovel.classificacao?.padrao, "fa-gem");
-    adicionarItemFicha("Perfil", "Perfil", imovel.classificacao?.perfil, "fa-user-check");
-    adicionarBooleanoFicha("Perfil", "Aceita financiamento", imovel.classificacao?.aceitaFinanciamento, "fa-landmark");
-    adicionarBooleanoFicha("Perfil", "Investimento", imovel.classificacao?.investimento, "fa-chart-line");
+    adicionarItemFicha("Tipo de constru&ccedil;&atilde;o", imovel.classificacao?.tipoConstrucao, "fa-helmet-safety");
+    adicionarItemFicha("Padr&atilde;o", imovel.classificacao?.padrao, "fa-gem");
+    adicionarItemFicha("Perfil", imovel.classificacao?.perfil, "fa-user-check");
+    adicionarBooleanoFicha("Aceita financiamento", imovel.classificacao?.aceitaFinanciamento, "fa-landmark");
+    adicionarBooleanoFicha("Investimento", imovel.classificacao?.investimento, "fa-chart-line");
 
-    const gruposFicha = ["Informacoes", "Detalhes", "Perfil"];
     const comodidadesFicha = arraySeguro(imovel.comodidades)
         .map(item => textoSeguro(item).trim())
         .filter(Boolean);
+    const metadeFicha = Math.ceil(itensFicha.length / 2);
+    const colunasFicha = [
+        itensFicha.slice(0, metadeFicha),
+        itensFicha.slice(metadeFicha)
+    ].filter(coluna => coluna.length > 0);
 
     const fichaTecnica = itensFicha.length > 0 || comodidadesFicha.length > 0
         ? `
@@ -1406,24 +1409,18 @@ export async function renderizarPaginaImovel() {
                 <h2 class="section-title-imovel">Ficha t&eacute;cnica</h2>
 
                 ${itensFicha.length > 0 ? `
-                    <div class="ficha-tecnica-lista">
-                        ${gruposFicha.map(grupo => {
-                            const itensGrupo = itensFicha.filter(item => item.grupo === grupo);
-
-                            if (itensGrupo.length === 0) return "";
-
-                            return `
-                                <div class="ficha-tecnica-grupo">
-                                    ${itensGrupo.map(item => `
-                                        <div class="ficha-tecnica-item">
-                                            <i class="fa-solid ${item.icone}"></i>
-                                            <span>${item.rotulo}</span>
-                                            <strong>${item.valor}</strong>
-                                        </div>
-                                    `).join("")}
-                                </div>
-                            `;
-                        }).join("")}
+                    <div class="ficha-tecnica-lista ${colunasFicha.length === 1 ? "ficha-tecnica-lista-uma-coluna" : ""}">
+                        ${colunasFicha.map(coluna => `
+                            <div class="ficha-tecnica-coluna">
+                                ${coluna.map(item => `
+                                    <div class="ficha-tecnica-item">
+                                        <i class="fa-solid ${item.icone}"></i>
+                                        <span>${item.rotulo}</span>
+                                        <strong>${item.valor}</strong>
+                                    </div>
+                                `).join("")}
+                            </div>
+                        `).join("")}
                     </div>
                 ` : ""}
 
