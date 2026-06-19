@@ -471,32 +471,34 @@ function renderizarNavegacaoImoveis(imovelAtual, lista) {
     document.getElementById("navegacao-imoveis")?.remove();
 
     const { anterior, proximo } = obterImoveisAdjacentes(imovelAtual, lista);
+    const imovelAnterior = textoSeguro(anterior?.slug) ? anterior : null;
+    const proximoImovel = textoSeguro(proximo?.slug) ? proximo : null;
 
-    if (!anterior && !proximo) return;
+    if (!imovelAnterior && !proximoImovel) return;
 
     const navegacao = document.createElement("nav");
     navegacao.id = "navegacao-imoveis";
     navegacao.className = [
         "navegacao-imoveis",
-        !anterior ? "navegacao-imoveis-sem-anterior" : "",
-        !proximo ? "navegacao-imoveis-sem-proximo" : ""
+        !imovelAnterior ? "navegacao-imoveis-sem-anterior" : "",
+        !proximoImovel ? "navegacao-imoveis-sem-proximo" : ""
     ].filter(Boolean).join(" ");
     navegacao.setAttribute("aria-label", "Navegação entre imóveis");
 
     navegacao.innerHTML = `
-        ${anterior ? `
+        ${imovelAnterior ? `
             <a
                 class="navegacao-imovel-link navegacao-imovel-anterior"
-                href="${urlImovel(anterior.slug)}">
+                href="${urlImovel(imovelAnterior.slug)}">
                 <span aria-hidden="true">←</span>
                 Imóvel anterior
             </a>
         ` : ""}
 
-        ${proximo ? `
+        ${proximoImovel ? `
             <a
                 class="navegacao-imovel-link navegacao-imovel-proximo"
-                href="${urlImovel(proximo.slug)}">
+                href="${urlImovel(proximoImovel.slug)}">
                 Próximo imóvel
                 <span aria-hidden="true">→</span>
             </a>
