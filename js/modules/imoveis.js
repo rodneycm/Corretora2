@@ -126,6 +126,12 @@ function objetoComValores(dados) {
 function aplicarSeoImovel(imovel, contexto) {
     const seoTitle = `${contexto.titulo} | ${CONFIG.SITE_NAME}`;
     const metaDescription = gerarMetaDescriptionImovel(imovel, contexto);
+    const canonicalSeo =
+        textoSeguro(imovel?.seo?.canonical).trim() ||
+        contexto.urlAtual;
+    const imagemCompartilhamento =
+        textoSeguro(imovel?.seo?.ogImage).trim() ||
+        contexto.imagemCompartilhamento;
     const latitudeTexto = textoSeguro(imovel?.localizacao?.latitude).trim();
     const longitudeTexto = textoSeguro(imovel?.localizacao?.longitude).trim();
     const latitude = Number(latitudeTexto);
@@ -225,7 +231,7 @@ function aplicarSeoImovel(imovel, contexto) {
                 "description": metaDescription,
                 "url": contexto.urlAtual,
                 "identifier": textoSeguro(imovel?.codigo),
-                "image": [contexto.imagemCompartilhamento],
+                "image": [imagemCompartilhamento],
                 "mainEntity": {
                     "@id": `${contexto.urlAtual}#residence`
                 },
@@ -242,13 +248,13 @@ function aplicarSeoImovel(imovel, contexto) {
     upsertMeta('meta[property="og:type"]', "property", "og:type", "website");
     upsertMeta('meta[property="og:title"]', "property", "og:title", seoTitle);
     upsertMeta('meta[property="og:description"]', "property", "og:description", metaDescription);
-    upsertMeta('meta[property="og:image"]', "property", "og:image", contexto.imagemCompartilhamento);
+    upsertMeta('meta[property="og:image"]', "property", "og:image", imagemCompartilhamento);
     upsertMeta('meta[property="og:url"]', "property", "og:url", contexto.urlAtual);
     upsertMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
     upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", seoTitle);
     upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", metaDescription);
-    upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", contexto.imagemCompartilhamento);
-    upsertLink('link[rel="canonical"]', "canonical", contexto.urlAtual);
+    upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", imagemCompartilhamento);
+    upsertLink('link[rel="canonical"]', "canonical", canonicalSeo);
 
     document.getElementById("breadcrumb-schema")?.remove();
     document.getElementById("listing-schema")?.remove();
