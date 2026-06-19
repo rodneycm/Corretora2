@@ -639,6 +639,86 @@ function gerarResumoEstrategico(imovel) {
     return "Im&oacute;vel com atributos bem equilibrados para quem valoriza conforto, praticidade e uma boa experi&ecirc;ncia de moradia.";
 }
 
+function auditarImovel(imovel) {
+    try {
+        const avisos = [];
+        const titulo = textoSeguro(imovel?.titulo).trim();
+        const tituloLog = titulo || "Sem titulo";
+        const descricao = [
+            imovel?.descricao?.resumo,
+            ...arraySeguro(imovel?.descricao?.completa)
+        ].map(textoSeguro).join(" ").trim();
+        const galeria = arraySeguro(imovel?.midia?.galeria);
+        const preco = numeroSeguro(imovel?.preco?.valor);
+        const resumoEstrategico = gerarResumoEstrategico(imovel);
+        const seo = imovel?.seo || {};
+        const busca = imovel?.busca || {};
+
+        const adicionarAviso = mensagem => {
+            avisos.push(mensagem);
+            console.warn(mensagem);
+        };
+
+        if (titulo.length < 35) {
+            adicionarAviso(`[QA] Imóvel "${tituloLog}" possui título com menos de 35 caracteres.`);
+        }
+
+        if (descricao.length < 250) {
+            adicionarAviso(`[QA] Imóvel "${tituloLog}" possui descrição com menos de 250 caracteres.`);
+        }
+
+        if (galeria.length < 8) {
+            adicionarAviso(`[QA] Imóvel "${tituloLog}" possui apenas ${galeria.length} fotos.`);
+        }
+
+        if (preco <= 0) {
+            adicionarAviso("[QA] Preço ausente.");
+        }
+
+        if (!possuiTexto(resumoEstrategico)) {
+            adicionarAviso("[QA] Resumo estratégico não pôde ser gerado.");
+        }
+
+        if (!possuiTexto(seo.description)) {
+            adicionarAviso("[QA] Meta description ausente.");
+        }
+
+        if (!possuiTexto(seo.canonical)) {
+            adicionarAviso("[QA] Canonical ausente.");
+        }
+
+        if (!possuiTexto(seo.ogImage)) {
+            adicionarAviso("[QA] OG Image ausente.");
+        }
+
+        if (arraySeguro(busca.palavrasChave).length === 0) {
+            adicionarAviso("[QA] Campo busca.palavrasChave vazio.");
+        }
+
+        if (arraySeguro(busca.sinonimos).length === 0) {
+            adicionarAviso("[QA] Campo busca.sinonimos vazio.");
+        }
+
+        if (arraySeguro(imovel?.comodidades).length === 0) {
+            adicionarAviso("[QA] Campo comodidades vazio.");
+        }
+
+        if (arraySeguro(imovel?.diferenciais).length === 0) {
+            adicionarAviso("[QA] Campo diferenciais vazio.");
+        }
+
+        if (!possuiTexto(imovel?.classificacao?.perfil)) {
+            adicionarAviso("[QA] Campo classificacao.perfil vazio.");
+        }
+
+        console.warn(
+            `[QA] Auditoria concluída\nScore de qualidade: ${calcularScoreQualidade(imovel)}/100\nQuantidade de avisos: ${avisos.length}`
+        );
+    } catch (erro) {
+        console.warn("[QA] Auditoria concluída\nScore de qualidade: 0/100\nQuantidade de avisos: 1");
+    }
+}
+
 function pontuarImovelRelacionado(imovelBase, candidato) {
     let pontuacao = 0;
 
@@ -1326,6 +1406,7 @@ export async function renderizarPaginaImovel() {
     }
 
     registrarHistorico(imovel);
+    auditarImovel(imovel);
 
     /* -------------------------------------------------
        ELEMENTOS
