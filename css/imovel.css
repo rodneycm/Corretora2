@@ -1487,6 +1487,17 @@ CONTEÚDO PRINCIPAL
 
 }
 
+.resumo-estrategico-imovel{
+
+    max-width:900px;
+    margin:0 0 22px;
+    color:#334155;
+    font-size:18px;
+    font-weight:600;
+    line-height:1.72;
+
+}
+
 #imovel-conteudo .descricao-imovel p,
 #imovel-conteudo .descricao-bloco{
 

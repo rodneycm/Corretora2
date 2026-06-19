@@ -508,6 +508,54 @@ function renderizarNavegacaoImoveis(imovelAtual, lista) {
     containerRelacionados.insertAdjacentElement("afterend", navegacao);
 }
 
+function gerarResumoEstrategico(imovel) {
+    const tipo = textoSeguro(imovel?.tipo).trim().toLowerCase();
+    const bairro = localizacaoImovel(imovel, "bairro").trim();
+    const finalidade = textoSeguro(imovel?.finalidade).trim().toLowerCase();
+    const tagPrincipal = textoSeguro(imovel?.tagPrincipal).trim();
+    const perfil = classificacaoImovel(imovel, "perfil").trim().toLowerCase();
+    const padrao = classificacaoImovel(imovel, "padrao").trim().toLowerCase();
+    const diferenciais = arraySeguro(imovel?.diferenciais)
+        .map(item => textoSeguro(item).trim())
+        .filter(Boolean);
+    const comodidades = arraySeguro(imovel?.comodidades)
+        .map(item => textoSeguro(item).trim())
+        .filter(Boolean);
+    const destaque = tagPrincipal || comodidades[0] || diferenciais[0] || "";
+    const localizacao = bairro ? `em ${bairro}` : "";
+    const finalidadeTexto = finalidade === "aluguel"
+        ? "para loca&ccedil;&atilde;o"
+        : finalidade === "venda"
+            ? "para compra"
+            : "";
+
+    if (perfil.includes("famil")) {
+        const atributos = diferenciais.slice(0, 2).join(", ");
+
+        return atributos
+            ? `Ideal para fam&iacute;lias que buscam ${atributos.toLowerCase()}${localizacao ? `, ${localizacao}` : ""}.`
+            : `Ideal para fam&iacute;lias que procuram conforto${localizacao ? ` ${localizacao}` : ""}.`;
+    }
+
+    if (perfil.includes("invest") || imovel?.classificacao?.investimento === true) {
+        return `Boa oportunidade de investimento${tipo ? ` em ${tipo}` : ""}${localizacao ? ` ${localizacao}` : ""}.`;
+    }
+
+    if (padrao) {
+        return `Im&oacute;vel de padr&atilde;o ${padrao}${tipo ? ` no formato de ${tipo}` : ""}${localizacao ? ` ${localizacao}` : ""}.`;
+    }
+
+    if (destaque) {
+        return `Excelente op&ccedil;&atilde;o${finalidadeTexto ? ` ${finalidadeTexto}` : ""}${tipo ? ` para quem procura ${tipo}` : ""} com ${destaque.toLowerCase()}${localizacao ? `, localizado ${localizacao}` : ""}.`;
+    }
+
+    if (tipo || bairro) {
+        return `Excelente op&ccedil;&atilde;o${finalidadeTexto ? ` ${finalidadeTexto}` : ""}${tipo ? ` para quem procura ${tipo}` : ""}${localizacao ? ` ${localizacao}` : ""}.`;
+    }
+
+    return "";
+}
+
 function pontuarImovelRelacionado(imovelBase, candidato) {
     let pontuacao = 0;
 
@@ -1264,6 +1312,11 @@ export async function renderizarPaginaImovel() {
     `)
     .join("");
 
+    const resumoEstrategico = gerarResumoEstrategico(imovel);
+    const resumoEstrategicoHtml = resumoEstrategico
+        ? `<p class="resumo-estrategico-imovel">${resumoEstrategico}</p>`
+        : "";
+
     /* -------------------------------------------------
        DESCRIÇÃO
     ------------------------------------------------- */
@@ -1653,6 +1706,8 @@ ${fichaTecnica}
 <section class="bloco-imovel bloco-descricao-imovel">
 
     <h2 class="section-title-imovel">Descrição do imóvel</h2>
+
+    ${resumoEstrategicoHtml}
 
     <div class="descricao-highlight">
 
