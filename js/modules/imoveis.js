@@ -405,6 +405,26 @@ export function obterHistorico() {
     return lerHistoricoIds();
 }
 
+export function obterImoveisHistorico(listaImoveis) {
+    const historico = obterHistorico();
+
+    if (historico.length === 0) return [];
+
+    try {
+        const imoveisPorId = new Map(
+            arraySeguro(listaImoveis)
+                .filter(imovel => textoSeguro(imovel?.id).trim() !== "")
+                .map(imovel => [textoSeguro(imovel.id).trim(), imovel])
+        );
+
+        return historico
+            .map(id => imoveisPorId.get(id))
+            .filter(Boolean);
+    } catch (error) {
+        return [];
+    }
+}
+
 function mesmoImovel(imovelBase, candidato) {
     const slugBase = textoSeguro(imovelBase?.slug);
     const slugCandidato = textoSeguro(candidato?.slug);
