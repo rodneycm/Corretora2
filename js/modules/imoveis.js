@@ -52,19 +52,21 @@ function normalizarTextoBusca(valor) {
         .trim();
 }
 
+function coletarTextos(valor) {
+    if (Array.isArray(valor)) {
+        return valor.flatMap(coletarTextos);
+    }
+
+    if (valor && typeof valor === "object") {
+        return Object.values(valor).flatMap(coletarTextos);
+    }
+
+    return [valor];
+}
+
 function juntarTextosIndice(partes) {
     return arraySeguro(partes)
-        .flatMap(parte => {
-            if (Array.isArray(parte)) {
-                return parte;
-            }
-
-            if (parte && typeof parte === "object") {
-                return Object.values(parte);
-            }
-
-            return parte;
-        })
+        .flatMap(coletarTextos)
         .map(normalizarTextoBusca)
         .filter(Boolean)
         .join(" ");
@@ -248,6 +250,105 @@ export function calcularScoreQualidade(imovel) {
     if (Number.isFinite(Number(imovel?.sistema?.ordem))) score += 1;
 
     return limitarScore(score);
+}
+
+function textoBuscaDoCampo(valor) {
+    return juntarTextosIndice([valor]);
+}
+
+function campoContemTermo(valor, termo) {
+    const texto = textoBuscaDoCampo(valor);
+
+    return texto !== "" && texto.includes(termo);
+}
+
+function indiceBuscaImovel(imovel) {
+    return textoSeguro(imovel?.indiceBusca) || gerarIndiceBusca(imovel);
+}
+
+function scoreQualidadeImovel(imovel) {
+    const score = Number(imovel?.scoreQualidade);
+
+    return Number.isFinite(score) ? score : calcularScoreQualidade(imovel);
+}
+
+function pontuarResultadoBusca(imovel, termo) {
+    let pontuacao = 0;
+
+    if (campoContemTermo(imovel?.titulo, termo)) {
+        pontuacao += 20;
+    }
+
+    if (campoContemTermo(imovel?.busca?.palavrasChave, termo)) {
+        pontuacao += 15;
+    }
+
+    if (campoContemTermo(imovel?.busca?.sinonimos, termo)) {
+        pontuacao += 12;
+    }
+
+    if (campoContemTermo(imovel?.diferenciais, termo)) {
+        pontuacao += 10;
+    }
+
+    if (campoContemTermo(imovel?.comodidades, termo)) {
+        pontuacao += 8;
+    }
+
+    if (campoContemTermo([imovel?.descricao?.resumo, imovel?.descricao?.completa], termo)) {
+        pontuacao += 5;
+    }
+
+    if (
+        campoContemTermo([
+            localizacaoImovel(imovel, "bairro"),
+            localizacaoImovel(imovel, "cidade"),
+            localizacaoImovel(imovel, "estado")
+        ], termo)
+    ) {
+        pontuacao += 3;
+    }
+
+    if (pontuacao === 0 && indiceBuscaImovel(imovel).includes(termo)) {
+        pontuacao += 1;
+    }
+
+    return pontuacao;
+}
+
+export function buscarImoveis(termo, lista) {
+    const termoBusca = normalizarTextoBusca(termo);
+    const imoveis = arraySeguro(lista);
+
+    if (termoBusca === "") {
+        return [...imoveis];
+    }
+
+    return imoveis
+        .map(imovel => ({
+            imovel,
+            pontuacao: pontuarResultadoBusca(imovel, termoBusca)
+        }))
+        .filter(resultado => resultado.pontuacao > 0)
+        .sort((a, b) => {
+            if (b.pontuacao !== a.pontuacao) {
+                return b.pontuacao - a.pontuacao;
+            }
+
+            const qualidadeB = scoreQualidadeImovel(b.imovel);
+            const qualidadeA = scoreQualidadeImovel(a.imovel);
+
+            if (qualidadeB !== qualidadeA) {
+                return qualidadeB - qualidadeA;
+            }
+
+            if (Boolean(b.imovel?.destaque) !== Boolean(a.imovel?.destaque)) {
+                return Number(Boolean(b.imovel?.destaque)) - Number(Boolean(a.imovel?.destaque));
+            }
+
+            return ordemImovel(a.imovel) - ordemImovel(b.imovel);
+        })
+        .map(resultado => resultado.imovel);
 }
 
 function mesmoImovel(imovelBase, candidato) {
