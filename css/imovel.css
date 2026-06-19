@@ -1461,13 +1461,15 @@ CONTEÚDO PRINCIPAL
 
 }
 
-#imovel-conteudo .bloco-imovel:nth-child(-n+2){
+#imovel-conteudo .bloco-caracteristicas-imovel,
+#imovel-conteudo .bloco-descricao-imovel{
 
     padding:46px 50px;
 
 }
 
-#imovel-conteudo .bloco-imovel:nth-child(-n+2) .section-title-imovel{
+#imovel-conteudo .bloco-caracteristicas-imovel .section-title-imovel,
+#imovel-conteudo .bloco-descricao-imovel .section-title-imovel{
 
     margin-bottom:26px;
 
@@ -1513,6 +1515,155 @@ CONTEÚDO PRINCIPAL
     margin-bottom:0 !important;
 
     padding-bottom:0;
+
+}
+
+.ficha-tecnica-imovel{
+
+    padding-top:44px;
+    padding-bottom:44px;
+
+}
+
+.ficha-tecnica-lista{
+
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:28px;
+
+}
+
+.ficha-tecnica-grupo{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.ficha-tecnica-item{
+
+    display:grid;
+    grid-template-columns:22px minmax(90px,1fr) auto;
+    gap:12px;
+    align-items:center;
+    min-height:42px;
+    padding:12px 0;
+    border-bottom:1px solid #eef2f7;
+    color:#475569;
+    font-size:15px;
+    line-height:1.35;
+
+}
+
+.ficha-tecnica-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.ficha-tecnica-item i{
+
+    color:#25d366;
+    font-size:14px;
+    text-align:center;
+
+}
+
+.ficha-tecnica-item span{
+
+    color:#64748b;
+
+}
+
+.ficha-tecnica-item strong{
+
+    color:#0f172a;
+    font-weight:700;
+    text-align:right;
+
+}
+
+.ficha-comodidades{
+
+    margin-top:30px;
+
+}
+
+.ficha-comodidades h3{
+
+    margin:0 0 14px;
+    color:#0f172a;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:0;
+
+}
+
+.ficha-comodidades-lista{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 14px;
+
+}
+
+.ficha-comodidades-lista span{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#475569;
+    font-size:14px;
+    line-height:1.35;
+
+}
+
+.ficha-comodidades-lista i{
+
+    color:#25d366;
+    font-size:12px;
+
+}
+
+@media(max-width:980px){
+
+.ficha-tecnica-lista{
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+}
+
+}
+
+@media(max-width:768px){
+
+.ficha-tecnica-imovel{
+
+    padding-top:34px;
+    padding-bottom:34px;
+
+}
+
+.ficha-tecnica-lista{
+
+    grid-template-columns:1fr;
+    gap:10px;
+
+}
+
+.ficha-tecnica-item{
+
+    grid-template-columns:22px minmax(84px,1fr) auto;
+    gap:10px;
+    font-size:14px;
+
+}
+
+.ficha-comodidades{
+
+    margin-top:24px;
+
+}
 
 }
 
