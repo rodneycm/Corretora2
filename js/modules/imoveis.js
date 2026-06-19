@@ -463,6 +463,49 @@ export function obterImoveisAdjacentes(imovelAtual, lista) {
     }
 }
 
+function renderizarNavegacaoImoveis(imovelAtual, lista) {
+    const containerRelacionados = document.getElementById("imoveis-relacionados");
+
+    if (!containerRelacionados) return;
+
+    document.getElementById("navegacao-imoveis")?.remove();
+
+    const { anterior, proximo } = obterImoveisAdjacentes(imovelAtual, lista);
+
+    if (!anterior && !proximo) return;
+
+    const navegacao = document.createElement("nav");
+    navegacao.id = "navegacao-imoveis";
+    navegacao.className = [
+        "navegacao-imoveis",
+        !anterior ? "navegacao-imoveis-sem-anterior" : "",
+        !proximo ? "navegacao-imoveis-sem-proximo" : ""
+    ].filter(Boolean).join(" ");
+    navegacao.setAttribute("aria-label", "Navegação entre imóveis");
+
+    navegacao.innerHTML = `
+        ${anterior ? `
+            <a
+                class="navegacao-imovel-link navegacao-imovel-anterior"
+                href="${urlImovel(anterior.slug)}">
+                <span aria-hidden="true">←</span>
+                Imóvel anterior
+            </a>
+        ` : ""}
+
+        ${proximo ? `
+            <a
+                class="navegacao-imovel-link navegacao-imovel-proximo"
+                href="${urlImovel(proximo.slug)}">
+                Próximo imóvel
+                <span aria-hidden="true">→</span>
+            </a>
+        ` : ""}
+    `;
+
+    containerRelacionados.insertAdjacentElement("afterend", navegacao);
+}
+
 function pontuarImovelRelacionado(imovelBase, candidato) {
     let pontuacao = 0;
 
@@ -1582,6 +1625,8 @@ conteudo.innerHTML = `
                 </div>
             `;
         }
+
+        renderizarNavegacaoImoveis(imovel, todosImoveis);
     }
 
     /* -------------------------------------------------

@@ -1024,11 +1024,70 @@ transform:translateY(-2px);
 
 }
 
+.navegacao-imoveis{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+align-items:center;
+margin:30px 0 0;
+
+}
+
+.navegacao-imovel-link{
+
+display:inline-flex;
+align-items:center;
+gap:8px;
+width:max-content;
+max-width:100%;
+
+color:#64748b;
+font-size:15px;
+font-weight:700;
+line-height:1.4;
+text-decoration:none;
+
+transition:
+color .2s ease,
+transform .2s ease;
+
+}
+
+.navegacao-imovel-link:hover{
+
+color:#0f172a;
+transform:translateY(-1px);
+
+}
+
+.navegacao-imovel-proximo{
+
+justify-self:end;
+text-align:right;
+
+}
+
 @media(max-width:768px){
 
 .imoveis-relacionados{
 
 margin-top:var(--imovel-section-gap);
+
+}
+
+.navegacao-imoveis{
+
+grid-template-columns:1fr;
+gap:12px;
+margin-top:24px;
+
+}
+
+.navegacao-imovel-proximo{
+
+justify-self:start;
+text-align:left;
 
 }
 
