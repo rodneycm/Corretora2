@@ -14,13 +14,37 @@ HERO CONTATO
     background-position:center;
 }
 
+.contato-hero .page-hero-content{
+
+    max-width:860px;
+
+}
+
+.contato-hero h1{
+
+    line-height:1.1;
+
+    margin-bottom:22px;
+
+}
+
+.contato-hero p{
+
+    max-width:720px;
+
+    margin:auto;
+
+    line-height:1.85;
+
+}
+
 /* =========================================================
 MAIN
 ========================================================= */
 
 .contato-main{
 
-    padding:120px 8%;
+    padding:110px 8%;
 
     background:#eef2f7;
 }
@@ -46,16 +70,18 @@ CARDS DE CONTATO
 
     flex-direction:column;
 
-    gap:24px;
+    gap:22px;
 }
 
 .contato-item{
 
     background:white;
 
-    padding:34px;
+    padding:32px;
 
-    border-radius:28px;
+    border:1px solid rgba(226,232,240,.72);
+
+    border-radius:24px;
 
     display:flex;
 
@@ -78,9 +104,9 @@ CARDS DE CONTATO
 
 .contato-item:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-3px);
 
-    box-shadow:var(--shadow-lg);
+    box-shadow:var(--shadow-md);
 }
 
 .contato-item::before{
@@ -109,10 +135,10 @@ CARDS DE CONTATO
 
 .contato-item i{
 
-    width:65px;
-    height:65px;
+    width:60px;
+    height:60px;
 
-    border-radius:18px;
+    border-radius:16px;
 
     background:#f1f5f9;
 
@@ -121,7 +147,7 @@ CARDS DE CONTATO
     align-items:center;
     justify-content:center;
 
-    font-size:26px;
+    font-size:24px;
 
     color:var(--secondary);
 
@@ -132,14 +158,14 @@ CARDS DE CONTATO
 
 .contato-item:hover i{
 
-    transform:scale(1.08);
+    transform:translateY(-1px);
 }
 
 .contato-item h3{
 
     font-size:24px;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
     color:#0f172a;
 }
@@ -148,9 +174,9 @@ CARDS DE CONTATO
 
     color:var(--text);
 
-    margin-bottom:18px;
+    margin-bottom:16px;
 
-    line-height:1.8;
+    line-height:1.75;
 }
 
 .contato-link-btn{
@@ -160,7 +186,7 @@ CARDS DE CONTATO
     align-items:center;
     justify-content:center;
 
-    padding:12px 20px;
+    padding:10px 18px;
 
     border-radius:999px;
 
@@ -188,9 +214,11 @@ FORMULARIO
 
     background:white;
 
-    padding:42px;
+    padding:40px;
 
-    border-radius:30px;
+    border:1px solid rgba(226,232,240,.72);
+
+    border-radius:24px;
 
     box-shadow:var(--shadow-md);
 
@@ -205,7 +233,7 @@ FORMULARIO
 
     font-size:clamp(34px,5vw,40px);
 
-    margin-bottom:18px;
+    margin-bottom:16px;
 
     line-height:1.2;
 }
@@ -214,9 +242,9 @@ FORMULARIO
 
     color:var(--text);
 
-    margin-bottom:28px;
+    margin-bottom:26px;
 
-    line-height:1.8;
+    line-height:1.75;
 }
 
 .contato-form{
@@ -225,7 +253,7 @@ FORMULARIO
 
     flex-direction:column;
 
-    gap:18px;
+    gap:16px;
 }
 
 .contato-form input,
@@ -237,9 +265,11 @@ FORMULARIO
 
     background:#f8fafc;
 
-    padding:18px 20px;
+    min-height:54px;
 
-    border-radius:16px;
+    padding:16px 18px;
+
+    border-radius:14px;
 
     font-size:16px;
 
@@ -258,7 +288,7 @@ FORMULARIO
 
 .contato-form textarea{
 
-    min-height:140px;
+    min-height:136px;
 
     resize:none;
 }
@@ -271,7 +301,9 @@ FORMULARIO
 
     color:white;
 
-    padding:18px;
+    min-height:56px;
+
+    padding:16px 20px;
 
     border-radius:16px;
 
@@ -288,7 +320,7 @@ FORMULARIO
 
     background:var(--secondary-dark);
 
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 }
 
 /* =========================================================
@@ -296,6 +328,8 @@ MAPA
 ========================================================= */
 
 .mapa-section{
+
+    padding:0 8% 110px;
 
     background:#eef2f7;
 }
@@ -306,9 +340,13 @@ MAPA
 
     height:450px;
 
-    border:none;
+    border:1px solid rgba(226,232,240,.72);
+
+    border-radius:24px;
 
     display:block;
+
+    box-shadow:var(--shadow-md);
 
     filter:grayscale(0.1);
 }
@@ -321,7 +359,7 @@ RESPONSIVO
 
     .contato-main{
 
-        padding:100px 20px;
+        padding:96px 20px;
     }
 
     .contato-container{
@@ -335,22 +373,62 @@ RESPONSIVO
 
         top:auto;
     }
+
+    .mapa-section{
+
+        padding:0 20px 96px;
+
+    }
 }
 
 @media(max-width:600px){
 
     .contato-main{
 
-        padding:80px 20px;
+        padding:86px 20px;
+    }
+
+    .contato-container{
+
+        gap:24px;
+
+    }
+
+    .contato-left{
+
+        gap:18px;
+
     }
 
     .contato-item{
 
-        padding:28px;
+        padding:28px 24px;
+
+        gap:18px;
     }
 
     .contato-item h3{
 
         font-size:22px;
+    }
+
+    .contato-form-box{
+
+        padding:32px 24px;
+
+    }
+
+    .mapa-section{
+
+        padding:0 20px 86px;
+
+    }
+
+    .mapa-section iframe{
+
+        height:360px;
+
+        border-radius:22px;
+
     }
 }
