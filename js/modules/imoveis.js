@@ -42,6 +42,34 @@ function textoComparavel(valor) {
         .trim();
 }
 
+function normalizarTextoBusca(valor) {
+    return textoSeguro(valor)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function juntarTextosIndice(partes) {
+    return arraySeguro(partes)
+        .flatMap(parte => {
+            if (Array.isArray(parte)) {
+                return parte;
+            }
+
+            if (parte && typeof parte === "object") {
+                return Object.values(parte);
+            }
+
+            return parte;
+        })
+        .map(normalizarTextoBusca)
+        .filter(Boolean)
+        .join(" ");
+}
+
 function ordemImovel(imovel) {
     const ordem = Number(imovel?.sistema?.ordem);
 
@@ -106,6 +134,37 @@ function condominioImovel(imovel) {
         textoSeguro(imovel?.localizacao?.condominio) ||
         textoSeguro(imovel?.endereco?.condominio)
     );
+}
+
+export function gerarIndiceBusca(imovel) {
+    const quartos = caracteristicaNumerica(imovel, "quartos");
+    const banheiros = caracteristicaNumerica(imovel, "banheiros");
+    const vagas = caracteristicaNumerica(imovel, "vagas");
+
+    return juntarTextosIndice([
+        imovel?.titulo,
+        imovel?.subtitulo,
+        localizacaoImovel(imovel, "bairro"),
+        localizacaoImovel(imovel, "cidade"),
+        localizacaoImovel(imovel, "estado"),
+        imovel?.tipo,
+        imovel?.categoria,
+        imovel?.finalidade,
+        imovel?.status,
+        imovel?.tagPrincipal,
+        imovel?.descricao?.resumo,
+        imovel?.descricao?.completa,
+        imovel?.diferenciais,
+        imovel?.comodidades,
+        imovel?.busca?.palavrasChave,
+        imovel?.busca?.sinonimos,
+        classificacaoImovel(imovel, "perfil"),
+        classificacaoImovel(imovel, "padrao"),
+        condominioImovel(imovel),
+        quartos > 0 ? `${quartos} quartos` : "",
+        banheiros > 0 ? `${banheiros} banheiros` : "",
+        vagas > 0 ? `${vagas} vagas` : ""
+    ]);
 }
 
 function mesmoImovel(imovelBase, candidato) {
@@ -522,8 +581,13 @@ export async function carregarImoveis() {
 
         validarLista(imoveisNormalizados);
 
+        const imoveisComIndiceBusca = imoveisNormalizados.map(imovel => ({
+            ...imovel,
+            indiceBusca: gerarIndiceBusca(imovel)
+        }));
+
         imoveisCache = ordenarImoveis(
-            imoveisNormalizados.filter(
+            imoveisComIndiceBusca.filter(
                 item => item && item.sistema?.publicado !== false
             )
         );
