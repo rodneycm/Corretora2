@@ -17,6 +17,8 @@ import {
 } from "./filtros.js";
 
 let imoveisCache = [];
+const HISTORICO_STORAGE_KEY = "corretora2_historico";
+const HISTORICO_LIMITE = 20;
 
 /* =========================================================
    UTILITÁRIOS
@@ -349,6 +351,58 @@ export function buscarImoveis(termo, lista) {
             return ordemImovel(a.imovel) - ordemImovel(b.imovel);
         })
         .map(resultado => resultado.imovel);
+}
+
+function localStorageSeguro() {
+    try {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return null;
+        }
+
+        return window.localStorage;
+    } catch (error) {
+        return null;
+    }
+}
+
+function lerHistoricoIds() {
+    const storage = localStorageSeguro();
+
+    if (!storage) return [];
+
+    try {
+        const dados = JSON.parse(storage.getItem(HISTORICO_STORAGE_KEY) || "[]");
+
+        return arraySeguro(dados)
+            .map(textoSeguro)
+            .filter(Boolean)
+            .slice(0, HISTORICO_LIMITE);
+    } catch (error) {
+        return [];
+    }
+}
+
+export function registrarHistorico(imovel) {
+    const storage = localStorageSeguro();
+    const id = textoSeguro(imovel?.id).trim();
+
+    if (!storage || id === "") return;
+
+    try {
+        const historico = lerHistoricoIds();
+        const atualizado = [
+            id,
+            ...historico.filter(item => item !== id)
+        ].slice(0, HISTORICO_LIMITE);
+
+        storage.setItem(HISTORICO_STORAGE_KEY, JSON.stringify(atualizado));
+    } catch (error) {
+        // localStorage pode falhar em modo privado, quotas ou bloqueios do navegador.
+    }
+}
+
+export function obterHistorico() {
+    return lerHistoricoIds();
 }
 
 function mesmoImovel(imovelBase, candidato) {
@@ -1048,6 +1102,8 @@ export async function renderizarPaginaImovel() {
         console.error("Imóvel não encontrado");
         return;
     }
+
+    registrarHistorico(imovel);
 
     /* -------------------------------------------------
        ELEMENTOS
