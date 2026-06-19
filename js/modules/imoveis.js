@@ -136,6 +136,26 @@ function condominioImovel(imovel) {
     );
 }
 
+function possuiTexto(valor) {
+    return textoSeguro(valor).trim() !== "";
+}
+
+function possuiNumero(valor) {
+    return numeroSeguro(valor) > 0;
+}
+
+function possuiCoordenada(valor) {
+    if (typeof valor === "number") {
+        return Number.isFinite(valor);
+    }
+
+    return possuiTexto(valor) && Number.isFinite(Number(valor));
+}
+
+function limitarScore(valor) {
+    return Math.max(0, Math.min(100, Math.round(valor)));
+}
+
 export function gerarIndiceBusca(imovel) {
     const quartos = caracteristicaNumerica(imovel, "quartos");
     const banheiros = caracteristicaNumerica(imovel, "banheiros");
@@ -165,6 +185,69 @@ export function gerarIndiceBusca(imovel) {
         banheiros > 0 ? `${banheiros} banheiros` : "",
         vagas > 0 ? `${vagas} vagas` : ""
     ]);
+}
+
+export function calcularScoreQualidade(imovel) {
+    let score = 0;
+
+    const descricaoCompleta = arraySeguro(imovel?.descricao?.completa);
+    const galeria = arraySeguro(imovel?.midia?.galeria);
+    const caracteristicas = imovel?.caracteristicas || {};
+    const seo = imovel?.seo || {};
+    const busca = imovel?.busca || {};
+
+    if (possuiTexto(imovel?.titulo)) score += 6;
+    if (possuiTexto(imovel?.subtitulo)) score += 3;
+    if (possuiTexto(imovel?.descricao?.resumo)) score += 5;
+    if (descricaoCompleta.length > 0) score += 8;
+    if (descricaoCompleta.length >= 3) score += 4;
+
+    if (possuiTexto(imovel?.midia?.thumbnail)) score += 4;
+    if (galeria.length > 0) score += 6;
+    if (galeria.length >= 5) score += 4;
+    if (galeria.length >= 10) score += 3;
+    if (possuiTexto(imovel?.midia?.videoTour) || possuiTexto(imovel?.midia?.youtube)) score += 3;
+    if (possuiTexto(imovel?.midia?.tour360)) score += 3;
+
+    if (possuiNumero(imovel?.preco?.valor)) score += 6;
+    if (possuiNumero(caracteristicas.quartos)) score += 3;
+    if (possuiNumero(caracteristicas.banheiros)) score += 3;
+    if (possuiNumero(caracteristicas.vagas)) score += 2;
+    if (possuiNumero(imovel?.metragem?.areaConstruida) || possuiNumero(imovel?.metragem?.areaTerreno)) score += 3;
+
+    if (arraySeguro(imovel?.diferenciais).length > 0) score += 5;
+    if (arraySeguro(imovel?.diferenciais).length >= 4) score += 2;
+    if (arraySeguro(imovel?.comodidades).length > 0) score += 4;
+    if (arraySeguro(imovel?.comodidades).length >= 5) score += 2;
+
+    if (possuiTexto(seo.title)) score += 3;
+    if (possuiTexto(seo.description)) score += 4;
+    if (possuiTexto(seo.canonical)) score += 2;
+    if (possuiTexto(seo.ogImage)) score += 2;
+    if (arraySeguro(seo.keywords).length > 0) score += 2;
+    if (arraySeguro(busca.palavrasChave).length > 0) score += 3;
+    if (arraySeguro(busca.sinonimos).length > 0) score += 2;
+
+    if (possuiTexto(imovel?.tipo)) score += 2;
+    if (possuiTexto(imovel?.categoria)) score += 2;
+    if (possuiTexto(imovel?.tagPrincipal)) score += 2;
+    if (possuiTexto(classificacaoImovel(imovel, "tipoConstrucao"))) score += 2;
+    if (possuiTexto(classificacaoImovel(imovel, "perfil"))) score += 2;
+    if (possuiTexto(classificacaoImovel(imovel, "padrao"))) score += 2;
+
+    if (possuiTexto(localizacaoImovel(imovel, "bairro"))) score += 2;
+    if (possuiTexto(localizacaoImovel(imovel, "cidade"))) score += 2;
+    if (possuiTexto(localizacaoImovel(imovel, "estado"))) score += 1;
+    if (possuiCoordenada(imovel?.localizacao?.latitude) && possuiCoordenada(imovel?.localizacao?.longitude)) score += 3;
+
+    if (possuiTexto(imovel?.contato?.corretor)) score += 1;
+    if (possuiTexto(imovel?.contato?.telefone) || possuiTexto(imovel?.contato?.whatsapp)) score += 2;
+    if (possuiTexto(imovel?.codigo)) score += 1;
+    if (possuiTexto(imovel?.slug)) score += 1;
+    if (imovel?.sistema?.publicado !== false) score += 2;
+    if (Number.isFinite(Number(imovel?.sistema?.ordem))) score += 1;
+
+    return limitarScore(score);
 }
 
 function mesmoImovel(imovelBase, candidato) {
@@ -583,7 +666,8 @@ export async function carregarImoveis() {
 
         const imoveisComIndiceBusca = imoveisNormalizados.map(imovel => ({
             ...imovel,
-            indiceBusca: gerarIndiceBusca(imovel)
+            indiceBusca: gerarIndiceBusca(imovel),
+            scoreQualidade: calcularScoreQualidade(imovel)
         }));
 
         imoveisCache = ordenarImoveis(
