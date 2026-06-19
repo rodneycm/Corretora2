@@ -653,12 +653,6 @@ export async function renderizarPaginaImovel() {
     const titulo   = textoSeguro(imovel.titulo).trim() || "Imovel";
     const mensagemContato =
         `Olá Stephanie, tenho interesse neste imóvel: ${titulo}\n\n${urlAtual}`;
-    const mensagemVisita =
-        `Olá Stephanie, gostaria de agendar uma visita para este imóvel: ${titulo}\n\n${urlAtual}`;
-    const whatsappContatoUrl =
-        `https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemContato)}`;
-    const whatsappVisitaUrl =
-        `https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemVisita)}`;
 
     const imagemCompartilhamento = imagemAbsoluta(
         imovel.midia?.thumbnail   ||
@@ -882,20 +876,6 @@ export async function renderizarPaginaImovel() {
 
 </div>
 
-    <div class="painel-conversao-imovel">
-
-        <div class="painel-conversao-header">
-
-            <h3>
-                Gostou deste im&oacute;vel?
-            </h3>
-
-            <p>
-                Nossa equipe est&aacute; pronta para tirar suas d&uacute;vidas e agendar uma visita.
-            </p>
-
-        </div>
-
     ${imovelAlugado ? `
     <button
         class="imovel-whatsapp-principal imovel-whatsapp-indisponivel"
@@ -909,104 +889,21 @@ export async function renderizarPaginaImovel() {
         </span>
 
     </button>
-
-    <button
-        class="imovel-agendar-visita imovel-whatsapp-indisponivel"
-        type="button"
-        disabled>
-
-        <i class="fa-solid fa-calendar-check"></i>
-
-        <span>
-            Agendar Visita
-        </span>
-
-    </button>
     ` : `
     <a
         class="imovel-whatsapp-principal"
         target="_blank"
         rel="noopener noreferrer"
-        href="${whatsappContatoUrl}">
+        href="https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemContato)}">
 
         <i class="fab fa-whatsapp"></i>
 
         <span>
-            Falar pelo WhatsApp
-        </span>
-
-    </a>
-
-    <a
-        class="imovel-agendar-visita"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="${whatsappVisitaUrl}">
-
-        <i class="fa-solid fa-calendar-check"></i>
-
-        <span>
-            Agendar Visita
+            Falar no WhatsApp
         </span>
 
     </a>
     `}
-
-        <div class="confianca-imovel">
-
-            <div>
-                <i class="fa-solid fa-user-check"></i>
-                <span>Atendimento personalizado</span>
-            </div>
-
-            <div>
-                <i class="fa-solid fa-bolt"></i>
-                <span>Resposta r&aacute;pida</span>
-            </div>
-
-            <div>
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>Visitas agendadas</span>
-            </div>
-
-            <div>
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Atendimento em Teres&oacute;polis</span>
-            </div>
-
-        </div>
-
-        <div class="corretora-mini-card">
-
-            <div class="corretora-mini-avatar">
-                <img
-                    src="assets/equipe/stephanie.webp"
-                    alt="Stephanie Campos">
-            </div>
-
-            <div class="corretora-mini-info">
-
-                <strong>
-                    Stephanie Campos
-                </strong>
-
-                <span>
-                    Consultoria Imobili&aacute;ria
-                </span>
-
-                <small>
-                    CRECI
-                </small>
-
-                <p>
-                    Atendimento especializado em compra, venda e loca&ccedil;&atilde;o de im&oacute;veis em Teres&oacute;polis.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
 
 
     <div class="imovel-compartilhar">
