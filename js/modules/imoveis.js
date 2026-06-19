@@ -437,6 +437,32 @@ function mesmoImovel(imovelBase, candidato) {
     );
 }
 
+export function obterImoveisAdjacentes(imovelAtual, lista) {
+    try {
+        const imoveis = arraySeguro(lista);
+        const indiceAtual = imoveis.findIndex(
+            item => mesmoImovel(imovelAtual, item)
+        );
+
+        if (indiceAtual < 0) {
+            return {
+                anterior: null,
+                proximo: null
+            };
+        }
+
+        return {
+            anterior: indiceAtual > 0 ? imoveis[indiceAtual - 1] : null,
+            proximo: indiceAtual < imoveis.length - 1 ? imoveis[indiceAtual + 1] : null
+        };
+    } catch (error) {
+        return {
+            anterior: null,
+            proximo: null
+        };
+    }
+}
+
 function pontuarImovelRelacionado(imovelBase, candidato) {
     let pontuacao = 0;
 
