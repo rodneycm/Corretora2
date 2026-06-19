@@ -13,7 +13,7 @@ import {
     filtrarPorBairro,
     filtrarPorQuartos,
     filtrarPorPreco,
-    ordenarImoveis
+    ordenarImoveis as ordenarImoveisPorFiltro
 } from "./filtros.js";
 
 let imoveisCache = [];
@@ -32,6 +32,20 @@ function textoSeguro(valor) {
 
 function numeroSeguro(valor) {
     return Number(valor) || 0;
+}
+
+function ordenarImoveis(lista) {
+    return [...arraySeguro(lista)].sort((a, b) => {
+        const ordemA = Number(a?.sistema?.ordem);
+
+        const ordemB = Number(b?.sistema?.ordem);
+
+        return (
+            Number.isFinite(ordemA) ? ordemA : 999999
+        ) - (
+            Number.isFinite(ordemB) ? ordemB : 999999
+        );
+    });
 }
 
 function urlCanonicaImovel(slug) {
@@ -330,8 +344,10 @@ export async function carregarImoveis() {
 
         validarLista(imoveisNormalizados);
 
-        imoveisCache = imoveisNormalizados.filter(
-            item => item && item.sistema?.publicado !== false
+        imoveisCache = ordenarImoveis(
+            imoveisNormalizados.filter(
+                item => item && item.sistema?.publicado !== false
+            )
         );
 
         return imoveisCache;
@@ -474,7 +490,7 @@ export async function renderizarImoveisVenda() {
         resultado = filtrarPorBairro(resultado, bairro);
         resultado = filtrarPorQuartos(resultado, quartos);
         resultado = filtrarPorPreco(resultado, preco);
-        resultado = ordenarImoveis(resultado, ordenacao);
+        resultado = ordenarImoveisPorFiltro(resultado, ordenacao);
 
         if (resultado.length === 0) {
             container.innerHTML = `<p class="sem-imoveis">Nenhum imóvel encontrado.</p>`;
@@ -552,7 +568,7 @@ export async function renderizarImoveisAluguel() {
         resultado = filtrarPorBairro(resultado, bairro);
         resultado = filtrarPorQuartos(resultado, quartos);
         resultado = filtrarPorPreco(resultado, preco);
-        resultado = ordenarImoveis(resultado, ordenacao);
+        resultado = ordenarImoveisPorFiltro(resultado, ordenacao);
 
         if (resultado.length === 0) {
             container.innerHTML = `<p class="sem-imoveis">Nenhum imóvel encontrado.</p>`;
