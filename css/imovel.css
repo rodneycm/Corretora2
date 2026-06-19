@@ -178,16 +178,19 @@ margin-bottom:20px;
 
 #imovel-info h1{
 font-size:36px;
-line-height:1.2;
-margin-bottom:14px;
+font-weight:800;
+line-height:1.18;
+letter-spacing:0;
+margin-bottom:12px;
 }
 
 #imovel-info h2{
 font-size:46px;
 font-weight:900;
 color:#0f172a;
-margin:10px 0 24px;
-line-height:1;
+letter-spacing:0;
+margin:8px 0 22px;
+line-height:1.02;
 
 }
 
@@ -316,10 +319,11 @@ display:flex;
 align-items:center;
 gap:10px;
 
-margin-bottom:18px;
+margin-bottom:16px;
 
 font-size:15px;
 font-weight:600;
+line-height:1.45;
 
 color:#475569;
 
@@ -1081,15 +1085,19 @@ CÓDIGO DO IMÓVEL
 
     font-weight:600;
 
+    line-height:1.15;
+
+    white-space:nowrap;
+
 }
 
 .imovel-codigo{
 
     display:inline-flex;
 
-    align-items:baseline;
+    align-items:center;
 
-    gap:5px;
+    gap:6px;
 
 }
 
@@ -1113,6 +1121,8 @@ CÓDIGO DO IMÓVEL
 
     font-size:14px;
 
+    font-weight:700;
+
     line-height:1.2;
 
 }
@@ -1135,6 +1145,10 @@ STATUS DO IMÓVEL
     font-size:13px;
 
     font-weight:600;
+
+    line-height:1.15;
+
+    white-space:nowrap;
 
 }
 
