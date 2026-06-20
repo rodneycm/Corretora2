@@ -113,6 +113,10 @@ SOBRE
 
 .sobre-grid{
 
+    max-width:1200px;
+
+    margin:auto;
+
     display:grid;
 
     grid-template-columns:
@@ -205,6 +209,10 @@ VALORES
 }
 
 .valores-grid{
+
+    max-width:1200px;
+
+    margin:auto;
 
     display:grid;
 

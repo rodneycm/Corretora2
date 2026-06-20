@@ -242,3 +242,29 @@ RESPONSIVO
     }
 
 }
+
+@media(max-width:430px){
+
+    .obrigado-box{
+
+        padding:42px 22px;
+
+        border-radius:26px;
+
+    }
+
+    .obrigado-icon i{
+
+        font-size:62px;
+
+    }
+
+    .obrigado-box p{
+
+        margin-bottom:32px;
+
+        line-height:1.75;
+
+    }
+
+}

@@ -25,6 +25,17 @@ LISTAGEM
     background:#eef2f7;
 }
 
+.imoveis-listagem > .section-title,
+.imoveis-listagem > .filtros-imoveis,
+.imoveis-listagem > .cards-grid{
+
+    max-width:1200px;
+
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
 /* =========================================================
 RESPONSIVO
 ========================================================= */
@@ -99,6 +110,7 @@ FILTROS
     flex-wrap:wrap;
 
     align-items:center;
+    justify-content:center;
 
     margin-bottom:32px;
 
