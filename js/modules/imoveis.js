@@ -1263,6 +1263,16 @@ export async function obterDestaques() {
     return imoveis.filter(imovel => imovel.destaque === true);
 }
 
+function renderizarCarregamentoImoveis(container) {
+    if (!container) return;
+
+    container.innerHTML = `
+        <p class="loading-imoveis">
+            Carregando imóveis...
+        </p>
+    `;
+}
+
 /* =========================================================
    RENDERIZAR DESTAQUES HOME
 ========================================================= */
@@ -1272,6 +1282,8 @@ export async function renderizarDestaquesHome() {
     const container = document.getElementById("imoveis-destaque-home");
 
     if (!container) return;
+
+    renderizarCarregamentoImoveis(container);
 
     const destaques = await obterDestaques();
 
@@ -1310,6 +1322,8 @@ export async function renderizarImoveisVenda() {
     const container = document.getElementById("lista-imoveis");
 
     if (!container) return;
+
+    renderizarCarregamentoImoveis(container);
 
     const todosImoveis = await carregarImoveis();
 
@@ -1388,6 +1402,8 @@ export async function renderizarImoveisAluguel() {
     const container = document.getElementById("lista-imoveis-aluguel");
 
     if (!container) return;
+
+    renderizarCarregamentoImoveis(container);
 
     const todosImoveis = await carregarImoveis();
 
