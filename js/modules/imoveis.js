@@ -1383,6 +1383,34 @@ export async function renderizarImoveisAluguel() {
    RENDERIZAR PÁGINA DO IMÓVEL
 ========================================================= */
 
+function renderizarImovelNaoEncontrado() {
+    try {
+        const pagina = document.querySelector(".imovel-page");
+
+        if (!pagina) return;
+
+        pagina.innerHTML = `
+            <section class="bloco-imovel">
+                <h1 class="section-title-imovel">
+                    Imóvel não encontrado
+                </h1>
+
+                <p>
+                    O imóvel solicitado não está mais disponível ou o endereço informado é inválido.
+                </p>
+
+                <a
+                    class="imovel-whatsapp-principal"
+                    href="comprar.html">
+                    Ver outros imóveis
+                </a>
+            </section>
+        `;
+    } catch (error) {
+        return;
+    }
+}
+
 export async function renderizarPaginaImovel() {
 
     /* -------------------------------------------------
@@ -1390,9 +1418,12 @@ export async function renderizarPaginaImovel() {
     ------------------------------------------------- */
 
     const params = new URLSearchParams(window.location.search);
-    const slug   = params.get("slug");
+    const slug   = textoSeguro(params.get("slug")).trim();
 
-    if (!slug) return;
+    if (!slug) {
+        renderizarImovelNaoEncontrado();
+        return;
+    }
 
     /* -------------------------------------------------
        BUSCAR IMÓVEL
@@ -1401,7 +1432,7 @@ export async function renderizarPaginaImovel() {
     const imovel = await buscarImovelPorSlug(slug);
 
     if (!imovel) {
-        console.error("Imóvel não encontrado");
+        renderizarImovelNaoEncontrado();
         return;
     }
 
