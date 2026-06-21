@@ -512,7 +512,27 @@ export function obterImoveisAdjacentes(imovelAtual, lista) {
     }
 }
 
-function renderizarNavegacaoImoveis(imovelAtual, lista) {
+function tituloResumidoNavegacao(imovel) {
+    const tipo = textoSeguro(imovel?.tipo).trim();
+    const bairro = localizacaoImovel(imovel, "bairro").trim();
+
+    if (tipo && bairro) {
+        return `${tipo} em ${bairro}`;
+    }
+
+    const titulo = textoSeguro(imovel?.titulo)
+        .replace(/\s*[–-].*$/g, "")
+        .replace(/\bcom\s+\d+\s+quartos?\b/gi, "")
+        .replace(/\b\d+\s+quartos?\b/gi, "")
+        .replace(/\blinear\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    return titulo || "Ver imóvel";
+}
+
+/*
+function renderizarNavegacaoImoveisLegado(imovelAtual, lista) {
     const containerRelacionados = document.getElementById("imoveis-relacionados");
 
     if (!containerRelacionados) return;
@@ -550,6 +570,65 @@ function renderizarNavegacaoImoveis(imovelAtual, lista) {
                 href="${urlImovel(proximoImovel.slug)}">
                 Próximo imóvel
                 <span aria-hidden="true">→</span>
+            </a>
+        ` : ""}
+    `;
+
+    containerRelacionados.insertAdjacentElement("afterend", navegacao);
+}
+
+*/
+
+function renderizarNavegacaoImoveis(imovelAtual, lista) {
+    const containerRelacionados = document.getElementById("imoveis-relacionados");
+
+    if (!containerRelacionados) return;
+
+    document.getElementById("navegacao-imoveis")?.remove();
+
+    const { anterior, proximo } = obterImoveisAdjacentes(imovelAtual, lista);
+    const imovelAnterior = textoSeguro(anterior?.slug) ? anterior : null;
+    const proximoImovel = textoSeguro(proximo?.slug) ? proximo : null;
+
+    if (!imovelAnterior && !proximoImovel) return;
+
+    const navegacao = document.createElement("nav");
+    navegacao.id = "navegacao-imoveis";
+    navegacao.className = [
+        "navegacao-imoveis",
+        !imovelAnterior ? "navegacao-imoveis-sem-anterior" : "",
+        !proximoImovel ? "navegacao-imoveis-sem-proximo" : ""
+    ].filter(Boolean).join(" ");
+    navegacao.setAttribute("aria-label", "Navegação entre imóveis");
+
+    navegacao.innerHTML = `
+        ${imovelAnterior ? `
+            <a
+                class="navegacao-imovel-link navegacao-imovel-anterior"
+                href="${urlImovel(imovelAnterior.slug)}">
+                <span class="navegacao-imovel-direcao">
+                    <span aria-hidden="true">←</span>
+                    Imóvel anterior
+                </span>
+
+                <span class="navegacao-imovel-titulo">
+                    ${tituloResumidoNavegacao(imovelAnterior)}
+                </span>
+            </a>
+        ` : ""}
+
+        ${proximoImovel ? `
+            <a
+                class="navegacao-imovel-link navegacao-imovel-proximo"
+                href="${urlImovel(proximoImovel.slug)}">
+                <span class="navegacao-imovel-direcao">
+                    Próximo imóvel
+                    <span aria-hidden="true">→</span>
+                </span>
+
+                <span class="navegacao-imovel-titulo">
+                    ${tituloResumidoNavegacao(proximoImovel)}
+                </span>
             </a>
         ` : ""}
     `;
