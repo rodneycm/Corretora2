@@ -1264,7 +1264,7 @@ export async function obterDestaques() {
 }
 
 function renderizarCarregamentoImoveis(container) {
-    if (!container) return;
+    if (!container || imoveisCache.length > 0) return;
 
     container.innerHTML = `
         <p class="loading-imoveis">
