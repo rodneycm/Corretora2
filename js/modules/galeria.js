@@ -1,3 +1,5 @@
+import CONFIG from "../core/config.js";
+
 import {
     criarStatusBadge,
     criarStatusOverlay,
@@ -30,7 +32,7 @@ export function inicializarGaleria(galeria, imovel) {
 
     const fotoPrincipal =
         galeriaImagens[0] ||
-        "assets/imoveis/placeholder.jpg";
+        CONFIG.IMAGE_FALLBACK;
     const textoImagem =
         textoSeguro(imovel.titulo).trim() ||
         "Imagem do imovel";

@@ -19,7 +19,7 @@ const CONFIG = {
         6,
 
     IMAGE_FALLBACK:
-        "./assets/imoveis/default.webp",
+        "./assets/branding/logo.png",
 
     CIDADE_PADRAO:
         "Teresópolis",
