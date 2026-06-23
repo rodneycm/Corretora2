@@ -105,13 +105,17 @@ HOME HERO
 
     flex-wrap:wrap;
 
-    gap:18px;
+    column-gap:18px;
+
+    row-gap:20px;
 }
 
 .hero-btn,
 .hero-btn-outline{
 
-    min-width:220px;
+    width:230px;
+
+    min-height:58px;
 
     padding:17px 32px;
 
@@ -144,20 +148,39 @@ HOME HERO
     color:white;
 }
 
-.hero-btn-rent{
+.hero-buttons .hero-btn:nth-of-type(2){
 
     order:2;
+}
+
+.hero-cta-note{
+
+    flex-basis:100%;
+
+    margin-top:8px;
+
+    color:rgba(255,255,255,0.78);
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    font-weight:500;
+
+    order:3;
 }
 
 .hero-btn-contact{
 
     flex-basis:100%;
 
-    max-width:260px;
+    width:230px;
+
+    max-width:230px;
 
     margin-inline:auto;
 
-    order:3;
+    order:4;
 }
 
 .hero-info{
